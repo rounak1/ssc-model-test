@@ -7,7 +7,6 @@ require 'header-home.php';
 
 $email = $_SESSION['email'];
 
-// print_r($_POST);
 if (isset($_POST['question'])) {
 
     $correct_answer = 0;
@@ -36,20 +35,38 @@ if (isset($_POST['question'])) {
 
     // echo $wrong_answer . "<br>";
 
-    $query1 = "SELECT `id` FROM `quiz_users` WHERE `email` = '$email'";
+    // find user id from user email
+    $query1 = "SELECT `id` FROM `model_students` WHERE `email` = '$email'";
 
     $result1 = mysqli_query($conn, $query1);
+    $user_data = mysqli_fetch_assoc($result1);
+    $user_id = $user_data['id'];
 
-    foreach ($result1 as $row1) {
-        $user_id = $row1['id'];
-    }
+    // json object encode
+    $all_question_answer_list = json_encode($_POST);
 
-    $query2 = "INSERT INTO `quiz_histories`(`user_id`, `total_marks`, `wrong_answers`, `not_given_answers`, `quiz_date`) VALUES ('$user_id','$correct_answer', '$wrong_answer', '$not_given_answers', '22-05-11')";
+    // get exam date
+    $quiz_date = $_POST['quiz_date'];
+
+    // get exam id
+    $exam_id = $_POST['exam_id'];
+
+    // get exam attend time
+    $examAttendentTime = time() - $_POST['examAttendentTime'];
+    
+    $query2 = "INSERT INTO `quiz_histories`(`user_id`, `total_marks`, `wrong_answers`, `not_given_answers`, `quiz_date`, `exam_list`, `completion_time`, `exam_id`) VALUES ('$user_id','$correct_answer', '$wrong_answer', '$not_given_answers', '$quiz_date', '$all_question_answer_list','$examAttendentTime', '$exam_id')";
 
     $result2 = mysqli_query($conn, $query2);
 
     if ($result2) {
+        $last_id = mysqli_insert_id($conn);
+        header("Location: result.php?id=".$last_id);
+        exit();
         echo "<script> alert('Data Inserted')</script>";
+    } else {
+        echo "Error: " . $query2 . "<br>" . mysqli_error($conn);
     }
 
+} else {
+    echo 'no data';
 }

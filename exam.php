@@ -3,59 +3,52 @@ session_start();
 error_reporting(1);
 require 'connection.php';
 require 'header-home.php';
+require 'BanglaConverter.php';
 
 $email = $_SESSION['email'];
 
 ?>
 
-    <section class="ftco-login ftco-section testimony-section bg-light">
+    <section class="ftco-section testimony-section bg-light">
       <div class="container">
-        <div id="accomplishTime"></div>
-        <div class="container-quiz">
-          <div class="quiz-container">
-            <form id="quiz_submit">
-              <div id="quiz_data"></div>
-            </form>
-          </div>
-        </div>
-
+        
         <div
           id="myprofile_section"
           class="row justify-content-center mb-5 pb-3"
         >
           <div class="col-md-12 text-center heading heading-section">
-            <h2 class="mb-2">ড্যাশবোর্ড</h2>
+            <h2 class="mb-2">মডেল টেস্ট</h2>
           </div>
 
           <div class="col-md-12">
-            <div class="profile-container">
-              <div class="account-information">
-                  <?php
-$query = "SELECT `name`, `phone`, `email`, `profession`, `gender`, `district`, `thana` from `quiz_users` WHERE `email` = '$email'";
-
-$result = mysqli_query($conn, $query);
-
-while ($row = mysqli_fetch_assoc($result)) {?>
-
-              <h3 class="profile-info"><strong>নাম:</strong><?php echo $row['name']; ?></h3>
-  <h4 class="profile-info"><strong>ই-মেইল:</strong> <?php echo $row['email']; ?></h4>
-  <h4 class="profile-info"><strong>পেশা:</strong> <?php echo $row['profession']; ?></h4>
-  <h4 class="profile-info"><strong>লিঙ্গ:</strong> <?php echo $row['gender'] == 1 ? 'পুরুষ ' : 'মহিলা'; ?></h4>
-  <h4 class="profile-info"><strong>ফোন:</strong> <?php echo $row['phone']; ?></h4>
-  <h4 class="profile-info"><strong>জেলা:</strong> <?php echo $row['district']; ?></h4>
-  <h4 class="profile-info"><strong>উপজেলা:</strong> <?php echo $row['thana']; ?></h4>
-  <?php }?>
-              </div>
+            <div class="exam-container">
+              
               <div class="quiz-play-information">
 
                   <section>
-                      <div id="countdown">
+                    <?php
+                      $exam_id = 'ssc_phy_t001';
 
-                      </div>
+                      $query1 = "SELECT `id` FROM `model_students` WHERE `email` = '$email'";
+
+                      $result1 = mysqli_query($conn, $query1);
+                      $user_data = mysqli_fetch_assoc($result1);
+
+                      $user_id = $user_data['id'];
+
+                      $query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id'";
+
+                      $result2 = mysqli_query($conn, $query2);
+                      $exam_data2 = mysqli_fetch_assoc($result2);
+                       if(empty($exam_data2)) {
+                    ?>
+                      <div id="countdown"></div>
+                      <div id="examAttendentTime" style="display: none;"></div>
                       <form name="exam_submit" method="POST" action="quiz-submit.php" id="submit_form">
 <div class="question-container">
    <?php
-$query = "SELECT * FROM `quiz_questions` WHERE  `exam_date` = '2022-05-11'";
+   
+$query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id'";
 
 $result = mysqli_query($conn, $query);
 
@@ -73,9 +66,12 @@ foreach ($rows as $row) {
 
     <div class="questions-each">
 
+       <input type="hidden" name="quiz_date" value="<?php echo $row['exam_date'] ?>">
+       <input type="hidden" name="exam_id" value="<?php echo $exam_id ?>">
+       <input type="hidden" name="examAttendentTime" id="examAttendentTimeUpdate" value="<?=time()?>">
        <input type="hidden" name="question[]" value="<?php echo $row['id'] ?>">
        <input type="hidden" name="token[<?php echo $row['id'] ?>]" value="<?php echo base64_encode($row['answer']) ?>">
-        <div class="questions"><?php echo $i++ . '. ' . $row['questions']; ?></div>
+        <div class="questions"><?php echo BanglaConverter::en2bn($i++) . '. ' . $row['questions']; ?></div>
         <div class="options-container">
             <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option1"> <?php echo $row['option1'] ?>
             <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option2"> <?php echo $row['option2'] ?>
@@ -87,11 +83,15 @@ foreach ($rows as $row) {
 
 <?php }?>
 
-<input type="submit" name="exam_submit" value="Submit" onclick="myFunction()">
+<input type="submit" name="exam_submit" value="সাবমিট" class="exam_submit_btn">
 
 </form>
 </div>
-
+<?php
+  } else {
+    echo "আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন";
+  }
+?>
                   </section>
 
               </div>
@@ -100,16 +100,5 @@ foreach ($rows as $row) {
         </div>
       </div>
     </section>
-
-    <script>
-        // myFunction();
-function myFunction() {
-
-  document.getElementById("submit_form").submit();
-
-//   alert('x');
-  return false;
-}
-</script>
 
     <?php include 'footer.php';?>

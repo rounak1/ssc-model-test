@@ -84,8 +84,9 @@ const countdown = () => {
         getBanglaNumber(seconds) +
         " সেকেন্ডস";
       document.getElementById("countdown").innerHTML = timeCalculate;
-
-      accomplishmentElement.innerHTML = original_time - timeleft;
+      console.log(original_time - timeleft);
+      document.getElementById("examAttendentTime").innerHTML = original_time - timeleft;
+  
     }
     timeleft -= 1;
   }, 1000);

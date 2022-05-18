@@ -12094,3 +12094,15 @@ textarea.form-control {
     padding: 2em 0 1em 0;
   }
 }
+
+.exam_submit_btn {
+  background: #016e59;
+  color: #fff;
+  padding: 6px 18px 0px 18px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 8px;
+  font-size: 26px;
+}

@@ -1,5 +1,4 @@
 <?php
-
 $exam_list = [
     "ssc_ban1_t001" => [
         "id" => "ssc_ban1_t001",

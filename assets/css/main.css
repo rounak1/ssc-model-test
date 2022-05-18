@@ -375,8 +375,36 @@ dropdown-btn.active {
 }
 .questions {
   margin-top: 20px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 700;
 }
-
+.options-container {
+  font-size: 18px;
+}
+.student-answer {
+  font-size: 17px;
+}
+.student-answer {
+  font-size: 17px;
+}
+.r-option-container {
+  border-bottom: 1px solid #cccccc66;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+.result-summary {
+  font-size: 18px;
+  padding: 0 30px 30px 60px;
+}
+.result-summary .details-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+  border-top: 1px solid #cccccc66;
+  margin-top: 30px;
+  padding-top: 20px;
+}
 .navBar {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
   height: 50px;
