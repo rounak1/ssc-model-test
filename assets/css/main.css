@@ -1,0 +1,1062 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@font-face {
+  font-family: "shurjo";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local("Shurjo Regular"),
+    url("https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_400_v2-f516035cb806da4a249e.woff")
+      format("woff2"),
+    url("../fonts/ShurjoWeb_400.ttf") format("truetype");
+}
+@font-face {
+  font-family: "shurjo";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: local("Shurjo Semi Bold"),
+    url("https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_600_v2-c8b8a9932c11d2c59584.woff")
+      format("woff2"),
+    url("../fonts/ShurjoWeb_600.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "shurjo";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local("Shurjo Bold"),
+    url("https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-72cba63e779d86520525.woff")
+      format("woff2"),
+    url("../fonts/ShurjoWeb_700.ttf") format("truetype");
+}
+
+body {
+  font-family: "shurjo";
+  font-weight: 400;
+}
+
+.container {
+  font-family: shurjo;
+}
+
+.quiz-container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+img.logo {
+  height: 92px;
+}
+.awards {
+  color: #fff;
+  font-size: 16px;
+  margin-top: 60px;
+}
+.rules-small {
+  color: #fff;
+  font-size: 16px;
+  margin-top: 60px;
+  text-align: right;
+}
+.header-logo-container {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 16px 0 24px 0;
+  margin-bottom: 40px;
+}
+#logo {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+#ftco-nav {
+  width: 49%;
+  display: inline-block !important;
+}
+#ftco-nav ul {
+  float: right;
+}
+
+.home-highlight-box {
+  background-color: #fff6f6;
+  padding: 32px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.home-highlight-text-container {
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: #121212;
+}
+.home-highlight-bottom-box {
+  background-color: #e0f3f0;
+  padding: 32px 70px;
+  color: #005141;
+  margin-bottom: 48px;
+}
+.home-highlight-bottom-box h2 {
+  color: #005141;
+}
+ul.home-highlight-bottom {
+  margin-left: 8px;
+  list-style: none;
+}
+ul.home-highlight-bottom li {
+  font-size: 18px;
+  line-height: 1.8;
+}
+.home-bottom-text {
+  padding-left: 94px;
+  margin-bottom: 32px;
+  width: 66%;
+}
+ul.home-bottom-list {
+  list-style-type: none;
+}
+ul.home-bottom-list li {
+  list-style-type: none;
+  font-size: 18px;
+  line-height: 1.7;
+  padding: 3px 0;
+}
+.home-btn-container {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+.home-start-btn {
+  padding: 14px 32px;
+  border-radius: 8px;
+  background-color: #016e59;
+  font-family: ShurjoWeb;
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 32px;
+  display: inline-block;
+}
+a.home-start-btn:hover {
+  color: #39ffd9;
+}
+.profile-logout-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: #016e59;
+  font-family: ShurjoWeb;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+a.profile-logout-btn:hover {
+  color: #39ffd9;
+}
+
+/* Start Exam selection dropdown */
+.exam-selection-container {
+  background-color: #016e59;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.exam-selection-container h3 {
+  font-family: ShurjoWeb;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
+.exam-selection-container select {
+  width: 100%;
+  background-color: #00604d;
+  border: 0;
+  height: 42px;
+  color: #fff;
+  font-size: 20px;
+  padding-left: 10px;
+  margin-bottom: 14px;
+}
+
+.sidenav {
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.exam-selection-container .main-group {
+  margin-bottom: 8px;
+}
+.dropdown-btn {
+  border-bottom: 1px solid #000;
+}
+.sidenav a,
+.dropdown-btn {
+  background-color: #00604d;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+  display: block;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+.dropdown-container a {
+  margin-bottom: 0;
+  border-bottom: 1px solid #016e59;
+  background-color: #005141;
+}
+.dropdown-container a:last-of-type {
+  margin-bottom: 8px;
+}
+
+/* On mouse-over */
+.sidenav a:hover,
+.dropdown-btn:hover {
+  color: #f1f1f1;
+}
+.dropdown-container a:hover {
+  background-color: #006450;
+}
+
+.dropdown-container a.active {
+  background-color: #002a22;
+}
+
+.btn_start {
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+dropdown-btn.active {
+  background-color: #005141;
+  color: white;
+}
+
+.dropdown-btn {
+  border-bottom: 1px solid #00856b;
+} /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  margin-top: -6px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+/* End Exam selection dropdown */
+.footer-full {
+  background-color: #595959;
+  padding: 55px 0 22px;
+}
+.footer-logo-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-column-gap: 16px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.footer p {
+  font-family: ShurjoWeb;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+}
+#home-start-quiz {
+  font-weight: 700;
+}
+
+#start_exam_container {
+  font-weight: 700;
+  border-radius: 8px;
+  font-size: 26px;
+  border: none;
+}
+
+.scrolled img.logo {
+  height: 70px;
+  margin-top: 0;
+}
+
+.start-exam-from-dashboard {
+  text-align: center;
+  margin-bottom: 30px;
+  /* display: none; */
+}
+.question-container {
+  border: 1px solid #f1f1f1;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 10px 1px #a19ca166;
+  -moz-box-shadow: 0px 0px 10px 1px #a19ca166;
+  box-shadow: 0px 0px 10px 1px #a19ca166;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.add-border {
+  border-top: 2px solid #e2e2e2;
+}
+
+.question-container .question {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cccccc80;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.option-container {
+}
+
+.option-container .option {
+  font-size: 18px;
+  width: 100%;
+  display: inline-block;
+}
+
+.option-container .option input {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-top: 5px;
+}
+
+.option-container .option label {
+  float: left;
+  margin-bottom: 0;
+}
+.options-container input {
+  margin-left: 30px;
+}
+.options-container input:first-of-type {
+  margin-left: 0;
+}
+.questions {
+  margin-top: 20px;
+}
+
+.navBar {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
+  height: 50px;
+  line-height: 50px;
+}
+
+.navBar ul {
+  float: right;
+}
+
+.navBar ul li {
+  list-style: none;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.navBar ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #121212;
+  cursor: pointer;
+}
+
+.start-exam-container {
+  background: #f4511e;
+  width: 300px;
+  margin: auto;
+  height: 70px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 70px;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: none;
+}
+
+.home-container {
+  margin-bottom: 80px;
+}
+
+.rules h2 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 30px;
+}
+
+.rules {
+  -webkit-box-shadow: 0px 0px 10px 1px #a19ca166;
+  -moz-box-shadow: 0px 0px 10px 1px #a19ca166;
+  box-shadow: 0px 0px 10px 1px #a19ca166;
+  padding: 20px 40px;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.rules p {
+  margin-bottom: 16px;
+}
+
+.rules h3 {
+  margin-bottom: 16px;
+}
+
+.rules ul {
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 24px;
+}
+
+.form-container {
+  margin: auto;
+  margin-top: 20px;
+}
+.form-container .title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-container {
+  background: #fff;
+  padding: 20px 0;
+}
+
+.form-container .input-container .label-answer {
+  display: inline-block;
+  width: 50px;
+}
+
+.form-container .input-container .label-option {
+  display: inline-block;
+  width: calc(100% - 77px);
+  padding-left: 15px;
+}
+
+.form-container .input-container input,
+.form-container .input-container select {
+  height: 40px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  padding: 0 10px;
+  margin-bottom: 16px;
+  font-family: shurjo;
+  background: transparent;
+}
+
+.form-container .input-container.input-container-2 input {
+  width: 48%;
+  display: inline-block;
+}
+
+.form-container .input-container.terms-container input {
+  width: 15px;
+}
+
+.form-container .input-container.input-container-2 select {
+  width: 48%;
+}
+
+.form-container .input-container.input-container-2 input:first-child {
+  margin-right: 16px;
+}
+
+.form-container .input-container input.answer-radio {
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+.form-container .input-container input.question-option {
+  display: inline-block;
+  width: calc(100% - 92px);
+  margin-left: 15px;
+}
+
+.form-container .input-container label {
+  margin-bottom: 4px;
+  display: block;
+}
+
+.form-container .input-container.terms-container label {
+  font-size: 15px;
+  display: inline-block;
+  width: calc(100% - 25px);
+  line-height: 20px;
+}
+
+.form-container .input-container button {
+  background: #f4511e;
+  border: none;
+  height: 40px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-family: shurjo;
+  padding: 5px 40px;
+}
+
+.submit-container {
+  text-align: center;
+}
+
+.or {
+  text-align: center;
+  color: #f37622;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.forget-password {
+  margin-top: -16px;
+  margin-bottom: 8px;
+}
+
+.forget-password a {
+  color: #ef4924;
+  font-size: 18px;
+}
+.btn-special {
+  padding: 10px 34px;
+  margin-bottom: 24px;
+}
+.message-container {
+  margin-top: 26px;
+  margin-bottom: 6px;
+}
+#quiz_submit_btn {
+  background: #f4511e;
+  width: 200px;
+  border: none;
+  border-radius: 4px;
+  height: 50px;
+  margin-left: calc(50% - 100px);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-family: shurjo;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#countdown {
+  text-align: center;
+  font-size: 40px;
+  color: #f4511e;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+#accomplishTime {
+  display: none;
+}
+
+.quiz_success,
+.start-notification,
+.error-message,
+.success-message {
+  text-align: center;
+  height: 100px;
+  line-height: 100px;
+  color: #388e3c;
+  font-size: 28px;
+  margin-bottom: 30px;
+  margin-top: 80px;
+  background: #c8e6c9;
+  font-weight: 600;
+}
+.start-notification {
+  margin-top: 0;
+  display: none;
+}
+.error-message {
+  margin-top: 60px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  display: none;
+}
+.success-message {
+  height: auto;
+  line-height: 1.5;
+  padding: 20px 0;
+  margin-top: 60px;
+  display: none;
+  font-size: 24px;
+}
+.quiz-hints {
+  font-size: 18px;
+  margin-top: 8px;
+  line-height: 24px;
+  color: #f37622;
+}
+.click-wrapper {
+  font-size: 18px;
+  color: #000;
+}
+.click-here {
+  color: #2699fb;
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  width: 100%;
+  margin: 30px auto 0;
+}
+.profile-create-link {
+  color: #0099ff;
+}
+
+.profile-image {
+  width: 200px;
+  min-width: 200px;
+  background: #ccc;
+  border-radius: 50%;
+}
+.profile-info {
+  color: #555;
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+.success-profile {
+  text-align: center;
+  font-size: 16px;
+}
+
+.success-profile a {
+  color: #f37622;
+}
+
+.quiz-play-information {
+  padding: 0 30px 30px 48px;
+}
+
+.account-information {
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.quiz-play-information-header {
+  border-bottom: 2px solid #e2e2e2;
+  margin-bottom: 10px;
+  padding: 10px 0;
+}
+
+.quiz-play-information-header,
+.quiz-info-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-row-gap: 10px;
+}
+.quiz-info-row {
+  border-bottom: 1px solid #e2e2e2;
+  padding: 10px 0;
+}
+.quiz-play-label {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+  line-height: 24px;
+}
+.quiz-play-data {
+  font-size: 16px;
+  color: #222;
+}
+
+.login-register-text {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.login-register-text a {
+  color: #ef4924;
+}
+
+.ftco-footer img {
+  width: 180px;
+}
+
+.heading {
+  position: relative;
+}
+
+.heading:before {
+  content: "";
+  position: absolute;
+  width: 43%;
+  height: 4px;
+  background: #ef4924;
+  left: 0;
+  bottom: 30px;
+}
+
+.heading:after {
+  content: "";
+  position: absolute;
+  width: 43%;
+  height: 4px;
+  background: #ef4924;
+  right: 0;
+  bottom: 30px;
+}
+
+.footer-copyright {
+  text-align: right;
+}
+
+.reset-password {
+  display: none;
+}
+/* .toast-top-center {
+  top: 12px;
+  margin: 0 auto;
+} */
+.toast-top-full-width {
+  top: 20px;
+  width: 35%;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1.3;
+}
+
+.loader {
+  display: none;
+}
+button:focus {
+  outline: 0;
+}
+
+/* myprofile leaderboard */
+
+.pc-tab > input,
+.pc-tab section > div {
+  display: none;
+}
+
+#tab1:checked ~ section .tab1,
+#tab2:checked ~ section .tab2,
+#tab3:checked ~ section .tab3 {
+  display: block;
+}
+
+#tab1:checked ~ nav .tab1,
+#tab2:checked ~ nav .tab2,
+#tab3:checked ~ nav .tab3 {
+  color: red;
+}
+
+.pc-tab {
+  width: 100%;
+}
+.pc-tab ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pc-tab ul li label {
+  float: left;
+  padding: 15px 25px;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  background: #eeeeee;
+  color: #444;
+  margin-bottom: 0;
+}
+.pc-tab ul li label:hover {
+  background: #dddddd;
+}
+.pc-tab ul li label:active {
+  background: #ffffff;
+}
+.pc-tab ul li:not(:last-child) label {
+  border-right-width: 0;
+}
+.pc-tab section {
+  font-family: "Droid Serif";
+  clear: both;
+}
+.pc-tab section .tab1,
+.pc-tab section .tab2,
+.pc-tab section .tab3 {
+  padding: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  background: #fff;
+  line-height: 1.5em;
+  letter-spacing: 0.3px;
+  color: #444;
+}
+
+#tab1:checked ~ nav .tab1 label,
+#tab2:checked ~ nav .tab2 label,
+#tab3:checked ~ nav .tab3 label {
+  background: white;
+  color: #111;
+  position: relative;
+}
+#tab1:not(:checked) ~ nav .tab1 label:hover,
+#tab2:not(:checked) ~ nav .tab2 label:hover {
+  cursor: pointer;
+}
+#tab1:checked ~ nav .tab1 label:after,
+#tab2:checked ~ nav .tab2 label:after,
+#tab3:checked ~ nav .tab3 label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #ffffff;
+  left: 0;
+  bottom: -1px;
+}
+
+.toppers {
+  display: grid;
+  grid-gap: 10px;
+  /*   grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column; */
+}
+
+.topper {
+  display: flex;
+}
+.topper-position {
+  padding-right: 20px;
+}
+
+/* close myprofile leaderboard */
+
+.faq-video {
+  width: 100%;
+  height: 500px;
+}
+
+.leaderboard-container .tab2 {
+  display: none;
+}
+
+.leaderboard-tab ul {
+  margin-bottom: 40px;
+  border-bottom: 2px solid #555;
+}
+
+.leaderboard-tab ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 0 30px;
+  margin: 0 -5px -3px 0;
+  border-bottom: 3px solid #555;
+}
+
+.leaderboard-tab ul li label {
+  cursor: pointer;
+}
+
+.leaderboard-tab ul li.active,
+.leaderboard-tab ul li:hover {
+  border-bottom: 3px solid #f37622;
+  color: #f37622;
+}
+
+.leaderboard-container table {
+  width: 100%;
+}
+
+.leaderboard-container table tr {
+}
+
+.leaderboard-container table tr th {
+  border-bottom: 1px dotted;
+  padding: 8px;
+}
+
+.leaderboard-container table tr td {
+  border-bottom: 1px dotted;
+  padding: 8px;
+}
+
+#toast-container {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+#toast-container > div {
+  width: auto !important;
+  opacity: 1 !important;
+}
+.toast-message {
+  font-size: 20px;
+}
+
+@media (max-width: 875px) {
+  .faq-video {
+    height: 250px;
+  }
+  .awards {
+    text-align: center;
+    margin-top: 0;
+  }
+  .rules-small {
+    margin-top: 5px;
+    text-align: center;
+  }
+  .container {
+    width: 100%;
+  }
+  .quiz-container {
+    width: 100%;
+  }
+  .form-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .form-container .input-container.input-container-2 input {
+    width: 100%;
+  }
+  .form-container .input-container.input-container-2 select {
+    width: 100%;
+  }
+  .profile-container {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-play-information {
+    padding: 15px 0;
+    overflow-x: scroll;
+  }
+
+  .quiz-play-information-header,
+  .quiz-info-row {
+    grid-template-columns: repeat(5, 20%);
+  }
+
+  .footer-copyright {
+    text-align: center;
+  }
+  .footer-logo {
+    text-align: center;
+  }
+  .ftco-footer img {
+    margin-bottom: 16px;
+  }
+  .ftco-footer p {
+    font-size: 16px;
+  }
+  .toast-top-full-width {
+    width: 90%;
+  }
+  #countdown {
+    font-size: 30px;
+  }
+  .header-logo-container {
+    padding: 16px 0 13px 0;
+    margin-bottom: 32px;
+  }
+  .home-highlight-text-container {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 38px;
+    line-height: 1.3;
+  }
+  .home-bottom-text {
+    padding-left: 0px;
+    margin-bottom: 32px;
+    width: 100%;
+  }
+  .home-highlight-bottom-box h2 {
+    color: #005141;
+    font-size: 24px;
+    line-height: 1.3;
+  }
+  .home-highlight-bottom-box {
+    background-color: #e0f3f0;
+    padding: 32px 18px;
+    color: #005141;
+    margin-bottom: 48px;
+  }
+  .home-start-btn {
+    padding: 12px 26px;
+    border-radius: 8px;
+    font-size: 24px;
+    margin-bottom: 32px;
+  }
+
+  .footer-logo-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 12px;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .heading:after {
+    width: 35% !important;
+  }
+  .heading:before {
+    width: 35% !important;
+  }
+}

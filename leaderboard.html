@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--====== Title ======-->
+    <title>লিডারবোর্ড | জিততে হলে, পড়তে হবে</title>
+
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css?v=4.1">
+
+    <link rel="stylesheet" href="./assets/css/main.css?v=4.5" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11355905-12"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-11355905-12');
+    </script>
+    
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <div id="logo"></div>
+        <div class="collapse navbar-collapse" id="ftco-nav"></div>
+    </div>
+  </nav>
+    <!-- END nav -->
+
+  <section class="ftco-login ftco-section testimony-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+
+            <div class="col-md-7 text-center heading-section">
+                <h2 class="mb-2">লিডারবোর্ড</h2>
+            </div>
+
+            <div class="col-md-12">
+              <div class="leaderboard-tab">  
+               <ul>
+                <li class="tab1 dashboard-history active" data="tab1">
+                  <label for="tab1">আজকের বিজয়ী</label>
+                </li>
+                <li class="tab2 dashboard-history" data="tab2">
+                  <label for="tab2">শীর্ষ ১০০</label>
+                </li>
+               </ul>
+              </div> 
+                <div class="leaderboard-container">
+                  <div class="tab1">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>অবস্থান</th>
+                          <th>নাম</th>
+                          <th>পেশা</th>
+                          <th>জেলা</th>
+                          <th>উপজেলা</th>
+                        </tr>
+                      </thead>
+                      <tbody class="participants-information-body-1"></tbody>
+                    </table>
+                    
+                  </div>
+                  <div class="tab2">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>অবস্থান</th>
+                          <th>নাম</th>
+                          <th>পেশা</th>
+                          <th>জেলা</th>
+                          <th>উপজেলা</th>
+                        </tr>
+                      </thead>
+                      <tbody class="participants-information-body-2"></tbody>
+                    </table>       
+                  </div>
+                </div>
+               
+            </div>
+            
+        </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="./assets/js/config.js"></script>
+    <script src="./assets/js/home-script.js?v=4.4"></script>
+    <script src="./assets/js/leaderboard.js?v=4.4"></script>
+  </body>
+</html>

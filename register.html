@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--====== Title ======-->
+    <title>নিবন্ধন | জিততে হলে, পড়তে হবে</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css?v=4.1" />
+
+    <link rel="stylesheet" href="./assets/css/main.css?v=4.2" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-11355905-12"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-11355905-12");
+    </script> -->
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+      id="ftco-navbar"
+    >
+      <div class="container">
+        <div id="logo"></div>
+        <div class="collapse navbar-collapse" id="ftco-nav"></div>
+      </div>
+    </nav>
+    <!-- END nav -->
+
+    <section class="ftco-login ftco-section testimony-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-8 col-lg-5">
+            <div class="login-container">
+              <div class="col-md-12 text-center heading-section">
+                <h2 class="mb-2">নিবন্ধন ফরম</h2>
+              </div>
+
+              <div class="col-md-12">
+                <div class="form-container">
+                  <form id="register_form_submit" action="" method="post">
+                    <div class="input-container">
+                      <input
+                        type="email"
+                        name="email"
+                        value=""
+                        id="email"
+                        placeholder="ইমেইল *"
+                        required="required"
+                      />
+                    </div>
+                    <div class="input-container">
+                      <input
+                        type="password"
+                        name="password"
+                        value=""
+                        id="password"
+                        placeholder="পাসওয়ার্ড দিন *"
+                        required="required"
+                      />
+                      <input
+                        type="password"
+                        name="confirmPassword"
+                        value=""
+                        id="confirmPassword"
+                        placeholder="আবার পাসওয়ার্ড দিন *"
+                        required="required"
+                      />
+                    </div>
+                    <div class="input-container terms-container">
+                      <input
+                        type="checkbox"
+                        name="termsConditions"
+                        value="yes"
+                        id="terms_conditions"
+                        required="required"
+                        id="terms_conditions"
+                      />
+                      <label for="terms_conditions"
+                        >কুইজ পদ্ধতি ও ফলাফল বিষয়ে প্রথম আলো কর্তৃপক্ষের
+                        সিদ্ধান্ত চূড়ান্ত বলে গণ্য হবে। নিবন্ধনের তথ্যসমূহ প্রথম
+                        আলোর নিকট সংরক্ষিত থাকবে।</label
+                      >
+                    </div>
+                    <div class="input-container submit-container">
+                      <button id="register-button" name="register">
+                        <span class="content">সাবমিট</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          style="margin: auto, background: none"
+                          width="34"
+                          height="34"
+                          display="block"
+                          preserveAspectRatio="xMidYMid"
+                          viewBox="0 0 100 100"
+                          class="loader"
+                        >
+                          <g transform="translate(84 50)">
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              transform="scale(1.90075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.9285714285714286s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.9285714285714286s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(80.633 64.752) rotate(25.714)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.929"
+                              transform="scale(1.97075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.8571428571428571s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.8571428571428571s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(71.199 76.582) rotate(51.429)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.857"
+                              transform="scale(1.06075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.7857142857142857s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.7857142857142857s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(57.566 83.148) rotate(77.143)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.786"
+                              transform="scale(1.13075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.7142857142857143s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.7142857142857143s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(42.434 83.148) rotate(102.857)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.714"
+                              transform="scale(1.20075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.6428571428571429s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.6428571428571429s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(28.801 76.582) rotate(128.571)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.643"
+                              transform="scale(1.27075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.5714285714285714s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.5714285714285714s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(19.367 64.752) rotate(154.286)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.571"
+                              transform="scale(1.34075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.5s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.5s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g transform="translate(16 50) rotate(180)">
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.5"
+                              transform="scale(1.41075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.42857142857142855s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.42857142857142855s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(19.367 35.248) rotate(205.714)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.429"
+                              transform="scale(1.48075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.35714285714285715s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.35714285714285715s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(28.801 23.418) rotate(231.429)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.357"
+                              transform="scale(1.55075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.2857142857142857s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.2857142857142857s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(42.434 16.852) rotate(257.143)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.286"
+                              transform="scale(1.62075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.21428571428571427s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.21428571428571427s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(57.566 16.852) rotate(282.857)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.214"
+                              transform="scale(1.69075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.14285714285714285s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.14285714285714285s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(71.199 23.418) rotate(308.571)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.143"
+                              transform="scale(1.76075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="-0.07142857142857142s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="-0.07142857142857142s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                          <g
+                            transform="translate(80.633 35.248) rotate(334.286)"
+                          >
+                            <circle
+                              r="3"
+                              fill="#635f5f"
+                              fillOpacity="0.071"
+                              transform="scale(1.83075)"
+                            >
+                              <animateTransform
+                                attributeName="transform"
+                                begin="0s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                type="scale"
+                                values="1.98 1.98;1 1"
+                              ></animateTransform>
+                              <animate
+                                attributeName="fill-opacity"
+                                begin="0s"
+                                dur="1s"
+                                keyTimes="0;1"
+                                repeatCount="indefinite"
+                                values="1;0"
+                              ></animate>
+                            </circle>
+                          </g>
+                        </svg>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <div class="container">
+      <div class="quiz-container">
+        <form id="quiz_submit">
+          <div id="quiz_data"></div>
+          <!-- <input type="submit" name="submit" value="submit"> -->
+        </form>
+      </div>
+    </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="./assets/js/config.js"></script>
+    <script src="./assets/js/script.js?v=4.4"></script>
+  </body>
+</html>
