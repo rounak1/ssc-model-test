@@ -68,19 +68,21 @@ $email = $_SESSION['email'];
                       <div id="examAttendentTime" style="display: none;"></div>
                       <form name="exam_submit" method="POST" action="quiz-submit.php" id="submit_form">
 <div class="question-container">
-   <?php
-   
-$query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id'";
+<?php
+$current_date = date('Y-m-d');
+                    
+$query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id' AND `exam_date` <= '$current_date'";
 
 $result = mysqli_query($conn, $query);
 
-$rows = [];
-while ($row = mysqli_fetch_array($result)) {
-    $rows[] = $row;
-}
-shuffle($rows);
+if(!empty($result)) {
+  $rows = [];
+  while ($row = mysqli_fetch_array($result)) {
+      $rows[] = $row;
+  }
+  shuffle($rows);
 
-$i = 1;
+  $i = 1;
 
 foreach ($rows as $row) {
 
@@ -106,7 +108,7 @@ foreach ($rows as $row) {
 <?php }?>
 
 <input type="submit" name="exam_submit" value="সাবমিট" class="exam_submit_btn">
-
+<?php } ?>
 </form>
 </div>
 <?php
