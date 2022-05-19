@@ -310,8 +310,10 @@ dropdown-btn.active {
 
 #start_exam_container {
   font-weight: 700;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   font-size: 26px;
+  background: #016e59;
+  color: #fff;
   border: none;
 }
 
