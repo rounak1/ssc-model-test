@@ -27,8 +27,7 @@ $email = $_SESSION['email'];
 
                   <section>
                     <?php
-                      $exam_id = 'ssc_phy_t001';
-
+                      $exam_id = isset($_POST['test_number'])?$_POST['test_number']:"";
                       $query1 = "SELECT `id` FROM `model_students` WHERE `email` = '$email'";
 
                       $result1 = mysqli_query($conn, $query1);
@@ -37,7 +36,7 @@ $email = $_SESSION['email'];
                       $user_id = $user_data['id'];
 
                       // check already attend
-                      $query_temp = "SELECT `id` FROM `temp_quiz_history` WHERE `user_id` = '$user_id' && `exam_id` = '$exam_id'";
+                      $query_temp = "SELECT `id` FROM `temp_quiz_history` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
 
                       $result_temp = mysqli_query($conn, $query_temp);
                       $r_temp_data = mysqli_fetch_assoc($result_temp);
@@ -46,10 +45,10 @@ $email = $_SESSION['email'];
                         $query_q_h = "INSERT INTO `quiz_histories`(`user_id`, `exam_id`) VALUES ('$user_id','$exam_id')";
 
                         mysqli_query($conn, $query_q_h);
-                        echo "<script> alert('আপনি ইতিমধ্যে এই মডেল টেস্টে যোগদান করেছিলেন')</script>";                        
+                        echo "<script> alert('আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন')</script>";                        
                       }
 
-                      $query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id'";
+                      $query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
 
                       $result2 = mysqli_query($conn, $query2);
                       $exam_data2 = mysqli_fetch_assoc($result2);
@@ -122,5 +121,5 @@ foreach ($rows as $row) {
         </div>
       </div>
     </section>
-
+<script src="./assets/js/script.js?v=4.13"></script>
     <?php include 'footer.php';?>

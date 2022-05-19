@@ -142,7 +142,7 @@ foreach ($commerce_subjects as $commerce_subject) {?>
 
 
 
-                    <select name="test_number[]" class="model_test_no" id="ban_p1">
+                    <select name="" class="model_test_no" id="">
                       <option value="" disabled>মডেল টেস্ট নাম্বার</option>
 
                       <?php
@@ -156,7 +156,20 @@ for ($i = 0; $i < count($bangla_p1); $i++) {?>
 
                     </select>
 
-                    <select name="test_number[]" class="model_test_no" id="agri">
+                    <select name="" class="model_test_no" id="ban_p1">
+                      <option value="">মডেল টেস্ট নাম্বার</option>
+                      <?php
+$bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
+
+for ($i = 0; $i < count($bangla_p1); $i++) {?>
+  <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
+<?php }
+
+?>
+
+                    </select>
+
+                    <select name="" class="model_test_no" id="agri">
                       <option value="">মডেল টেস্ট নাম্বার</option>
                       <?php
 $bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
@@ -169,7 +182,7 @@ for ($i = 0; $i < count($bangla_p2); $i++) {?>
 
                     </select>
 
-                    <select name="test_number[]" class="model_test_no" id="physics">
+                    <select name="" class="model_test_no" id="physics">
                       <option value="">মডেল টেস্ট নাম্বার</option>
                       <?php
 $agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
@@ -183,7 +196,7 @@ for ($i = 0; $i < count($agri); $i++) {?>
 
                     </select>
 
-                    <select name="test_number[]" class="model_test_no" id="biology">
+                    <select name="" class="model_test_no" id="biology">
                       <option value="">মডেল টেস্ট নাম্বার</option>
                       <?php
 $biology = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
@@ -196,7 +209,7 @@ for ($i = 0; $i < count($biology); $i++) {?>
 
                     </select>
 
-                    <select name="test_number[]" class="model_test_no" id="bangladesh_history">
+                    <select name="" class="model_test_no" id="bangladesh_history">
                       <option value="">মডেল টেস্ট নাম্বার</option>
                       <?php
 $bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][2]['test'];
@@ -211,7 +224,7 @@ for ($i = 0; $i < count($bangladesh_history); $i++) {?>
 
 
 
-                    <select name="test_number[]" class="model_test_no" id="accounting">
+                    <select name="" class="model_test_no" id="accounting">
                       <option value="">মডেল টেস্ট নাম্বার</option>
 
                       <?php
@@ -225,7 +238,7 @@ for ($i = 0; $i < count($accounting); $i++) {?>
 
                     </select>
 
-                    <select name="test_number[]" class="model_test_no" id="finance">
+                    <select name="" class="model_test_no" id="finance">
                       <option value="">মডেল টেস্ট নাম্বার</option>
 
                       <?php
@@ -238,6 +251,7 @@ for ($i = 0; $i < count($finance); $i++) {?>
 ?>
 
                     </select>
+                    <input type="hidden" name="test_number" class="put_model_test_number">
                     </div>
 
                     <div class="start-exam-from-dashboard">
@@ -363,6 +377,11 @@ $("#commerce_subject").change(function() {
 
 });
 
+$(".model_test_no").change(function(){
+    var selectedModelTest = $(this).children("option:selected").val();   
+    $(".put_model_test_number").val(selectedModelTest);
+    $('.start-exam-from-dashboard').show();
+});
 
 });
 

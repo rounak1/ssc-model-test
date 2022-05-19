@@ -24,7 +24,7 @@ const getBanglaNumber = (str) => {
 };
 
 const countdown = () => {
-  var timeleft = 900;
+  var timeleft = 1800;
   var original_time = timeleft;
   focusDocument = setInterval(() => {
     //if user goes another tab or browser then form will automatically be submitted
