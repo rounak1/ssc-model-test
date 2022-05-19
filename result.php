@@ -1,17 +1,14 @@
 <?php
 session_start();
 error_reporting(1);
-require 'connection.php';
 require 'check-login.php';
 require 'header-home.php';
 require 'BanglaConverter.php';
 
-$email = $_SESSION['email'];
-
 $exam_id = isset($_GET['id']) && !empty($_GET['id']) ? $_GET['id'] : 0;
-                      
+
 // Get exam data
-$exam_query = "SELECT * FROM `quiz_histories` WHERE `id` = '$exam_id'";
+$exam_query = "SELECT * FROM `quiz_histories` WHERE `id` = '$exam_id' AND `user_id` = '$user_id'";
 
 $exam_result = mysqli_query($conn, $exam_query);
 $exam_data = mysqli_fetch_assoc($exam_result);

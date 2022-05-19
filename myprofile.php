@@ -1,16 +1,33 @@
 <?php
-session_start();
-error_reporting(1);
-require 'connection.php';
-require 'check-login.php';
-require 'header-home.php';
+  session_start();
+  error_reporting(1);
+  require 'check-login.php';
+  require 'header-home.php';
+  require 'BanglaConverter.php';
 
-include_once 'settings1.php';
+  include_once 'settings1.php';
+  include_once 'settings.php';
 
-$email = $_SESSION['email'];
+  $query_quiz_result = "SELECT * FROM `quiz_histories` WHERE `user_id` = '$user_id'";
+
+  $result_quiz_data = mysqli_query($conn, $query_quiz_result);
+
+  $result = [];
+  $result_single_array = [];
+
+  if(!empty($result_quiz_data)) {
+    while ($row = mysqli_fetch_array($result_quiz_data))
+    {
+      $result[$row['exam_id']]['exam_id'] = $row['exam_id'];
+      $result[$row['exam_id']]['id'] = $row['id'];
+      $result[$row['exam_id']]['exam_name'] = $model_test_list[$row['exam_id']]['subject'];
+      $result[$row['exam_id']]['total_marks'] = $row['total_marks'];
+
+      $result_single_array[$row['exam_id']] = $model_test_list[$row['exam_id']]['subject'];
+    }
+  }
 
 ?>
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
     <section class="ftco-login ftco-section testimony-section bg-light">
       <div class="container">
@@ -26,21 +43,41 @@ $email = $_SESSION['email'];
           <div class="col-md-12">
             <div class="profile-container">
               <div class="account-information">
-                  <?php
-$query = "SELECT `name`, `district`, `school_name` from `model_students` WHERE `email` = '$email'";
 
-$result = mysqli_query($conn, $query);
+              <h3 class="profile-info"><strong>নাম:</strong><?php echo $user_data['name']; ?></h3>
+              <h4 class="profile-info"><strong>স্কুলের নাম:</strong> <?php echo $user_data['school_name']; ?></h4>
 
-while ($row = mysqli_fetch_assoc($result)) {?>
+  <h4 class="profile-info"><strong>জেলা:</strong> <?php echo $user_data['district']; ?></h4>
+  <div class="recent-model-test">
+    <h4>মডেল টেস্টের ফলাফল:</h4>
 
+    <div class="r-model-test-list">
+      <?php
+        if(count($result_single_array) > 0) {
+          foreach(array_unique($result_single_array) as $sub_key => $subject) {
+      ?>
+            <h6><?=$subject?></h6>
+            <?php
+              foreach($result as $data) {
+                if($data['exam_name'] == $subject) {
+            ?>
+              <div>
+                <a href="result.php?id=<?=$data['id']?>">
+                  <?=$model_test_list[$data['exam_id']]['test']?> - স্কোর <?= BanglaConverter::en2bn($data['total_marks']) ?>                
+                </a>
+              </div>
+            <?php
+                }
+              }
+            ?>
+      <?php
+          }
+        }
 
+      ?>
 
-              <h3 class="profile-info"><strong>নাম:</strong><?php echo $row['name']; ?></h3>
-              <h4 class="profile-info"><strong>স্কুলের নাম:</strong> <?php echo $row['school_name']; ?></h4>
-
-  <h4 class="profile-info"><strong>জেলা:</strong> <?php echo $row['district']; ?></h4>
-
-  <?php }?>
+    </div>
+  </div>
 
   <div class="logout-btn-container">
             <a href="logout.php" class="profile-logout-btn">লগ আউট</a>
@@ -55,32 +92,11 @@ while ($row = mysqli_fetch_assoc($result)) {?>
                 <div class="exam-selection-container">
                   <h3>এসএসসি মডেল টেস্ট ২০২২</h3>
 
-                 <?php // echo "<pre>";
-// print_r($exam_list);
-?>
-
-
-
                   <?php
 
 $science_subjects = $exam_list['ssc'][0]['science']['subjects'];
 $arts_subjects = $exam_list['ssc'][1]['arts']['subjects'];
 $commerce_subjects = $exam_list['ssc'][2]['commerce']['subjects'];
-
-?>
-
-                  <?php
-
-// echo "RPounak";
-
-// echo "<pre>";
-
-// // print_r($exam_list);
-
-// print_r($exam_list['ssc']['science']['subject'][1]['test'][1]['id']);
-?>
-
-                  <?php
 
 ?>
 

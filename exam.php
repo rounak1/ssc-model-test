@@ -1,7 +1,6 @@
 <?php
 session_start();
 error_reporting(1);
-require 'connection.php';
 require 'check-login.php';
 require 'header-home.php';
 require 'BanglaConverter.php';
@@ -29,13 +28,7 @@ $email = $_SESSION['email'];
                   <section>
                     <?php
                       $exam_id = isset($_POST['test_number'])?$_POST['test_number']:"";
-                      $query1 = "SELECT `id` FROM `model_students` WHERE `email` = '$email'";
-
-                      $result1 = mysqli_query($conn, $query1);
-                      $user_data = mysqli_fetch_assoc($result1);
-
-                      $user_id = $user_data['id'];
-
+                      
                       // check already attend
                       $query_temp = "SELECT `id` FROM `temp_quiz_history` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
 
@@ -43,9 +36,9 @@ $email = $_SESSION['email'];
                       $r_temp_data = mysqli_fetch_assoc($result_temp);
                       
                       if(!empty($r_temp_data)) {
-                        $query_q_h = "INSERT INTO `quiz_histories`(`user_id`, `exam_id`) VALUES ('$user_id','$exam_id')";
+                        // $query_q_h = "INSERT INTO `quiz_histories`(`user_id`, `exam_id`) VALUES ('$user_id','$exam_id')";
 
-                        mysqli_query($conn, $query_q_h);
+                        // mysqli_query($conn, $query_q_h);
                         echo "<script> alert('আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন')</script>";                        
                       }
 

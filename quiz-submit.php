@@ -2,11 +2,8 @@
 
 session_start();
 error_reporting(1);
-require 'connection.php';
 require 'check-login.php';
 require 'header-home.php';
-
-$email = $_SESSION['email'];
 
 if (isset($_POST['question'])) {
 
@@ -35,13 +32,6 @@ if (isset($_POST['question'])) {
     $not_given_answers = $length - ($correct_answer + $wrong_answer);
 
     // echo $wrong_answer . "<br>";
-
-    // find user id from user email
-    $query1 = "SELECT `id` FROM `model_students` WHERE `email` = '$email'";
-
-    $result1 = mysqli_query($conn, $query1);
-    $user_data = mysqli_fetch_assoc($result1);
-    $user_id = $user_data['id'];
 
     // json object encode
     $all_question_answer_list = json_encode($_POST);

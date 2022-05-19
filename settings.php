@@ -1,5 +1,5 @@
 <?php
-$exam_list = [
+$model_test_list = [
     "ssc_ban1_t001" => [
         "id" => "ssc_ban1_t001",
         "grade" => "ssc",
