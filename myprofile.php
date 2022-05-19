@@ -2,6 +2,7 @@
 session_start();
 error_reporting(1);
 require 'connection.php';
+require 'check-login.php';
 require 'header-home.php';
 
 include_once 'settings1.php';
@@ -13,15 +14,7 @@ $email = $_SESSION['email'];
 
     <section class="ftco-login ftco-section testimony-section bg-light">
       <div class="container">
-        <div id="accomplishTime"></div>
-        <div class="container-quiz">
-          <div class="quiz-container">
-            <!-- <form id="quiz_submit">
-              <div id="quiz_data"></div>
-            </form> -->
-          </div>
-        </div>
-
+        
         <div
           id="myprofile_section"
           class="row justify-content-center mb-5 pb-3"

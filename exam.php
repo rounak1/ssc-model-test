@@ -2,6 +2,7 @@
 session_start();
 error_reporting(1);
 require 'connection.php';
+require 'check-login.php';
 require 'header-home.php';
 require 'BanglaConverter.php';
 
