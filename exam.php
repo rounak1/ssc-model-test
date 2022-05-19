@@ -36,11 +36,33 @@ $email = $_SESSION['email'];
 
                       $user_id = $user_data['id'];
 
+                      // check already attend
+                      $query_temp = "SELECT `id` FROM `temp_quiz_history` WHERE `user_id` = '$user_id' && `exam_id` = '$exam_id'";
+
+                      $result_temp = mysqli_query($conn, $query_temp);
+                      $r_temp_data = mysqli_fetch_assoc($result_temp);
+                      
+                      if(!empty($r_temp_data)) {
+                        $query_q_h = "INSERT INTO `quiz_histories`(`user_id`, `exam_id`) VALUES ('$user_id','$exam_id')";
+
+                        mysqli_query($conn, $query_q_h);
+                        echo "<script> alert('আপনি ইতিমধ্যে এই মডেল টেস্টে যোগদান করেছিলেন')</script>";                        
+                      }
+
                       $query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id'";
 
                       $result2 = mysqli_query($conn, $query2);
                       $exam_data2 = mysqli_fetch_assoc($result2);
-                       if(empty($exam_data2)) {
+
+                      if(empty($exam_data2)) {
+
+                        // insert temp data
+                        $query_temp_insert = "INSERT INTO `temp_quiz_history`(`user_id`, `exam_id`) VALUES ('$user_id', '$exam_id')";
+
+                        $result_temp_insert = mysqli_query($conn, $query_temp_insert);
+
+                        echo mysqli_error($conn);
+
                     ?>
                       <div id="countdown"></div>
                       <div id="examAttendentTime" style="display: none;"></div>
