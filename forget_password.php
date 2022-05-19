@@ -24,16 +24,15 @@ if (isset($_POST['forget_password'])) {
 
     $token = bin2hex(random_bytes(20));
 
-    $verifyEmailLink = "http://localhost/campaigns/palo-campaigns/main-quiz/reset_password.php?token=" . $token;
-    // $verifyEmailLink = "http://localhost/mpaward/reset_password.php?token=" . $token;
+    $verifyEmailLink = "http://localhost/campaigns/palo-campaigns/ssc-model-test/reset_password.php?token=" . $token;
 
-    $message = '
-	<div><div>মেরিল-প্রথম আলো পুরস্কার ২০২১ এ ভোট দিতে আগ্রহী হওয়ায় আপনাকে ধন্যবাদ।</div> <a href="' . $verifyEmailLink . '">এই লিংকে</a> ক্লিক করে আপনার পাসওয়ার্ডটি পুনরায় সেট করুন</div>';
+    $message = '<div><div>এসএসসি মডেল টেস্ট এ অংশগ্রহণের জন্য আপনাকে ধন্যবাদ।</div> <a href="' . $verifyEmailLink . '">এই লিংকে</a> ক্লিক করে আপনার পাসওয়ার্ডটি পুনরায় সেট করুন</div>';
 
     if (!empty($email_address)) {
         //Store token in table
 
-        $query = "UPDATE `pa_mpj_users` SET  `token` = '$token' WHERE `email`='$email_address'";
+        $query = "UPDATE `model_students` SET  `token` = '$token' WHERE `email`='$email_address'";
+
         $result = mysqli_query($conn, $query);
 
         if ($result) {
@@ -41,9 +40,9 @@ if (isset($_POST['forget_password'])) {
             $data = [
                 'to' => $email_address,
                 'from' => $from,
-                'subject' => 'মেরিল-প্রথম আলো পুরস্কার ২০২১ পাসওয়ার্ড সেট করুন',
+                'subject' => 'এসএসসি মডেল টেস্ট দেওয়ার জন্য পাসওয়ার্ড রিসেট করুন',
                 'html' => $message,
-                'fromName' => 'Meril-Prothom Alo Award 2021',
+                'fromName' => 'porasona SSC model test',
             ];
 
             $email_sent->send($data);

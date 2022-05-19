@@ -3,6 +3,8 @@ error_reporting(E_ALL);
 require 'connection.php';
 require 'admin-header.php';
 
+require '../settings.php';
+
 $msg = [];
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -15,6 +17,7 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['btn_update'])) {
+
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
     } else {
@@ -25,6 +28,12 @@ if (isset($_POST['btn_update'])) {
         array_push($msg, "পরীক্ষার তারিখ দিন");
     } else {
         $exam_date = test_input($_POST["exam_date"]);
+    }
+
+    if (empty($_POST["exam_id"])) {
+        array_push($msg, "পরীক্ষার বিষয় নির্বাচন করুন");
+    } else {
+        $exam_id = test_input($_POST["exam_id"]);
     }
 
     if (empty($_POST["question"])) {
@@ -62,7 +71,8 @@ if (isset($_POST['btn_update'])) {
 
     if ((count($msg) < 1)) {
 
-        $query = "UPDATE  `model_questions` SET `questions` = '$question', `option1` = '$option1', `option2` = '$option2', `option3` = '$option3', `option4` = '$option4', `answer` = '$answer', `exam_date` = '$exam_date' WHERE `id` = '$id' ";
+        $query = "UPDATE  `model_questions` SET `exam_id` = '$exam_id', `questions` = '$question', `option1` = '$option1', `option2` = '$option2', `option3` = '$option3', `option4` = '$option4', `answer` = '$answer', `exam_date` = '$exam_date' WHERE `id` = '$id' ";
+
         $result = mysqli_query($conn, $query);
 
         if ($result) {
@@ -92,6 +102,42 @@ if (isset($_POST['btn_update'])) {
                 required="required"
               />
             </div>
+
+            <?php
+
+    // echo "<pre>";
+
+    // print_r($exam_list['ssc_ban1_t001']['id']);
+
+    ?>
+            <div class="input-container">
+            <select name="exam_id" id="subjects" class="input-container">
+                <option value="">সাবজেক্ট  সিলেক্ট করুন</option>
+
+                <?php
+
+    foreach ($exam_list as $exam) {?>
+
+    <option value="<?php echo $exam['id']; ?>" <?=$exam['id'] == $row['exam_id'] ? 'selected' : ''?>>
+      <?php echo ($exam['subject'] . ' -- ' . $exam['test']); ?>
+    </option>
+<?php }
+
+    ?>
+
+              </select>
+
+
+              <!-- <input
+                type="text"
+                name="exam_id"
+                value="<?php echo $subject_display = $exam_list[$row['exam_id']]['subject'] . '-' . $exam_list[$row['exam_id']]['test'] ?>"
+                id="date"
+                placeholder="YYYY-MM-DD"
+                required="required"
+              /> -->
+            </div>
+
             <div class="input-container">
               <label>Question</label>
               <input

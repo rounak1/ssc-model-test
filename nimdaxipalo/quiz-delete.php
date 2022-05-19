@@ -5,7 +5,7 @@ require 'admin-header.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "UPDATE `quiz_questions` SET `status`= '0' WHERE `id` = '$id'";
+    $query = "UPDATE `model_questions` SET `status`= '0' WHERE `id` = '$id'";
 
     $result = mysqli_query($conn, $query);
 

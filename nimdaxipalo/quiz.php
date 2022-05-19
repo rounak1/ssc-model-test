@@ -2,6 +2,7 @@
 error_reporting(1);
 require 'connection.php';
 require 'admin-header.php';
+require '../settings.php';
 ?>
     <div class="container">
       <div class="quiz-container">
@@ -27,6 +28,7 @@ require 'admin-header.php';
             <thead>
               <tr>
                 <td>Quiz Date</td>
+                <td>subjects</td>
                 <td>Question</td>
                 <td>Answer</td>
                 <td>Option 1</td>
@@ -41,7 +43,7 @@ require 'admin-header.php';
 
               <?php
 
-$query = "SELECT `id` , `questions`, `option1`, `option2`, `option3`, `option4`, `answer`, `exam_date` FROM `model_questions`   WHERE `status` = '1'";
+$query = "SELECT `id`, `exam_id`, `questions`, `option1`, `option2`, `option3`, `option4`, `answer`, `exam_date` FROM `model_questions`   WHERE `status` = '1'";
 
 $result = mysqli_query($conn, $query);
 
@@ -49,6 +51,11 @@ foreach ($result as $row) {?>
 
 <tr>
     <td><?php echo $row['exam_date']; ?></td>
+    <td><?php
+
+    echo $subject_display = $exam_list[$row['exam_id']]['subject'] . '-' . $exam_list[$row['exam_id']]['test'];
+
+    ?></td>
     <td><?php echo $row['questions']; ?></td>
     <td><?php echo $row['answer']; ?></td>
     <td><?php echo $row['option1']; ?></td>
