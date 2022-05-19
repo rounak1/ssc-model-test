@@ -102,7 +102,7 @@ if (isset($_POST['form_submit'])) {
 
                 <?php
 
-foreach ($exam_list as $exam) {?>
+foreach ($model_test_list as $exam) {?>
     <option value="<?php echo $exam['id']; ?>"><?php echo ($exam['subject'] . ' -- ' . $exam['test']); ?></option>
 <?php }
 

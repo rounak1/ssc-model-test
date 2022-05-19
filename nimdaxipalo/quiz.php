@@ -53,7 +53,7 @@ foreach ($result as $row) {?>
     <td><?php echo $row['exam_date']; ?></td>
     <td><?php
 
-    echo $subject_display = $exam_list[$row['exam_id']]['subject'] . '-' . $exam_list[$row['exam_id']]['test'];
+    echo $subject_display = $model_test_list[$row['exam_id']]['subject'] . '-' . $model_test_list[$row['exam_id']]['test'];
 
     ?></td>
     <td><?php echo $row['questions']; ?></td>

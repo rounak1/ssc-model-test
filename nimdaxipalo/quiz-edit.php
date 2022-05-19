@@ -107,8 +107,6 @@ if (isset($_POST['btn_update'])) {
 
     // echo "<pre>";
 
-    // print_r($exam_list['ssc_ban1_t001']['id']);
-
     ?>
             <div class="input-container">
             <select name="exam_id" id="subjects" class="input-container">
@@ -116,7 +114,7 @@ if (isset($_POST['btn_update'])) {
 
                 <?php
 
-    foreach ($exam_list as $exam) {?>
+    foreach ($model_test_list as $exam) {?>
 
     <option value="<?php echo $exam['id']; ?>" <?=$exam['id'] == $row['exam_id'] ? 'selected' : ''?>>
       <?php echo ($exam['subject'] . ' -- ' . $exam['test']); ?>
@@ -131,7 +129,7 @@ if (isset($_POST['btn_update'])) {
               <!-- <input
                 type="text"
                 name="exam_id"
-                value="<?php echo $subject_display = $exam_list[$row['exam_id']]['subject'] . '-' . $exam_list[$row['exam_id']]['test'] ?>"
+                value="<?php echo $subject_display = $model_test_list[$row['exam_id']]['subject'] . '-' . $model_test_list[$row['exam_id']]['test'] ?>"
                 id="date"
                 placeholder="YYYY-MM-DD"
                 required="required"
