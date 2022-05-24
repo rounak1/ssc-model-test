@@ -2027,7 +2027,7 @@ pre code {
     border: 0;
   }
 
-  #logo {
+  .logo {
     width: 100% !important;
     text-align: center;
   }
@@ -2740,7 +2740,6 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #212529;
-  background-color: #f37622;
   border-color: #f37622;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus,
@@ -9578,9 +9577,6 @@ h5,
   border-bottom: 1px solid #eaeaea;
 }
 @media (max-width: 991.98px) {
-  img.logo {
-    height: 73px !important;
-  }
   .scrolled img.logo {
     height: 60px !important;
   }
@@ -10080,10 +10076,10 @@ h5,
 
 .btn {
   cursor: pointer;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
-  -ms-border-radius: 30px;
-  border-radius: 30px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  border-radius: 12px;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
@@ -10094,7 +10090,6 @@ h5,
 }
 .btn.btn-primary {
   background: #016e59;
-  border: 1px solid #ef4924;
   color: #fff;
 }
 .btn.btn-primary:hover {
@@ -11055,7 +11050,7 @@ textarea.form-control {
   }
 }
 .ftco-login.ftco-section {
-  padding: 9em 0 6em 0;
+  padding: 8em 0 6em 0;
 }
 .ftco-section {
   position: relative;

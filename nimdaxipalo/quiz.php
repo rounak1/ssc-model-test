@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged_session'])) {
+    header('Location: index.php');
+}
+
 error_reporting(1);
 require 'connection.php';
 require 'admin-header.php';
@@ -7,28 +12,55 @@ require '../settings.php';
     <div class="container">
       <div class="quiz-container">
         <div class="quiz-header">
-          <a href="quiz-add.php" class="addQuiz">Add Quiz</a>
+          <a href="quiz-add.php" class="addQuiz">Add Question</a>
         </div>
         <div class="quiz-data">
           <div class="search-panel">
-            <input
-              type="text"
-              name="search_by_date"
-              id="search_by_date"
-              value=""
-            />
+            <form action="" method="POST">
+
+
+            <select name="specific_questions" id="" class="all_quiz">
+            <?php
+
+$quer = "Select distinct `exam_id` from `model_questions`";
+
+$resul = mysqli_query($conn, $quer);
+
+foreach ($resul as $row) {
+
+    ?>
+  <option value="<?php echo $row['exam_id']; ?>" <?=$model_test_list[$row['exam_id']]['id'] == $_POST['specific_questions'] ? 'selected' : ''?> > <?php
+
+    echo $subject_display = $model_test_list[$row['exam_id']]['subject'] . '-' . $model_test_list[$row['exam_id']]['test'];
+
+    ?></option>
+<?php }
+
+?>
+
+            </select>
             <input
               id="submit_search"
               type="submit"
               name="search"
               value="Search"
             />
+            </form>
           </div>
-          <table>
+
+          <?php
+if (isset($_POST['search'])) {
+
+    $exam_id = $_POST['specific_questions'];
+    ?>
+
+<table>
             <thead>
               <tr>
-                <td>Quiz Date</td>
+                <td>Exam Date</td>
                 <td>subjects</td>
+                <td>Uddipok Statement</td>
+                <td>Uddipok </td>
                 <td>Question</td>
                 <td>Answer</td>
                 <td>Option 1</td>
@@ -43,19 +75,21 @@ require '../settings.php';
 
               <?php
 
-$query = "SELECT `id`, `exam_id`, `questions`, `option1`, `option2`, `option3`, `option4`, `answer`, `exam_date` FROM `model_questions`   WHERE `status` = '1'";
+    $query = "SELECT `id`, `exam_id`, `uddipok_statement`,`uddipok`, `questions`, `option1`, `option2`, `option3`, `option4`, `answer`, `exam_date` FROM `model_questions`   WHERE `status` = '1' and `exam_id` = '$exam_id'";
 
-$result = mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
 
-foreach ($result as $row) {?>
+    foreach ($result as $row) {?>
 
 <tr>
     <td><?php echo $row['exam_date']; ?></td>
     <td><?php
 
-    echo $subject_display = $model_test_list[$row['exam_id']]['subject'] . '-' . $model_test_list[$row['exam_id']]['test'];
+        echo $subject_display = $model_test_list[$row['exam_id']]['subject'] . '-' . $model_test_list[$row['exam_id']]['test'];
 
-    ?></td>
+        ?></td>
+    <td><?php echo $row['uddipok_statement']; ?></td>
+    <td><?php echo $row['uddipok']; ?></td>
     <td><?php echo $row['questions']; ?></td>
     <td><?php echo $row['answer']; ?></td>
     <td><?php echo $row['option1']; ?></td>
@@ -72,6 +106,64 @@ foreach ($result as $row) {?>
 
 
           </table>
+
+<?php } else {?>
+
+
+          <table>
+            <thead>
+              <tr>
+                <td>Exam Date</td>
+                <td>subjects</td>
+                <td>Uddipok Statement</td>
+                <td>Uddipok </td>
+                <td>Question</td>
+                <td>Answer</td>
+                <td>Option 1</td>
+                <td>Option 2</td>
+                <td>Option 3</td>
+                <td>Option 4</td>
+                <td style="width: 96px ;">Actions</td>
+              </tr>
+              </thead>
+
+              <tbody id="contentData">
+
+              <?php
+
+    $query = "SELECT `id`, `exam_id`, `uddipok_statement`,`uddipok`, `questions`, `option1`, `option2`, `option3`, `option4`, `answer`, `exam_date` FROM `model_questions`   WHERE `status` = '1'";
+
+    $result = mysqli_query($conn, $query);
+
+    foreach ($result as $row) {?>
+
+<tr>
+    <td><?php echo $row['exam_date']; ?></td>
+    <td><?php
+
+        echo $subject_display = $model_test_list[$row['exam_id']]['subject'] . '-' . $model_test_list[$row['exam_id']]['test'];
+
+        ?></td>
+    <td><?php echo $row['uddipok_statement']; ?></td>
+    <td><?php echo $row['uddipok']; ?></td>
+    <td><?php echo $row['questions']; ?></td>
+    <td><?php echo $row['answer']; ?></td>
+    <td><?php echo $row['option1']; ?></td>
+    <td><?php echo $row['option2']; ?></td>
+    <td><?php echo $row['option3']; ?></td>
+    <td><?php echo $row['option4']; ?></td>
+    <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td>
+</tr>
+
+<?php }?>
+
+</tbody>
+
+
+
+          </table>
+      <?php }
+?>
         </div>
       </div>
     </div>

@@ -27,20 +27,7 @@ $email = $_SESSION['email'];
 
                   <section>
                     <?php
-if (isset($_POST['test_number'])) {
-    $exam_id = $_POST['test_number'];
-}
-
-if (isset($_GET['id'])) {
-    $exam_id = $_GET['id'];
-}
-
-if (!isset($exam_id)) {
-    $_SESSION['alert'] = "পরীক্ষার বিষয় ও মডেল টেস্ট নম্বর নির্বাচন করুন";
-
-    echo "<script>window.location.href = 'myprofile.php'; </script>";
-    exit();
-}
+$exam_id = isset($_POST['test_number']) ? $_POST['test_number'] : "";
 
 // check already attend
 $query_temp = "SELECT `id` FROM `temp_quiz_history` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
@@ -84,10 +71,15 @@ $current_date = date('Y-m-d');
     $result = mysqli_query($conn, $query);
 
     if (!empty($result)) {
+        $rows = [];
+        while ($row = mysqli_fetch_array($result)) {
+            $rows[] = $row;
+        }
+        shuffle($rows);
 
         $i = 1;
 
-        foreach ($result as $row) {
+        foreach ($rows as $row) {
 
             ?>
 
@@ -136,5 +128,5 @@ $current_date = date('Y-m-d');
         </div>
       </div>
     </section>
-<script src="./assets/js/script.js?v=4.14"></script>
+<script src="./assets/js/script.js?v=4.13"></script>
 <?php require 'footer-home.php';?>

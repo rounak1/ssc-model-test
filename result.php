@@ -14,6 +14,8 @@ $exam_result = mysqli_query($conn, $exam_query);
 $exam_data = mysqli_fetch_assoc($exam_result);
 ?>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
     <section class="ftco-section testimony-section bg-light">
       <div class="container">
         <div class="container-quiz">
@@ -46,30 +48,29 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                   <section>
                     <?php
 
-                      if(!empty($exam_data)) 
-                      {
-                        $decode_exam_data = json_decode($exam_data['exam_list']);
-                        $c_exam_data = (array) $decode_exam_data->option;
-                     
-                    ?>
+if (!empty($exam_data)) {
+    $decode_exam_data = json_decode($exam_data['exam_list']);
+    $c_exam_data = (array) $decode_exam_data->option;
+
+    ?>
                         <?php
-                          $exam_id = $exam_data['exam_id'];
+$exam_id = $exam_data['exam_id'];
 
-                          $query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id'";
+    $query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id'";
 
-                          $result = mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
 
-                          $rows = [];
-                          while ($row = mysqli_fetch_array($result)) {
-                              $rows[] = $row;
-                          }
-                          $i = 1;
+    $rows = [];
+    while ($row = mysqli_fetch_array($result)) {
+        $rows[] = $row;
+    }
+    $i = 1;
 
-                          foreach ($rows as $row) {
-                              ?>
+    foreach ($rows as $row) {
+        ?>
 
                               <div class="questions-each">
-                                 
+
                                   <div class="questions"><?php echo BanglaConverter::en2bn($i++) . '. ' . $row['questions']; ?></div>
                                   <div class="options-container r-option-container">
                                       <input disabled type="radio" name="option[<?php echo $row['id'] ?>]" value="option1"> <?php echo $row['option1'] ?>
@@ -79,11 +80,18 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                                   </div>
 
                                   <div class="student-answer">
-                                    <b>আপনার উত্তর:</b> <?= $row[$c_exam_data[$row['id']]]?>
+                                    <b>আপনার উত্তর: </b> <?=$row[$c_exam_data[$row['id']]]?>
+                                    <?php if ($row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {?>
+
+                                      <i class="fa fa-check correct_answer_icon" aria-hidden="true"></i>
+
+                                    <?php } else {?>
+                                      <i class="fa fa-times wrong_answer_icon" aria-hidden="true"></i>
+                                      <?php }?>
                                   </div>
 
                                   <div class="student-answer">
-                                    <b>সঠিক উত্তর:</b> <?= $row[$row['answer']]?>
+                                    <b>সঠিক উত্তর: </b> <?=$row[$row['answer']]?>
                                   </div>
 
                               </div>
@@ -91,8 +99,12 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                           <?php }?>
 
                     <?php
-                      }
-                    ?>
+}
+?>
+
+<a href="myprofile.php" class="btn btn-secondary results_profile_btn">প্রোফাইল পেজে ফিরে যান </a>
+
+
                   </section>
 
               </div>
@@ -102,4 +114,4 @@ $exam_data = mysqli_fetch_assoc($exam_result);
       </div>
     </section>
 
-    <?php include 'footer.php';?>
+    <?php require 'footer-home.php';?>

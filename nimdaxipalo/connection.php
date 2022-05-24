@@ -25,15 +25,6 @@ $full_link .= $_SERVER['HTTP_HOST'];
 // Append the requested resource location to the URL
 $full_link .= $_SERVER['REQUEST_URI'];
 
-function url_match($full_link = '', $current = '')
-{
-    if (strpos($full_link, $current) == false) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
 function test_input($data)
 {
     global $conn;
@@ -42,5 +33,6 @@ function test_input($data)
     $data = strip_tags($data);
     $data = htmlspecialchars($data);
     $data = mysqli_real_escape_string($conn, $data);
+    // $data = addslashes($data);
     return $data;
 }

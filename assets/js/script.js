@@ -26,13 +26,13 @@ const getBanglaNumber = (str) => {
 const countdown = () => {
   var timeleft = 1800;
   var original_time = timeleft;
-  focusDocument = setInterval(() => {
-    //if user goes another tab or browser then form will automatically be submitted
-    if (!document.hasFocus()) {
-      document.getElementById("submit_form").submit();
-      clearInterval(focusDocument);
-    }
-  }, 200);
+  // focusDocument = setInterval(() => {
+  //   //if user goes another tab or browser then form will automatically be submitted
+  //   if (!document.hasFocus()) {
+  //     document.getElementById("submit_form").submit();
+  //     clearInterval(focusDocument);
+  //   }
+  // }, 200);
   tiktik = setInterval(function () {
     if (timeleft <= 0) {
       clearInterval(tiktik);
@@ -46,7 +46,8 @@ const countdown = () => {
         getBanglaNumber(seconds) +
         " সেকেন্ডস";
       document.getElementById("countdown").innerHTML = timeCalculate;
-      document.getElementById("examAttendentTime").innerHTML = original_time - timeleft;
+      document.getElementById("examAttendentTime").innerHTML =
+        original_time - timeleft;
     }
     timeleft -= 1;
   }, 1000);

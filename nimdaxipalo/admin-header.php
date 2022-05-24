@@ -13,16 +13,16 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
-    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/main.css?v=1.1" />
   </head>
   <body>
     <?php require '../settings.php';?>
     <div class="header-container">
       <div class="container">
-        <div class="logo-container">Prothom alo Quiz</div>
+        <div class="logo-container">SSC Model Test</div>
         <div class="logout_container">
           <a href="participants.php">All participants</a>
-          <a href="quiz.php">All quiz</a>
+          <a href="quiz.php">All Questions</a>
           <a href="logout.php">Logout</a>
         </div>
       </div>

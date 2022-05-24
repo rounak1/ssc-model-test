@@ -1,12 +1,21 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged_session'])) {
+    header('Location: index.php');
+}
 error_reporting(1);
 require 'connection.php';
 require 'admin-header.php';
 $date = $question = $answer = $option1 = $option2 = $option3 = $option4 = "";
 
 $msg = [];
+$image_resize = [];
 
 if (isset($_POST['form_submit'])) {
+
+    // echo "<pre>";
+    // print_r($_POST) . "End POST";
+    // print_r($_FILES);
 
     if (empty($_POST["exam_date"])) {
         array_push($msg, "পরীক্ষার তারিখ দিন");
@@ -20,10 +29,63 @@ if (isset($_POST['form_submit'])) {
         $exam_id = $_POST["exam_id"];
     }
 
+    if (!empty($_POST["uddipok_statement"])) {
+        $uddipok_statement = $_POST["uddipok_statement"];
+    } else {
+        $uddipok_statement = "";
+    }
+
+    if (!empty($_POST["uddipok"])) {
+        $uddipok = $_POST["uddipok"];
+    } else {
+        $uddipok = "";
+    }
+
     if (empty($_POST["question"])) {
         array_push($msg, "প্রশ্নটি দিন");
     } else {
         $question = $_POST["question"];
+    }
+
+    for ($h = 0; $h < count($_FILES['picture']['name']); $h++) {
+
+        if (!empty($_FILES['picture']['name'][$h])) {
+            $image_name = test_input($_FILES['picture']['name'][$h]);
+        }
+
+        if (!empty($_FILES['picture']['name'][$h])) {
+            $image_name = time() . $image_name;
+
+            $image_type = $_FILES['picture']['type'][$h];
+            $img_tmp_location = $_FILES['picture']['tmp_name'][$h];
+            $img_size = $_FILES['picture']['size'][$h];
+            $tmp = explode('.', $_FILES['picture']['name'][$h]);
+
+            $uploadPath = getcwd() . "/images/" . basename($image_name);
+
+            $img_extension = strtolower(end($tmp));
+            $required_img_format = array('jpg', 'jpeg', 'png');
+
+            // echo "<pre>";
+            // // print_r($_POST) . "End POST";
+            // print_r($image_name);
+
+            if (in_array($img_extension, $required_img_format) === false) {
+                array_push($msg, "ছবির ফরম্যাট গ্রহণযোগ্য নয়।");
+
+            }
+
+            if ($img_size > 2097152) {
+                array_push($msg, "ছবি ২ এমবি এর কম হতে হবে");
+            }
+
+            $moved = 0;
+
+            if (count($msg) < 1) {
+                $moved = move_uploaded_file($img_tmp_location, $uploadPath);
+                $image_resize[$h] = $image_name;
+            }
+        }
     }
 
     if (empty($_POST["answer"])) {
@@ -54,19 +116,28 @@ if (isset($_POST['form_submit'])) {
     }
 
     if ((count($msg) < 1)) {
+        $z = 0;
+        foreach (array_filter($question) as $item) {
 
-        for ($j = 0; $j < count($_POST['question']); $j++) {
+            $uddipok_stmnt = test_input($uddipok_statement[$z]);
+            $uddipk = test_input($uddipok[$z]);
+            $qustion = test_input($question[$z]);
+            $optn1 = test_input($option1[$z]);
+            $optn2 = test_input($option2[$z]);
+            $optn3 = test_input($option3[$z]);
+            $optn4 = test_input($option4[$z]);
 
-            if (!empty($question[$j])) {
+            $query = "INSERT INTO `model_questions`(`exam_id`, `questions`, `uddipok_statement`, `uddipok`, `picture`, `option1`, `option2`, `option3`, `option4`, `answer`, `exam_date`) VALUES ('$exam_id', '$qustion', '$uddipok_stmnt', '$uddipk', '$image_resize[$z]', '$optn1', '$optn2', '$optn3', '$optn4', '$answer[$z]', '$exam_date')";
 
-                $query = "INSERT INTO `model_questions`(`exam_id`, `questions`, `option1`, `option2`, `option3`, `option4`, `answer`, `exam_date`) VALUES ('$exam_id', '$question[$j]', '$option1[$j]', '$option2[$j]', '$option3[$j]', '$option4[$j]', '$answer[$j]', '$exam_date')";
+            $result = mysqli_query($conn, $query);
 
-                $result = mysqli_query($conn, $query);
-            }
+            $z++;
         }
 
         if ($result) {
             echo "<script>toastr.success('প্রশ্নটি সফলভাবে ডাটাবেজে সেভ হয়েছে ');</script>";
+        } else {
+            echo "<script>toastr.alert('প্রশ্নটি ডাটাবেজে সেভ হয়নি ');</script>";
         }
     }
 }
@@ -78,11 +149,9 @@ if (isset($_POST['form_submit'])) {
     <div class="container">
       <div class="quiz-container">
         <div class="login-container">
-          <div class="title">Quiz entry form</div>
+          <div class="title">Question entry form</div>
 
-
-
-          <form id="form_submit" method="post" action="" name="form_submit">
+          <form id="form_submit" method="post" action="" name="form_submit" enctype="multipart/form-data">
             <div class="input-container">
               <label>Date</label>
               <input
@@ -118,8 +187,32 @@ for ($i = 0; $i < 10; $i++) {
 
 
             <div class="each-question-container">
+            <div class="input-container">
+                <label>উদ্দীপক স্টেটমেন্ট</label>
+                <input
+                  type="text"
+                  name="uddipok_statement[]"
+                  value=""
+                  id="uddipok_statement"
+                  placeholder=""
+
+                />
+              </div>
+
+            <div class="input-container">
+                <label>উদ্দীপক</label>
+                <input
+                  type="text"
+                  name="uddipok[]"
+                  value=""
+                  id="uddipok"
+                  placeholder=""
+
+                />
+              </div>
+
               <div class="input-container">
-                <label>Question <?php echo $i + 1; ?></label>
+                <label class="question">Question <?php echo $i + 1; ?></label>
                 <input
                   type="text"
                   name="question[]"
@@ -129,6 +222,22 @@ for ($i = 0; $i < 10; $i++) {
 
                 />
               </div>
+
+
+
+              <div class="input-container">
+        <label for="story" class="col-sm-3 col-form-label">
+          ছবি
+        </label>
+
+        <label for="imageUpload_1" class="image-upload">
+          <span>Upload</span> Photo (max 2mb)
+        </label>
+        <img src="images/cook.png" alt="" class="img-responsive" id="imagePreview_1">
+        <input type="file" class="form-control-file hide" id="imageUpload_1" name="picture[]">
+      </div>
+
+
 
               <div class="input-container">
                 <label class="label-answer">Answer</label>

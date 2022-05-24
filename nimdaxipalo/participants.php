@@ -1,5 +1,9 @@
 <?php
+session_start();
 error_reporting(1);
+if (!isset($_SESSION['logged_session'])) {
+    header('Location: index.php');
+}
 require 'connection.php';
 require 'admin-header.php';
 $todays_date = date('Y-m-d');

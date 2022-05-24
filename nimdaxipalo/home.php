@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged_session'])) {
+    header('Location: index.php');
+}
 error_reporting(1);
 require 'connection.php';
 require 'admin-header.php';

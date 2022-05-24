@@ -7,11 +7,11 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--====== Title ======-->
-    <title>জিততে হলে, পড়তে হবে</title>
+    <title>এসএসসি মডেল টেস্ট ২০২২</title>
 
     <!-- Primary Meta Tags -->
-    <meta name="title" content="জিততে হলে, পড়তে হবে" />
-    <meta name="description" content="প্রথম আলো অনলাইন পাঠক কুইজ ২০২১" />
+    <meta name="title" content="এসএসসি মডেল টেস্ট ২০২২" />
+    <meta name="description" content="এসএসসি মডেল টেস্ট ২০২২" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -19,10 +19,10 @@ session_start();
       property="og:url"
       content="https://www.prothomalo.com/event/quiz/index.html"
     />
-    <meta property="og:title" content="জিততে হলে, পড়তে হবে" />
+    <meta property="og:title" content="এসএসসি মডেল টেস্ট ২০২২" />
     <meta
       property="og:description"
-      content='প্রথম আলো অনলাইন পাঠক কুইজ ২০২১'
+      content='এসএসসি মডেল টেস্ট ২০২২'
     />
     <meta property="og:image" content="assets/images/ogImage.png" />
 
@@ -31,10 +31,10 @@ session_start();
       property="twitter:url"
       content="https://www.prothomalo.com/event/quiz/index.html"
     />
-    <meta property="twitter:title" content="জিততে হলে, পড়তে হবে" />
+    <meta property="twitter:title" content="এসএসসি মডেল টেস্ট ২০২২" />
     <meta
       property="twitter:description"
-      content='প্রথম আলো অনলাইন পাঠক কুইজ ২০২১'
+      content='এসএসসি মডেল টেস্ট ২০২২'
     />
     <meta property="twitter:image" content="assets/images/ogImage.png" />
 
@@ -43,8 +43,8 @@ session_start();
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <!-- <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css"> -->
     <link rel="stylesheet" href="css/magnific-popup.css">
 
     <link rel="stylesheet" href="css/aos.css">
@@ -57,9 +57,10 @@ session_start();
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css?v=4.2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css?v=5.3">
 
-    <link rel="stylesheet" href="./assets/css/main.css?v=4.3" />
+    <link rel="stylesheet" href="./assets/css/main.css?v=5.3" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 
@@ -81,11 +82,16 @@ session_start();
 <div class="container-fluid header-logo-container">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-      <div id="logo">
-        <a class="navbar-brand" href="index.php"><img src="./images/logo.svg" class="logo"></a>
-        </div>
-    </div>
+      <div class=" col-6">
+      <div class="logo">
+        <a class="navbar-brand" href="index.php"><img src="./images/logo.svg" class="logo" height="60"></a>
+      </div>
+      </div>
+      <div class=" col-6">
+      <div class="logo">
+        <a href="https://www.prothomalo.com/" class="navbar-brand float-right"><img src="https://assets.prothomalo.com/prothomalo/assets/palo-bangla-bb996cdb70d2e0ccec8c.svg" class="logo" width="260" height="46"></a>
+      </div>
+      </div>
 
     </div>
 
@@ -94,11 +100,11 @@ session_start();
 
 
 
-  <div id="accomplishTime"></div>
-  <div class="container">
+  <!-- <div id="accomplishTime"></div> -->
+  <!-- <div class="container">
     <div class="quiz-container">
       <form id="quiz_submit">
         <div id="quiz_data"></div>
       </form>
     </div>
-  </div>
+  </div> -->

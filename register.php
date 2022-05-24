@@ -694,7 +694,12 @@ if (isset($_SESSION['alert'])) {?>
                         </svg>
                       </button>
                     </div>
+
+
                   </form>
+                </div>
+                <div class="login-register-text">
+                আগেই নিবন্ধন করা থাকলে <br/>  <a href="login.php">লগইন করুন</a>
                 </div>
               </div>
             </div>

@@ -56,13 +56,21 @@ body {
   width: calc(100% - 20px);
   margin-bottom: 24px;
 }
-
+label.question {
+  font-weight: bold;
+  color: red;
+}
 .login-container .input-container input.answer-radio {
   display: inline-block;
   width: 50px;
   height: 20px;
 }
-
+select.all_quiz {
+  height: 34px;
+  padding: 0px 0px;
+  font-size: 16px;
+  padding: 0 5px;
+}
 .login-container .input-container input.question-option {
   display: inline-block;
   width: calc(100% - 92px);

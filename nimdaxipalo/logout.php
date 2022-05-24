@@ -1,10 +1,10 @@
 
 <?php
+session_start();
 error_reporting(1);
 require 'connection.php';
-require 'admin-header.php';?>
+require 'admin-header.php';
+unset($_SESSION['logged_session']);
+header('Location: index.php');
+?>
 
-<script>
-    localStorage.removeItem("key");
-    window.location.href = "index.html";
-</script>

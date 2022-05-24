@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION['logged_session'])) {
+    header('Location: index.php');
+}
 error_reporting(E_ALL);
 require 'connection.php';
 require 'admin-header.php';
@@ -36,6 +40,10 @@ if (isset($_POST['btn_update'])) {
         $exam_id = test_input($_POST["exam_id"]);
     }
 
+    $uddipok_statement = test_input($_POST["uddipok_statement"]);
+
+    $uddipok = test_input($_POST["uddipok"]);
+
     if (empty($_POST["question"])) {
         array_push($msg, "প্রশ্নটি দিন");
     } else {
@@ -71,7 +79,7 @@ if (isset($_POST['btn_update'])) {
 
     if ((count($msg) < 1)) {
 
-        $query = "UPDATE  `model_questions` SET `exam_id` = '$exam_id', `questions` = '$question', `option1` = '$option1', `option2` = '$option2', `option3` = '$option3', `option4` = '$option4', `answer` = '$answer', `exam_date` = '$exam_date' WHERE `id` = '$id' ";
+        $query = "UPDATE  `model_questions` SET `exam_id` = '$exam_id', `uddipok_statement` = '$uddipok_statement', `uddipok` = '$uddipok', `questions` = '$question', `option1` = '$option1', `option2` = '$option2', `option3` = '$option3', `option4` = '$option4', `answer` = '$answer', `exam_date` = '$exam_date' WHERE `id` = '$id' ";
 
         $result = mysqli_query($conn, $query);
 
@@ -135,6 +143,36 @@ if (isset($_POST['btn_update'])) {
                 required="required"
               /> -->
             </div>
+
+            <?php if (!empty($row['uddipok_statement'])) {?>
+              <div class="input-container">
+              <label>উদ্দীপক স্টেটমেন্ট </label>
+              <input
+                type="text"
+                name="uddipok_statement"
+                value="<?php echo $row['uddipok_statement']; ?>"
+                id="question"
+                placeholder="uddipok_statement"
+              />
+            </div>
+           <?php }?>
+
+           <?php if (!empty($row['uddipok'])) {?>
+              <div class="input-container">
+              <label>উদ্দীপক</label>
+              <input
+                type="text"
+                name="uddipok"
+                value="<?php echo $row['uddipok']; ?>"
+                id="question"
+                placeholder="uddipok"
+              />
+            </div>
+           <?php }?>
+
+
+
+
 
             <div class="input-container">
               <label>Question</label>

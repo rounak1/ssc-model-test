@@ -1,108 +1,258 @@
 <?php
 session_start();
+if (!isset($_SESSION['logged_session'])) {
+    header('Location: index.php');
+}
 error_reporting(1);
 require 'connection.php';
 require 'header-home.php';
-$email = $pass = "";
+$email = $_SESSION['email'];
+
+$query = "select * from model_students where email = '$email'";
+
+$result = mysqli_query($conn, $query);
+
+$user_data = mysqli_fetch_assoc($result);
+
+// $name = $phone = $email = $password = $retype_password = $school_name = $district = $thana = "";
 
 $msg = [];
 
-if (isset($_POST['login'])) {
+if (isset($_POST['edit-profile'])) {
 
-    if (empty($_POST["email"])) {
-        array_push($msg, "আপনার ইমেইল লিখুন");
+    if (empty($_POST["name"]) || strlen($_POST["name"]) < 2) {
+        array_push($msg, "আপনার নাম লিখুন");
     } else {
-        $email = test_input($_POST["email"]);
+        $name = test_input($_POST["name"]);
     }
 
-    if (empty($_POST["pass"]) || strlen($_POST["pass"]) < 6) {
-        array_push($msg, "পাসওয়ার্ড ৫ ডিজিটের বেশি হতে হবে");
+    if (empty($_POST["phone"]) || strlen($_POST["phone"]) < 5) {
+        array_push($msg, "ফোন নম্বর দিন");
     } else {
-        $pass = md5(test_input($_POST["pass"]));
+        $phone = test_input($_POST["phone"]);
     }
 
-    $sql = "SELECT `email`, `password` FROM `model_students` WHERE `email` = '$email' AND `password` = '$pass' and `status` = 1";
-
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-
-        $_SESSION['logged_session'] = true;
-        $_SESSION['email'] = $email;
-
-        header('Location:myprofile.php');
-
-        // echo "<script type='text/javascript'>window.top.location='https://service.prothomalo.com/mpaward/awards.php';</script>";exit;
-
+    if (empty($_POST["school_name"]) || strlen($_POST["school_name"]) < 2) {
+        array_push($msg, "স্কুলের নাম লিখুন");
     } else {
-
-        $_SESSION['alert'] = "আপনার ইমেইল অথবা পাসওয়ার্ড সঠিক নয়";
+        $school_name = test_input($_POST["school_name"]);
     }
 
-}
+    if (empty($_POST["district"]) || strlen($_POST["district"]) < 2) {
+        array_push($msg, "আপনার জেলা সিলেক্ট করুন");
+    } else {
+        $district = test_input($_POST["district"]);
+    }
+
+    if (empty($_POST["thana"]) || strlen($_POST["thana"]) < 2) {
+        array_push($msg, "আপনার উপজেলা টাইপ করুন");
+    } else {
+        $thana = test_input($_POST["thana"]);
+    }
+
+    if ((count($msg) < 1)) {
+
+        $sql = "UPDATE `model_students` SET `name`='$name',`phone`='$phone',`school_name`='$school_name',`district`='$district',`thana`='$thana' WHERE `email` = '$email'";
+
+        $result = mysqli_query($conn, $sql);
+
+        if (!$result) {
+            echo "Error:" . mysqli_error($conn);
+        }
+
+        if ($result) {
+            // Send Mail
+
+            $_SESSION['success'] = "প্রোফাইল আপডেট করা হয়েছে";
+
+            header('Location: myprofile.php');
+
+        }
+
+    }
+
+} // end of post submit
 
 ?>
 
-    <section class="ftco-login ftco-section bg-light">
+
+    <section class="ftco-login ftco-section testimony-section bg-light">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
 
         <?php
-if (isset($_SESSION['success'])) {?>
-      <div class="col-md-12 message-container">
-        <div class="alert alert-success" role="alert">
-  <?php echo $_SESSION['success']; ?>
-</div>
-        </div>
-<?php unset($_SESSION['success']);}
 
 if (isset($_SESSION['alert'])) {?>
   <div class="col-md-12 message-container">
         <div class="alert alert-warning" role="alert">
+  <?php foreach ($msg as $display_error) {
+    echo $display_error;
+}
 
-    <?php
-echo $_SESSION['alert'];
-
-    unset($_SESSION['alert']); ?>
+    unset($_SESSION['alert']);?>
 </div>
         </div>
 <?php }
 ?>
+
+
+
           <div class="col-md-8 col-lg-5">
             <div class="login-container">
               <div class="col-md-12 text-center heading-section">
-                <h2 class="mb-2">লগইন</h2>
+                <h2 class="mb-2">প্রোফাইল এডিট</h2>
               </div>
 
               <div class="col-md-12">
                 <div class="form-container">
-                  <form id="login_form_submit" name="login" action="" method="POST">
+                  <form id="register_form_submit" name="register" action="" method="post">
+                    <div class="input-container">
+                        <input
+                          type="text"
+                          name="name"
+                          value="<?php echo $user_data['name']; ?>"
+                          id="name"
+                          placeholder="নাম *"
+                          required="required"
+                        />
+                      </div>
+
+                      <div class="input-container">
+                        <input
+                          type="text"
+                          name="phone"
+                          value="<?php echo $user_data['phone']; ?>"
+                          id="phone"
+                          placeholder="ফোন নম্বর *"
+                          required="required"
+                        />
+                      </div>
+
+
+
                     <div class="input-container">
                       <input
                         type="email"
                         name="email"
-                        value=""
+                        value="<?php echo $user_data['email']; ?>"
                         id="email"
-                        placeholder="ইমেইল"
-                        required="required"
+                        placeholder="ইমেইল *"
+                        disabled
                       />
+                    </div>
+
+
+
+                    <div class="input-container">
+                        <input
+                          type="text"
+                          name="school_name"
+                          value="<?php echo $user_data['school_name']; ?>"
+                          id="school_name"
+                          placeholder="স্কুলের নাম *"
+                          required="required"
+                        />
+                      </div>
+
+                      <div class="input-container">
+                      <select name="district" id="district" required="required">
+                        <option value="">জেলা *</option>
+                        <option value="ঢাকা" <?=$user_data['district'] == 'ঢাকা' ? "selected" : "";?>>ঢাকা</option>
+                        <option value="গাজীপুর" <?=$user_data['district'] == 'গাজীপুর' ? "selected" : "";?>>গাজীপুর</option>
+                        <option value="নারায়ণগঞ্জ" <?=$user_data['district'] == 'নারায়ণগঞ্জ' ? "selected" : "";?>>নারায়ণগঞ্জ</option>
+                        <option value="কিশোরগঞ্জ" <?=$user_data['district'] == 'কিশোরগঞ্জ' ? "selected" : "";?>>কিশোরগঞ্জ</option>
+                        <option value="মাদারীপুর" <?=$user_data['district'] == 'মাদারীপুর' ? "selected" : "";?>>মাদারীপুর</option>
+                        <option value="গোপালগঞ্জ" <?=$user_data['district'] == 'গোপালগঞ্জ' ? "selected" : "";?>>গোপালগঞ্জ</option>
+                        <option value="ফরিদপুর" <?=$user_data['district'] == 'ফরিদপুর' ? "selected" : "";?>>ফরিদপুর</option>
+                        <option value="টাঙ্গাইল" <?=$user_data['district'] == 'টাঙ্গাইল' ? "selected" : "";?>>টাঙ্গাইল</option>
+                        <option value="রাজবাড়ী" <?=$user_data['district'] == 'রাজবাড়ী' ? "selected" : "";?>>রাজবাড়ী</option>
+                        <option value="মানিকগঞ্জ" <?=$user_data['district'] == 'মানিকগঞ্জ' ? "selected" : "";?>>মানিকগঞ্জ</option>
+                        <option value="মুন্সিগঞ্জ" <?=$user_data['district'] == 'মুন্সিগঞ্জ' ? "selected" : "";?>>মুন্সিগঞ্জ</option>
+                        <option value="নরসিংদী" <?=$user_data['district'] == 'নরসিংদী' ? "selected" : "";?>>নরসিংদী</option>
+                        <option value="শরীয়তপুর" <?=$user_data['district'] == 'শরীয়তপুর' ? "selected" : "";?>>শরীয়তপুর</option>
+                        <option value="রংপুর" <?=$user_data['district'] == 'রংপুর' ? "selected" : "";?>>রংপুর</option>
+                        <option value="দিনাজপুর" <?=$user_data['district'] == 'দিনাজপুর' ? "selected" : "";?>>দিনাজপুর</option>
+                        <option value="নীলফামারী" <?=$user_data['district'] == 'নীলফামারী' ? "selected" : "";?>>নীলফামারী</option>
+                        <option value="ঠাকুরগাঁও" <?=$user_data['district'] == 'ঠাকুরগাঁও' ? "selected" : "";?>>ঠাকুরগাঁও</option>
+                        <option value="কুড়িগ্রাম" <?=$user_data['district'] == 'কুড়িগ্রাম' ? "selected" : "";?>>কুড়িগ্রাম</option>
+                        <option value="গাইবান্ধা" <?=$user_data['district'] == 'গাইবান্ধা' ? "selected" : "";?>>গাইবান্ধা</option>
+                        <option value="লালমনিরহাট" <?=$user_data['district'] == 'লালমনিরহাট' ? "selected" : "";?>>লালমনিরহাট</option>
+                        <option value="পঞ্চগড়" <?=$user_data['district'] == 'পঞ্চগড়' ? "selected" : "";?>>পঞ্চগড়</option>
+                        <option value="সিলেট" <?=$user_data['district'] == 'সিলেট' ? "selected" : "";?>>সিলেট</option>
+                        <option value="মৌলভীবাজার" <?=$user_data['district'] == 'মৌলভীবাজার' ? "selected" : "";?>>মৌলভীবাজার</option>
+                        <option value="সুনামগঞ্জ" <?=$user_data['district'] == 'সুনামগঞ্জ' ? "selected" : "";?>>সুনামগঞ্জ</option>
+                        <option value="হবিগঞ্জ" <?=$user_data['district'] == 'হবিগঞ্জ' ? "selected" : "";?>>হবিগঞ্জ</option>
+                        <option value="বরিশাল" <?=$user_data['district'] == 'বরিশাল' ? "selected" : "";?>>বরিশাল</option>
+                        <option value="বরগুনা" <?=$user_data['district'] == 'বরগুনা' ? "selected" : "";?>>বরগুনা</option>
+                        <option value="পিরোজপুর" <?=$user_data['district'] == 'পিরোজপুর' ? "selected" : "";?>>পিরোজপুর</option>
+                        <option value="ভোলা" <?=$user_data['district'] == 'ভোলা' ? "selected" : "";?>>ভোলা</option>
+                        <option value="ঝালকাঠি" <?=$user_data['district'] == 'ঝালকাঠি' ? "selected" : "";?>>ঝালকাঠি</option>
+                        <option value="পটুয়াখালী" <?=$user_data['district'] == 'পটুয়াখালী' ? "selected" : "";?>>পটুয়াখালী</option>
+                        <option value="খুলনা" <?=$user_data['district'] == 'খুলনা' ? "selected" : "";?>>খুলনা</option>
+                        <option value="যশোর" <?=$user_data['district'] == 'যশোর' ? "selected" : "";?>>যশোর</option>
+                        <option value="নড়াইল" <?=$user_data['district'] == 'নড়াইল' ? "selected" : "";?>>নড়াইল</option>
+                        <option value="মেহেরপুর" <?=$user_data['district'] == 'মেহেরপুর' ? "selected" : "";?>>মেহেরপুর</option>
+                        <option value="কুষ্টিয়া" <?=$user_data['district'] == 'কুষ্টিয়া' ? "selected" : "";?>>কুষ্টিয়া</option>
+                        <option value="সাতক্ষীরা" <?=$user_data['district'] == 'সাতক্ষীরা' ? "selected" : "";?>>সাতক্ষীরা</option>
+                        <option value="বাগেরহাট" <?=$user_data['district'] == 'বাগেরহাট' ? "selected" : "";?>>বাগেরহাট</option>
+                        <option value="ঝিনাইদহ" <?=$user_data['district'] == 'ঝিনাইদহ' ? "selected" : "";?>>ঝিনাইদহ</option>
+                        <option value="চুয়াডাঙ্গা" <?=$user_data['district'] == 'চুয়াডাঙ্গা' ? "selected" : "";?>>চুয়াডাঙ্গা</option>
+                        <option value="মাগুরা" <?=$user_data['district'] == 'মাগুরা' ? "selected" : "";?>>মাগুরা</option>
+                        <option value="রাজশাহী" <?=$user_data['district'] == 'রাজশাহী' ? "selected" : "";?>>রাজশাহী</option>
+                        <option value="বগুড়া" <?=$user_data['district'] == 'বগুড়া' ? "selected" : "";?>>বগুড়া</option>
+                        <option value="নওগাঁ" <?=$user_data['district'] == 'নওগাঁ' ? "selected" : "";?>>নওগাঁ</option>
+                        <option value="সিরাজগঞ্জ" <?=$user_data['district'] == 'সিরাজগঞ্জ' ? "selected" : "";?>>সিরাজগঞ্জ</option>
+                        <option value="জয়পুরহাট" <?=$user_data['district'] == 'জয়পুরহাট' ? "selected" : "";?>>জয়পুরহাট</option>
+                        <option value="পাবনা" <?=$user_data['district'] == 'পাবনা' ? "selected" : "";?>>পাবনা</option>
+                        <option value="চাঁপাইনবাবগঞ্জ" <?=$user_data['district'] == 'চাঁপাইনবাবগঞ্জ' ? "selected" : "";?>>চাঁপাইনবাবগঞ্জ</option>
+                        <option value="নাটোর" <?=$user_data['district'] == 'নাটোর' ? "selected" : "";?>>নাটোর</option>
+                        <option value="চট্টগ্রাম" <?=$user_data['district'] == 'চট্টগ্রাম' ? "selected" : "";?>>চট্টগ্রাম</option>
+                        <option value="কুমিল্লা" <?=$user_data['district'] == 'কুমিল্লা' ? "selected" : "";?>>কুমিল্লা</option>
+                        <option value="চাঁদপুর" <?=$user_data['district'] == 'চাঁদপুর' ? "selected" : "";?>>চাঁদপুর</option>
+                        <option value="রাঙামাটি" <?=$user_data['district'] == 'রাঙামাটি' ? "selected" : "";?>>রাঙামাটি</option>
+                        <option value="কক্সবাজার" <?=$user_data['district'] == 'কক্সবাজার' ? "selected" : "";?>>কক্সবাজার</option>
+                        <option value="নোয়াখালী" <?=$user_data['district'] == 'নোয়াখালী' ? "selected" : "";?>>নোয়াখালী</option>
+                        <option value="ব্রাহ্মণবাড়িয়া" <?=$user_data['district'] == 'ব্রাহ্মণবাড়িয়া' ? "selected" : "";?>>
+                          ব্রাহ্মণবাড়িয়া
+                        </option>
+                        <option value="ফেনী" <?=$user_data['district'] == 'ফেনী' ? "selected" : "";?>>ফেনী</option>
+                        <option value="খাগড়াছড়ি" <?=$user_data['district'] == 'খাগড়াছড়ি' ? "selected" : "";?>>খাগড়াছড়ি</option>
+                        <option value="বান্দরবান" <?=$user_data['district'] == 'বান্দরবান' ? "selected" : "";?>>বান্দরবান</option>
+                        <option value="লক্ষ্মীপুর" <?=$user_data['district'] == 'লক্ষ্মীপুর' ? "selected" : "";?>>লক্ষ্মীপুর</option>
+                        <option value="নেত্রকোনা" <?=$user_data['district'] == 'নেত্রকোনা' ? "selected" : "";?>>নেত্রকোনা</option>
+                        <option value="ময়মনসিংহ" <?=$user_data['district'] == 'ময়মনসিংহ' ? "selected" : "";?>>ময়মনসিংহ</option>
+                        <option value="শেরপুর" <?=$user_data['district'] == 'শেরপুর' ? "selected" : "";?>>শেরপুর</option>
+                        <option value="জামালপুর" <?=$user_data['district'] == 'জামালপুর' ? "selected" : "";?>>জামালপুর</option>
+                      </select>
                     </div>
                     <div class="input-container">
                       <input
-                        type="password"
-                        name="pass"
-                        value=""
-                        id="password"
-                        placeholder="পাসওয়ার্ড"
+                        type="text"
+                        name="thana"
+                        value="<?php echo $user_data['thana']; ?>"
+                        id="thana"
+                        placeholder="থানা *"
                         required="required"
                       />
                     </div>
-                    <div class="forget-password">
-                      <a href="forget_password.php">পাসওয়ার্ড ভুলে গেছেন?</a>
-                    </div>
+
+                    <!-- <div class="input-container terms-container">
+                      <input
+                        type="checkbox"
+                        name="termsConditions"
+                        value="yes"
+                        id="terms_conditions"
+                        required="required"
+                        id="terms_conditions"
+                      />
+                      <label for="terms_conditions"
+                        >নিবন্ধনের তথ্যসমূহ প্রথম
+                        আলোর নিকট সংরক্ষিত থাকবে।</label
+                      >
+                    </div> -->
                     <div class="input-container submit-container">
-                      <button id="login-button" name="login">
-                        <span class="content">লগইন</span>
+                      <button id="register-button" name="edit-profile">
+                        <span class="content">এডিট প্রোফাইল</span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           style="margin: auto, background: none"
@@ -503,17 +653,15 @@ echo $_SESSION['alert'];
                         </svg>
                       </button>
                     </div>
+
+
                   </form>
                 </div>
 
-                <div class="or">অথবা</div>
-                <div class="login-register-text">
-                  নিবন্ধন করতে <a href="register.php">ক্লিক করুন</a>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <?php require 'footer-home.php';?>
+    <?php include 'footer-home.php'?>
