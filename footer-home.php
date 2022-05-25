@@ -1,13 +1,13 @@
 <footer class="container-fluid footer-full">
   <div class="container footer">
     <div class="footer-logo-container">
-      <p class="footer_first_item"><a href="https://www.prothomalo.com/collection/video-education" target="_blank"> পড়াশোনার ভিডিও</a></p>
-      <p class="footer_second_item"><a href="https://www.prothomalo.com/topic/নোটিশ-ও-অন্যান্য" target="_blank">নোটিশ ও অন্যান্য</a></p>
-      <p class="footer_third_item"><a href="https://www.prothomalo.com/topic/গণিত-ইশকুল" target="_blank">গণিত ইশকুল</a></p>
-      <p><a href="https://www.prothomalo.com/topic/এইচএসসি-পরীক্ষা" target="_blank">এইচএসসি</a></p>
-      <p><a href="https://www.prothomalo.com/topic/এসএসসি-পরীক্ষা" target="_blank">এসএসসি</a></p>
-      <p><a href="https://www.prothomalo.com/topic/অষ্টম-শ্রেণি" target="_blank">অষ্টম শ্রেণী</a></p>
-      <p><a href="https://www.prothomalo.com/topic/পঞ্চম-শ্রেণি" target="_blank">পঞ্চম শ্রেণী</a></p>
+      <p class="footer_first_item exam-running"><a href="https://www.prothomalo.com/collection/video-education" target="_blank"> পড়াশোনার ভিডিও</a></p>
+      <p class="footer_second_item exam-running"><a href="https://www.prothomalo.com/topic/নোটিশ-ও-অন্যান্য" target="_blank">নোটিশ ও অন্যান্য</a></p>
+      <p class="footer_third_item exam-running"><a href="https://www.prothomalo.com/topic/গণিত-ইশকুল" target="_blank">গণিত ইশকুল</a></p>
+      <p class="exam-running"><a href="https://www.prothomalo.com/topic/এইচএসসি-পরীক্ষা" target="_blank">এইচএসসি</a></p>
+      <p class="exam-running"><a href="https://www.prothomalo.com/topic/এসএসসি-পরীক্ষা" target="_blank">এসএসসি</a></p>
+      <p class="exam-running"><a href="https://www.prothomalo.com/topic/অষ্টম-শ্রেণি" target="_blank">অষ্টম শ্রেণী</a></p>
+      <p class="exam-running"><a href="https://www.prothomalo.com/topic/পঞ্চম-শ্রেণি" target="_blank">পঞ্চম শ্রেণী</a></p>
 
       <div class="clear"></div>
 
@@ -17,8 +17,8 @@
 
       <div class="footer-contact-container">
       <p class="contact">আমাদের সাথে যোগাযোগ <br>
-      <span class="footer-icon"><a href="https://www.facebook.com/prothomalo.porasona/" target="_blank"> <i class="fa-brands fa-facebook-square"></i></a></span>
-      <span class="footer-icon"><a href="mailto:porasona@prothomalo.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></span>
+      <span class="footer-icon"><a href="https://www.facebook.com/prothomalo.porasona/" target="_blank" class="exam-running"> <i class="fa-brands fa-facebook-square"></i></a></span>
+      <span class="footer-icon"><a href="mailto:porasona@prothomalo.com" target="_blank" class="exam-running"><i class="fa-solid fa-envelope"></i></a></span>
       </p>
       </div>
       <p class="copyright">স্বত্ব &copy; ২০২২ প্রথম আলো</p>

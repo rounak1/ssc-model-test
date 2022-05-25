@@ -120,7 +120,7 @@ if (isset($_SESSION['success'])) {?>
 
 if (isset($_SESSION['alert'])) {?>
   <div class="col-md-12 message-container">
-        <div class="alert alert-warning" role="alert">
+        <!-- <div class="alert alert-warning" role="alert"> -->
 
     <?php
 echo $_SESSION['alert'];

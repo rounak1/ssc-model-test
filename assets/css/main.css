@@ -432,6 +432,12 @@ dropdown-btn.active {
   clear: both;
 }
 
+.sticky-class {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-radius: 8px;
+}
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
   .sidenav {
@@ -588,6 +594,9 @@ dropdown-btn.active {
   border-top: 1px solid #cccccc66;
   margin-top: 30px;
   padding-top: 20px;
+}
+.result-summary .result-subject {
+  text-align: center;
 }
 .navBar {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);

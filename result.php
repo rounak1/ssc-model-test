@@ -4,6 +4,7 @@ error_reporting(1);
 require 'check-login.php';
 require 'header-home.php';
 require 'BanglaConverter.php';
+include_once 'settings.php';
 
 $exam_id = isset($_GET['id']) && !empty($_GET['id']) ? $_GET['id'] : 0;
 
@@ -41,7 +42,8 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                 <div class="row"><b>ভুল উত্তর: <?=BanglaConverter::en2bn($exam_data['wrong_answers'])?></b></div>
                 <div class="row"><b>উত্তর নাই: <?=BanglaConverter::en2bn($exam_data['not_given_answers'])?></b></div>
                 <div class="row"><b>মোট সময়: <?=BanglaConverter::en2bn(floor(($exam_data['completion_time'] - 2) / 60))?> মিনিট <?=BanglaConverter::en2bn(($exam_data['completion_time'] - 2) % 60)?> সেকেন্ড</b></div>
-                <div class="details-text">বিস্তারিত</div>
+                <div class="details-text"><?=!empty($model_test_list[$exam_data['exam_id']]['test'])?$model_test_list[$exam_data['exam_id']]['test']:"বিস্তারিত"?></div>
+                <div class="result-subject">বিষয়: <?=$model_test_list[$exam_data['exam_id']]['subject']?></div>
               </div>
               <div class="quiz-play-information">
 
