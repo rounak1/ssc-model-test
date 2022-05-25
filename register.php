@@ -12,19 +12,19 @@ $msg = [];
 if (isset($_POST['register'])) {
 
     if (empty($_POST["name"]) || strlen($_POST["name"]) < 2) {
-        array_push($msg, "আপনার নাম লিখুন");
+        array_push($msg, "তোমার নাম লিখো");
     } else {
         $name = test_input($_POST["name"]);
     }
 
     if (empty($_POST["phone"]) || strlen($_POST["phone"]) < 5) {
-        array_push($msg, "ফোন নম্বর দিন");
+        array_push($msg, "ফোন নম্বর দাও");
     } else {
         $phone = test_input($_POST["phone"]);
     }
 
     if (empty($_POST["email"])) {
-        array_push($msg, "আপনার ইমেইল লিখুন");
+        array_push($msg, "তোমার ইমেইল লিখো");
     } else {
         $email = test_input($_POST["email"]);
     }
@@ -42,23 +42,23 @@ if (isset($_POST['register'])) {
     }
 
     if ($password != $retype_password) {
-        array_push($msg, "পাসওয়ার্ড ম্যাচ করে নাই। আবার চেষ্টা করুন ");
+        array_push($msg, "পাসওয়ার্ড ম্যাচ করে নাই। আবার চেষ্টা করো");
     }
 
     if (empty($_POST["school_name"]) || strlen($_POST["school_name"]) < 2) {
-        array_push($msg, "স্কুলের নাম লিখুন");
+        array_push($msg, "স্কুলের নাম লিখো");
     } else {
         $school_name = test_input($_POST["school_name"]);
     }
 
     if (empty($_POST["district"]) || strlen($_POST["district"]) < 2) {
-        array_push($msg, "আপনার জেলা সিলেক্ট করুন");
+        array_push($msg, "তোমার জেলা সিলেক্ট করো");
     } else {
         $district = test_input($_POST["district"]);
     }
 
     if (empty($_POST["thana"]) || strlen($_POST["thana"]) < 2) {
-        array_push($msg, "আপনার উপজেলা টাইপ করুন");
+        array_push($msg, "তোমার উপজেলা টাইপ করো");
     } else {
         $thana = test_input($_POST["thana"]);
     }
@@ -68,7 +68,7 @@ if (isset($_POST['register'])) {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        array_push($msg, "আপনি আগেই রেজিস্ট্রেশন করেছেন। পাসওয়ার্ড ভুলে গেলে পাসওয়ার্ড পুনরায় সেট করুন");
+        array_push($msg, "আপনি আগেই রেজিস্ট্রেশন করেছেন। পাসওয়ার্ড ভুলে গেলে পাসওয়ার্ড পুনরায় সেট করো");
 
     } else {
         if ((count($msg) < 1)) {
@@ -86,7 +86,7 @@ if (isset($_POST['register'])) {
             if ($result) {
                 // Send Mail
 
-                $_SESSION['success'] = "রেজিস্ট্রেশন সফলভাবে সম্পন্ন হয়েছে। মডেল টেস্ট দিতে লগইন করুন";
+                $_SESSION['success'] = "রেজিস্ট্রেশন সফলভাবে সম্পন্ন হয়েছে। মডেল টেস্ট দিতে লগইন করো";
 
                 header('Location: login.php');
 
@@ -173,14 +173,14 @@ if (isset($_SESSION['alert'])) {?>
                         type="password"
                         name="password"
                         id="password"
-                        placeholder="পাসওয়ার্ড দিন *"
+                        placeholder="পাসওয়ার্ড দাও *"
                         required="required"
                       />
                       <input
                         type="password"
                         name="retype_password"
                         id="retype_password"
-                        placeholder="পুনরায় পাসওয়ার্ড দিন *"
+                        placeholder="পুনরায় পাসওয়ার্ড দাও *"
                         required="required"
                       />
                     </div>
@@ -699,7 +699,7 @@ if (isset($_SESSION['alert'])) {?>
                   </form>
                 </div>
                 <div class="login-register-text">
-                আগেই নিবন্ধন করা থাকলে <br/>  <a href="login.php">লগইন করুন</a>
+                আগেই নিবন্ধন করা থাকলে <br/>  <a href="login.php">লগইন করো</a>
                 </div>
               </div>
             </div>

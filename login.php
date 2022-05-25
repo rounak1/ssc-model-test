@@ -10,7 +10,7 @@ $msg = [];
 if (isset($_POST['login'])) {
 
     if (empty($_POST["email"])) {
-        array_push($msg, "আপনার ইমেইল লিখুন");
+        array_push($msg, "তোমার ইমেইল লিখো");
     } else {
         $email = test_input($_POST["email"]);
     }
@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
 
     } else {
 
-        $_SESSION['alert'] = "আপনার ইমেইল অথবা পাসওয়ার্ড সঠিক নয়";
+        $_SESSION['alert'] = "তোমার ইমেইল অথবা পাসওয়ার্ড সঠিক নয়";
     }
 
 }
@@ -98,7 +98,7 @@ echo $_SESSION['alert'];
                       />
                     </div>
                     <div class="forget-password">
-                      <a href="forget_password.php">পাসওয়ার্ড ভুলে গেছেন?</a>
+                      <a href="forget_password.php">পাসওয়ার্ড ভুলে গিয়েছো?</a>
                     </div>
                     <div class="input-container submit-container">
                       <button id="login-button" name="login">

@@ -24,9 +24,10 @@ if (isset($_POST['forget_password'])) {
 
     $token = bin2hex(random_bytes(20));
 
-    $verifyEmailLink = "http://localhost/campaigns/palo-campaigns/ssc-model-test/reset_password.php?token=" . $token;
+    $verifyEmailLink = "https://service.prothomalo.com/modeltest/reset_password.php?token=" . $token;
 
-    $message = '<div><div>এসএসসি মডেল টেস্ট এ অংশগ্রহণের জন্য আপনাকে ধন্যবাদ।</div> <a href="' . $verifyEmailLink . '">এই লিংকে</a> ক্লিক করে আপনার পাসওয়ার্ডটি পুনরায় সেট করুন</div>';
+    $message = '<div><div>প্রিয় শিক্ষার্থী বন্ধু,  এসএসসি মডেল টেস্ট ২০২২ - এ তোমাকে স্বাগতম।
+    </div> <a href="' . $verifyEmailLink . '">এই লিংকে ক্লিক</a> করে তোমার পাসওয়ার্ডটি পুনরায় সেট করো।</div>';
 
     if (!empty($email_address)) {
         //Store token in table
@@ -40,7 +41,7 @@ if (isset($_POST['forget_password'])) {
             $data = [
                 'to' => $email_address,
                 'from' => $from,
-                'subject' => 'এসএসসি মডেল টেস্ট দেওয়ার জন্য পাসওয়ার্ড রিসেট করুন',
+                'subject' => 'এসএসসি মডেল টেস্ট দেওয়ার জন্য পাসওয়ার্ড রিসেট',
                 'html' => $message,
                 'fromName' => 'porasona SSC model test',
             ];
@@ -52,7 +53,7 @@ if (isset($_POST['forget_password'])) {
         echo "email not found";
     }
 
-    array_push($msg, "আপনার ই-মেইলে পাসওয়ার্ড পুনরায় সেট করার জন্য একটি লিংক পাঠানো হয়েছে। লিংকে ক্লিক করে পাসওয়ার্ড পুনরায় সেট করুন");
+    array_push($msg, "তোমার ই-মেইলে পাসওয়ার্ড পুনরায় সেট করার জন্য একটি লিংক পাঠানো হয়েছে। লিংকে ক্লিক করে পাসওয়ার্ড পুনরায় সেট করো");
 
 }
 ?>
@@ -65,7 +66,7 @@ if (isset($_POST['forget_password'])) {
             <div class="login-container">
               <div class="col-md-12 text-center heading-section">
                 <h2 class="mb-2">
-	                       পাসওয়ার্ড ভুলে গেছেন?
+	                       পাসওয়ার্ড ভুলে গেছ?
 	                    </h2>
               </div>
 
@@ -89,10 +90,10 @@ foreach ($msg as $message) {
 				<input type="email" class="form-control" placeholder="Type email Address" id="email" name="email">
 			</div>
 
-			<button type="submit" class="btn btn-primary btn-special" name= "forget_password">পাঠান</button>
+			<button type="submit" class="btn btn-primary btn-special" name= "forget_password">পাঠাও</button>
 
             <div class="sign-up">
-				একাউন্ট নেই? <a href="<?php $base_url?>register.php">ভোট দিতে সাইন আপ করুন</a>
+				একাউন্ট নেই? <a href="<?php $base_url?>register.php">নিবন্ধন কর</a>
 				</div>
 			</form>
                 </div>

@@ -195,6 +195,19 @@ span.footer-icon {
   margin: 15px 0 9px;
   padding-bottom: 1px;
 }
+.edit_profile_label {
+  line-height: 35px;
+  font-size: 20px;
+}
+.form-control {
+  height: 46px !important;
+  background: #fff !important;
+  font-size: 18px;
+
+  padding-right: 8px;
+  padding-left: 8px;
+  border: 1px solid #e6e6e6;
+}
 
 .profile-logout-btn {
   padding: 8px 16px;
@@ -533,7 +546,7 @@ dropdown-btn.active {
   margin-left: 30px;
 }
 .options-container input:first-of-type {
-  margin-left: 0;
+  margin-left: 12px;
 }
 .questions {
   margin-top: 18px;
@@ -662,6 +675,11 @@ dropdown-btn.active {
 .login-container {
   background: #fff;
   padding: 16px;
+  border: 1px solid #f4f4f4;
+  border-radius: 8px;
+}
+.login-container h2 {
+  margin: 13px 0 12px;
 }
 
 .form-container .input-container .label-answer {

@@ -511,17 +511,38 @@ $(document).ready(function() {
 	$("#group").change(function() {
 		// var selectedVal = $("#myselect option:selected").text();
 		var selectedGroup = $("#group option:selected").val();
+
+    if (selectedGroup == ''){
+      $("#science_subject").val($("#science_subject option:first").val());
+      $("#arts_subject").val($("#arts_subject option:first").val());
+      $("#commerce_subject").val($("#commerce_subject option:first").val());
+      $("#ban_p1").val($("#ban_p1 option:first").val());
+      $("#agri").val($("#agri option:first").val());
+      $("#physics").val($("#physics option:first").val());
+      $("#biology").val($("#biology option:first").val());
+      $("#bangladesh_history").val($("#bangladesh_history option:first").val());
+      $("#accounting").val($("#accounting option:first").val());
+      $("#finance").val($("#finance option:first").val());
+
+    }
+
 		if (selectedGroup == 'science'){
-      $(".subject_box").hide();
+      $(".subject_box, .model_test_no, .test_number_label").hide();
+      $("#arts_subject").val($("#arts_subject option:first").val());
+      $("#commerce_subject").val($("#commerce_subject option:first").val());
       $("#science_subject, .subject_label").show();
     }
     if (selectedGroup == 'arts'){
-      $(".subject_box").hide();
+      $(".subject_box, .model_test_no, .test_number_label").hide();
+      $("#science_subject").val($("#arts_subject option:first").val());
+      $("#commerce_subject").val($("#commerce_subject option:first").val());
       $("#arts_subject, .subject_label").show();
     }
 
     if (selectedGroup == 'commerce'){
-      $(".subject_box").hide();
+      $(".subject_box, .model_test_no, .test_number_label").hide();
+      $("#science_subject").val($("#arts_subject option:first").val());
+      $("#arts_subject").val($("#commerce_subject option:first").val());
       $("#commerce_subject, .subject_label").show();
     }
 
@@ -530,6 +551,19 @@ $(document).ready(function() {
 // Start Science Subjects
 $("#science_subject").change(function() {
   var selectedSubject = $("#science_subject option:selected").val();
+
+  if (selectedSubject == ''){
+      $("#group").val($("#group option:first").val());
+
+      $("#ban_p1").val($("#ban_p1 option:first").val());
+      $("#agri").val($("#agri option:first").val());
+      $("#physics").val($("#physics option:first").val());
+      $("#biology").val($("#biology option:first").val());
+      $("#bangladesh_history").val($("#bangladesh_history option:first").val());
+      $("#accounting").val($("#accounting option:first").val());
+      $("#finance").val($("#finance option:first").val());
+
+    }
 
   if (selectedSubject == 'বাংলা ১ম পত্র'){
     $("#agri, #physics, #biology").hide();

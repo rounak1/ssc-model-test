@@ -58,9 +58,9 @@ session_start();
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css?v=5.3">
+    <link rel="stylesheet" href="css/style.css?v=5.4">
 
-    <link rel="stylesheet" href="./assets/css/main.css?v=5.3" />
+    <link rel="stylesheet" href="./assets/css/main.css?v=5.4" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 
@@ -84,12 +84,12 @@ session_start();
     <div class="row">
       <div class=" col-6">
       <div class="logo">
-        <a class="navbar-brand" href="index.php"><img src="./images/logo.svg" class="logo" height="60"></a>
+        <a class="navbar-brand" href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>"><img src="./images/logo.svg" class="logo" height="60"></a>
       </div>
       </div>
       <div class=" col-6">
       <div class="logo">
-        <a href="https://www.prothomalo.com/" class="navbar-brand float-right"><img src="https://assets.prothomalo.com/prothomalo/assets/palo-bangla-bb996cdb70d2e0ccec8c.svg" class="logo" width="260" height="46"></a>
+        <a href="https://www.prothomalo.com/" class="navbar-brand float-right" target="_blank"><img src="https://assets.prothomalo.com/prothomalo/assets/palo-bangla-bb996cdb70d2e0ccec8c.svg" class="logo" width="260" height="46"></a>
       </div>
       </div>
 

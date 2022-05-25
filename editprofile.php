@@ -97,7 +97,7 @@ if (isset($_SESSION['alert'])) {?>
 
 
 
-          <div class="col-md-8 col-lg-5">
+          <div class="col-md-9 col-lg-7">
             <div class="login-container">
               <div class="col-md-12 text-center heading-section">
                 <h2 class="mb-2">প্রোফাইল এডিট</h2>
@@ -106,17 +106,30 @@ if (isset($_SESSION['alert'])) {?>
               <div class="col-md-12">
                 <div class="form-container">
                   <form id="register_form_submit" name="register" action="" method="post">
-                    <div class="input-container">
-                        <input
+
+                  <div class="form-group row">
+    <label for="name" class="col-sm-3 col-form-label edit_profile_label">নাম: </label>
+    <div class="col-sm-9">
+    <div class="input-container">
+    <input
                           type="text"
                           name="name"
                           value="<?php echo $user_data['name']; ?>"
                           id="name"
                           placeholder="নাম *"
-                          required="required"
+                          required="required" class="form-control"
                         />
-                      </div>
+    </div>
 
+    </div>
+  </div>
+
+
+
+
+  <div class="form-group row">
+    <label for="name" class="col-sm-3 col-form-label edit_profile_label">ফোন: </label>
+    <div class="col-sm-9">
                       <div class="input-container">
                         <input
                           type="text"
@@ -127,9 +140,13 @@ if (isset($_SESSION['alert'])) {?>
                           required="required"
                         />
                       </div>
+    </div>
+  </div>
 
 
-
+  <div class="form-group row">
+    <label for="name" class="col-sm-3 col-form-label edit_profile_label">ইমেইল: </label>
+    <div class="col-sm-9">
                     <div class="input-container">
                       <input
                         type="email"
@@ -140,6 +157,12 @@ if (isset($_SESSION['alert'])) {?>
                         disabled
                       />
                     </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="name" class="col-sm-3 col-form-label edit_profile_label">স্কুলের নাম: </label>
+    <div class="col-sm-9">
 
 
 
@@ -153,6 +176,12 @@ if (isset($_SESSION['alert'])) {?>
                           required="required"
                         />
                       </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="name" class="col-sm-3 col-form-label edit_profile_label">জেলা: </label>
+    <div class="col-sm-9">
 
                       <div class="input-container">
                       <select name="district" id="district" required="required">
@@ -225,6 +254,13 @@ if (isset($_SESSION['alert'])) {?>
                         <option value="জামালপুর" <?=$user_data['district'] == 'জামালপুর' ? "selected" : "";?>>জামালপুর</option>
                       </select>
                     </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="name" class="col-sm-3 col-form-label edit_profile_label">থানা: </label>
+    <div class="col-sm-9">
+
                     <div class="input-container">
                       <input
                         type="text"
@@ -235,6 +271,8 @@ if (isset($_SESSION['alert'])) {?>
                         required="required"
                       />
                     </div>
+    </div>
+  </div>
 
                     <!-- <div class="input-container terms-container">
                       <input
@@ -252,7 +290,7 @@ if (isset($_SESSION['alert'])) {?>
                     </div> -->
                     <div class="input-container submit-container">
                       <button id="register-button" name="edit-profile">
-                        <span class="content">এডিট প্রোফাইল</span>
+                        <span class="content">আপডেট প্রোফাইল</span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           style="margin: auto, background: none"

@@ -99,6 +99,10 @@ $current_date = date('Y-m-d');
        <input type="hidden" name="question[]" value="<?php echo $row['id'] ?>">
        <input type="hidden" name="token[<?php echo $row['id'] ?>]" value="<?php echo base64_encode($row['answer']) ?>">
 
+       <?php if (!empty($row['picture'])) {?>
+        <div class="questions"><img src="./nimdaxipalo/images/<?php echo $row['picture']; ?>" height="200" alt="" /></div>
+      <?php }?>
+
        <?php if (!empty($row['uddipok_statement'])) {?>
         <div class="questions"><?php echo $row['uddipok_statement']; ?></div>
       <?php }?>
@@ -109,10 +113,13 @@ $current_date = date('Y-m-d');
 
         <div class="questions"><?php echo BanglaConverter::en2bn($i++) . '. ' . $row['questions']; ?></div>
         <div class="options-container">
-            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option1"> <?php echo $row['option1'] ?>
-            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option2"> <?php echo $row['option2'] ?>
-            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option3"> <?php echo $row['option3'] ?>
-            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option4"> <?php echo $row['option4'] ?>
+            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option1" id="<?php echo $row['option1'] ?>">
+            <label for="<?php echo $row['option1'] ?>"><?php echo $row['option1'] ?></label>
+
+            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option2" id="<?php echo $row['option2'] ?>">
+            <label for="<?php echo $row['option2'] ?>"><?php echo $row['option2'] ?></label>
+            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option3" id="<?php echo $row['option3'] ?>"> <label for="<?php echo $row['option3'] ?>"><?php echo $row['option3'] ?></label>
+            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option4" id="<?php echo $row['option4'] ?>"> <label for="<?php echo $row['option4'] ?>"><?php echo $row['option4'] ?></label>
         </div>
 
     </div>
@@ -136,5 +143,5 @@ $current_date = date('Y-m-d');
         </div>
       </div>
     </section>
-<script src="./assets/js/script.js?v=4.14"></script>
+<script src="./assets/js/script.js?v=5.1"></script>
 <?php require 'footer-home.php';?>

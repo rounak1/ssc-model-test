@@ -80,7 +80,13 @@ $exam_id = $exam_data['exam_id'];
                                   </div>
 
                                   <div class="student-answer">
-                                    <b>আপনার উত্তর: </b> <?=$row[$c_exam_data[$row['id']]]?>
+
+                                  <?php if ($row[$c_exam_data[$row['id']]] == '') {
+            echo "<b>উত্তর পাওয়া যায় নি</b>";
+        } else {
+            echo "<b>আপনার উত্তর:</b>";
+        }?>
+                                   <?=$row[$c_exam_data[$row['id']]]?>
                                     <?php if ($row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {?>
 
                                       <i class="fa fa-check correct_answer_icon" aria-hidden="true"></i>
@@ -90,9 +96,13 @@ $exam_id = $exam_data['exam_id'];
                                       <?php }?>
                                   </div>
 
+                                  <?php if ($row[$c_exam_data[$row['id']]] != $row[$row['answer']]) {?>
+
                                   <div class="student-answer">
                                     <b>সঠিক উত্তর: </b> <?=$row[$row['answer']]?>
                                   </div>
+
+                               <?php }?>
 
                               </div>
 
