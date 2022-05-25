@@ -84,7 +84,7 @@ session_start();
     <div class="row">
       <div class=" col-6">
       <div class="logo">
-        <a class="navbar-brand exam-running" href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>"><img src="./images/logo.svg" class="logo" height="60"></a>
+        <a class="navbar-brand exam-running" href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>"><img src="./images/logo.svg" class="logo" height="40"></a>
       </div>
       </div>
       <div class=" col-6">
