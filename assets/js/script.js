@@ -42,9 +42,8 @@ const countdown = () => {
       var seconds = timeleft % 60;
       var timeCalculate =
         getBanglaNumber(min) +
-        " মিনিট " +
-        getBanglaNumber(seconds) +
-        " সেকেন্ড";
+        ":" +
+        getBanglaNumber(seconds);
       document.getElementById("countdown").innerHTML = timeCalculate;
       document.getElementById("examAttendentTime").innerHTML =
         original_time - timeleft;

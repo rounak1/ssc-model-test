@@ -33,7 +33,7 @@ if (!isset($exam_id)) {
           <div class="col-md-12 text-center heading heading-section">
             <h2 class="mb-2"><?=!empty($model_test_list[$exam_id]['test'])?$model_test_list[$exam_id]['test']:"মডেল টেস্ট"?></h2>
           </div>
-          <div class="exam-subject">বিষয়: <?=$model_test_list[$exam_id]['subject']?></div>
+          <div style="margin-bottom: 20px;" class="exam-subject">বিষয়: <?=$model_test_list[$exam_id]['subject']?></div>
 
           <div class="col-md-12">
             <div class="exam-container">
@@ -79,7 +79,10 @@ if (empty($exam_data2)) {
     if (mysqli_num_rows($result) > 0) {
 
     ?>
-        <div class="sticky-class"><div id="countdown"></div></div>
+        <div class="sticky-class">
+          <div class="time-left">সময় বাকি</div>
+          <div id="countdown"></div>
+        </div>
         <div id="examAttendentTime" style="display: none;"></div>
         <form name="exam_submit" method="POST" action="quiz-submit.php" id="submit_form">
     <div class="question-container">

@@ -19,14 +19,7 @@ $exam_data = mysqli_fetch_assoc($exam_result);
 
     <section class="ftco-section testimony-section bg-light">
       <div class="container">
-        <div class="container-quiz">
-          <div class="quiz-container">
-            <form id="quiz_submit">
-              <div id="quiz_data"></div>
-            </form>
-          </div>
-        </div>
-
+        
         <div
           class="row justify-content-center mb-5 pb-3"
         >
@@ -75,36 +68,82 @@ $exam_id = $exam_data['exam_id'];
 
                                   <div class="questions"><?php echo BanglaConverter::en2bn($i++) . '. ' . $row['questions']; ?></div>
                                   <div class="options-container r-option-container">
-                                      <input disabled type="radio" name="option[<?php echo $row['id'] ?>]" value="option1"> <?php echo $row['option1'] ?>
-                                      <input disabled type="radio" name="option[<?php echo $row['id'] ?>]" value="option2"> <?php echo $row['option2'] ?>
-                                      <input disabled type="radio" name="option[<?php echo $row['id'] ?>]" value="option3"> <?php echo $row['option3'] ?>
-                                      <input disabled type="radio" name="option[<?php echo $row['id'] ?>]" value="option4"> <?php echo $row['option4'] ?>
+                                      
+                                      <?php
+                                        if(!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option1']) {
+                                      ?>
+                                          <img style="width: 20px;   margin-right: 4px;" src="images/right.png">
+                                      <?php
+                                        } elseif($row[$c_exam_data[$row['id']]] == $row['option1']) {
+                                      ?>
+                                        <img style="width: 20px;   margin-right: 4px;" src="images/wrong.png">
+                                      <?php
+                                        }else {
+                                      ?>
+                                        <img style="width: 20px;   margin-right: 4px;" src="images/normal.png">
+                                      <?php
+                                        }
+                                      ?>
+                                      <?php echo $row['option1'] ?>
+
+                                      <?php
+                                        if(!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option2']) {
+                                      ?>
+                                          <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/right.png">
+                                      <?php
+                                        } elseif($row[$c_exam_data[$row['id']]] == $row['option2']) {
+                                      ?>
+                                        <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/wrong.png">
+                                      <?php
+                                        }else {
+                                      ?>
+                                        <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/normal.png">
+                                      <?php
+                                        }
+                                      ?>
+                                      <?php echo $row['option2'] ?>
+                                      
+
+                                      <?php
+                                        if(!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option3']) {
+                                      ?>
+                                          <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/right.png">
+                                      <?php
+                                        } elseif($row[$c_exam_data[$row['id']]] == $row['option3']) {
+                                      ?>
+                                        <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/wrong.png">
+                                      <?php
+                                        }else {
+                                      ?>
+                                        <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/normal.png">
+                                      <?php
+                                        }
+                                      ?>
+                                      
+                                      <?php echo $row['option3'] ?>
+                                      
+                                      <?php
+                                        if(!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option4']) {
+                                      ?>
+                                          <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/right.png">
+                                      <?php
+                                        } elseif($row[$c_exam_data[$row['id']]] == $row['option4']) {
+                                      ?>
+                                        <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/wrong.png">
+                                      <?php
+                                        }else {
+                                      ?>
+                                        <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/normal.png">
+                                      <?php
+                                        }
+                                      ?>
+                                      <?php echo $row['option4'] ?>
+
                                   </div>
-
-                                  <div class="student-answer">
-
-                                  <?php if ($row[$c_exam_data[$row['id']]] == '') {
-            echo "<b>উত্তর পাওয়া যায় নি</b>";
-        } else {
-            echo "<b>আপনার উত্তর:</b>";
-        }?>
-                                   <?=$row[$c_exam_data[$row['id']]]?>
-                                    <?php if ($row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {?>
-
-                                      <i class="fa fa-check correct_answer_icon" aria-hidden="true"></i>
-
-                                    <?php } else {?>
-                                      <i class="fa fa-times wrong_answer_icon" aria-hidden="true"></i>
-                                      <?php }?>
-                                  </div>
-
-                                  <?php if ($row[$c_exam_data[$row['id']]] != $row[$row['answer']]) {?>
 
                                   <div class="student-answer">
                                     <b>সঠিক উত্তর: </b> <?=$row[$row['answer']]?>
                                   </div>
-
-                               <?php }?>
 
                               </div>
 
