@@ -106,355 +106,345 @@ foreach ($result as $data) {
               </div>
               <div class="quiz-play-information">
 
-              <form action="exam.php" method="POST" name="subject_selection">
+                <form action="exam.php" method="POST" name="subject_selection">
 
-                <div class="exam-selection-container">
-                <?php
-if (isset($_SESSION['success'])) {?>
-      <div class="col-md-12 message-container">
-        <div class="alert alert-success" role="alert">
-  <?php echo $_SESSION['success']; ?>
-</div>
-        </div>
-<?php unset($_SESSION['success']);}
+                  <div class="exam-selection-container">
+                    <?php if (isset($_SESSION['success'])) {?>
+                        <div class="col-md-12 message-container">
+                          <div class="alert alert-success" role="alert">
+                            <?php echo $_SESSION['success']; ?>
+                          </div>
+                        </div>
+                    <?php 
+                        unset($_SESSION['success']);
+                      }
+                    ?>
 
-if (isset($_SESSION['alert'])) {?>
-  <div class="col-md-12 message-container">
-        <!-- <div class="alert alert-warning" role="alert"> -->
+                    <?php if (isset($_SESSION['alert'])) {?>
+                        <div class="col-md-12 message-container">
+                          <div class="alert alert-warning" role="alert">
+                            <?php echo $_SESSION['alert']; ?>
+                          </div>
+                        </div>
+                    <?php 
+                        unset($_SESSION['alert']);
+                      }
+                    ?>
 
-    <?php
-echo $_SESSION['alert'];
-
-    unset($_SESSION['alert']); ?>
-</div>
-        </div>
-<?php }
-?>
-
-
-                  <h2>এসএসসি মডেল টেস্ট ২০২২</h2>
-                  <h3>মডেল টেস্ট শুরু করতে বিভাগ, বিষয় ও মডেল টেস্টের নাম সিলেক্ট করো</h3>
-
-
-                  <?php
-
-$science_subjects = $exam_list['ssc'][0]['science']['subjects'];
-$arts_subjects = $exam_list['ssc'][1]['arts']['subjects'];
-$commerce_subjects = $exam_list['ssc'][2]['commerce']['subjects'];
-
-?>
+                    <h2>এসএসসি মডেল টেস্ট ২০২২</h2>
+                    <h3>মডেল টেস্ট শুরু করতে বিভাগ, বিষয় ও মডেল টেস্টের নাম সিলেক্ট করো</h3>
 
 
+                    <?php
 
-                  <div class="form-group row">
-                      <label for="staticEmail" class="col-sm-3 col-form-label myprofile_label">বিভাগ</label>
-                      <div class="col-sm-9">
-                      <select name="group" id="group" class="form-control">
-                          <option value=""></option>
-                          <option value="science">বিজ্ঞান</option>
-                          <option value="arts">মানবিক</option>
-                          <option value="commerce">ব্যবসায়</option>
-                        </select>
+                      $science_subjects = $exam_list['ssc'][0]['science']['subjects'];
+                      $arts_subjects = $exam_list['ssc'][1]['arts']['subjects'];
+                      $commerce_subjects = $exam_list['ssc'][2]['commerce']['subjects'];
+
+                    ?>
+
+
+
+                      <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label myprofile_label">বিভাগ</label>
+                        <div class="col-sm-9">
+                        <select name="group" id="group" class="form-control">
+                            <option value=""></option>
+                            <option value="science">বিজ্ঞান</option>
+                            <option value="arts">মানবিক</option>
+                            <option value="commerce">ব্যবসায়</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label myprofile_label subject_label">বিষয়</label>
+                      <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label myprofile_label subject_label">বিষয়</label>
 
-                    <div class="col-sm-9">
+                        <div class="col-sm-9">
 
-                    <select name="science_subject" class="subject_box form-control" id="science_subject">
-                    <option value=""></option>
+                          <select name="science_subject" class="subject_box form-control" id="science_subject">
+                            <option value=""></option>
 
 
-                       <?php
+                             <?php
 
-foreach ($science_subjects as $science_subject) {?>
-                 <option value="<?php echo ($science_subject['name']) ?>"> <?php echo ($science_subject['name']) ?> </option>
+                              foreach ($science_subjects as $science_subject) {?>
+                                <option value="<?php echo ($science_subject['name']) ?>"> <?php echo ($science_subject['name']) ?> </option>
 
-                      <?php }?>
+                            <?php }?>
 
-                    </select>
+                          </select>
 
+                          <!-- Start Arts Subject Loading  -->
+                          <select name="arts_subject" class="subject_box form-control" id="arts_subject">
+                            <option value=""></option>
+                            <?php
 
+                              foreach ($arts_subjects as $arts_subject) {?>
+                                <option value="<?php echo ($arts_subject['name']) ?>"> <?php echo ($arts_subject['name']) ?> </option>
 
+                            <?php }?>
+                          </select>
 
-                  <!-- Start Arts Subject Loading  -->
-                    <select name="arts_subject" class="subject_box form-control" id="arts_subject">
-                    <option value=""></option>
-                      <?php
+                          <!-- End Arts Subject Loading  -->
 
-foreach ($arts_subjects as $arts_subject) {?>
-                 <option value="<?php echo ($arts_subject['name']) ?>"> <?php echo ($arts_subject['name']) ?> </option>
+                          <!-- Start Commerce Subject Loading  -->
 
-                      <?php }?>
-                    </select>
+                          <select name="commerce_subject" class="subject_box form-control" id="commerce_subject">
+                            <option value=""></option>
+                            <?php
+                              foreach ($commerce_subjects as $commerce_subject) {
+                            ?>
+                              <option value="<?php echo ($commerce_subject['name']) ?>"> <?php echo ($commerce_subject['name']) ?> </option>
 
-                    <!-- End Arts Subject Loading  -->
+                            <?php }?>
+                          </select>
+                        </div>
 
-                    <!-- Start Commerce Subject Loading  -->
+                      </div>
 
-                    <select name="commerce_subject" class="subject_box form-control" id="commerce_subject">
-                    <option value=""></option>
-                      <?php
+                      <!-- End Commerce Subject Loading  -->
 
-foreach ($commerce_subjects as $commerce_subject) {?>
-                 <option value="<?php echo ($commerce_subject['name']) ?>"> <?php echo ($commerce_subject['name']) ?> </option>
 
-                      <?php }?>
-                    </select>
-                    </div>
+                      <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label myprofile_label test_number_label">মডেল টেস্ট</label>
+                        <div class="col-sm-9">
+                          <select name="" class="model_test_no form-control" id="">
+                            <option value=""></option>
 
-                    </div>
 
-                    <!-- End Commerce Subject Loading  -->
+                            <?php
+                              $bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
 
+                              for ($i = 0; $i < count($bangla_p1); $i++) {?>
+                                <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
+                              <?php }
 
-                    <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-3 col-form-label myprofile_label test_number_label">মডেল টেস্ট</label>
-                    <div class="col-sm-9">
-                    <select name="" class="model_test_no form-control" id="">
-                    <option value=""></option>
+                              ?>
 
+                          </select>
 
-                      <?php
-$bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
+                          <select name="" class="model_test_no form-control" id="ban_p1">
+                            <option value=""></option>
 
-for ($i = 0; $i < count($bangla_p1); $i++) {?>
-  <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
-<?php }
+                            <?php
+                              $bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
 
-?>
+                              for ($i = 0; $i < count($bangla_p1); $i++) {?>
+                                <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
+                              <?php }
 
-                    </select>
+                              ?>
 
-                    <select name="" class="model_test_no form-control" id="ban_p1">
-                    <option value=""></option>
+                          </select>
 
-                      <?php
-$bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
+                          <select name="" class="model_test_no form-control" id="agri">
+                            <option value=""></option>
+                            <?php
+                              $bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
 
-for ($i = 0; $i < count($bangla_p1); $i++) {?>
-  <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
-<?php }
+                              for ($i = 0; $i < count($bangla_p2); $i++) {?>
+                                <option value="<?php echo $bangla_p2[$i]['id']; ?>"><?php echo $bangla_p2[$i]['test_name']; ?></option>
+                              <?php }
 
-?>
+                              ?>
 
-                    </select>
+                          </select>
 
-                    <select name="" class="model_test_no form-control" id="agri">
-                    <option value=""></option>
-                      <?php
-$bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
+                          <select name="" class="model_test_no form-control" id="physics">
+                            <option value=""></option>
+                            <?php
+                              $agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
 
-for ($i = 0; $i < count($bangla_p2); $i++) {?>
-  <option value="<?php echo $bangla_p2[$i]['id']; ?>"><?php echo $bangla_p2[$i]['test_name']; ?></option>
-<?php }
+                              for ($i = 0; $i < count($agri); $i++) {?>
+                                <option value="<?php echo $agri[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
+                              <?php }
 
-?>
+                            ?>
 
-                    </select>
 
-                    <select name="" class="model_test_no form-control" id="physics">
-                    <option value=""></option>
-                      <?php
-$agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
+                          </select>
 
-for ($i = 0; $i < count($agri); $i++) {?>
-  <option value="<?php echo $agri[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
-<?php }
+                          <select name="" class="model_test_no form-control" id="biology">
+                            <option value=""></option>
+                            <?php
+                              $biology = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
 
-?>
+                              for ($i = 0; $i < count($biology); $i++) {?>
+                                <option value="<?php echo $biology[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
+                              <?php }
 
+                            ?>
 
-                    </select>
+                          </select>
 
-                    <select name="" class="model_test_no form-control" id="biology">
-                    <option value=""></option>
-                      <?php
-$biology = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
+                          <select name="" class="model_test_no form-control" id="bangladesh_history">
+                            <option value=""></option>
 
-for ($i = 0; $i < count($biology); $i++) {?>
-  <option value="<?php echo $biology[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
-<?php }
+                            <?php
+                              $bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][2]['test'];
 
-?>
+                              for ($i = 0; $i < count($bangladesh_history); $i++) {?>
+                                <option value="<?php echo $bangladesh_history[$i]['id']; ?>"><?php echo $bangladesh_history[$i]['test_name']; ?></option>
+                              <?php }
 
-                    </select>
+                              ?>
 
-                    <select name="" class="model_test_no form-control" id="bangladesh_history">
-                    <option value=""></option>
+                          </select>
 
-                      <?php
-$bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][2]['test'];
 
-for ($i = 0; $i < count($bangladesh_history); $i++) {?>
-  <option value="<?php echo $bangladesh_history[$i]['id']; ?>"><?php echo $bangladesh_history[$i]['test_name']; ?></option>
-<?php }
 
-?>
+                          <select name="" class="model_test_no form-control" id="accounting">
+                            <option value=""></option>
 
-                    </select>
+                            <?php
+                              $accounting = $exam_list['ssc'][2]['commerce']['subjects'][2]['test'];
 
+                              for ($i = 0; $i < count($accounting); $i++) {?>
+                                <option value="<?php echo $accounting[$i]['id']; ?>"><?php echo $accounting[$i]['test_name']; ?></option>
+                              <?php }
 
+                              ?>
 
-                    <select name="" class="model_test_no form-control" id="accounting">
-                    <option value=""></option>
+                          </select>
 
-                      <?php
-$accounting = $exam_list['ssc'][2]['commerce']['subjects'][2]['test'];
+                          <select name="" class="model_test_no form-control" id="finance">
+                            <option value=""></option>
 
-for ($i = 0; $i < count($accounting); $i++) {?>
-  <option value="<?php echo $accounting[$i]['id']; ?>"><?php echo $accounting[$i]['test_name']; ?></option>
-<?php }
+                            <?php
+                              $finance = $exam_list['ssc'][2]['commerce']['subjects'][3]['test'];
 
-?>
+                              for ($i = 0; $i < count($finance); $i++) {?>
+                                <option value="<?php echo $finance[$i]['id']; ?>"><?php echo $finance[$i]['test_name']; ?></option>
+                              <?php }
 
-                    </select>
+                            ?>
 
-                    <select name="" class="model_test_no form-control" id="finance">
-                      <option value=""></option>
+                          </select>
+                        </div>
+                        <input type="hidden" name="test_number" class="put_model_test_number">
+                      </div>
+                      
 
-                      <?php
-$finance = $exam_list['ssc'][2]['commerce']['subjects'][3]['test'];
+                      <div class="start-exam-from-dashboard">
+                        <div
+                          class="btn px-4 py-3"> <input type="submit" value="মডেল টেস্ট শুরু করো"  id="start_exam_container" name="subject_selection" />
 
-for ($i = 0; $i < count($finance); $i++) {?>
-  <option value="<?php echo $finance[$i]['id']; ?>"><?php echo $finance[$i]['test_name']; ?></option>
-<?php }
+                        </div>
 
-?>
-
-                    </select>
-                    </div>
-                    <input type="hidden" name="test_number" class="put_model_test_number">
-                    </div>
-                    </div>
-
-                    <div class="start-exam-from-dashboard">
-                  <div
-                    class="btn px-4 py-3"> <input type="submit" value="মডেল টেস্ট শুরু করো"  id="start_exam_container" name="subject_selection" />
-
-                  </div>
-
-                </div>
+                      </div>
 
 
                   </form>
-
+              </div>
                   <div class="row profile-bottom-content">
                     <div class="col-md-6">
                       <div class="rules-container">
-                      <h2>নিয়মাবলী</h2>
-                      <ul>
-                        <li>১. মোট তিরিশটি MCQ প্রশ্ন থাকবে, প্রতিটি প্রশ্নের পূর্ণমান ১ এবং প্রতিটি প্রশ্নের জন্য সময় থাকবে ১ মিনিট।</li>
-                        <li>২. মডেল টেস্ট শুরু করার পর ট্যাপ পরিবর্তন করলে কিংবা, ট্যাব বন্ধ করে ফেললে স্বয়ংক্রিয়ভাবে সাবমিট হয়ে যাবে। সেক্ষেত্রে টেস্টটি পুনরায় দেয়া কিংবা পুননিরীক্ষণের কোনো সুযোগ নেই। অর্থাৎ একই মডেল টেস্ট শুধুমাত্র একবার দেয়ার সুযোগ থাকবে।</li>
-                        <li>৩. মডেল টেস্ট নিয়ে কোনো জিজ্ঞাসা থাকলে পড়াশোনা প্রথম আলোর ফেসবুক পেজের মেসেঞ্জারে যোগাযোগ করো।</li>
-                      </ul>
-
-
-
-
-
-                    </div>
+                        <h2>নিয়মাবলী</h2>
+                        <ul>
+                          <li>১. মোট তিরিশটি MCQ প্রশ্ন থাকবে, প্রতিটি প্রশ্নের পূর্ণমান ১ এবং প্রতিটি প্রশ্নের জন্য সময় থাকবে ১ মিনিট।</li>
+                          <li>২. মডেল টেস্ট শুরু করার পর ট্যাপ পরিবর্তন করলে কিংবা, ট্যাব বন্ধ করে ফেললে স্বয়ংক্রিয়ভাবে সাবমিট হয়ে যাবে। সেক্ষেত্রে টেস্টটি পুনরায় দেয়া কিংবা পুননিরীক্ষণের কোনো সুযোগ নেই। অর্থাৎ একই মডেল টেস্ট শুধুমাত্র একবার দেয়ার সুযোগ থাকবে।</li>
+                          <li>৩. মডেল টেস্ট নিয়ে কোনো জিজ্ঞাসা থাকলে পড়াশোনা প্রথম আলোর ফেসবুক পেজের মেসেঞ্জারে যোগাযোগ করো।</li>
+                        </ul>
+                      </div>
                     </div>
 
                     <div class="col-md-6">
                       <div class="exam-routine-container">
-                    <div class="exam-routine-header">
-                    <h2>মডেল টেস্ট রুটিন</h2>
-                    <select name="routine_select_list" id="routine_select_list">
-                      <option value="first_day_routine">২৫ মে ২০২২</option>
-                      <option value="second_day_routine">২৬ মে ২০২২</option>
-                      <option value="third_day_routine">২৭ মে ২০২২</option>
-                      <option value="fourth_day_routine">২৮ মে ২০২২</option>
-                      <option value="fifth_day_routine">২৯ মে ২০২২</option>
-                      <option value="sixth_day_routine">৩০ মে ২০২২</option>
-                      <option value="seventh_day_routine">৩১ মে ২০২২</option>
-                      <option value="eighth_day_routine">০১ জুন ২০২২</option>
-                    </select>
-                    </div>
+                        <div class="exam-routine-header">
+                          <h2>মডেল টেস্ট রুটিন</h2>
+                          <select name="routine_select_list" id="routine_select_list">
+                            <option value="first_day_routine">২৫ মে ২০২২</option>
+                            <option value="second_day_routine">২৬ মে ২০২২</option>
+                            <option value="third_day_routine">২৭ মে ২০২২</option>
+                            <option value="fourth_day_routine">২৮ মে ২০২২</option>
+                            <option value="fifth_day_routine">২৯ মে ২০২২</option>
+                            <option value="sixth_day_routine">৩০ মে ২০২২</option>
+                            <option value="seventh_day_routine">৩১ মে ২০২২</option>
+                            <option value="eighth_day_routine">০১ জুন ২০২২</option>
+                          </select>
+                        </div>
 
-                    <div class="exam-routine-list first_day_routine">
-                      <p><a href="exam.php?id=ssc_ban1_t001">বাংলা ১ম পত্র-মডেল টেস্ট ১</a></a></p>
-                      <p><a href="exam.php?id=ssc_agr_t001">কৃষি শিক্ষা-মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_phy_t001">পদার্থবিজ্ঞান-মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_bio_t001">জীববিজ্ঞান -মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_acc_t001">হিসাববিজ্ঞান-মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_fin_t001">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_bah_t001">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ১</a></p>
-                    </div>
-                    <div class="exam-routine-list second_day_routine">
-                      <p><a href="exam.php?id=ssc_ban2_t001">বাংলা ২য় পত্র-মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_gah_t001">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_che_t001">রসায়ন-মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_bau_t001">ব্যবসায় উদ্যোগ -মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_eco_t001">অর্থনীতি-মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_geo_t001">ভূগোল ও পরিবেশ-মডেল টেস্ট ১</a></p>
-                      <p><a href="exam.php?id=ssc_pou_t001">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ১</a></p>
-                    </div>
-                    <div class="exam-routine-list third_day_routine">
-                      <p><a href="exam.php?id=ssc_ban1_t002">বাংলা ১ম পত্র-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_agr_t002">কৃষি শিক্ষা-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_phy_t002">পদার্থবিজ্ঞান-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_bio_t002">জীববিজ্ঞান -মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_acc_t002">হিসাববিজ্ঞান-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_fin_t002">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_bah_t002">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ২</a></p>
-                    </div>
+                        <div class="exam-routine-list first_day_routine">
+                          <p><a href="exam.php?id=ssc_ban1_t001">বাংলা ১ম পত্র-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_agr_t001">কৃষি শিক্ষা-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_phy_t001">পদার্থবিজ্ঞান-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_bio_t001">জীববিজ্ঞান -মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_acc_t001">হিসাববিজ্ঞান-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_fin_t001">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_bah_t001">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ১</a></p>
+                        </div>
+                        <div class="exam-routine-list second_day_routine">
+                          <p><a href="exam.php?id=ssc_ban2_t001">বাংলা ২য় পত্র-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_gah_t001">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_che_t001">রসায়ন-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_bau_t001">ব্যবসায় উদ্যোগ -মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_eco_t001">অর্থনীতি-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_geo_t001">ভূগোল ও পরিবেশ-মডেল টেস্ট ১</a></p>
+                          <p><a href="exam.php?id=ssc_pou_t001">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ১</a></p>
+                        </div>
+                        <div class="exam-routine-list third_day_routine">
+                          <p><a href="exam.php?id=ssc_ban1_t002">বাংলা ১ম পত্র-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_agr_t002">কৃষি শিক্ষা-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_phy_t002">পদার্থবিজ্ঞান-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_bio_t002">জীববিজ্ঞান -মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_acc_t002">হিসাববিজ্ঞান-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_fin_t002">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_bah_t002">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ২</a></p>
+                        </div>
 
-                    <div class="exam-routine-list fourth_day_routine">
-                    <p><a href="exam.php?id=ssc_ban2_t002">বাংলা ২য় পত্র-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_gah_t002">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_che_t002">রসায়ন-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_bau_t002">ব্যবসায় উদ্যোগ -মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_eco_t002">অর্থনীতি-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_geo_t002">ভূগোল ও পরিবেশ-মডেল টেস্ট ২</a></p>
-                      <p><a href="exam.php?id=ssc_pou_t002">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ২</a></p>
-                    </div>
+                        <div class="exam-routine-list fourth_day_routine">
+                          <p><a href="exam.php?id=ssc_ban2_t002">বাংলা ২য় পত্র-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_gah_t002">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_che_t002">রসায়ন-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_bau_t002">ব্যবসায় উদ্যোগ -মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_eco_t002">অর্থনীতি-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_geo_t002">ভূগোল ও পরিবেশ-মডেল টেস্ট ২</a></p>
+                          <p><a href="exam.php?id=ssc_pou_t002">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ২</a></p>
+                        </div>
 
-                    <div class="exam-routine-list fifth_day_routine">
-                      <p><a href="exam.php?id=ssc_ban1_t003">বাংলা ১ম পত্র-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_agr_t003">কৃষি শিক্ষা-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_phy_t003">পদার্থবিজ্ঞান-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_bio_t003">জীববিজ্ঞান -মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_acc_t003">হিসাববিজ্ঞান-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_fin_t003">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_bah_t003">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ৩</a></p>
-                    </div>
+                        <div class="exam-routine-list fifth_day_routine">
+                          <p><a href="exam.php?id=ssc_ban1_t003">বাংলা ১ম পত্র-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_agr_t003">কৃষি শিক্ষা-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_phy_t003">পদার্থবিজ্ঞান-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_bio_t003">জীববিজ্ঞান -মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_acc_t003">হিসাববিজ্ঞান-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_fin_t003">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_bah_t003">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ৩</a></p>
+                        </div>
 
-                    <div class="exam-routine-list sixth_day_routine">
-                    <p><a href="exam.php?id=ssc_ban2_t003">বাংলা ২য় পত্র-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_gah_t003">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_che_t003">রসায়ন-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_bau_t003">ব্যবসায় উদ্যোগ -মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_eco_t003">অর্থনীতি-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_geo_t003">ভূগোল ও পরিবেশ-মডেল টেস্ট ৩</a></p>
-                      <p><a href="exam.php?id=ssc_pou_t003">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ৩</a></p>
-                    </div>
+                        <div class="exam-routine-list sixth_day_routine">
+                          <p><a href="exam.php?id=ssc_ban2_t003">বাংলা ২য় পত্র-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_gah_t003">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_che_t003">রসায়ন-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_bau_t003">ব্যবসায় উদ্যোগ -মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_eco_t003">অর্থনীতি-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_geo_t003">ভূগোল ও পরিবেশ-মডেল টেস্ট ৩</a></p>
+                          <p><a href="exam.php?id=ssc_pou_t003">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ৩</a></p>
+                        </div>
 
-                    <div class="exam-routine-list seventh_day_routine">
-                      <p><a href="exam.php?id=ssc_ban1_t004">বাংলা ১ম পত্র-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_agr_t004">কৃষি শিক্ষা-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_phy_t004">পদার্থবিজ্ঞান-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_bio_t004">জীববিজ্ঞান -মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_acc_t004">হিসাববিজ্ঞান-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_fin_t004">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_bah_t004">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ৪</a></p>
-                    </div>
+                        <div class="exam-routine-list seventh_day_routine">
+                          <p><a href="exam.php?id=ssc_ban1_t004">বাংলা ১ম পত্র-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_agr_t004">কৃষি শিক্ষা-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_phy_t004">পদার্থবিজ্ঞান-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_bio_t004">জীববিজ্ঞান -মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_acc_t004">হিসাববিজ্ঞান-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_fin_t004">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_bah_t004">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ৪</a></p>
+                        </div>
 
-                    <div class="exam-routine-list eighth_day_routine">
-                      <p><a href="exam.php?id=ssc_ban2_t004">বাংলা ২য় পত্র-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_gah_t004">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_che_t004">রসায়ন-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_bau_t004">ব্যবসায় উদ্যোগ -মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_eco_t004">অর্থনীতি-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_geo_t004">ভূগোল ও পরিবেশ-মডেল টেস্ট ৪</a></p>
-                      <p><a href="exam.php?id=ssc_pou_t004">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ৪</a></p>
-                    </div>
+                        <div class="exam-routine-list eighth_day_routine">
+                          <p><a href="exam.php?id=ssc_ban2_t004">বাংলা ২য় পত্র-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_gah_t004">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_che_t004">রসায়ন-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_bau_t004">ব্যবসায় উদ্যোগ -মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_eco_t004">অর্থনীতি-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_geo_t004">ভূগোল ও পরিবেশ-মডেল টেস্ট ৪</a></p>
+                          <p><a href="exam.php?id=ssc_pou_t004">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ৪</a></p>
+                        </div>
 
+                      </div>
                     </div>
-
-                  </div>
                   </div>
 
 

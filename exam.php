@@ -137,13 +137,13 @@ if (empty($exam_data2)) {
   });
 </script>
 <?php } else { ?>
-  <div style="text-align: center;margin-top: 50px;">দুঃখিত! এই মডেল টেস্টটি পাওয়া যায়নি অথবা এখনো প্রকাশিত হয়নি। <br/>যথাযথ মডেল টেস্ট সিলেক্ট করতে ড্যাসবোর্ড থেকে রুটিন দেখে নাও।</div>
+  <div class='alert-message'>দুঃখিত! এই মডেল টেস্টটি পাওয়া যায়নি অথবা এখনো প্রকাশিত হয়নি। <br/>যথাযথ মডেল টেস্ট সিলেক্ট করতে ড্যাসবোর্ড থেকে রুটিন দেখে নাও।</div>
 <?php }?>
 </form>
 </div>
 <?php
 } else {
-    echo "আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন";
+    echo "<div class='alert-message'>আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন</div>";
 }
 ?>
                   </section>
@@ -154,5 +154,5 @@ if (empty($exam_data2)) {
         </div>
       </div>
     </section>
-<script src="./assets/js/script.js?v=5.3"></script>
+<script src="./assets/js/script.js?v=5.5"></script>
 <?php require 'footer-home.php';?>
