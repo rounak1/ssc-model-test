@@ -58,9 +58,9 @@ session_start();
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css?v=5.4">
+    <link rel="stylesheet" href="css/style.css?v=5.9">
 
-    <link rel="stylesheet" href="./assets/css/main.css?v=5.8" />
+    <link rel="stylesheet" href="./assets/css/main.css?v=5.9" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 

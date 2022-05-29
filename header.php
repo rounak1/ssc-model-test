@@ -20,9 +20,9 @@
 
 
 
-    <link rel="stylesheet" href="css/style.css?v=4.1" />
+    <link rel="stylesheet" href="css/style.css?v=4.3" />
 
-    <link rel="stylesheet" href="./assets/css/main.css?v=4.2" />
+    <link rel="stylesheet" href="./assets/css/main.css?v=4.3" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
 

@@ -115,10 +115,10 @@ foreach ($result as $data) {
                             <?php echo $_SESSION['success']; ?>
                           </div>
                         </div>
-                    <?php 
-                        unset($_SESSION['success']);
-                      }
-                    ?>
+                    <?php
+unset($_SESSION['success']);
+}
+?>
 
                     <?php if (isset($_SESSION['alert'])) {?>
                         <div class="col-md-12 message-container">
@@ -126,10 +126,10 @@ foreach ($result as $data) {
                             <?php echo $_SESSION['alert']; ?>
                           </div>
                         </div>
-                    <?php 
-                        unset($_SESSION['alert']);
-                      }
-                    ?>
+                    <?php
+unset($_SESSION['alert']);
+}
+?>
 
                     <h2>এসএসসি মডেল টেস্ট ২০২২</h2>
                     <h3>মডেল টেস্ট শুরু করতে বিভাগ, বিষয় ও মডেল টেস্টের নাম সিলেক্ট করো</h3>
@@ -137,16 +137,16 @@ foreach ($result as $data) {
 
                     <?php
 
-                      $science_subjects = $exam_list['ssc'][0]['science']['subjects'];
-                      $arts_subjects = $exam_list['ssc'][1]['arts']['subjects'];
-                      $commerce_subjects = $exam_list['ssc'][2]['commerce']['subjects'];
+$science_subjects = $exam_list['ssc'][0]['science']['subjects'];
+$arts_subjects = $exam_list['ssc'][1]['arts']['subjects'];
+$commerce_subjects = $exam_list['ssc'][2]['commerce']['subjects'];
 
-                    ?>
+?>
 
 
 
                       <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-3 col-form-label myprofile_label">বিভাগ</label>
+                        <label for="staticEmail" class="col-sm-2 col-form-label myprofile_label">বিভাগ</label>
                         <div class="col-sm-9">
                         <select name="group" id="group" class="form-control">
                             <option value=""></option>
@@ -158,7 +158,7 @@ foreach ($result as $data) {
                       </div>
 
                       <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-3 col-form-label myprofile_label subject_label">বিষয়</label>
+                        <label for="staticEmail" class="col-sm-2 col-form-label myprofile_label subject_label">বিষয়</label>
 
                         <div class="col-sm-9">
 
@@ -168,7 +168,7 @@ foreach ($result as $data) {
 
                              <?php
 
-                              foreach ($science_subjects as $science_subject) {?>
+foreach ($science_subjects as $science_subject) {?>
                                 <option value="<?php echo ($science_subject['name']) ?>"> <?php echo ($science_subject['name']) ?> </option>
 
                             <?php }?>
@@ -180,7 +180,7 @@ foreach ($result as $data) {
                             <option value=""></option>
                             <?php
 
-                              foreach ($arts_subjects as $arts_subject) {?>
+foreach ($arts_subjects as $arts_subject) {?>
                                 <option value="<?php echo ($arts_subject['name']) ?>"> <?php echo ($arts_subject['name']) ?> </option>
 
                             <?php }?>
@@ -193,8 +193,8 @@ foreach ($result as $data) {
                           <select name="commerce_subject" class="subject_box form-control" id="commerce_subject">
                             <option value=""></option>
                             <?php
-                              foreach ($commerce_subjects as $commerce_subject) {
-                            ?>
+foreach ($commerce_subjects as $commerce_subject) {
+    ?>
                               <option value="<?php echo ($commerce_subject['name']) ?>"> <?php echo ($commerce_subject['name']) ?> </option>
 
                             <?php }?>
@@ -207,20 +207,20 @@ foreach ($result as $data) {
 
 
                       <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-3 col-form-label myprofile_label test_number_label">মডেল টেস্ট</label>
+                        <label for="staticEmail" class="col-sm-2 col-form-label myprofile_label test_number_label">মডেল টেস্ট</label>
                         <div class="col-sm-9">
                           <select name="" class="model_test_no form-control" id="">
                             <option value=""></option>
 
 
                             <?php
-                              $bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
+$bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
 
-                              for ($i = 0; $i < count($bangla_p1); $i++) {?>
+for ($i = 0; $i < count($bangla_p1); $i++) {?>
                                 <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
                               <?php }
 
-                              ?>
+?>
 
                           </select>
 
@@ -228,39 +228,39 @@ foreach ($result as $data) {
                             <option value=""></option>
 
                             <?php
-                              $bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
+$bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
 
-                              for ($i = 0; $i < count($bangla_p1); $i++) {?>
+for ($i = 0; $i < count($bangla_p1); $i++) {?>
                                 <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
                               <?php }
 
-                              ?>
+?>
 
                           </select>
 
                           <select name="" class="model_test_no form-control" id="agri">
                             <option value=""></option>
                             <?php
-                              $bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
+$bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
 
-                              for ($i = 0; $i < count($bangla_p2); $i++) {?>
+for ($i = 0; $i < count($bangla_p2); $i++) {?>
                                 <option value="<?php echo $bangla_p2[$i]['id']; ?>"><?php echo $bangla_p2[$i]['test_name']; ?></option>
                               <?php }
 
-                              ?>
+?>
 
                           </select>
 
                           <select name="" class="model_test_no form-control" id="physics">
                             <option value=""></option>
                             <?php
-                              $agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
+$agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
 
-                              for ($i = 0; $i < count($agri); $i++) {?>
+for ($i = 0; $i < count($agri); $i++) {?>
                                 <option value="<?php echo $agri[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
                               <?php }
 
-                            ?>
+?>
 
 
                           </select>
@@ -268,13 +268,13 @@ foreach ($result as $data) {
                           <select name="" class="model_test_no form-control" id="biology">
                             <option value=""></option>
                             <?php
-                              $biology = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
+$biology = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
 
-                              for ($i = 0; $i < count($biology); $i++) {?>
+for ($i = 0; $i < count($biology); $i++) {?>
                                 <option value="<?php echo $biology[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
                               <?php }
 
-                            ?>
+?>
 
                           </select>
 
@@ -282,13 +282,13 @@ foreach ($result as $data) {
                             <option value=""></option>
 
                             <?php
-                              $bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][2]['test'];
+$bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][2]['test'];
 
-                              for ($i = 0; $i < count($bangladesh_history); $i++) {?>
+for ($i = 0; $i < count($bangladesh_history); $i++) {?>
                                 <option value="<?php echo $bangladesh_history[$i]['id']; ?>"><?php echo $bangladesh_history[$i]['test_name']; ?></option>
                               <?php }
 
-                              ?>
+?>
 
                           </select>
 
@@ -298,13 +298,13 @@ foreach ($result as $data) {
                             <option value=""></option>
 
                             <?php
-                              $accounting = $exam_list['ssc'][2]['commerce']['subjects'][2]['test'];
+$accounting = $exam_list['ssc'][2]['commerce']['subjects'][2]['test'];
 
-                              for ($i = 0; $i < count($accounting); $i++) {?>
+for ($i = 0; $i < count($accounting); $i++) {?>
                                 <option value="<?php echo $accounting[$i]['id']; ?>"><?php echo $accounting[$i]['test_name']; ?></option>
                               <?php }
 
-                              ?>
+?>
 
                           </select>
 
@@ -312,19 +312,19 @@ foreach ($result as $data) {
                             <option value=""></option>
 
                             <?php
-                              $finance = $exam_list['ssc'][2]['commerce']['subjects'][3]['test'];
+$finance = $exam_list['ssc'][2]['commerce']['subjects'][3]['test'];
 
-                              for ($i = 0; $i < count($finance); $i++) {?>
+for ($i = 0; $i < count($finance); $i++) {?>
                                 <option value="<?php echo $finance[$i]['id']; ?>"><?php echo $finance[$i]['test_name']; ?></option>
                               <?php }
 
-                            ?>
+?>
 
                           </select>
                         </div>
                         <input type="hidden" name="test_number" class="put_model_test_number">
                       </div>
-                      
+
 
                       <div class="start-exam-from-dashboard">
                         <div

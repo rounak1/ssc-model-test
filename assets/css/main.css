@@ -564,9 +564,13 @@ dropdown-btn.active {
   margin-bottom: 8px;
   font-weight: 700;
 }
+.uddipok {
+  font-size: 18px;
+  margin: 4px 0;
+}
 .questions-each {
   border-bottom: 1px solid #cccccc66;
-  padding-bottom: 16px;
+  padding: 16px 0;
 }
 .options-container {
   font-size: 18px;
