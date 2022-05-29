@@ -81,7 +81,7 @@ if (!empty($row['uddipok_statement'])) {?>
                                   <div class="options-container r-option-container">
 
                                       <?php
-if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option1']) {
+if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option1'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
             ?>
                                           <img style="width: 20px;   margin-right: 4px;" src="images/right.png">
                                       <?php
@@ -98,7 +98,7 @@ if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['opti
                                       <?php echo $row['option1'] ?>
 
                                       <?php
-if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option2']) {
+if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option2'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
             ?>
                                           <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/right.png">
                                       <?php
@@ -116,7 +116,7 @@ if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['opti
 
 
                                       <?php
-if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option3']) {
+if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option3'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
             ?>
                                           <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/right.png">
                                       <?php
@@ -134,7 +134,7 @@ if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['opti
                                       <?php echo $row['option3'] ?>
 
                                       <?php
-if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option4']) {
+if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option4'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
             ?>
                                           <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/right.png">
                                       <?php
@@ -152,9 +152,15 @@ if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['opti
 
                                   </div>
 
+                                  <?php
+                                    if($row[$c_exam_data[$row['id']]] != $row[$row['answer']]) {
+                                  ?>
                                   <div class="student-answer">
                                     <b>সঠিক উত্তর: </b> <?=$row[$row['answer']]?>
                                   </div>
+                                  <?php
+                                    }
+                                  ?>
 
                               </div>
 
