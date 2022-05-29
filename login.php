@@ -508,7 +508,7 @@ echo $_SESSION['alert'];
 
                 <div class="or">অথবা</div>
                 <div class="login-register-text">
-                  নিবন্ধন করতে <a href="register.php">ক্লিক করুন</a>
+                  নিবন্ধন করতে <a href="register.php">ক্লিক করো</a>
                 </div>
               </div>
             </div>

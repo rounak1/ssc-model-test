@@ -53,7 +53,7 @@ if (isset($_POST['forget_password'])) {
         echo "email not found";
     }
 
-    array_push($msg, "তোমার ই-মেইলে পাসওয়ার্ড পুনরায় সেট করার জন্য একটি লিংক পাঠানো হয়েছে। লিংকে ক্লিক করে পাসওয়ার্ড পুনরায় সেট করো");
+    array_push($msg, "তোমার ই-মেইলে পাসওয়ার্ড পুনরায় সেট করার জন্য একটি লিংক পাঠানো হয়েছে। লিংকে ক্লিক করে পাসওয়ার্ড পুনরায় সেট করো।");
 
 }
 ?>
@@ -65,9 +65,7 @@ if (isset($_POST['forget_password'])) {
           <div class="col-md-8 col-lg-5">
             <div class="login-container">
               <div class="col-md-12 text-center heading-section">
-                <h2 class="mb-2">
-	                       পাসওয়ার্ড ভুলে গেছ?
-	                    </h2>
+                <h2 class="mb-2">পাসওয়ার্ড ভুলে গিয়েছ?</h2>
               </div>
 
               <div class="col-md-12">
@@ -86,14 +84,14 @@ foreach ($msg as $message) {
 
 					<form action= "" method= "post">
 			<div class="form-group">
-				<label for="email">ই-মেইল এড্রেস </label>
-				<input type="email" class="form-control" placeholder="Type email Address" id="email" name="email">
+				<label for="email">পাসওয়ার্ড পরিবর্তন করতে তোমার ই-মেইল অ্যাড্রেসটি দাও</label>
+				<input type="email" class="form-control" placeholder="Type email Address" id="email" name="email" required>
 			</div>
 
 			<button type="submit" class="btn btn-primary btn-special" name= "forget_password">পাঠাও</button>
 
             <div class="sign-up">
-				একাউন্ট নেই? <a href="<?php $base_url?>register.php">নিবন্ধন কর</a>
+				অ্যাকাউন্ট নেই? <a href="<?php $base_url?>register.php">নিবন্ধন করো</a>
 				</div>
 			</form>
                 </div>

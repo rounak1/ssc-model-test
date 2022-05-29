@@ -79,7 +79,7 @@ body {font-family: Arial;}
             </thead>
             <tbody class="participants-information-body-1">
                 <?php
-$query = "SELECT model_students.name, model_students.phone, quiz_histories.total_marks, quiz_histories.completion_time, quiz_histories.created_at FROM `model_students` INNER JOIN `quiz_histories` on model_students.id = quiz_histories.user_id WHERE `quiz_date` = '$todays_date' ;";
+$query = "SELECT model_students.name, model_students.phone, quiz_histories.total_marks, quiz_histories.completion_time, quiz_histories.created_at FROM `model_students` INNER JOIN `quiz_histories` on model_students.id = quiz_histories.user_id WHERE `quiz_date` = '$todays_date' ORDER BY `total_marks` DESC, completion_time ASC LIMIT 200`;";
 
 $result = mysqli_query($conn, $query);
 $i = 1;
@@ -114,7 +114,7 @@ foreach ($result as $row) {?>
             </thead>
             <tbody class="participants-information-body-1">
                 <?php
-$query = "SELECT model_students.name, model_students.phone, quiz_histories.total_marks, quiz_histories.completion_time, quiz_histories.created_at FROM `model_students` INNER JOIN `quiz_histories` on model_students.id = quiz_histories.user_id";
+$query = "SELECT model_students.name, model_students.phone, quiz_histories.total_marks, quiz_histories.completion_time, quiz_histories.created_at FROM `model_students` INNER JOIN `quiz_histories` on model_students.id = quiz_histories.user_id ORDER BY `total_marks` DESC, completion_time ASC LIMIT 200";
 
 $result = mysqli_query($conn, $query);
 $i = 1;

@@ -22,7 +22,7 @@ require '../settings.php';
             <select name="specific_questions" id="" class="all_quiz">
             <?php
 
-$quer = "Select distinct `exam_id` from `model_questions`";
+$quer = "Select distinct `exam_id` from `model_questions` ORDER BY `exam_id`";
 
 $resul = mysqli_query($conn, $quer);
 

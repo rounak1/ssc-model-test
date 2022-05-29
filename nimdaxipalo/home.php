@@ -6,10 +6,14 @@ if (!isset($_SESSION['logged_session'])) {
 error_reporting(1);
 require 'connection.php';
 require 'admin-header.php';
+
+$r_total = mysqli_query($conn, "select count(*) FROM `model_students`");
+$total_row = mysqli_fetch_array($r_total);
+
 ?>
     <div class="container">
       <div class="participants-container">
-        <h2>All Participants (<span id="total_all_participants"></span>)</h2>
+        <h2>All Participants (<?=$total_row[0]?>)</h2>
         <div id="contentData"></div>
       </div>
     </div>
@@ -31,7 +35,7 @@ require 'admin-header.php';
             <tbody class="participants-information-body-3">
             <?php
 
-$query = "SELECT `name`, `phone`, `email`, `district`, `thana` FROM `model_students` WHERE `status` = '1'";
+$query = "SELECT `name`, `phone`, `email`, `district`, `thana` FROM `model_students` WHERE `status` = '1' ORDER BY `id` DESC Limit 100";
 
 $result = mysqli_query($conn, $query);
 

@@ -137,8 +137,9 @@ h1 {
   margin: 36px 0 40px;
 }
 .home-bottom-text h3 {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: bold;
+  text-shadow: 0px 0px 20px #346f59;
 }
 .home-bottom-text p {
   font-size: 20px;
@@ -227,7 +228,7 @@ a.profile-logout-btn:hover {
 /* Start Exam selection dropdown */
 .exam-selection-container {
   background-color: #f1f1f1;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   margin-bottom: 40px;
 }
 
@@ -442,6 +443,9 @@ dropdown-btn.active {
   box-shadow: 0px 0px 10px 1px #a19ca166;
   width: 100px;
 }
+.porashone-logo {
+  margin-top: 10px;
+}
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
   .sidenav {
@@ -509,6 +513,9 @@ dropdown-btn.active {
   text-align: center;
   margin-bottom: 30px;
   display: none;
+}
+.start-exam-from-dashboard .btn {
+  padding-top: 0 !important;
 }
 .question-container {
   border: 1px solid #f1f1f1;

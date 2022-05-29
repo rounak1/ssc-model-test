@@ -52,8 +52,8 @@ if (!empty($r_temp_data)) {
     // $query_q_h = "INSERT INTO `quiz_histories`(`user_id`, `exam_id`) VALUES ('$user_id','$exam_id')";
 
     // mysqli_query($conn, $query_q_h);
-    // echo "<script> alert('আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন')</script>";
-    $_SESSION['alert'] = "আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন";
+    // echo "<script> alert('তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ')</script>";
+    $_SESSION['alert'] = "তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ";
     header('Location: myprofile.php');
 }
 
@@ -143,7 +143,11 @@ if (empty($exam_data2)) {
 </div>
 <?php
 } else {
-    echo "<div class='alert-message'>আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন</div>";
+?>
+
+    <div class='alert-message'>তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ</div>
+    <div style="text-align: center;"><a href="myprofile.php" class="btn btn-secondary results_profile_btn">ড্যাশবোর্ডে ফিরে যাও </a></div>
+<?php
 }
 ?>
                   </section>

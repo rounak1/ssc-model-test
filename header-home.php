@@ -84,7 +84,7 @@ session_start();
     <div class="row">
       <div class=" col-6">
       <div class="logo">
-        <a class="navbar-brand exam-running" href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>"><img src="./images/logo.svg" class="logo" height="40"></a>
+        <a class="navbar-brand exam-running porashone-logo" href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>"><img src="./images/logo.svg" class="logo" height="35"></a>
       </div>
       </div>
       <div class=" col-6">
@@ -97,14 +97,3 @@ session_start();
 
   </div>
 </div>
-
-
-
-  <!-- <div id="accomplishTime"></div> -->
-  <!-- <div class="container">
-    <div class="quiz-container">
-      <form id="quiz_submit">
-        <div id="quiz_data"></div>
-      </form>
-    </div>
-  </div> -->
