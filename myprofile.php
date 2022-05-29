@@ -206,23 +206,10 @@ foreach ($commerce_subjects as $commerce_subject) {
                       <!-- End Commerce Subject Loading  -->
 
 
-                      <div class="form-group row">
+                      <div class="form-group row test_container">
                         <label for="staticEmail" class="col-sm-2 col-form-label myprofile_label test_number_label">মডেল টেস্ট</label>
                         <div class="col-sm-9">
-                          <select name="" class="model_test_no form-control" id="">
-                            <option value=""></option>
 
-
-                            <?php
-$bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
-
-for ($i = 0; $i < count($bangla_p1); $i++) {?>
-                                <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
 
                           <select name="" class="model_test_no form-control" id="ban_p1">
                             <option value=""></option>
@@ -238,8 +225,9 @@ for ($i = 0; $i < count($bangla_p1); $i++) {?>
 
                           </select>
 
-                          <select name="" class="model_test_no form-control" id="agri">
+                          <select name="" class="model_test_no form-control" id="ban_p2">
                             <option value=""></option>
+
                             <?php
 $bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
 
@@ -251,7 +239,9 @@ for ($i = 0; $i < count($bangla_p2); $i++) {?>
 
                           </select>
 
-                          <select name="" class="model_test_no form-control" id="physics">
+
+
+                          <select name="" class="model_test_no form-control" id="agri">
                             <option value=""></option>
                             <?php
 $agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
@@ -262,16 +252,55 @@ for ($i = 0; $i < count($agri); $i++) {?>
 
 ?>
 
+                          </select>
+
+                          <select name="" class="model_test_no form-control" id="gah">
+                            <option value=""></option>
+                            <?php
+$gah = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
+
+for ($i = 0; $i < count($gah); $i++) {?>
+                                <option value="<?php echo $gah[$i]['id']; ?>"><?php echo $gah[$i]['test_name']; ?></option>
+                              <?php }
+
+?>
+
+                          </select>
+
+                          <select name="" class="model_test_no form-control" id="physics">
+                            <option value=""></option>
+                            <?php
+$phy = $exam_list['ssc'][0]['science']['subjects'][4]['test'];
+
+for ($i = 0; $i < count($phy); $i++) {?>
+                                <option value="<?php echo $phy[$i]['id']; ?>"><?php echo $phy[$i]['test_name']; ?></option>
+                              <?php }
+
+?>
+
 
                           </select>
 
                           <select name="" class="model_test_no form-control" id="biology">
                             <option value=""></option>
                             <?php
-$biology = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
+$biology = $exam_list['ssc'][0]['science']['subjects'][5]['test'];
 
 for ($i = 0; $i < count($biology); $i++) {?>
                                 <option value="<?php echo $biology[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
+                              <?php }
+
+?>
+
+                          </select>
+
+                          <select name="" class="model_test_no form-control" id="chemistry">
+                            <option value=""></option>
+                            <?php
+$chem = $exam_list['ssc'][0]['science']['subjects'][6]['test'];
+
+for ($i = 0; $i < count($chem); $i++) {?>
+                                <option value="<?php echo $chem[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
                               <?php }
 
 ?>
@@ -282,7 +311,7 @@ for ($i = 0; $i < count($biology); $i++) {?>
                             <option value=""></option>
 
                             <?php
-$bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][2]['test'];
+$bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][4]['test'];
 
 for ($i = 0; $i < count($bangladesh_history); $i++) {?>
                                 <option value="<?php echo $bangladesh_history[$i]['id']; ?>"><?php echo $bangladesh_history[$i]['test_name']; ?></option>
@@ -292,13 +321,43 @@ for ($i = 0; $i < count($bangladesh_history); $i++) {?>
 
                           </select>
 
+                          <select name="" class="model_test_no form-control" id="geography">
+                            <option value=""></option>
+
+                            <?php
+$geography = $exam_list['ssc'][1]['arts']['subjects'][5]['test'];
+
+for ($i = 0; $i < count($geography); $i++) {?>
+                                <option value="<?php echo $geography[$i]['id']; ?>"><?php echo $geography[$i]['test_name']; ?></option>
+                              <?php }
+
+?>
+
+                          </select>
+
+
+                          <select name="" class="model_test_no form-control" id="pouroniti">
+                            <option value=""></option>
+
+                            <?php
+$pouroniti = $exam_list['ssc'][1]['arts']['subjects'][6]['test'];
+
+for ($i = 0; $i < count($pouroniti); $i++) {?>
+                                <option value="<?php echo $pouroniti[$i]['id']; ?>"><?php echo $pouroniti[$i]['test_name']; ?></option>
+                              <?php }
+
+?>
+
+                          </select>
+
+
 
 
                           <select name="" class="model_test_no form-control" id="accounting">
                             <option value=""></option>
 
                             <?php
-$accounting = $exam_list['ssc'][2]['commerce']['subjects'][2]['test'];
+$accounting = $exam_list['ssc'][2]['commerce']['subjects'][4]['test'];
 
 for ($i = 0; $i < count($accounting); $i++) {?>
                                 <option value="<?php echo $accounting[$i]['id']; ?>"><?php echo $accounting[$i]['test_name']; ?></option>
@@ -312,7 +371,7 @@ for ($i = 0; $i < count($accounting); $i++) {?>
                             <option value=""></option>
 
                             <?php
-$finance = $exam_list['ssc'][2]['commerce']['subjects'][3]['test'];
+$finance = $exam_list['ssc'][2]['commerce']['subjects'][5]['test'];
 
 for ($i = 0; $i < count($finance); $i++) {?>
                                 <option value="<?php echo $finance[$i]['id']; ?>"><?php echo $finance[$i]['test_name']; ?></option>
@@ -321,6 +380,36 @@ for ($i = 0; $i < count($finance); $i++) {?>
 ?>
 
                           </select>
+
+                          <select name="" class="model_test_no form-control" id="bab_uddog">
+                            <option value=""></option>
+
+                            <?php
+$bab_uddog = $exam_list['ssc'][2]['commerce']['subjects'][6]['test'];
+
+for ($i = 0; $i < count($bab_uddog); $i++) {?>
+                                <option value="<?php echo $bab_uddog[$i]['id']; ?>"><?php echo $bab_uddog[$i]['test_name']; ?></option>
+                              <?php }
+
+?>
+
+                          </select>
+
+                          <select name="" class="model_test_no form-control" id="economics">
+                            <option value=""></option>
+
+                            <?php
+$economics = $exam_list['ssc'][2]['commerce']['subjects'][7]['test'];
+
+for ($i = 0; $i < count($economics); $i++) {?>
+                                <option value="<?php echo $economics[$i]['id']; ?>"><?php echo $economics[$i]['test_name']; ?></option>
+                              <?php }
+
+?>
+
+                          </select>
+
+
                         </div>
                         <input type="hidden" name="test_number" class="put_model_test_number">
                       </div>
@@ -488,7 +577,7 @@ for ($i = 0; $i < count($finance); $i++) {?>
     </div>
 </div>
 
-    <script>
+<script>
 
 $(document).ready(function() {
   $(".subject_box, .model_test_no, .subject_label, .test_number_label").hide();
@@ -504,12 +593,23 @@ $(document).ready(function() {
       $("#arts_subject").val($("#arts_subject option:first").val());
       $("#commerce_subject").val($("#commerce_subject option:first").val());
       $("#ban_p1").val($("#ban_p1 option:first").val());
+      $("#ban_p2").val($("#ban_p1 option:first").val());
       $("#agri").val($("#agri option:first").val());
+      $("#gah").val($("#gah option:first").val());
       $("#physics").val($("#physics option:first").val());
       $("#biology").val($("#biology option:first").val());
+      $("#chemistry").val($("#chemistry option:first").val());
+
+
       $("#bangladesh_history").val($("#bangladesh_history option:first").val());
+      $("#geography").val($("#geography option:first").val());
+      $("#pouroniti").val($("#pouroniti option:first").val());
+
+
       $("#accounting").val($("#accounting option:first").val());
       $("#finance").val($("#finance option:first").val());
+      $("#bab_uddog").val($("#bab_uddog option:first").val());
+      $("#economics").val($("#economics option:first").val());
 
     }
 
@@ -543,32 +643,57 @@ $("#science_subject").change(function() {
       $("#group").val($("#group option:first").val());
 
       $("#ban_p1").val($("#ban_p1 option:first").val());
+      $("#ban_p2").val($("#ban_p1 option:first").val());
       $("#agri").val($("#agri option:first").val());
+      $("#gah").val($("#gah option:first").val());
+
       $("#physics").val($("#physics option:first").val());
       $("#biology").val($("#biology option:first").val());
+      $("#chemistry").val($("#chemistry option:first").val());
+
       $("#bangladesh_history").val($("#bangladesh_history option:first").val());
+      $("#geography").val($("#geography option:first").val());
+      $("#pouroniti").val($("#pouroniti option:first").val());
+
       $("#accounting").val($("#accounting option:first").val());
       $("#finance").val($("#finance option:first").val());
+      $("#bab_uddog").val($("#bab_uddog option:first").val());
+      $("#economics").val($("#economics option:first").val());
 
     }
 
   if (selectedSubject == 'বাংলা ১ম পত্র'){
-    $("#agri, #physics, #biology").hide();
+    $("#ban_p2, #agri, #physics, #gah, #biology, #chemistry").hide();
     $("#ban_p1, .test_number_label").show();
   }
 
+  if (selectedSubject == 'বাংলা ২য় পত্র'){
+    $("#ban_p1, #agri, #physics, #gah, #biology, #chemistry").hide();
+    $("#ban_p2, .test_number_label").show();
+  }
+
   if (selectedSubject == 'কৃষি শিক্ষা'){
-    $("#ban_p1, #physics, #biology").hide();
+    $("#ban_p1, #ban_p2, #physics, #gah, #biology, #chemistry").hide();
     $("#agri, .test_number_label").show();
   }
+  if (selectedSubject == 'গার্হস্থ্য বিজ্ঞান'){
+    $("#ban_p1, #ban_p2, #agri, #physics, #biology, #chemistry").hide();
+    $("#gah, .test_number_label").show();
+  }
+
   if (selectedSubject == 'পদার্থবিজ্ঞান'){
-    $("#ban_p1, #agri, #biology").hide();
+    $("#ban_p1, #ban_p2, #agri,  #gah, #biology, #chemistry").hide();
     $("#physics, .test_number_label").show();
   }
 
   if (selectedSubject == 'জীববিজ্ঞান'){
-    $("#ban_p1, #agri, #physics").hide();
+    $("#ban_p1, #ban_p2, #agri, #physics, #gah,  #chemistry").hide();
     $("#biology, .test_number_label").show();
+  }
+
+  if (selectedSubject == 'রসায়ন'){
+    $("#ban_p1, #ban_p2, #agri, #physics, #gah, #biology").hide();
+    $("#chemistry, .test_number_label").show();
   }
 
 
@@ -580,18 +705,39 @@ $("#arts_subject").change(function() {
   var selectedSubject = $("#arts_subject option:selected").val();
 
   if (selectedSubject == 'বাংলা ১ম পত্র'){
-    $("#agri, #bangladesh_history").hide();
+    $("#ban_p1, #ban_p2, #agri,  #gah, #bangladesh_history, #geography, #pouroniti").hide();
     $("#ban_p1, .test_number_label").show();
   }
 
+  if (selectedSubject == 'বাংলা ২য় পত্র'){
+    $("#ban_p1, #ban_p2, #agri,  #gah, #bangladesh_history, #geography, #pouroniti").hide();
+    $("#ban_p1, .test_number_label").show();
+  }
+
+
   if (selectedSubject == 'কৃষি শিক্ষা'){
-    $("#ban_p1, #bangladesh_history").hide();
+    $("#ban_p1, #ban_p2,  #gah, #bangladesh_history, #geography, #pouroniti").hide();
     $("#agri, .test_number_label").show();
   }
 
+  if (selectedSubject == 'গার্হস্থ্য বিজ্ঞান'){
+    $("#ban_p1, #ban_p2, #agri,  #bangladesh_history, #geography, #pouroniti").hide();
+    $("#gah, .test_number_label").show();
+  }
+
   if (selectedSubject == 'বাংলাদেশের ইতিহাস ও বিশ্বসভ্যতা'){
-    $("#ban_p1, #agri").hide();
+    $("#ban_p1, #ban_p2, #agri,  #gah, #geography, #pouroniti").hide();
     $("#bangladesh_history, .test_number_label").show();
+  }
+
+  if (selectedSubject == 'ভূগোল ও পরিবেশ'){
+    $("#ban_p1, #ban_p2, #agri,  #gah, #bangladesh_history, #pouroniti").hide();
+    $("#geography, .test_number_label").show();
+  }
+
+  if (selectedSubject == 'পৌরনীতি ও নাগরিকতা'){
+    $("#ban_p1, #ban_p2, #agri,  #gah, #bangladesh_history, #geography").hide();
+    $("#pouroniti, .test_number_label").show();
   }
 });
 
@@ -599,27 +745,45 @@ $("#commerce_subject").change(function() {
   var selectedSubject = $("#commerce_subject option:selected").val();
 
   if (selectedSubject == 'বাংলা ১ম পত্র'){
-    $("#agri, #accounting, #finance").hide();
+    $("#ban_p2, #agri,  #gah, #accounting, #finance, #bab_uddog, #economics").hide();
     $("#ban_p1, .test_number_label").show();
   }
 
+  if (selectedSubject == 'বাংলা ২য় পত্র'){
+    $("#ban_p1,  #agri,  #gah, #accounting, #finance, #bab_uddog, #economics").hide();
+    $("#ban_p2, .test_number_label").show();
+  }
+
   if (selectedSubject == 'কৃষি শিক্ষা'){
-    $("#ban_p1, #accounting, #finance").hide();
+    $("#ban_p1, #ban_p2,  #gah, #accounting, #finance, #bab_uddog, #economics").hide();
     $("#agri, .test_number_label").show();
+  }
+
+  if (selectedSubject == 'গার্হস্থ্য বিজ্ঞান'){
+    $("#ban_p1, #ban_p2, #agri, #accounting, #finance, #bab_uddog, #economics").hide();
+    $("#gah, .test_number_label").show();
   }
 
 
   if (selectedSubject == 'হিসাববিজ্ঞান'){
-    $("#ban_p1, #agri, #finance").hide();
+    $("#ban_p1, #ban_p2, #agri,  #gah, #finance, #bab_uddog, #economics").hide();
     $("#accounting, .test_number_label").show();
   }
 
   if (selectedSubject == 'ফিন্যান্স ও ব্যাংকিং'){
-    $("#ban_p1, #agri, #accounting").hide();
+    $("#ban_p1, #ban_p2, #agri,  #gah, #accounting, #bab_uddog, #economics").hide();
     $("#finance, .test_number_label").show();
   }
 
+  if (selectedSubject == 'ব্যবসায় উদ্যোগ'){
+    $("#ban_p1, #ban_p2, #agri,  #gah, #accounting, #finance,  #economics").hide();
+    $("#bab_uddog, .test_number_label").show();
+  }
 
+  if (selectedSubject == 'অর্থনীতি'){
+    $("#ban_p1, #ban_p2, #agri,  #gah, #accounting, #bab_uddog, #finance").hide();
+    $("#economics, .test_number_label").show();
+  }
 
 });
 
