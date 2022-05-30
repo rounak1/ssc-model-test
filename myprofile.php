@@ -32,7 +32,7 @@ if (!empty($result_quiz_data)) {
 ?>
   <main>
 
-    <section class="profile__menu pb-70 pt-120 grey-bg-2">
+    <section class="profile__menu pt-120 grey-bg-2">
       <div class="container">
          <div class="row">
 
@@ -354,7 +354,80 @@ if (!empty($result_quiz_data)) {
 
          </div>
        </div>
-     </section>
+    </section>
+
+    <section class="event__area pb-30 grey-bg-2">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-xxl-12">
+             <div class="section__title-wrapper-2 text-center mb-30">
+                <h3 class="section__title-2">মডেল টেস্ট রুটিন</h3>
+             </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xxl-12">
+
+            <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
+              <div class="event__left d-sm-flex align-items-center">
+                 <div class="event__date">
+                    <h4>02</h4>
+                    <p>October, 2022</p>
+                 </div>
+                 <div class="event__content">
+                    <div class="event__meta">
+                       <ul>
+                          <li>
+                             <a href="#"><svg width="17" height="17" viewbox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.49992 9.51253C9.72047 9.51253 10.7099 8.52308 10.7099 7.30253C10.7099 6.08198 9.72047 5.09253 8.49992 5.09253C7.27937 5.09253 6.28992 6.08198 6.28992 7.30253C6.28992 8.52308 7.27937 9.51253 8.49992 9.51253Z" stroke="#5F6160" stroke-width="1.5"></path>
+                                <path d="M2.56416 6.01334C3.95958 -0.120822 13.0475 -0.113738 14.4358 6.02043C15.2504 9.61876 13.0121 12.6646 11.05 14.5488C9.62625 15.9229 7.37375 15.9229 5.94291 14.5488C3.98791 12.6646 1.74958 9.61168 2.56416 6.01334Z" stroke="#5F6160" stroke-width="1.5"></path>
+                                </svg>
+                                New York, US</a>
+                          </li>
+                       </ul>
+                    </div>
+                    <h3 class="event__title">
+                       <a href="event-details.html">Global education fall meeting for everyone</a>
+                    </h3>
+
+                    <div class="event__person">
+                       <ul>
+                          <li>
+                             <a href="#">
+                                <img src="assets/img/event/event-person-1.jpg" alt="">
+                                <img src="assets/img/event/event-person-2.jpg" alt="">
+                                <span>David Karry</span>
+                             </a>
+                          </li>
+                       </ul>
+                    </div>
+                 </div>
+              </div>
+              <div class="event__right d-sm-flex align-items-center">
+                 <div class="event__time">
+                    <span>
+                       <svg width="15" height="15" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13.75 7.50024C13.75 10.9502 10.95 13.7502 7.5 13.7502C4.05 13.7502 1.25 10.9502 1.25 7.50024C1.25 4.05024 4.05 1.25024 7.5 1.25024C10.95 1.25024 13.75 4.05024 13.75 7.50024Z" stroke="#258E46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M9.8188 9.48735L7.8813 8.3311C7.5438 8.1311 7.2688 7.64985 7.2688 7.2561V4.6936" stroke="#258E46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                       </svg>
+                       10:30am - 12:30pm
+                    </span>
+                 </div>
+                 <div class="event__more ml-30">
+                    <a href="event-details.html" class="tp-btn-5 tp-btn-7">View Events </a>
+                 </div>
+              </div>
+           </div>
+
+           
+
+          </div>
+        </div>
+
+      </div>
+    </section>
 
   </main>
 
