@@ -6,8 +6,8 @@
       <p class="footer_third_item exam-running"><a href="https://www.prothomalo.com/topic/গণিত-ইশকুল" target="_blank">গণিত ইশকুল</a></p>
       <p class="exam-running"><a href="https://www.prothomalo.com/topic/এইচএসসি-পরীক্ষা" target="_blank">এইচএসসি</a></p>
       <p class="exam-running"><a href="https://www.prothomalo.com/topic/এসএসসি-পরীক্ষা" target="_blank">এসএসসি</a></p>
-      <p class="exam-running"><a href="https://www.prothomalo.com/topic/অষ্টম-শ্রেণি" target="_blank">অষ্টম শ্রেণী</a></p>
-      <p class="exam-running"><a href="https://www.prothomalo.com/topic/পঞ্চম-শ্রেণি" target="_blank">পঞ্চম শ্রেণী</a></p>
+      <p class="exam-running"><a href="https://www.prothomalo.com/topic/অষ্টম-শ্রেণি" target="_blank">অষ্টম শ্রেণি</a></p>
+      <p class="exam-running"><a href="https://www.prothomalo.com/topic/পঞ্চম-শ্রেণি" target="_blank">পঞ্চম শ্রেণি</a></p>
 
       <div class="clear"></div>
 
