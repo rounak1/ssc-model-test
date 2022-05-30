@@ -24,11 +24,13 @@ if (!empty($result_quiz_data)) {
         $result[$row['exam_id']]['id'] = $row['id'];
         $result[$row['exam_id']]['exam_name'] = $model_test_list[$row['exam_id']]['subject'];
         $result[$row['exam_id']]['total_marks'] = $row['total_marks'];
+        $result[$row['exam_id']]['wrong_answers'] = $row['wrong_answers'];
+        $result[$row['exam_id']]['not_given_answers'] = $row['not_given_answers'];
+        $result[$row['exam_id']]['completion_time'] = $row['completion_time'];
 
         $result_single_array[$row['exam_id']] = $model_test_list[$row['exam_id']]['subject'];
     }
 }
-
 ?>
   <main>
 
@@ -368,276 +370,161 @@ if (!empty($result_quiz_data)) {
         </div>
 
         <div class="row">
-          <div class="col-xxl-12">
 
-            <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
-              <div class="event__left d-sm-flex align-items-center">
-                 <div class="event__date">
-                    <h4>02</h4>
-                    <p>October, 2022</p>
-                 </div>
-                 <div class="event__content">
-                    <div class="event__meta">
-                       <ul>
-                          <li>
-                             <a href="#"><svg width="17" height="17" viewbox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.49992 9.51253C9.72047 9.51253 10.7099 8.52308 10.7099 7.30253C10.7099 6.08198 9.72047 5.09253 8.49992 5.09253C7.27937 5.09253 6.28992 6.08198 6.28992 7.30253C6.28992 8.52308 7.27937 9.51253 8.49992 9.51253Z" stroke="#5F6160" stroke-width="1.5"></path>
-                                <path d="M2.56416 6.01334C3.95958 -0.120822 13.0475 -0.113738 14.4358 6.02043C15.2504 9.61876 13.0121 12.6646 11.05 14.5488C9.62625 15.9229 7.37375 15.9229 5.94291 14.5488C3.98791 12.6646 1.74958 9.61168 2.56416 6.01334Z" stroke="#5F6160" stroke-width="1.5"></path>
-                                </svg>
-                                New York, US</a>
-                          </li>
-                       </ul>
-                    </div>
-                    <h3 class="event__title">
-                       <a href="event-details.html">Global education fall meeting for everyone</a>
-                    </h3>
+            <?php 
+            $sort_by_date = array_column($model_test_list, 'date');
+            array_multisort($sort_by_date, SORT_ASC, $model_test_list);
 
-                    <div class="event__person">
-                       <ul>
-                          <li>
-                             <a href="#">
-                                <img src="assets/img/event/event-person-1.jpg" alt="">
-                                <img src="assets/img/event/event-person-2.jpg" alt="">
-                                <span>David Karry</span>
-                             </a>
-                          </li>
-                       </ul>
-                    </div>
-                 </div>
-              </div>
-              <div class="event__right d-sm-flex align-items-center">
-                 <div class="event__time">
-                    <span>
-                       <svg width="15" height="15" viewbox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M13.75 7.50024C13.75 10.9502 10.95 13.7502 7.5 13.7502C4.05 13.7502 1.25 10.9502 1.25 7.50024C1.25 4.05024 4.05 1.25024 7.5 1.25024C10.95 1.25024 13.75 4.05024 13.75 7.50024Z" stroke="#258E46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                          <path d="M9.8188 9.48735L7.8813 8.3311C7.5438 8.1311 7.2688 7.64985 7.2688 7.2561V4.6936" stroke="#258E46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                       </svg>
-                       10:30am - 12:30pm
-                    </span>
-                 </div>
-                 <div class="event__more ml-30">
-                    <a href="event-details.html" class="tp-btn-5 tp-btn-7">View Events </a>
-                 </div>
-              </div>
-           </div>
+              if(!empty($model_test_list)) {
+                foreach($model_test_list as $value) {
+                  $exam_date = explode("-",$value['date']);
+                  $current_date = Date('Y-m-d');
 
-           
-
-          </div>
+                  if($current_date <= $value['date']) 
+                  { 
+            ?>
+                  <div class="col-6">
+                    <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
+                      <div class="event__left d-sm-flex align-items-center">
+                         <div class="event__date">
+                            <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
+                            <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
+                         </div>
+                         <div class="event__content">
+                            <div class="event__meta">
+                               <ul>
+                                  <li>
+                                    <a href="exam.php?id=<?=$value['id']?>">
+                                      <?=$value['subject']?>
+                                    </a>
+                                  </li>
+                               </ul>
+                            </div>
+                            <h3 class="event__title">
+                               <a href="exam.php?id=<?=$value['id']?>">
+                                 <?=$value['test']?>
+                               </a>
+                            </h3>
+                         </div>
+                      </div>
+                      <div class="event__right d-sm-flex align-items-center">
+                         <div class="event__more ml-30">
+                            <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
+                         </div>
+                      </div>
+                   </div>
+                 </div>
+            <?php
+                  }
+                }
+              }
+            ?>
         </div>
 
+      </div>
+    </section>
+
+    <section class="event__area pb-30 pt-30">
+      <div class="container">
+          <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="grey-bg-2 pt-30 pl-30 pr-30 pb-1 ">
+
+                  <div class="course__description-list mb-45">
+                     <h4>নিয়মাবলি</h4>
+                     <ul>
+                        <li> <i class="fa-solid fa-check"></i> প্রতিটি মডেল টেস্টে মোট ৩০টি অথবা ২৫টি MCQ প্রশ্ন থাকবে, প্রতিটি প্রশ্নের পূর্ণমান ১ এবং প্রতিটি প্রশ্নের জন্য সময় থাকবে ১ মিনিট।</li>
+                        <li> <i class="fa-solid fa-check"></i> একই মডেল টেস্ট শুধু একবার দেওয়ার সুযোগ থাকবে। মডেল টেস্ট শুরু করার পর ট্যাব পরিবর্তন করলে কিংবা, ট্যাব বন্ধ করে ফেললে স্বয়ংক্রিয়ভাবে সাবমিট হয়ে যাবে। সে ক্ষেত্রে টেস্টটি পুনরায় দেওয়া কিংবা পুনঃনিরীক্ষণের কোনো সুযোগ নেই।</li>
+                        <li> <i class="fa-solid fa-check"></i> মডেল টেস্ট নিয়ে কোনো জিজ্ঞাসা থাকলে পড়াশোনা - প্রথম আলোর  ফেসবুক পেজের মেসেঞ্জারে যোগাযোগ করো।</li>
+                     </ul>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="grey-bg-2 pt-30 pl-30 pr-30 pb-1 ">
+
+                  <div class="course__description-list mb-45">
+                     <h4>গুরুত্বপূর্ণ কিছু তথ্য</h4>
+                     <ul>
+                        <li> <i class="fa-solid fa-check"></i> মোট ১৪ টি বিষয়ে মডেল টেস্ট রয়েছে এবং প্রতিটি বিষয়ে চারটি করে মডেল টেস্ট রয়েছে।</li>
+                        <li> <i class="fa-solid fa-check"></i> যেসব বিষয়ে মডেল টেস্ট থাকছেঃ বাংলা ১ম পত্র, বাংলা ২য় পত্র, পদার্থবিজ্ঞান, রসায়ন, জীববিজ্ঞান, হিসাববিজ্ঞান, ব্যবসায় উদ্যোগ, ফিন্যান্স ও ব্যাংকিং, বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা, ভূগোল ও পরিবেশ, পৌরনীতি ও নাগরিকতা, অর্থনীতি, কৃষিশিক্ষা ও গার্হস্থ্য বিজ্ঞান। গণিত, উচ্চতর গণিত ও ইংরেজি বিষয়ে কোনো মডেল টেস্ট থাকছে না।</li>
+                        <li> <i class="fa-solid fa-check"></i> তোমরা যেন সময় নিয়ে অনুশীলন করতে পারো সে জন্য ১ জুন থেকে প্রতিদিন ধাপে ধাপে মডেল টেস্টগুলো প্রকাশ করা হবে। সে ক্ষেত্রে প্রতিদিন সাতটি বিষয়ের প্রতিটিতে একটি করে মোট সাতটি মডেল টেস্ট প্রকাশিত হবে। একই মডেল টেস্ট শুধু একবার দেওয়ার সুযোগ থাকবে। পূর্বের মডেল টেস্টের প্রশ্ন ও উত্তরগুলো প্রোফাইলের ফলাফল অংশে দেখা যাবে।</li>
+                     </ul>
+                  </div>
+
+                </div>
+              </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-12">
+              <div class="course__member mb-45 mt-45">
+                <div class="text-center">
+                  <h3 class="section__title-2">আমার ফলাফল</h3>
+                </div>
+
+                <?php
+                  if(!empty($result)) {
+                    foreach($result as $data) {
+                ?>
+
+                      <div class="course__member-item">
+                        <a href="result.php?id=<?=$data['id']?>">
+                          <div class="row align-items-center">
+                            <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-6">
+                               <div class="course__member-thumb d-flex align-items-center">
+                                  <img src="assets/img/thumb2.svg" alt="">
+                                  <div class="course__member-name ml-20">
+                                     <h5><?=$model_test_list[$data['exam_id']]['test']?></h5>
+                                     <span><?=$data['exam_name']?></span>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
+                               <div class="course__member-info pl-45">
+                                  <h5><?=BanglaConverter::en2bn($data['total_marks'] + $data['wrong_answers'] + $data['not_given_answers']);?></h5>
+                                  <span>পূর্ণমান</span>
+                               </div>
+                            </div>
+                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
+                               <div class="course__member-info pl-70">
+                                  <h5><?=BanglaConverter::en2bn($data['total_marks'])?></h5>
+                                  <span>সঠিক</span>
+                               </div>
+                            </div>
+                            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-2 col-sm-2 col-4">
+                               <div class="course__member-info pl-85">
+                                  <h5>
+                                    <?php
+                                      $init = $data['completion_time'];
+                                      $minutes = BanglaConverter::en2bn(floor(($init / 60) % 60));
+                                      $seconds = BanglaConverter::en2bn($init % 60);
+                                      echo "$minutes:$seconds মিনিট";
+                                    ?>
+                                  </h5>
+                                  <span>সময়</span>
+                                  
+                               </div>
+                            </div>
+                         </div>
+                        </a>                         
+                      </div>
+
+                <?php
+                    }
+                  }
+                ?>
+                
+             </div>
+            </div>
+          </div>
       </div>
     </section>
 
   </main>
 
-    <section class="testimony-section">
-      <div class="container">
-
-        <div
-          id="myprofile_section"
-          class="row justify-content-center mb-5 pb-3"
-        >
-
-          <div class="col-md-12">
-            <div class="profile-container myprofile-body-portion">
-              <div class="account-information">
-
-              <?php if (count($result_single_array) > 0) {?>
-  <div class="recent-model-test">
-    <h4>মডেল টেস্টের ফলাফল</h4>
-
-
-
-
-    <div class="test-results-container">
-     <?php
-foreach (array_unique($result_single_array) as $sub_key => $subject) {
-    ?>
-            <h6><?=$subject?></h6>
-            <?php
-foreach ($result as $data) {
-        if ($data['exam_name'] == $subject) {
-            ?>
-              <p>
-                <a href="result.php?id=<?=$data['id']?>">
-                  <?=$model_test_list[$data['exam_id']]['test']?> - স্কোর <?=BanglaConverter::en2bn($data['total_marks'])?>
-                </a>
-              </p>
-            <?php
-}
-    }
-    ?>
-      <?php
-}?>
-
-
-    </div>
-
-
-  </div>
-
-  <?php }
-
-?>
-
-
-
-              </div>
-              <div class="quiz-play-information">
-
-                
-              </div>
-                  <div class="row profile-bottom-content">
-                    <div class="col-md-6">
-                      <div class="rules-container">
-                        <h2>নিয়মাবলি</h2>
-                        <ul>
-                          <li>১. প্রতিটি মডেল টেস্টে মোট ৩০টি অথবা ২৫টি MCQ প্রশ্ন থাকবে, প্রতিটি প্রশ্নের পূর্ণমান ১ এবং প্রতিটি প্রশ্নের জন্য সময় থাকবে ১ মিনিট।</li>
-                          <li>২. একই মডেল টেস্ট শুধু একবার দেওয়ার সুযোগ থাকবে। মডেল টেস্ট শুরু করার পর ট্যাব পরিবর্তন করলে কিংবা, ট্যাব বন্ধ করে ফেললে স্বয়ংক্রিয়ভাবে সাবমিট হয়ে যাবে। সে ক্ষেত্রে টেস্টটি পুনরায় দেওয়া কিংবা পুনঃনিরীক্ষণের কোনো সুযোগ নেই।</li>
-                          <li>৩. মডেল টেস্ট নিয়ে কোনো জিজ্ঞাসা থাকলে পড়াশোনা - প্রথম আলোর  ফেসবুক পেজের মেসেঞ্জারে যোগাযোগ করো।</li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="exam-routine-container">
-                        <div class="exam-routine-header">
-                          <h2>মডেল টেস্ট রুটিন</h2>
-                          <select name="routine_select_list" id="routine_select_list">
-                            <option value="first_day_routine">২৫ মে ২০২২</option>
-                            <option value="second_day_routine">২৬ মে ২০২২</option>
-                            <option value="third_day_routine">২৭ মে ২০২২</option>
-                            <option value="fourth_day_routine">২৮ মে ২০২২</option>
-                            <option value="fifth_day_routine">২৯ মে ২০২২</option>
-                            <option value="sixth_day_routine">৩০ মে ২০২২</option>
-                            <option value="seventh_day_routine">৩১ মে ২০২২</option>
-                            <option value="eighth_day_routine">০১ জুন ২০২২</option>
-                          </select>
-                        </div>
-
-                        <div class="exam-routine-list first_day_routine">
-                          <p><a href="exam.php?id=ssc_ban1_t001">বাংলা ১ম পত্র-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_agr_t001">কৃষি শিক্ষা-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_phy_t001">পদার্থবিজ্ঞান-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_bio_t001">জীববিজ্ঞান -মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_acc_t001">হিসাববিজ্ঞান-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_fin_t001">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_bah_t001">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ১</a></p>
-                        </div>
-                        <div class="exam-routine-list second_day_routine">
-                          <p><a href="exam.php?id=ssc_ban2_t001">বাংলা ২য় পত্র-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_gah_t001">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_che_t001">রসায়ন-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_bau_t001">ব্যবসায় উদ্যোগ -মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_eco_t001">অর্থনীতি-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_geo_t001">ভূগোল ও পরিবেশ-মডেল টেস্ট ১</a></p>
-                          <p><a href="exam.php?id=ssc_pou_t001">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ১</a></p>
-                        </div>
-                        <div class="exam-routine-list third_day_routine">
-                          <p><a href="exam.php?id=ssc_ban1_t002">বাংলা ১ম পত্র-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_agr_t002">কৃষি শিক্ষা-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_phy_t002">পদার্থবিজ্ঞান-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_bio_t002">জীববিজ্ঞান -মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_acc_t002">হিসাববিজ্ঞান-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_fin_t002">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_bah_t002">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ২</a></p>
-                        </div>
-
-                        <div class="exam-routine-list fourth_day_routine">
-                          <p><a href="exam.php?id=ssc_ban2_t002">বাংলা ২য় পত্র-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_gah_t002">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_che_t002">রসায়ন-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_bau_t002">ব্যবসায় উদ্যোগ -মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_eco_t002">অর্থনীতি-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_geo_t002">ভূগোল ও পরিবেশ-মডেল টেস্ট ২</a></p>
-                          <p><a href="exam.php?id=ssc_pou_t002">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ২</a></p>
-                        </div>
-
-                        <div class="exam-routine-list fifth_day_routine">
-                          <p><a href="exam.php?id=ssc_ban1_t003">বাংলা ১ম পত্র-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_agr_t003">কৃষি শিক্ষা-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_phy_t003">পদার্থবিজ্ঞান-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_bio_t003">জীববিজ্ঞান -মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_acc_t003">হিসাববিজ্ঞান-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_fin_t003">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_bah_t003">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ৩</a></p>
-                        </div>
-
-                        <div class="exam-routine-list sixth_day_routine">
-                          <p><a href="exam.php?id=ssc_ban2_t003">বাংলা ২য় পত্র-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_gah_t003">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_che_t003">রসায়ন-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_bau_t003">ব্যবসায় উদ্যোগ -মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_eco_t003">অর্থনীতি-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_geo_t003">ভূগোল ও পরিবেশ-মডেল টেস্ট ৩</a></p>
-                          <p><a href="exam.php?id=ssc_pou_t003">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ৩</a></p>
-                        </div>
-
-                        <div class="exam-routine-list seventh_day_routine">
-                          <p><a href="exam.php?id=ssc_ban1_t004">বাংলা ১ম পত্র-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_agr_t004">কৃষি শিক্ষা-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_phy_t004">পদার্থবিজ্ঞান-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_bio_t004">জীববিজ্ঞান -মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_acc_t004">হিসাববিজ্ঞান-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_fin_t004">ফিন্যান্স ও ব্যাংকিং-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_bah_t004">বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা-মডেল টেস্ট ৪</a></p>
-                        </div>
-
-                        <div class="exam-routine-list eighth_day_routine">
-                          <p><a href="exam.php?id=ssc_ban2_t004">বাংলা ২য় পত্র-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_gah_t004">গার্হস্থ্য বিজ্ঞান-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_che_t004">রসায়ন-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_bau_t004">ব্যবসায় উদ্যোগ -মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_eco_t004">অর্থনীতি-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_geo_t004">ভূগোল ও পরিবেশ-মডেল টেস্ট ৪</a></p>
-                          <p><a href="exam.php?id=ssc_pou_t004">পৌরনীতি ও নাগরিকতা-মডেল টেস্ট ৪</a></p>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-
-
-
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="container-fluid">
-    <div class="container">
-        <div class="row">
-
-
-            <div class="col-md-12">
-                <div class="myprofile_margin_reduce profile-bottom-text">
-                  <h3>পড়াশোনার এসএসসি মডেল টেস্ট ২০২২ সম্পর্কে গুরুত্বপূর্ণ কিছু তথ্য</h3>
-
-            <ul>
-              <li>১। মোট ১৪ টি বিষয়ে মডেল টেস্ট রয়েছে এবং প্রতিটি বিষয়ে চারটি করে মডেল টেস্ট রয়েছে। </li>
-              <li>২। যেসব বিষয়ে মডেল টেস্ট থাকছেঃ বাংলা ১ম পত্র, বাংলা ২য় পত্র, পদার্থবিজ্ঞান, রসায়ন, জীববিজ্ঞান, হিসাববিজ্ঞান, ব্যবসায় উদ্যোগ, ফিন্যান্স ও ব্যাংকিং, বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা, ভূগোল ও পরিবেশ, পৌরনীতি ও নাগরিকতা, অর্থনীতি, কৃষিশিক্ষা ও গার্হস্থ্য বিজ্ঞান। গণিত, উচ্চতর গণিত ও ইংরেজি বিষয়ে কোনো মডেল টেস্ট থাকছে না।</li>
-
-              <li>৩। তোমরা যেন সময় নিয়ে অনুশীলন করতে পারো সে জন্য ১ জুন থেকে প্রতিদিন ধাপে ধাপে মডেল টেস্টগুলো প্রকাশ করা হবে। সে ক্ষেত্রে প্রতিদিন সাতটি বিষয়ের প্রতিটিতে একটি করে মোট সাতটি মডেল টেস্ট প্রকাশিত হবে। একই মডেল টেস্ট শুধু একবার দেওয়ার সুযোগ থাকবে। পূর্বের মডেল টেস্টের প্রশ্ন ও উত্তরগুলো প্রোফাইলের ফলাফল অংশে দেখা যাবে।</li>
-
-            </ul>
-
-
-
-
-
- </p>
-
-  </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <script>
 

@@ -84,7 +84,7 @@ session_start();
                         <div class="header__bottom-left d-flex align-items-center">
                            <div class="logo">
                               <a href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>">
-                                 <img src="./images/logo.svg" alt="logo">
+                                 <img src="assets/img/porasona.svg" alt="logo">
                               </a>
                            </div>
                         </div>
@@ -94,7 +94,7 @@ session_start();
                                                       
                             <div class="logo">
                               <a target="_blank" href="https://www.prothomalo.com/">
-                                 <img src="https://assets.prothomalo.com/prothomalo/assets/palo-bangla-bb996cdb70d2e0ccec8c.svg" alt="logo">
+                                 <img src="assets/img/palo.svg" alt="logo">
                               </a>
                            </div>
                            
