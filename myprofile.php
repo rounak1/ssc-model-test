@@ -5,7 +5,7 @@ if (!isset($_SESSION['logged_session'])) {
 }
 error_reporting(1);
 require 'check-login.php';
-require 'header-home.php';
+require 'header-v2.php';
 require 'BanglaConverter.php';
 
 include_once 'settings1.php';
@@ -30,6 +30,333 @@ if (!empty($result_quiz_data)) {
 }
 
 ?>
+  <main>
+
+    <section class="profile__menu pb-70 pt-120 grey-bg-2">
+      <div class="container">
+         <div class="row">
+
+            <div class="col-xxl-4 col-md-4">
+               <div class="profile__menu-left white-bg mb-50">
+                  <h3 class="profile__menu-title">
+                    <strong> <?php echo $user_data['name']; ?></strong><br/>
+                    <span><?php echo $user_data['school_name']; ?></span><br/>
+                    <span><?php echo $user_data['district']; ?></span>
+                  </h3>
+                  <div class="profile__menu-tab">
+                     <div class="nav nav-tabs flex-column justify-content-start text-start" >
+                        <a class="nav-link" href="editprofile.php"> <i class="fa-regular fa-user"></i> এডিট প্রোফাইল</a>
+                        
+                        <a class="nav-link" href="logout.php"> <i class="fa-regular fa-arrow-right-from-bracket"></i> লগ আউট</a>
+                     </div>
+
+                   </div>
+               </div>
+            </div>
+
+            <div class="col-xxl-8 col-md-8">
+                <div class="profile__menu-right">
+                  <div class="tab-content" id="nav-tabContent">
+                      <div class="tab-pane fade show active" id="nav-account" role="tabpanel" aria-labelledby="nav-account-tab">
+                        <div class="profile__info">
+
+                          <div class="profile__info-wrapper white-bg">
+
+                            <div class="quiz-play-information pt-30 pb-20">
+                              <?php if (isset($_SESSION['success'])) {?>
+                                <div class="col-md-12 message-container">
+                                  <div class="alert alert-success" role="alert">
+                                    <?php echo $_SESSION['success']; ?>
+                                  </div>
+                                </div>
+                              <?php
+                                unset($_SESSION['success']);
+                              }
+                              ?>
+
+                              <?php if (isset($_SESSION['alert'])) {?>
+                                  <div class="col-md-12 message-container">
+                                    <div class="alert alert-warning" role="alert">
+                                      <?php echo $_SESSION['alert']; ?>
+                                    </div>
+                                  </div>
+                              <?php
+                                unset($_SESSION['alert']);
+                              }
+                              ?>
+
+                              <h3 class="postbox__title mb-0">
+                                 এসএসসি মডেল টেস্ট ২০২২
+                              </h3>
+                              <p>মডেল টেস্ট শুরু করতে বিভাগ, বিষয় ও মডেল টেস্টের নাম সিলেক্ট করো</p>
+                              
+                              <form action="exam.php" method="POST" name="subject_selection">
+
+                                <div class="exam-selection-container">
+                      
+                                  <?php
+
+                                    $science_subjects = $exam_list['ssc'][0]['science']['subjects'];
+                                    $arts_subjects = $exam_list['ssc'][1]['arts']['subjects'];
+                                    $commerce_subjects = $exam_list['ssc'][2]['commerce']['subjects'];
+
+                                  ?>
+                                  <div class="form-group row mb-15">
+                                    <h3 class="col-sm-2 col-form-label mt-label">বিভাগ</h3>
+                                    <div class="col-sm-10">
+                                    <select name="group" id="group" class="form-control">
+                                        <option value=""></option>
+                                        <option value="science">বিজ্ঞান</option>
+                                        <option value="arts">মানবিক</option>
+                                        <option value="commerce">ব্যবসায়</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group row mb-15">
+                                    <h3 class="col-sm-2 col-form-label mt-label subject_label">বিষয়</h3>
+
+                                    <div class="col-sm-10">
+
+                                      <select name="science_subject" class="subject_box form-control" id="science_subject">
+                                        <option value=""></option>
+
+                                         <?php
+                                          foreach ($science_subjects as $science_subject) {?>
+                                            <option value="<?php echo ($science_subject['name']) ?>"> <?php echo ($science_subject['name']) ?> </option>
+
+                                        <?php }?>
+
+                                      </select>
+
+                                      <!-- Start Arts Subject Loading  -->
+                                      <select name="arts_subject" class="subject_box form-control" id="arts_subject">
+                                        <option value=""></option>
+                                        <?php
+
+                                          foreach ($arts_subjects as $arts_subject) {?>
+                                            <option value="<?php echo ($arts_subject['name']) ?>"> <?php echo ($arts_subject['name']) ?> </option>
+
+                                        <?php }?>
+                                      </select>
+
+                                      <!-- End Arts Subject Loading  -->
+
+                                      <!-- Start Commerce Subject Loading  -->
+
+                                      <select name="commerce_subject" class="subject_box form-control" id="commerce_subject">
+                                        <option value=""></option>
+                                        <?php
+                                          foreach ($commerce_subjects as $commerce_subject) {
+                                        ?>
+                                          <option value="<?php echo ($commerce_subject['name']) ?>"> <?php echo ($commerce_subject['name']) ?> </option>
+
+                                        <?php }?>
+                                      </select>
+                                    </div>
+
+                                  </div>
+
+
+                                  <div class="form-group row test_container mb-15">
+                                    <h3 class="col-sm-2 col-form-label mt-label test_number_label">মডেল টেস্ট</h3>
+                                    <div class="col-sm-10">
+
+                                      <select name="" class="model_test_no form-control" id="ban_p1">
+                                        <option value=""></option>
+
+                                        <?php
+                                          $bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
+
+                                          for ($i = 0; $i < count($bangla_p1); $i++) {?>
+                                            <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
+                                          <?php }
+
+                                        ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="ban_p2">
+                                        <option value=""></option>
+
+                                        <?php
+                                          $bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
+
+                                          for ($i = 0; $i < count($bangla_p2); $i++) {?>
+                                            <option value="<?php echo $bangla_p2[$i]['id']; ?>"><?php echo $bangla_p2[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+
+                                      <select name="" class="model_test_no form-control" id="agri">
+                                        <option value=""></option>
+                                        <?php
+                                          $agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
+
+                                          for ($i = 0; $i < count($agri); $i++) {?>
+                                            <option value="<?php echo $agri[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="gah">
+                                        <option value=""></option>
+                                        <?php
+                                          $gah = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
+
+                                          for ($i = 0; $i < count($gah); $i++) {?>
+                                            <option value="<?php echo $gah[$i]['id']; ?>"><?php echo $gah[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="physics">
+                                        <option value=""></option>
+                                        <?php
+                                          $phy = $exam_list['ssc'][0]['science']['subjects'][4]['test'];
+
+                                          for ($i = 0; $i < count($phy); $i++) {?>
+                                            <option value="<?php echo $phy[$i]['id']; ?>"><?php echo $phy[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="biology">
+                                        <option value=""></option>
+                                        <?php
+                                          $biology = $exam_list['ssc'][0]['science']['subjects'][5]['test'];
+
+                                          for ($i = 0; $i < count($biology); $i++) {?>
+                                            <option value="<?php echo $biology[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="chemistry">
+                                        <option value=""></option>
+                                        <?php
+                                          $chem = $exam_list['ssc'][0]['science']['subjects'][6]['test'];
+
+                                          for ($i = 0; $i < count($chem); $i++) {?>
+                                            <option value="<?php echo $chem[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="bangladesh_history">
+                                        <option value=""></option>
+
+                                        <?php
+                                          $bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][4]['test'];
+
+                                          for ($i = 0; $i < count($bangladesh_history); $i++) {?>
+                                            <option value="<?php echo $bangladesh_history[$i]['id']; ?>"><?php echo $bangladesh_history[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="geography">
+                                        <option value=""></option>
+
+                                        <?php
+                                          $geography = $exam_list['ssc'][1]['arts']['subjects'][5]['test'];
+
+                                          for ($i = 0; $i < count($geography); $i++) {?>
+                                            <option value="<?php echo $geography[$i]['id']; ?>"><?php echo $geography[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+
+                                      <select name="" class="model_test_no form-control" id="pouroniti">
+                                        <option value=""></option>
+
+                                        <?php
+                                          $pouroniti = $exam_list['ssc'][1]['arts']['subjects'][6]['test'];
+
+                                          for ($i = 0; $i < count($pouroniti); $i++) {?>
+                                            <option value="<?php echo $pouroniti[$i]['id']; ?>"><?php echo $pouroniti[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="accounting">
+                                        <option value=""></option>
+
+                                        <?php
+                                          $accounting = $exam_list['ssc'][2]['commerce']['subjects'][4]['test'];
+
+                                          for ($i = 0; $i < count($accounting); $i++) {?>
+                                            <option value="<?php echo $accounting[$i]['id']; ?>"><?php echo $accounting[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="finance">
+                                        <option value=""></option>
+
+                                        <?php
+                                          $finance = $exam_list['ssc'][2]['commerce']['subjects'][5]['test'];
+
+                                          for ($i = 0; $i < count($finance); $i++) {?>
+                                            <option value="<?php echo $finance[$i]['id']; ?>"><?php echo $finance[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="bab_uddog">
+                                        <option value=""></option>
+
+                                        <?php
+                                          $bab_uddog = $exam_list['ssc'][2]['commerce']['subjects'][6]['test'];
+
+                                          for ($i = 0; $i < count($bab_uddog); $i++) {?>
+                                            <option value="<?php echo $bab_uddog[$i]['id']; ?>"><?php echo $bab_uddog[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+                                      <select name="" class="model_test_no form-control" id="economics">
+                                        <option value=""></option>
+
+                                        <?php
+                                          $economics = $exam_list['ssc'][2]['commerce']['subjects'][7]['test'];
+
+                                          for ($i = 0; $i < count($economics); $i++) {?>
+                                            <option value="<?php echo $economics[$i]['id']; ?>"><?php echo $economics[$i]['test_name']; ?></option>
+                                          <?php } ?>
+
+                                      </select>
+
+
+                                    </div>
+                                    <input type="hidden" name="test_number" class="put_model_test_number">
+                                  </div>
+
+
+                                  <div class="start-exam-from-dashboard mt-15">
+                                     <input type="submit" value="মডেল টেস্ট শুরু করো" class="tp-btn" id="start_exam_container" name="subject_selection" />
+                                  </div>
+
+                                </div>
+                              </form>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+
+         </div>
+       </div>
+     </section>
+
+  </main>
 
     <section class="testimony-section">
       <div class="container">
@@ -38,20 +365,10 @@ if (!empty($result_quiz_data)) {
           id="myprofile_section"
           class="row justify-content-center mb-5 pb-3"
         >
-          <div class="col-md-12 text-center heading heading-section">
-            <h2 class="mb-2">ড্যাশবোর্ড</h2>
-          </div>
 
           <div class="col-md-12">
             <div class="profile-container myprofile-body-portion">
               <div class="account-information">
-
-              <div class="students-personal-info">
-                <p class="profile-info"> <strong> <?php echo $user_data['name']; ?></strong></p>
-                <p class="profile-info"><?php echo $user_data['school_name']; ?></p>
-                <p class="profile-info"> <?php echo $user_data['district']; ?></p>
-                <a href="editprofile.php" class="profile-edit-btn">এডিট প্রোফাইল</a>
-              </div>
 
               <?php if (count($result_single_array) > 0) {?>
   <div class="recent-model-test">
@@ -91,340 +408,12 @@ foreach ($result as $data) {
 
 ?>
 
-  <div class="logout-btn-container">
-            <a href="logout.php" class="profile-logout-btn">লগ আউট</a>
-            </div>
-
-            <div class="footer-contact-container">
-      <p class="contact">আমাদের সাথে যোগাযোগ <br>
-      <span class="footer-icon profile-contact-icon"><a href="https://www.facebook.com/prothomalo.porasona/" target="_blank"> <i class="fa-brands fa-facebook-square"></i></a></span>
-      <span class="footer-icon profile-contact-icon"><a href="mailto:porasona@prothomalo.com" target="_blank"><i class="fa-solid fa-envelope"></i></a></span>
-      </p>
-      </div>
 
 
               </div>
               <div class="quiz-play-information">
 
-                <form action="exam.php" method="POST" name="subject_selection">
-
-                  <div class="exam-selection-container">
-                    <?php if (isset($_SESSION['success'])) {?>
-                        <div class="col-md-12 message-container">
-                          <div class="alert alert-success" role="alert">
-                            <?php echo $_SESSION['success']; ?>
-                          </div>
-                        </div>
-                    <?php
-unset($_SESSION['success']);
-}
-?>
-
-                    <?php if (isset($_SESSION['alert'])) {?>
-                        <div class="col-md-12 message-container">
-                          <div class="alert alert-warning" role="alert">
-                            <?php echo $_SESSION['alert']; ?>
-                          </div>
-                        </div>
-                    <?php
-unset($_SESSION['alert']);
-}
-?>
-
-                    <h2>এসএসসি মডেল টেস্ট ২০২২</h2>
-                    <h3>মডেল টেস্ট শুরু করতে বিভাগ, বিষয় ও মডেল টেস্টের নাম সিলেক্ট করো</h3>
-
-
-                    <?php
-
-$science_subjects = $exam_list['ssc'][0]['science']['subjects'];
-$arts_subjects = $exam_list['ssc'][1]['arts']['subjects'];
-$commerce_subjects = $exam_list['ssc'][2]['commerce']['subjects'];
-
-?>
-
-
-
-                      <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label myprofile_label">বিভাগ</label>
-                        <div class="col-sm-9">
-                        <select name="group" id="group" class="form-control">
-                            <option value=""></option>
-                            <option value="science">বিজ্ঞান</option>
-                            <option value="arts">মানবিক</option>
-                            <option value="commerce">ব্যবসায়</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label myprofile_label subject_label">বিষয়</label>
-
-                        <div class="col-sm-9">
-
-                          <select name="science_subject" class="subject_box form-control" id="science_subject">
-                            <option value=""></option>
-
-
-                             <?php
-
-foreach ($science_subjects as $science_subject) {?>
-                                <option value="<?php echo ($science_subject['name']) ?>"> <?php echo ($science_subject['name']) ?> </option>
-
-                            <?php }?>
-
-                          </select>
-
-                          <!-- Start Arts Subject Loading  -->
-                          <select name="arts_subject" class="subject_box form-control" id="arts_subject">
-                            <option value=""></option>
-                            <?php
-
-foreach ($arts_subjects as $arts_subject) {?>
-                                <option value="<?php echo ($arts_subject['name']) ?>"> <?php echo ($arts_subject['name']) ?> </option>
-
-                            <?php }?>
-                          </select>
-
-                          <!-- End Arts Subject Loading  -->
-
-                          <!-- Start Commerce Subject Loading  -->
-
-                          <select name="commerce_subject" class="subject_box form-control" id="commerce_subject">
-                            <option value=""></option>
-                            <?php
-foreach ($commerce_subjects as $commerce_subject) {
-    ?>
-                              <option value="<?php echo ($commerce_subject['name']) ?>"> <?php echo ($commerce_subject['name']) ?> </option>
-
-                            <?php }?>
-                          </select>
-                        </div>
-
-                      </div>
-
-                      <!-- End Commerce Subject Loading  -->
-
-
-                      <div class="form-group row test_container">
-                        <label for="staticEmail" class="col-sm-2 col-form-label myprofile_label test_number_label">মডেল টেস্ট</label>
-                        <div class="col-sm-9">
-
-
-                          <select name="" class="model_test_no form-control" id="ban_p1">
-                            <option value=""></option>
-
-                            <?php
-$bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
-
-for ($i = 0; $i < count($bangla_p1); $i++) {?>
-                                <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="ban_p2">
-                            <option value=""></option>
-
-                            <?php
-$bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
-
-for ($i = 0; $i < count($bangla_p2); $i++) {?>
-                                <option value="<?php echo $bangla_p2[$i]['id']; ?>"><?php echo $bangla_p2[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-
-
-                          <select name="" class="model_test_no form-control" id="agri">
-                            <option value=""></option>
-                            <?php
-$agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
-
-for ($i = 0; $i < count($agri); $i++) {?>
-                                <option value="<?php echo $agri[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="gah">
-                            <option value=""></option>
-                            <?php
-$gah = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
-
-for ($i = 0; $i < count($gah); $i++) {?>
-                                <option value="<?php echo $gah[$i]['id']; ?>"><?php echo $gah[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="physics">
-                            <option value=""></option>
-                            <?php
-$phy = $exam_list['ssc'][0]['science']['subjects'][4]['test'];
-
-for ($i = 0; $i < count($phy); $i++) {?>
-                                <option value="<?php echo $phy[$i]['id']; ?>"><?php echo $phy[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="biology">
-                            <option value=""></option>
-                            <?php
-$biology = $exam_list['ssc'][0]['science']['subjects'][5]['test'];
-
-for ($i = 0; $i < count($biology); $i++) {?>
-                                <option value="<?php echo $biology[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="chemistry">
-                            <option value=""></option>
-                            <?php
-$chem = $exam_list['ssc'][0]['science']['subjects'][6]['test'];
-
-for ($i = 0; $i < count($chem); $i++) {?>
-                                <option value="<?php echo $chem[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="bangladesh_history">
-                            <option value=""></option>
-
-                            <?php
-$bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][4]['test'];
-
-for ($i = 0; $i < count($bangladesh_history); $i++) {?>
-                                <option value="<?php echo $bangladesh_history[$i]['id']; ?>"><?php echo $bangladesh_history[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="geography">
-                            <option value=""></option>
-
-                            <?php
-$geography = $exam_list['ssc'][1]['arts']['subjects'][5]['test'];
-
-for ($i = 0; $i < count($geography); $i++) {?>
-                                <option value="<?php echo $geography[$i]['id']; ?>"><?php echo $geography[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-
-                          <select name="" class="model_test_no form-control" id="pouroniti">
-                            <option value=""></option>
-
-                            <?php
-$pouroniti = $exam_list['ssc'][1]['arts']['subjects'][6]['test'];
-
-for ($i = 0; $i < count($pouroniti); $i++) {?>
-                                <option value="<?php echo $pouroniti[$i]['id']; ?>"><?php echo $pouroniti[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-
-
-
-                          <select name="" class="model_test_no form-control" id="accounting">
-                            <option value=""></option>
-
-                            <?php
-$accounting = $exam_list['ssc'][2]['commerce']['subjects'][4]['test'];
-
-for ($i = 0; $i < count($accounting); $i++) {?>
-                                <option value="<?php echo $accounting[$i]['id']; ?>"><?php echo $accounting[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="finance">
-                            <option value=""></option>
-
-                            <?php
-$finance = $exam_list['ssc'][2]['commerce']['subjects'][5]['test'];
-
-for ($i = 0; $i < count($finance); $i++) {?>
-                                <option value="<?php echo $finance[$i]['id']; ?>"><?php echo $finance[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="bab_uddog">
-                            <option value=""></option>
-
-                            <?php
-$bab_uddog = $exam_list['ssc'][2]['commerce']['subjects'][6]['test'];
-
-for ($i = 0; $i < count($bab_uddog); $i++) {?>
-                                <option value="<?php echo $bab_uddog[$i]['id']; ?>"><?php echo $bab_uddog[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-                          <select name="" class="model_test_no form-control" id="economics">
-                            <option value=""></option>
-
-                            <?php
-$economics = $exam_list['ssc'][2]['commerce']['subjects'][7]['test'];
-
-for ($i = 0; $i < count($economics); $i++) {?>
-                                <option value="<?php echo $economics[$i]['id']; ?>"><?php echo $economics[$i]['test_name']; ?></option>
-                              <?php }
-
-?>
-
-                          </select>
-
-
-                        </div>
-                        <input type="hidden" name="test_number" class="put_model_test_number">
-                      </div>
-
-
-                      <div class="start-exam-from-dashboard">
-                        <div
-                          class="btn px-4 py-3"> <input type="submit" value="মডেল টেস্ট শুরু করো"  id="start_exam_container" name="subject_selection" />
-
-                        </div>
-
-                      </div>
-
-
-                  </form>
+                
               </div>
                   <div class="row profile-bottom-content">
                     <div class="col-md-6">
@@ -847,4 +836,4 @@ if(!!window.performance && window.performance.navigation.type === 2)
 
 });
 </script>
-<?php require 'footer-home.php';?>
+<?php require 'footer-v2.php';?>

@@ -1,8 +1,8 @@
 <?php
 session_start();
-error_reporting(1);
+error_reporting(0);
 require 'connection.php';
-require 'header-home.php';
+require 'header-v2.php';
 $email = $pass = "";
 
 $msg = [];
@@ -32,488 +32,99 @@ if (isset($_POST['login'])) {
 
         header('Location:myprofile.php');
 
-        // echo "<script type='text/javascript'>window.top.location='https://service.prothomalo.com/mpaward/awards.php';</script>";exit;
+        echo "<script type='text/javascript'>window.top.location='myprofile.php';</script>";exit;
 
     } else {
 
         $_SESSION['alert'] = "তোমার ইমেইল অথবা পাসওয়ার্ড সঠিক নয়";
+
     }
 
 }
 
 ?>
 
-    <section class="ftco-login ftco-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
 
-        <?php
-if (isset($_SESSION['success'])) {?>
-      <div class="col-md-12 message-container">
-        <div class="alert alert-success" role="alert">
-  <?php echo $_SESSION['success']; ?>
-</div>
-        </div>
-<?php unset($_SESSION['success']);}
+    <main>
 
-if (isset($_SESSION['alert'])) {?>
-  <div class="col-md-12 message-container">
-        <div class="alert alert-warning" role="alert">
-
-    <?php
-echo $_SESSION['alert'];
-
-    unset($_SESSION['alert']); ?>
-</div>
-        </div>
-<?php }
-?>
-          <div class="col-md-8 col-lg-5">
-            <div class="login-container">
-              <div class="col-md-12 text-center heading-section">
-                <h2 class="mb-2">লগইন</h2>
-              </div>
-
-              <div class="col-md-12">
-                <div class="form-container">
-                  <form id="login_form_submit" name="login" action="" method="POST">
-                    <div class="input-container">
-                      <input
-                        type="email"
-                        name="email"
-                        value=""
-                        id="email"
-                        placeholder="ইমেইল"
-                        required="required"
-                      />
-                    </div>
-                    <div class="input-container">
-                      <input
-                        type="password"
-                        name="pass"
-                        value=""
-                        id="password"
-                        placeholder="পাসওয়ার্ড"
-                        required="required"
-                      />
-                    </div>
-                    <div class="forget-password">
-                      <a href="forget_password.php">পাসওয়ার্ড ভুলে গিয়েছো?</a>
-                    </div>
-                    <div class="input-container submit-container">
-                      <button id="login-button" name="login">
-                        <span class="content">লগইন</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          style="margin: auto, background: none"
-                          width="34"
-                          height="34"
-                          display="block"
-                          preserveAspectRatio="xMidYMid"
-                          viewBox="0 0 100 100"
-                          class="loader"
-                        >
-                          <g transform="translate(84 50)">
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              transform="scale(1.90075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.9285714285714286s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.9285714285714286s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(80.633 64.752) rotate(25.714)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.929"
-                              transform="scale(1.97075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.8571428571428571s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.8571428571428571s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(71.199 76.582) rotate(51.429)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.857"
-                              transform="scale(1.06075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.7857142857142857s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.7857142857142857s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(57.566 83.148) rotate(77.143)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.786"
-                              transform="scale(1.13075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.7142857142857143s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.7142857142857143s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(42.434 83.148) rotate(102.857)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.714"
-                              transform="scale(1.20075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.6428571428571429s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.6428571428571429s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(28.801 76.582) rotate(128.571)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.643"
-                              transform="scale(1.27075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.5714285714285714s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.5714285714285714s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(19.367 64.752) rotate(154.286)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.571"
-                              transform="scale(1.34075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.5s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.5s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g transform="translate(16 50) rotate(180)">
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.5"
-                              transform="scale(1.41075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.42857142857142855s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.42857142857142855s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(19.367 35.248) rotate(205.714)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.429"
-                              transform="scale(1.48075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.35714285714285715s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.35714285714285715s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(28.801 23.418) rotate(231.429)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.357"
-                              transform="scale(1.55075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.2857142857142857s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.2857142857142857s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(42.434 16.852) rotate(257.143)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.286"
-                              transform="scale(1.62075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.21428571428571427s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.21428571428571427s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(57.566 16.852) rotate(282.857)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.214"
-                              transform="scale(1.69075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.14285714285714285s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.14285714285714285s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(71.199 23.418) rotate(308.571)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.143"
-                              transform="scale(1.76075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="-0.07142857142857142s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="-0.07142857142857142s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                          <g
-                            transform="translate(80.633 35.248) rotate(334.286)"
-                          >
-                            <circle
-                              r="3"
-                              fill="#635f5f"
-                              fillOpacity="0.071"
-                              transform="scale(1.83075)"
-                            >
-                              <animateTransform
-                                attributeName="transform"
-                                begin="0s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                type="scale"
-                                values="1.98 1.98;1 1"
-                              ></animateTransform>
-                              <animate
-                                attributeName="fill-opacity"
-                                begin="0s"
-                                dur="1s"
-                                keyTimes="0;1"
-                                repeatCount="indefinite"
-                                values="1;0"
-                              ></animate>
-                            </circle>
-                          </g>
-                        </svg>
-                      </button>
-                    </div>
-                  </form>
-                </div>
-
-                <div class="or">অথবা</div>
-                <div class="login-register-text">
-                  নিবন্ধন করতে <a href="register.php">ক্লিক করো</a>
-                </div>
-              </div>
+         <!-- sign up area start -->
+         <section class="signup__area p-relative z-index-1 pt-100 pb-145">
+            <div class="sign__shape">
+               <img class="man-1" src="assets/img/icon/sign/man-1.png" alt="">
+               <img class="man-2" src="assets/img/icon/sign/man-2.png" alt="">
+               <img class="circle" src="assets/img/icon/sign/circle.png" alt="">
+               <img class="zigzag" src="assets/img/icon/sign/zigzag.png" alt="">
+               <img class="dot" src="assets/img/icon/sign/dot.png" alt="">
+               <img class="bg" src="assets/img/icon/sign/sign-up.png" alt="">
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <?php require 'footer-home.php';?>
+            <div class="container">
+               <div class="row">
+                  <div class="col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2">
+                     <div class="section__title-wrapper text-center mb-55">
+                        <h2 class="section__title">লগইন</h2>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                     <div class="sign__wrapper white-bg">
+                        <?php
+                            if (isset($_SESSION['success'])) {?>
+                                  <div class="col-md-12 message-container">
+                                    <div class="alert alert-success" role="alert">
+                              <?php echo $_SESSION['success']; ?>
+                            </div>
+                                    </div>
+                            <?php unset($_SESSION['success']);}
+
+                            if (isset($_SESSION['alert'])) {?>
+                              <div class="col-md-12 message-container">
+                                    <div class="alert alert-warning" role="alert">
+
+                                <?php
+                            echo $_SESSION['alert'];
+
+                                unset($_SESSION['alert']); ?>
+                            </div>
+                                    </div>
+                            <?php }
+                            ?>
+                        <div class="sign__form">
+                           <form id="login_form_submit" name="login" action="" method="POST">
+                              <div class="sign__input-wrapper mb-25">
+                                 <h5>ইমেইল</h5>
+                                 <div class="sign__input">
+                                    <input type="email" name="email" placeholder="ইমেইল" required>
+                                    <i class="fal fa-envelope"></i>
+                                 </div>
+                              </div>
+                              <div class="sign__input-wrapper mb-10">
+                                 <h5>পাসওয়ার্ড</h5>
+                                 <div class="sign__input">
+                                    <input type="password" name="pass" placeholder="পাসওয়ার্ড" required>
+                                    <i class="fal fa-lock"></i>
+                                 </div>
+                              </div>
+                              <div class="sign__action d-sm-flex justify-content-between mb-30">
+                                 <div class="sign__forgot">
+                                    <a href="forget_password.php">পাসওয়ার্ড ভুলে গিয়েছো?</a>
+                                 </div>
+                              </div>
+                              <button name="login" class="tp-btn  w-100"> <span></span> লগইন</button>
+                              <div class="sign__new text-center mt-20">
+                                 <p>নিবন্ধন করতে <a href="register.php">ক্লিক করো</a></p>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- sign up area end -->
+
+
+      </main>
+
+
+<?php require 'footer-v2.php';?>

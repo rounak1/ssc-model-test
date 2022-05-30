@@ -2,7 +2,7 @@
 session_start();
 error_reporting(1);
 require 'connection.php';
-require 'header-home.php';
+require 'header-v2.php';
 require 'EmailService.php';
 
 $email = "";
@@ -57,56 +57,65 @@ if (isset($_POST['forget_password'])) {
 
 }
 ?>
-	<!--page title section-->
 
-	<section class="ftco-login ftco-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-8 col-lg-5">
-            <div class="login-container">
-              <div class="col-md-12 text-center heading-section">
-                <h2 class="mb-2">পাসওয়ার্ড ভুলে গিয়েছ?</h2>
-              </div>
+    <main>
 
-              <div class="col-md-12">
-                <div class="form-container">
-				<?php
-if (count($msg) > 0) {?>
-					<div class="alert alert-warning" role="alert">
-						<?php
-foreach ($msg as $message) {
-    echo $message . "<br>";
-}
-    ?>
-
-					</div>
-					<?php }?>
-
-					<form action= "" method= "post">
-			<div class="form-group">
-				<label for="email">পাসওয়ার্ড পরিবর্তন করতে তোমার ই-মেইল অ্যাড্রেসটি দাও</label>
-				<input type="email" class="form-control" placeholder="Type email Address" id="email" name="email" required>
-			</div>
-
-			<button type="submit" class="btn btn-primary btn-special" name= "forget_password">পাঠাও</button>
-
-            <div class="sign-up">
-				অ্যাকাউন্ট নেই? <a href="<?php $base_url?>register.php">নিবন্ধন করো</a>
-				</div>
-			</form>
-                </div>
-
-
-
-              </div>
+         <!-- sign up area start -->
+         <section class="signup__area p-relative z-index-1 pt-100 pb-145">
+            <div class="sign__shape">
+               <img class="man-1" src="assets/img/icon/sign/man-1.png" alt="">
+               <img class="man-2" src="assets/img/icon/sign/man-2.png" alt="">
+               <img class="circle" src="assets/img/icon/sign/circle.png" alt="">
+               <img class="zigzag" src="assets/img/icon/sign/zigzag.png" alt="">
+               <img class="dot" src="assets/img/icon/sign/dot.png" alt="">
+               <img class="bg" src="assets/img/icon/sign/sign-up.png" alt="">
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            <div class="container">
+               <div class="row">
+                  <div class="col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2">
+                     <div class="section__title-wrapper text-center mb-55">
+                        <h2 class="section__title">পাসওয়ার্ড ভুলে গিয়েছ?</h2>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                     <div class="sign__wrapper white-bg">
+                        <?php
+                        if (count($msg) > 0) {?>
+                            <div class="alert alert-warning" role="alert">
+                                <?php
+                                    foreach ($msg as $message) {
+                                        echo $message . "<br>";
+                                    }
+                                ?>
+                            </div>
+                        <?php }?>
+                        <div class="sign__form">
+                           <form action= "" method= "post">
+                              <div class="sign__input-wrapper mb-25">
+                                 <h5>পাসওয়ার্ড পরিবর্তন করতে তোমার ই-মেইল অ্যাড্রেসটি দাও</h5>
+                                 <div class="sign__input">
+                                    <input type="email" name="email" placeholder="ইমেইল" required>
+                                    <i class="fal fa-envelope"></i>
+                                 </div>
+                              </div>
+                              <button name="login" class="tp-btn  w-100"> <span></span> পাঠাও</button>
+                              <div class="sign__new text-center mt-20">
+                                 <p>অ্যাকাউন্ট নেই? <a href="<?php $base_url?>register.php">নিবন্ধন করো</a></p>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- sign up area end -->
 
+
+      </main>
 
 <?php
-require 'footer-home.php';
+    require 'footer-v2.php';
 ?>
-
