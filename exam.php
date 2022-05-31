@@ -33,66 +33,63 @@ if (!isset($exam_id)) {
           <div class="course__tab-content mb-0">
             <div class="course__curriculum">
               <div class="accordion-item">
-                
+
                 <?php
-                // check already attend
-                $query_temp = "SELECT `id` FROM `temp_quiz_history` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
+// check already attend
+$query_temp = "SELECT `id` FROM `temp_quiz_history` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
 
-                $result_temp = mysqli_query($conn, $query_temp);
-                $r_temp_data = mysqli_fetch_assoc($result_temp);
+$result_temp = mysqli_query($conn, $query_temp);
+$r_temp_data = mysqli_fetch_assoc($result_temp);
 
-                if (!empty($r_temp_data)) {
-                  // $query_q_h = "INSERT INTO `quiz_histories`(`user_id`, `exam_id`) VALUES ('$user_id','$exam_id')";
+if (!empty($r_temp_data)) {
+    // $query_q_h = "INSERT INTO `quiz_histories`(`user_id`, `exam_id`) VALUES ('$user_id','$exam_id')";
 
-                  // mysqli_query($conn, $query_q_h);
-                  // echo "<script> alert('তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ')</script>";
-                  $_SESSION['alert'] = "তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ";
-                  header('Location: myprofile.php');
-                }
+    // mysqli_query($conn, $query_q_h);
+    // echo "<script> alert('তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ')</script>";
+    $_SESSION['alert'] = "তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ";
+    header('Location: myprofile.php');
+}
 
-                $query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
+$query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
 
-                $result2 = mysqli_query($conn, $query2);
-                $exam_data2 = mysqli_fetch_assoc($result2);
+$result2 = mysqli_query($conn, $query2);
+$exam_data2 = mysqli_fetch_assoc($result2);
 
-                if (empty($exam_data2)) 
-                {
+if (empty($exam_data2)) {
 
-                  // insert temp data
-                  $query_temp_insert = "INSERT INTO `temp_quiz_history`(`user_id`, `exam_id`) VALUES ('$user_id', '$exam_id')";
+    // insert temp data
+    $query_temp_insert = "INSERT INTO `temp_quiz_history`(`user_id`, `exam_id`) VALUES ('$user_id', '$exam_id')";
 
-                  $result_temp_insert = mysqli_query($conn, $query_temp_insert);
+    $result_temp_insert = mysqli_query($conn, $query_temp_insert);
 
-                  echo mysqli_error($conn);
+    echo mysqli_error($conn);
 
-                  $current_date = date('Y-m-d');
+    $current_date = date('Y-m-d');
 
-                  $query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id' AND `exam_date` <= '$current_date'";
+    $query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id' AND `exam_date` <= '$current_date'";
 
-                  $result = mysqli_query($conn, $query);
-                  if (mysqli_num_rows($result) > 0) 
-                  {
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) > 0) {
 
-    ?>      
+        ?>
                   <h2>
                    <button class="accordion-button">
-                     <?=!empty($model_test_list[$exam_id]['test'])?$model_test_list[$exam_id]['test']:""?> (<?=$model_test_list[$exam_id]['subject']?>)
+                     <?=!empty($model_test_list[$exam_id]['test']) ? $model_test_list[$exam_id]['test'] : ""?> (<?=$model_test_list[$exam_id]['subject']?>)
                    </button>
-                  </h2> 
+                  </h2>
 
                    <div class="sticky-class">
                       <div class="time-left">সময় বাকি</div>
                       <div id="countdown"></div>
                     </div>
                     <form name="exam_submit" method="POST" action="quiz-submit.php" id="submit_form">
-                      <?php 
-                        $i = 1;
-                        foreach ($result as $row) 
-                        {
-                      ?>
+                      <?php
+$i = 1;
+        foreach ($result as $row) {
+            ?>
                             <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
                               <div class="course__curriculum-info">
-                                <h3> 
+                                <h3>
                                   <input type="hidden" name="quiz_date" value="<?php echo $row['exam_date'] ?>">
                                   <input type="hidden" name="exam_id" value="<?php echo $exam_id ?>">
                                   <input type="hidden" name="examAttendentTime" id="examAttendentTimeUpdate" value="<?=time()?>">
@@ -126,33 +123,33 @@ if (!isset($exam_id)) {
                                   <label for="option_<?php echo $row['id'] ?>_2"><?php echo $row['option2'] ?></label>
                                   <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option3" id="option_<?php echo $row['id'] ?>_3"> <label for="option_<?php echo $row['id'] ?>_3"><?php echo $row['option3'] ?></label>
                                   <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option4" id="option_<?php echo $row['id'] ?>_4"> <label for="option_<?php echo $row['id'] ?>_4"><?php echo $row['option4'] ?></label>
-                                </div>  
+                                </div>
 
                               </div>
                             </div>
                       <?php
-                        }
-                      ?> 
+}
+        ?>
                       <div style="text-align: right;">
                         <input type="submit" name="exam_submit" value="সাবমিট" class="exam_submit_btn tp-btn mt-20 mb-20 ml-20 mr-20">
                       </div>
-                    </form> 
+                    </form>
                     <script>
                       $(".exam-running").click(function(){
-                        alert("মডেল টেস্ট কোলাকালীন সময়ে অন্য পেজে যাওয়া যাবে না");
+                        alert("মডেল টেস্ট চলাকালীন সময়ে অন্য পেজে যাওয়া যাবে না");
                         return false;
                       });
-                    </script>                  
-                <?php } else { ?> 
+                    </script>
+                <?php } else {?>
 
-                    <div class='alert alert-primary text-center'>দুঃখিত! এই মডেল টেস্টটি পাওয়া যায়নি অথবা এখনো প্রকাশিত হয়নি। <br/>যথাযথ মডেল টেস্ট সিলেক্ট করতে ড্যাসবোর্ড থেকে রুটিন দেখে নাও।</div>
+                    <div class='alert alert-primary text-center'>দুঃখিত! এই মডেল টেস্টটি পাওয়া যায়নি অথবা এখনো প্রকাশিত হয়নি। <br/>যথাযথ মডেল টেস্ট সিলেক্ট করতে ড্যাশবোর্ড থেকে রুটিন দেখে নাও।</div>
 
-                <?php }  ?>
-              <?php } else { ?> 
+                <?php }?>
+              <?php } else {?>
 
                   <div class='alert alert-primary text-center'>তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ</div>
 
-              <?php } ?>
+              <?php }?>
               </div>
             </div>
           </div>
