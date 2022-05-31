@@ -46,7 +46,7 @@ $model_test_list = [
         "group" => "all",
         "subject" => "বাংলা ১ম পত্র",
         "test" => "মডেল টেস্ট ৪",
-        "date" => "2022-05-29",
+        "date" => "2022-05-31",
     ],
 
     "ssc_agr_t001" => [
@@ -469,4 +469,3 @@ $model_test_list = [
     ],
 
 ];
-
