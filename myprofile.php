@@ -39,21 +39,7 @@ if (!empty($result_quiz_data)) {
          <div class="row">
 
             <div class="col-xxl-4 col-md-4">
-               <div class="profile__menu-left white-bg mb-50">
-                  <h3 class="profile__menu-title">
-                    <strong> <?php echo $user_data['name']; ?></strong><br/>
-                    <span><?php echo $user_data['school_name']; ?></span><br/>
-                    <span><?php echo $user_data['district']; ?></span>
-                  </h3>
-                  <div class="profile__menu-tab">
-                     <div class="nav nav-tabs flex-column justify-content-start text-start" >
-                        <a class="nav-link" href="editprofile.php"> <i class="fa-regular fa-user"></i> এডিট প্রোফাইল</a>
-                        
-                        <a class="nav-link" href="logout.php"> <i class="fa-regular fa-arrow-right-from-bracket"></i> লগ আউট</a>
-                     </div>
-
-                   </div>
-               </div>
+               <?php require 'menu.php'; ?>
             </div>
 
             <div class="col-xxl-8 col-md-8">
@@ -374,9 +360,9 @@ if (!empty($result_quiz_data)) {
              <div class="course__filter text-center mb-30">
                 <nav>
                    <div class="nav nav-tabs justify-content-center" id="course-tab" role="tablist">
-                     <button class="nav-link active" id="nav-todays-tab" data-bs-toggle="tab" data-bs-target="#nav-todays" type="button" role="tab" aria-controls="nav-todays" aria-selected="true">আজকের দিনের</button>
+                     <button class="nav-link active" id="nav-todays-tab" data-bs-toggle="tab" data-bs-target="#nav-todays" type="button" role="tab" aria-controls="nav-todays" aria-selected="true">আজকের</button>
 
-                     <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-previous" aria-selected="false">আগের  দিনের</button>
+                     <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-previous" aria-selected="false">গত দিনের</button>
 
                      <button class="nav-link" id="nav-next-tab" data-bs-toggle="tab" data-bs-target="#nav-next" type="button" role="tab" aria-controls="nav-next" aria-selected="false">আগামী দিনের</button>
                    </div>

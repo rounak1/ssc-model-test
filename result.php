@@ -26,36 +26,18 @@ $exam_data = mysqli_fetch_assoc($exam_result);
           ?>
             <div class="row">
               <div class="col-12 col-md-4">
-                
-                <div class="profile__menu-left white-bg mb-50">
-                  <h3 class="profile__menu-title">
-                    <strong> <?php echo $user_data['name']; ?></strong><br/>
-                    <span><?php echo $user_data['school_name']; ?></span><br/>
-                    <span><?php echo $user_data['district']; ?></span>
-                  </h3>
-                  <div class="profile__menu-tab">
-                     <div class="nav nav-tabs flex-column justify-content-start text-start" >
-                        <a class="nav-link" href="myprofile.php"> <i class="fa-regular fa-square-list"></i> ড্যাশবোর্ড</a>
-
-                        <a class="nav-link" href="editprofile.php"> <i class="fa-regular fa-user"></i> এডিট প্রোফাইল</a>
-                        
-                        <a class="nav-link" href="logout.php"> <i class="fa-regular fa-arrow-right-from-bracket"></i> লগ আউট</a>
-                     </div>
-
-                   </div>
-               </div>
-
+                <?php require 'menu.php'; ?>
               </div>
 
               <div class="col-12 col-md-8">
                 
-                <div class="course__tab-content mb-95">
+                <div class="course__tab-content mb-30">
                   <div class="course__curriculum">
                     <div class="accordion-item mb-50">
 
                       <h2>
                        <button class="accordion-button">
-                         ফলাফল
+                         ফলাফল: <?=!empty($model_test_list[$exam_data['exam_id']]['test']) ? $model_test_list[$exam_data['exam_id']]['test'] : ""?> (<?=$model_test_list[$exam_data['exam_id']]['subject']?>)
                        </button>
                       </h2>
                       
@@ -72,7 +54,7 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                            <h3> <span>মোট প্রশ্ন</span></h3>
                         </div>
                         <div class="course__curriculum-meta">                    
-                           <span class="question"><?=BanglaConverter::en2bn($exam_data['total_marks'] + $exam_data['wrong_answers'] + $exam_data['not_given_answers'])?></span>
+                           <span class="question" style="background: #FFA000;"><?=BanglaConverter::en2bn($exam_data['total_marks'] + $exam_data['wrong_answers'] + $exam_data['not_given_answers'])?></span>
                         </div>
                       </div>
 
@@ -89,7 +71,8 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                           <h3> <span>সঠিক উত্তর</span></h3>
                         </div>
                         <div class="course__curriculum-meta">                    
-                           <span class="question"><?=BanglaConverter::en2bn($exam_data['total_marks'])?></span>
+                           <span class="question" style="background: #016E53;">
+                            <?=BanglaConverter::en2bn($exam_data['total_marks'])?></span>
                         </div>
                       </div>
 
@@ -107,7 +90,7 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                            <h3> <span>ভুল উত্তর</span></h3>
                         </div>
                         <div class="course__curriculum-meta">                    
-                           <span class="question"><?=BanglaConverter::en2bn($exam_data['wrong_answers'])?></span>
+                           <span class="question" style="background: #D60000;"><?=BanglaConverter::en2bn($exam_data['wrong_answers'])?></span>
                         </div>
                       </div>
 
@@ -126,7 +109,7 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                            <h3> <span>উত্তর নাই</span></h3>
                         </div>
                         <div class="course__curriculum-meta">                    
-                           <span class="question"><?=BanglaConverter::en2bn($exam_data['not_given_answers'])?></span>
+                           <span class="question" style="background: #FFA000;"><?=BanglaConverter::en2bn($exam_data['not_given_answers'])?></span>
                         </div>
                       </div>
 
@@ -149,16 +132,13 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                   </div>
                 </div>
 
-              </div>
-            </div>
-
-            <div class="course__tab-content mb-0">
+                <div class="course__tab-content mb-0">
               <div class="course__curriculum">
                 <div class="accordion-item">
 
                   <h2>
                    <button class="accordion-button">
-                     <?=!empty($model_test_list[$exam_data['exam_id']]['test']) ? $model_test_list[$exam_data['exam_id']]['test'] : ""?> (<?=$model_test_list[$exam_data['exam_id']]['subject']?>)
+                     বিস্তারিত
                    </button>
                   </h2>
 
@@ -270,6 +250,11 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                 </div>             
               </div>
             </div>
+
+              </div>
+            </div>
+
+            
 
           <?php } else { ?>
             <div class="alert alert-primary text-center" role="alert">

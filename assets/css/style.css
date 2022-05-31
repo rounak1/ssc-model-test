@@ -4444,7 +4444,7 @@ input[type=color] {
   right: 0;
   top: -5px;
   width: 1px;
-  height: 80px;
+  height: 60px;
   background: #dddee4;
 }
 @media (max-width: 575px) {
@@ -10034,6 +10034,8 @@ p.checkout-coupon input[type=text]:focus {
 .profile__menu-left {
   padding: 26px 20px 5px;
   border: 1px solid #eceaea;
+  position: sticky;
+  top: 110px;
 }
 .profile__menu-title {
   font-size: 16px;
@@ -10063,6 +10065,9 @@ p.checkout-coupon input[type=text]:focus {
   color: var(--tp-text-5);
   text-align: left;
   padding: 15px 0;
+}
+.profile__menu-tab .nav-tabs .nav-link.logout-link {
+  color: #dc3545;
 }
 .profile__menu-tab .nav-tabs .nav-link:not(:last-child) {
   border-bottom: 1px solid #e4e4e4;
