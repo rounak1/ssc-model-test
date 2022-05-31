@@ -1599,6 +1599,10 @@ input[type=color] {
   margin-top: 14px;
 }
 
+.accordion-button:not(.collapsed)::after {
+  background-image: none;
+}
+
 /* main menu css */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .main-menu {

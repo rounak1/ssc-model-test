@@ -67,7 +67,7 @@
 
 	                               <ul>
 	                                  <li><a href="https://www.facebook.com/prothomalo.porasona/"><i class="fa-brands fa-facebook-f"></i></a></li>
-	                                  <li><a href="mailto:porasona@prothomalo.com"><i class="fa-brands fa-envelope"></i></a></li>
+	                                  <li><a href="mailto:porasona@prothomalo.com"><i class="fa-regular fa-envelope"></i></a></li>
 	                                  
 	                               </ul>
 	                            </div>

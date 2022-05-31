@@ -57,7 +57,7 @@ if (!empty($result_quiz_data)) {
             </div>
 
             <div class="col-xxl-8 col-md-8">
-                <div class="profile__menu-right">
+                <div class="profile__menu-right mb-20">
                   <div class="tab-content" id="nav-tabContent">
                       <div class="tab-pane fade show active" id="nav-account" role="tabpanel" aria-labelledby="nav-account-tab">
                         <div class="profile__info">
@@ -475,7 +475,7 @@ if (!empty($result_quiz_data)) {
                           <div class="row align-items-center">
                             <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-6">
                                <div class="course__member-thumb d-flex align-items-center">
-                                  <img src="assets/img/thumb2.svg" alt="">
+                                  <img src="assets/img/thumb2.svg?v=1.0" alt="">
                                   <div class="course__member-name ml-20">
                                      <h5><?=$model_test_list[$data['exam_id']]['test']?></h5>
                                      <span><?=$data['exam_name']?></span>
