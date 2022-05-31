@@ -9,7 +9,7 @@
                               <div class="footer__logo">
                                  <div class="logo">
                                     <a href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>">
-                                       <img src="./images/logo.svg" alt="">
+                                       <img style="width: 130px;" src="./images/logo.svg" alt="">
                                     </a>
                                  </div>
                               </div>

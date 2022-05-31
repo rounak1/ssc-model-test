@@ -1580,7 +1580,23 @@ input[type=color] {
 
 /* logo */
 .logo img {
-  width: 150px;
+  height: 50px;
+}
+
+.uddipok {
+  margin-bottom: 10px;
+}
+
+.questions {
+  font-weight: 700;
+}
+
+.options-container {
+  margin-top: 10px;
+}
+
+.student-answer {
+  margin-top: 14px;
 }
 
 /* main menu css */
