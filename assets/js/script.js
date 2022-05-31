@@ -45,8 +45,6 @@ const countdown = () => {
         ":" +
         getBanglaNumber(("0" + seconds).slice(-2));
       document.getElementById("countdown").innerHTML = timeCalculate;
-      document.getElementById("examAttendentTime").innerHTML =
-        original_time - timeleft;
     }
     timeleft -= 1;
   }, 1000);

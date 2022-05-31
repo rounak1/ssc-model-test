@@ -2,7 +2,7 @@
 session_start();
 error_reporting(1);
 require 'check-login.php';
-require 'header-home.php';
+require 'header-v2.php';
 require 'BanglaConverter.php';
 include_once 'settings.php';
 
@@ -23,140 +23,146 @@ if (!isset($exam_id)) {
 
 ?>
 
-    <section class="ftco-section testimony-section bg-light">
-      <div class="container">
+<section class="course__area pt-115 pb-90">
+  <div class="container">
+    <div class="row">
 
-        <div
-          id="myprofile_section"
-          class="row justify-content-center mb-5 pb-3"
-        >
-          <div class="col-md-12 text-center heading heading-section">
-            <h2 class="mb-2"><?=!empty($model_test_list[$exam_id]['test'])?$model_test_list[$exam_id]['test']:"মডেল টেস্ট"?></h2>
-          </div>
-          <div style="margin-bottom: 20px;" class="exam-subject">বিষয়: <?=$model_test_list[$exam_id]['subject']?></div>
+      <div class="col-12">
+        <div class="course__wrapper">
 
-          <div class="col-md-12">
-            <div class="exam-container">
+          <div class="course__tab-content mb-0">
+            <div class="course__curriculum">
+              <div class="accordion-item">
+                
+                <?php
+                // check already attend
+                $query_temp = "SELECT `id` FROM `temp_quiz_history` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
 
-              <div class="quiz-play-information">
+                $result_temp = mysqli_query($conn, $query_temp);
+                $r_temp_data = mysqli_fetch_assoc($result_temp);
 
-                  <section>
-                    <?php
-// check already attend
-$query_temp = "SELECT `id` FROM `temp_quiz_history` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
+                if (!empty($r_temp_data)) {
+                  // $query_q_h = "INSERT INTO `quiz_histories`(`user_id`, `exam_id`) VALUES ('$user_id','$exam_id')";
 
-$result_temp = mysqli_query($conn, $query_temp);
-$r_temp_data = mysqli_fetch_assoc($result_temp);
+                  // mysqli_query($conn, $query_q_h);
+                  // echo "<script> alert('তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ')</script>";
+                  $_SESSION['alert'] = "তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ";
+                  header('Location: myprofile.php');
+                }
 
-if (!empty($r_temp_data)) {
-    // $query_q_h = "INSERT INTO `quiz_histories`(`user_id`, `exam_id`) VALUES ('$user_id','$exam_id')";
+                $query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
 
-    // mysqli_query($conn, $query_q_h);
-    // echo "<script> alert('তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ')</script>";
-    $_SESSION['alert'] = "তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ";
-    header('Location: myprofile.php');
-}
+                $result2 = mysqli_query($conn, $query2);
+                $exam_data2 = mysqli_fetch_assoc($result2);
 
-$query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
+                if (empty($exam_data2)) 
+                {
 
-$result2 = mysqli_query($conn, $query2);
-$exam_data2 = mysqli_fetch_assoc($result2);
+                  // insert temp data
+                  $query_temp_insert = "INSERT INTO `temp_quiz_history`(`user_id`, `exam_id`) VALUES ('$user_id', '$exam_id')";
 
-if (empty($exam_data2)) {
+                  $result_temp_insert = mysqli_query($conn, $query_temp_insert);
 
-    // insert temp data
-    $query_temp_insert = "INSERT INTO `temp_quiz_history`(`user_id`, `exam_id`) VALUES ('$user_id', '$exam_id')";
+                  echo mysqli_error($conn);
 
-    $result_temp_insert = mysqli_query($conn, $query_temp_insert);
+                  $current_date = date('Y-m-d');
 
-    echo mysqli_error($conn);
+                  $query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id' AND `exam_date` <= '$current_date'";
 
-    $current_date = date('Y-m-d');
+                  $result = mysqli_query($conn, $query);
+                  if (mysqli_num_rows($result) > 0) 
+                  {
 
-    $query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id' AND `exam_date` <= '$current_date'";
+    ?>      
+                  <h2>
+                   <button class="accordion-button">
+                     <?=!empty($model_test_list[$exam_id]['test'])?$model_test_list[$exam_id]['test']:""?> (<?=$model_test_list[$exam_id]['subject']?>)
+                   </button>
+                  </h2> 
 
-    $result = mysqli_query($conn, $query);
-    if (mysqli_num_rows($result) > 0) {
+                   <div class="sticky-class">
+                      <div class="time-left">সময় বাকি</div>
+                      <div id="countdown"></div>
+                    </div>
+                    <form name="exam_submit" method="POST" action="quiz-submit.php" id="submit_form">
+                      <?php 
+                        $i = 1;
+                        foreach ($result as $row) 
+                        {
+                      ?>
+                            <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
+                              <div class="course__curriculum-info">
+                                <h3> 
+                                  <input type="hidden" name="quiz_date" value="<?php echo $row['exam_date'] ?>">
+                                  <input type="hidden" name="exam_id" value="<?php echo $exam_id ?>">
+                                  <input type="hidden" name="examAttendentTime" id="examAttendentTimeUpdate" value="<?=time()?>">
+                                  <input type="hidden" name="question[]" value="<?php echo $row['id'] ?>">
+                                  <input type="hidden" name="token[<?php echo $row['id'] ?>]" value="<?php echo base64_encode($row['answer']) ?>">
 
-    ?>
-        <div class="sticky-class">
-          <div class="time-left">সময় বাকি</div>
-          <div id="countdown"></div>
-        </div>
-        <div id="examAttendentTime" style="display: none;"></div>
-        <form name="exam_submit" method="POST" action="quiz-submit.php" id="submit_form">
-    <div class="question-container">
-    <?php    
+                                  <?php if (!empty($row['picture'])) {?>
+                                    <div class="questions">
+                                      <img src="./nimdaxipalo/images/<?php echo $row['picture']; ?>" height="200" alt="" />
+                                    </div>
+                                  <?php }?>
 
-        $i = 1;
+                                  <?php if (!empty($row['uddipok_statement'])) {?>
+                                    <div class="questions"><?php echo $row['uddipok_statement']; ?></div>
+                                  <?php }?>
 
-        foreach ($result as $row) {
+                                  <?php if (!empty($row['uddipok'])) {?>
+                                    <div class="questions"><?php echo $row['uddipok']; ?></div>
+                                  <?php }?>
 
-            ?>
+                                  <div class="questions">
+                                    <?php echo BanglaConverter::en2bn($i++) . '. ' . $row['questions']; ?>
+                                  </div>
+                                </h3>
 
-    <div class="questions-each">
+                                <div class="options-container">
+                                  <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option1" id="option_<?php echo $row['id'] ?>_1">
+                                  <label for="option_<?php echo $row['id'] ?>_1"><?php echo $row['option1'] ?></label>
 
-       <input type="hidden" name="quiz_date" value="<?php echo $row['exam_date'] ?>">
-       <input type="hidden" name="exam_id" value="<?php echo $exam_id ?>">
-       <input type="hidden" name="examAttendentTime" id="examAttendentTimeUpdate" value="<?=time()?>">
-       <input type="hidden" name="question[]" value="<?php echo $row['id'] ?>">
-       <input type="hidden" name="token[<?php echo $row['id'] ?>]" value="<?php echo base64_encode($row['answer']) ?>">
+                                  <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option2" id="option_<?php echo $row['id'] ?>_2">
+                                  <label for="option_<?php echo $row['id'] ?>_2"><?php echo $row['option2'] ?></label>
+                                  <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option3" id="option_<?php echo $row['id'] ?>_3"> <label for="option_<?php echo $row['id'] ?>_3"><?php echo $row['option3'] ?></label>
+                                  <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option4" id="option_<?php echo $row['id'] ?>_4"> <label for="option_<?php echo $row['id'] ?>_4"><?php echo $row['option4'] ?></label>
+                                </div>  
 
-       <?php if (!empty($row['picture'])) {?>
-        <div class="questions"><img src="./nimdaxipalo/images/<?php echo $row['picture']; ?>" height="200" alt="" /></div>
-      <?php }?>
+                              </div>
+                            </div>
+                      <?php
+                        }
+                      ?> 
+                      <div style="text-align: right;">
+                        <input type="submit" name="exam_submit" value="সাবমিট" class="exam_submit_btn tp-btn mt-20 mb-20 ml-20 mr-20">
+                      </div>
+                    </form> 
+                    <script>
+                      $(".exam-running").click(function(){
+                        alert("মডেল টেস্ট কোলাকালীন সময়ে অন্য পেজে যাওয়া যাবে না");
+                        return false;
+                      });
+                    </script>                  
+                <?php } else { ?> 
 
-       <?php if (!empty($row['uddipok_statement'])) {?>
-        <div class="questions"><?php echo $row['uddipok_statement']; ?></div>
-      <?php }?>
+                    <div class='alert alert-primary text-center'>দুঃখিত! এই মডেল টেস্টটি পাওয়া যায়নি অথবা এখনো প্রকাশিত হয়নি। <br/>যথাযথ মডেল টেস্ট সিলেক্ট করতে ড্যাসবোর্ড থেকে রুটিন দেখে নাও।</div>
 
-      <?php if (!empty($row['uddipok'])) {?>
-        <div class="questions"><?php echo $row['uddipok']; ?></div>
-      <?php }?>
+                <?php }  ?>
+              <?php } else { ?> 
 
-        <div class="questions"><?php echo BanglaConverter::en2bn($i++) . '. ' . $row['questions']; ?></div>
-        <div class="options-container">
-            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option1" id="option_<?php echo $row['id'] ?>_1">
-            <label for="option_<?php echo $row['id'] ?>_1"><?php echo $row['option1'] ?></label>
+                  <div class='alert alert-primary text-center'>তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ</div>
 
-            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option2" id="option_<?php echo $row['id'] ?>_2">
-            <label for="option_<?php echo $row['id'] ?>_2"><?php echo $row['option2'] ?></label>
-            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option3" id="option_<?php echo $row['id'] ?>_3"> <label for="option_<?php echo $row['id'] ?>_3"><?php echo $row['option3'] ?></label>
-            <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option4" id="option_<?php echo $row['id'] ?>_4"> <label for="option_<?php echo $row['id'] ?>_4"><?php echo $row['option4'] ?></label>
-        </div>
-
-    </div>
-
-<?php }?>
-
-<input type="submit" name="exam_submit" value="সাবমিট" class="exam_submit_btn">
-<script>
-  $(".exam-running").click(function(){
-    alert("মডেল টেস্ট কোলাকালীন সময়ে অন্য পেজে যাওয়া যাবে না");
-    return false;
-  });
-</script>
-<?php } else { ?>
-  <div class='alert-message'>দুঃখিত! এই মডেল টেস্টটি পাওয়া যায়নি অথবা এখনো প্রকাশিত হয়নি। <br/>যথাযথ মডেল টেস্ট সিলেক্ট করতে ড্যাসবোর্ড থেকে রুটিন দেখে নাও।</div>
-<?php }?>
-</form>
-</div>
-<?php
-} else {
-?>
-
-    <div class='alert-message'>তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ</div>
-    <div style="text-align: center;"><a href="myprofile.php" class="btn btn-secondary results_profile_btn">ড্যাশবোর্ডে ফিরে যাও </a></div>
-<?php
-}
-?>
-                  </section>
-
+              <?php } ?>
               </div>
             </div>
           </div>
+
         </div>
       </div>
-    </section>
-<script src="./assets/js/script.js?v=5.5"></script>
-<?php require 'footer-home.php';?>
+
+    </div>
+  </div>
+</section>
+
+<script src="./assets/js/script.js?v=6"></script>
+<?php require 'footer-v2.php';?>

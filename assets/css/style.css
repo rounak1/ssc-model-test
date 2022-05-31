@@ -1589,18 +1589,46 @@ input[type=color] {
 
 .questions {
   font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .options-container {
   margin-top: 10px;
 }
 
+.options-container label {
+  margin-right: 24px;
+  font-size: 15px;
+  float: left;
+}
+
+.options-container input {
+  margin-top: 5px;
+  float: left;
+  margin-right: 8px;
+}
 .student-answer {
   margin-top: 14px;
 }
 
 .accordion-button:not(.collapsed)::after {
   background-image: none;
+}
+
+.sticky-class {
+  position: fixed;
+  bottom: 110px;
+  right: 5px;
+  border-radius: 4px;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0px 0px 10px 1px #a19ca166;
+  width: 100px;
+}
+
+#countdown {
+  font-size: 20px;
+  color: #f4511e;
 }
 
 /* main menu css */

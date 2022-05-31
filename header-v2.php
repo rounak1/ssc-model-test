@@ -44,7 +44,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/backtotop.css">
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
     <link rel="stylesheet" href="assets/css/spacing.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=1.1">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.2">
 
     <!-- JS here -->
   
@@ -84,7 +84,7 @@ session_start();
                         <div class="header__bottom-left d-flex align-items-center">
                            <div class="logo">
                               <a href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>">
-                                 <img src="assets/img/porasona.svg" alt="logo">
+                                 <img class="exam-running" src="assets/img/porasona.svg" alt="logo">
                               </a>
                            </div>
                         </div>
