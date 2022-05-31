@@ -1631,6 +1631,21 @@ input[type=color] {
   color: #f4511e;
 }
 
+.my-result-each {
+  background: var(--tp-common-white);
+  padding: 15px 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px px;
+  -webkit-box-shadow: 0px 30px 50px rgb(3 18 32 / 8%);
+  -moz-box-shadow: 0px 30px 50px rgba(3, 18, 32, 0.08);
+  -ms-box-shadow: 0px 30px 50px rgba(3, 18, 32, 0.08);
+  -o-box-shadow: 0px 30px 50px rgba(3, 18, 32, 0.08);
+  box-shadow: 0px 30px 50px rgb(3 18 32 / 8%);
+}
+
 /* main menu css */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .main-menu {
@@ -4413,8 +4428,6 @@ input[type=color] {
   color: #b8b9bf;
 }
 .course__member-item {
-  padding: 25px 30px;
-  background: var(--tp-grey-2);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -o-border-radius: 4px;
@@ -4440,8 +4453,8 @@ input[type=color] {
   }
 }
 .course__member-thumb img {
-  width: 70px;
-  height: 70px;
+  width: 48px;
+  height: 48px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -o-border-radius: 50%;

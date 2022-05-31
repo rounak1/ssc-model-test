@@ -360,67 +360,259 @@ if (!empty($result_quiz_data)) {
 
     <section class="event__area pb-30 grey-bg-2">
       <div class="container">
-
         <div class="row">
-          <div class="col-xxl-12">
-             <div class="section__title-wrapper-2 text-center mb-30">
-                <h3 class="section__title-2">মডেল টেস্ট রুটিন</h3>
+          <div class="col-12 col-md-6 mb-30">
+            <div class="row">
+              <div class="col-xxl-12">
+                 <div class="section__title-wrapper-2 text-center mb-30">
+                    <h3 class="section__title-2">রুটিন</h3>
+                 </div>
+              </div>
+            </div>
+
+            <div class="row">
+             <div class="course__filter text-center mb-30">
+                <nav>
+                   <div class="nav nav-tabs justify-content-center" id="course-tab" role="tablist">
+                     <button class="nav-link active" id="nav-todays-tab" data-bs-toggle="tab" data-bs-target="#nav-todays" type="button" role="tab" aria-controls="nav-todays" aria-selected="true">আজকের দিনের</button>
+
+                     <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-previous" aria-selected="false">আগের  দিনের</button>
+
+                     <button class="nav-link" id="nav-next-tab" data-bs-toggle="tab" data-bs-target="#nav-next" type="button" role="tab" aria-controls="nav-next" aria-selected="false">আগামী দিনের</button>
+                   </div>
+                </nav>
              </div>
+            </div>
+            <div class="row">
+                <div class="col-xxl-12">
+                   <div class="tab-content course__tab-content" id="course-tabContent">
+                      <div class="tab-pane fade show active" id="nav-todays" role="tabpanel" aria-labelledby="nav-todays-tab">
+                         <div class="course__tab-wrapper">
+                            <div class="row">
+                               
+                              <?php 
+                                $sort_by_date = array_column($model_test_list, 'date');
+                                array_multisort($sort_by_date, SORT_ASC, $model_test_list);
+
+                                  if(!empty($model_test_list)) {
+                                    foreach($model_test_list as $value) {
+                                      $exam_date = explode("-",$value['date']);
+                                      $current_date = Date('Y-m-d');
+
+                                      if($current_date == $value['date']) 
+                                      { 
+                                ?>
+                                      <div class="col-12">
+                                        <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
+                                          <div class="event__left d-sm-flex align-items-center">
+                                             <div class="event__date">
+                                                <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
+                                                <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
+                                             </div>
+                                             <div class="event__content">
+                                                <div class="event__meta">
+                                                   <ul>
+                                                      <li>
+                                                        <a href="exam.php?id=<?=$value['id']?>">
+                                                          <?=$value['subject']?>
+                                                        </a>
+                                                      </li>
+                                                   </ul>
+                                                </div>
+                                                <h3 class="event__title">
+                                                   <a href="exam.php?id=<?=$value['id']?>">
+                                                     <?=$value['test']?>
+                                                   </a>
+                                                </h3>
+                                             </div>
+                                          </div>
+                                          <div class="event__right d-sm-flex align-items-center">
+                                             <div class="event__more ml-30">
+                                                <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                     </div>
+                                <?php
+                                      }
+                                    }
+                                  }
+                                ?>
+
+                            </div>
+                         </div>
+                      </div>
+                      <div class="tab-pane fade" id="nav-previous" role="tabpanel" aria-labelledby="nav-previous-tab">
+                         <div class="row">
+                            
+                            <?php 
+                                $sort_by_date = array_column($model_test_list, 'date');
+                                array_multisort($sort_by_date, SORT_DESC, $model_test_list);
+
+                                  if(!empty($model_test_list)) {
+                                    foreach($model_test_list as $value) {
+                                      $exam_date = explode("-",$value['date']);
+                                      $current_date = Date('Y-m-d');
+
+                                      if($current_date > $value['date']) 
+                                      { 
+                                ?>
+                                      <div class="col-12">
+                                        <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
+                                          <div class="event__left d-sm-flex align-items-center">
+                                             <div class="event__date">
+                                                <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
+                                                <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
+                                             </div>
+                                             <div class="event__content">
+                                                <div class="event__meta">
+                                                   <ul>
+                                                      <li>
+                                                        <a href="exam.php?id=<?=$value['id']?>">
+                                                          <?=$value['subject']?>
+                                                        </a>
+                                                      </li>
+                                                   </ul>
+                                                </div>
+                                                <h3 class="event__title">
+                                                   <a href="exam.php?id=<?=$value['id']?>">
+                                                     <?=$value['test']?>
+                                                   </a>
+                                                </h3>
+                                             </div>
+                                          </div>
+                                          <div class="event__right d-sm-flex align-items-center">
+                                             <div class="event__more ml-30">
+                                                <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
+                                             </div>
+                                          </div>
+                                       </div>
+                                     </div>
+                                <?php
+                                      }
+                                    }
+                                  }
+                                ?>
+
+                         </div>
+                      </div>
+                      <div class="tab-pane fade" id="nav-next" role="tabpanel" aria-labelledby="nav-next-tab">
+                         <div class="row">
+                            
+                            <?php 
+                              $sort_by_date = array_column($model_test_list, 'date');
+                              array_multisort($sort_by_date, SORT_ASC, $model_test_list);
+
+                                if(!empty($model_test_list)) {
+                                  foreach($model_test_list as $value) {
+                                    $exam_date = explode("-",$value['date']);
+                                    $current_date = Date('Y-m-d');
+
+                                    if($current_date < $value['date']) 
+                                    { 
+                              ?>
+                                    <div class="col-12">
+                                      <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
+                                        <div class="event__left d-sm-flex align-items-center">
+                                           <div class="event__date">
+                                              <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
+                                              <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
+                                           </div>
+                                           <div class="event__content">
+                                              <div class="event__meta">
+                                                 <ul>
+                                                    <li>
+                                                        <?=$value['subject']?>
+                                                    </li>
+                                                 </ul>
+                                              </div>
+                                              <h3 class="event__title">
+                                                <?=$value['test']?>
+                                              </h3>
+                                           </div>
+                                        </div>
+                                     </div>
+                                   </div>
+                              <?php
+                                    }
+                                  }
+                                }
+                              ?>
+
+                         </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+
+            <div class="row">
+              <div class="col-12">
+                <div class="course__member mb-45">
+                  <div class="text-center">
+                    <h3 class="section__title-2 pb-25">আমার ফলাফল</h3>
+                  </div>
+
+                  <?php
+                    if(!empty($result)) {
+                      foreach($result as $data) {
+                  ?>
+
+                        <div class="course__member-item my-result-each">
+                          <a href="result.php?id=<?=$data['id']?>">
+                            <div class="row align-items-center">
+                              <div class="col-5">
+                                 <div class="course__member-thumb d-flex align-items-center">
+                                    <img src="assets/img/thumb2.svg?v=1.0" alt="">
+                                    <div class="course__member-name ml-20">
+                                       <h5><?=$model_test_list[$data['exam_id']]['test']?></h5>
+                                       <span><?=$data['exam_name']?></span>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-2">
+                                 <div class="course__member-info">
+                                    <h5><?=BanglaConverter::en2bn($data['total_marks'] + $data['wrong_answers'] + $data['not_given_answers']);?></h5>
+                                    <span>পূর্ণমান</span>
+                                 </div>
+                              </div>
+                              <div class="col-2">
+                                 <div class="course__member-info">
+                                    <h5><?=BanglaConverter::en2bn($data['total_marks'])?></h5>
+                                    <span>সঠিক</span>
+                                 </div>
+                              </div>
+                              <div class="col-3">
+                                 <div class="course__member-info">
+                                    <h5>
+                                      <?php
+                                        $init = $data['completion_time'];
+                                        $minutes = BanglaConverter::en2bn(floor(($init / 60) % 60));
+                                        $seconds = BanglaConverter::en2bn($init % 60);
+                                        echo "$minutes:$seconds মিনিট";
+                                      ?>
+                                    </h5>
+                                    <span>সময়</span>
+                                    
+                                 </div>
+                              </div>
+                           </div>
+                          </a>                         
+                        </div>
+
+                  <?php
+                      }
+                    }
+                  ?>
+                  
+               </div>
+              </div>
+            </div>
+
           </div>
         </div>
-
-        <div class="row">
-
-            <?php 
-            $sort_by_date = array_column($model_test_list, 'date');
-            array_multisort($sort_by_date, SORT_ASC, $model_test_list);
-
-              if(!empty($model_test_list)) {
-                foreach($model_test_list as $value) {
-                  $exam_date = explode("-",$value['date']);
-                  $current_date = Date('Y-m-d');
-
-                  if($current_date <= $value['date']) 
-                  { 
-            ?>
-                  <div class="col-6">
-                    <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
-                      <div class="event__left d-sm-flex align-items-center">
-                         <div class="event__date">
-                            <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
-                            <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
-                         </div>
-                         <div class="event__content">
-                            <div class="event__meta">
-                               <ul>
-                                  <li>
-                                    <a href="exam.php?id=<?=$value['id']?>">
-                                      <?=$value['subject']?>
-                                    </a>
-                                  </li>
-                               </ul>
-                            </div>
-                            <h3 class="event__title">
-                               <a href="exam.php?id=<?=$value['id']?>">
-                                 <?=$value['test']?>
-                               </a>
-                            </h3>
-                         </div>
-                      </div>
-                      <div class="event__right d-sm-flex align-items-center">
-                         <div class="event__more ml-30">
-                            <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
-                         </div>
-                      </div>
-                   </div>
-                 </div>
-            <?php
-                  }
-                }
-              }
-            ?>
-        </div>
-
       </div>
     </section>
 
@@ -455,70 +647,6 @@ if (!empty($result_quiz_data)) {
 
                 </div>
               </div>
-          </div>
-
-
-          <div class="row">
-            <div class="col-12">
-              <div class="course__member mb-45 mt-45">
-                <div class="text-center">
-                  <h3 class="section__title-2">আমার ফলাফল</h3>
-                </div>
-
-                <?php
-                  if(!empty($result)) {
-                    foreach($result as $data) {
-                ?>
-
-                      <div class="course__member-item">
-                        <a href="result.php?id=<?=$data['id']?>">
-                          <div class="row align-items-center">
-                            <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-6">
-                               <div class="course__member-thumb d-flex align-items-center">
-                                  <img src="assets/img/thumb2.svg?v=1.0" alt="">
-                                  <div class="course__member-name ml-20">
-                                     <h5><?=$model_test_list[$data['exam_id']]['test']?></h5>
-                                     <span><?=$data['exam_name']?></span>
-                                  </div>
-                               </div>
-                            </div>
-                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                               <div class="course__member-info pl-45">
-                                  <h5><?=BanglaConverter::en2bn($data['total_marks'] + $data['wrong_answers'] + $data['not_given_answers']);?></h5>
-                                  <span>পূর্ণমান</span>
-                               </div>
-                            </div>
-                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4">
-                               <div class="course__member-info pl-70">
-                                  <h5><?=BanglaConverter::en2bn($data['total_marks'])?></h5>
-                                  <span>সঠিক</span>
-                               </div>
-                            </div>
-                            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-2 col-sm-2 col-4">
-                               <div class="course__member-info pl-85">
-                                  <h5>
-                                    <?php
-                                      $init = $data['completion_time'];
-                                      $minutes = BanglaConverter::en2bn(floor(($init / 60) % 60));
-                                      $seconds = BanglaConverter::en2bn($init % 60);
-                                      echo "$minutes:$seconds মিনিট";
-                                    ?>
-                                  </h5>
-                                  <span>সময়</span>
-                                  
-                               </div>
-                            </div>
-                         </div>
-                        </a>                         
-                      </div>
-
-                <?php
-                    }
-                  }
-                ?>
-                
-             </div>
-            </div>
           </div>
       </div>
     </section>
