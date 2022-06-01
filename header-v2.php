@@ -24,7 +24,7 @@ session_start();
       property="og:description"
       content='যদি দাও মডেল টেস্ট, পরীক্ষা তোমার হবে বেস্ট'
     />
-    <meta property="og:image" content="assets/images/ogImage.png" />
+    <meta property="og:image" content="assets/img/og-image-model-test.png" />
 
     <!-- Twitter -->
     <meta
@@ -36,7 +36,7 @@ session_start();
       property="twitter:description"
       content='যদি দাও মডেল টেস্ট, পরীক্ষা তোমার হবে বেস্ট'
     />
-    <meta property="twitter:image" content="assets/images/ogImage.png" />
+    <meta property="twitter:image" content="assets/img/og-image-model-test.png" />
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -44,7 +44,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/backtotop.css">
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
     <link rel="stylesheet" href="assets/css/spacing.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=1.5">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.6">
 
     <!-- JS here -->
   

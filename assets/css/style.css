@@ -4260,6 +4260,9 @@ input[type=color] {
   padding: 0;
   border-color: #edeef2;
 }
+.course__curriculum .accordion-item .course__curriculum-content {
+  display: flex;
+}
 .course__curriculum .accordion-item .accordion-button {
   outline: none;
   border: 0;
@@ -4311,6 +4314,9 @@ input[type=color] {
     -o-border-radius: 4px 4px 0 0;
     -ms-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;
+  }
+  .logo img {
+    height: 36px;
   }
 }
 .course__review-rating-info h5 {
