@@ -4201,6 +4201,7 @@ input[type=color] {
   -ms-transition: all 0.3s ease-out 0s;
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
+  display: inline-block;
 }
 .course__curriculum-content:last-child {
   border: none;

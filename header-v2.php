@@ -44,11 +44,21 @@ session_start();
     <link rel="stylesheet" href="assets/css/backtotop.css">
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
     <link rel="stylesheet" href="assets/css/spacing.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=1.4">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.5">
 
     <!-- JS here -->
   
     <script src="assets/js/vendor/jquery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11355905-12"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-11355905-12');
+    </script>
 
   </head>
   <body>
