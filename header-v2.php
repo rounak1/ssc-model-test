@@ -59,6 +59,13 @@ session_start();
 
      gtag('config', 'UA-11355905-12');
     </script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-11355905-1');
+    </script>
 
   </head>
   <body>

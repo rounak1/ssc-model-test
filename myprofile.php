@@ -551,7 +551,7 @@ if (!empty($result_quiz_data)) {
                             <div class="row align-items-center">
                               <div class="col-5">
                                  <div class="course__member-thumb d-flex align-items-center">
-                                    <img src="assets/img/thumb2.svg?v=1.0" alt="">
+                                    <img class="my-p-r-iccon" src="assets/img/thumb2.svg?v=1.0" alt="">
                                     <div class="course__member-name ml-20">
                                        <h5><?=$model_test_list[$data['exam_id']]['test']?></h5>
                                        <span><?=$data['exam_name']?></span>

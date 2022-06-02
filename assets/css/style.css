@@ -945,6 +945,9 @@ input[type=color] {
   }
 }
 @media (max-width: 575px) {
+  .my-p-r-iccon {
+    display: none;
+  }
   .section__title {
     font-size: 32px;
   }

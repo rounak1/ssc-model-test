@@ -57,6 +57,7 @@ if (isset($_POST['search'])) {
 <table>
             <thead>
               <tr>
+                <td>ID</td>
                 <td>Exam Date</td>
                 <td>subjects</td>
                 <td>Uddipok Statement</td>
@@ -67,7 +68,7 @@ if (isset($_POST['search'])) {
                 <td>Option 2</td>
                 <td>Option 3</td>
                 <td>Option 4</td>
-                <td style="width: 96px ;">Actions</td>
+                <!-- <td style="width: 96px ;">Actions</td> -->
               </tr>
               </thead>
 
@@ -82,6 +83,7 @@ if (isset($_POST['search'])) {
     foreach ($result as $row) {?>
 
 <tr>
+    <td><?php echo $row['id']; ?></td>
     <td><?php echo $row['exam_date']; ?></td>
     <td><?php
 
@@ -96,7 +98,7 @@ if (isset($_POST['search'])) {
     <td><?php echo $row['option2']; ?></td>
     <td><?php echo $row['option3']; ?></td>
     <td><?php echo $row['option4']; ?></td>
-    <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td>
+    <!-- <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td> -->
 </tr>
 
 <?php }?>
@@ -113,6 +115,7 @@ if (isset($_POST['search'])) {
           <table>
             <thead>
               <tr>
+                <td>ID</td>
                 <td>Exam Date</td>
                 <td>subjects</td>
                 <td>Uddipok Statement</td>
@@ -123,7 +126,7 @@ if (isset($_POST['search'])) {
                 <td>Option 2</td>
                 <td>Option 3</td>
                 <td>Option 4</td>
-                <td style="width: 96px ;">Actions</td>
+                <!-- <td style="width: 96px ;">Actions</td> -->
               </tr>
               </thead>
 
@@ -138,6 +141,7 @@ if (isset($_POST['search'])) {
     foreach ($result as $row) {?>
 
 <tr>
+    <td><?php echo $row['id']; ?></td>
     <td><?php echo $row['exam_date']; ?></td>
     <td><?php
 
@@ -152,7 +156,7 @@ if (isset($_POST['search'])) {
     <td><?php echo $row['option2']; ?></td>
     <td><?php echo $row['option3']; ?></td>
     <td><?php echo $row['option4']; ?></td>
-    <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td>
+    <!-- <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td> -->
 </tr>
 
 <?php }?>
