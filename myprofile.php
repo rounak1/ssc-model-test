@@ -16,7 +16,6 @@ $query_quiz_result = "SELECT * FROM `quiz_histories` WHERE `user_id` = '$user_id
 $result_quiz_data = mysqli_query($conn, $query_quiz_result);
 
 $result = [];
-$result_single_array = [];
 
 if (!empty($result_quiz_data)) {
     while ($row = mysqli_fetch_array($result_quiz_data)) {
@@ -27,8 +26,6 @@ if (!empty($result_quiz_data)) {
         $result[$row['exam_id']]['wrong_answers'] = $row['wrong_answers'];
         $result[$row['exam_id']]['not_given_answers'] = $row['not_given_answers'];
         $result[$row['exam_id']]['completion_time'] = $row['completion_time'];
-
-        $result_single_array[$row['exam_id']] = $model_test_list[$row['exam_id']]['subject'];
     }
 }
 ?>
@@ -399,22 +396,30 @@ if (!empty($result_quiz_data)) {
                                                 <div class="event__meta">
                                                    <ul>
                                                       <li>
-                                                        <a href="exam.php?id=<?=$value['id']?>">
-                                                          <?=$value['subject']?>
-                                                        </a>
+                                                        ?=$value['subject']?>
                                                       </li>
                                                    </ul>
                                                 </div>
                                                 <h3 class="event__title">
-                                                   <a href="exam.php?id=<?=$value['id']?>">
-                                                     <?=$value['test']?>
-                                                   </a>
+                                                  <?=$value['test']?>
                                                 </h3>
                                              </div>
                                           </div>
                                           <div class="event__right d-sm-flex align-items-center">
                                              <div class="event__more ml-30">
-                                                <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
+                                                <?php
+                                                  if(count($find_already_attend) > 0) {
+                                                ?>
+
+                                                      <a href="result.php?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>
+                                                <?php
+                                                  } else {
+                                                ?>
+                                                      <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
+
+                                                <?php
+                                                  }
+                                                ?>
                                              </div>
                                           </div>
                                        </div>
@@ -442,6 +447,9 @@ if (!empty($result_quiz_data)) {
 
                                       if($current_date > $value['date']) 
                                       { 
+
+                                        $find_already_attend = $result[$value['id']];
+
                                 ?>
                                       <div class="col-12">
                                         <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
@@ -454,22 +462,31 @@ if (!empty($result_quiz_data)) {
                                                 <div class="event__meta">
                                                    <ul>
                                                       <li>
-                                                        <a href="exam.php?id=<?=$value['id']?>">
-                                                          <?=$value['subject']?>
-                                                        </a>
-                                                      </li>
+                                                        <?=$value['subject']?>
+                                                        </li>
                                                    </ul>
                                                 </div>
                                                 <h3 class="event__title">
-                                                   <a href="exam.php?id=<?=$value['id']?>">
-                                                     <?=$value['test']?>
-                                                   </a>
+                                                  <?=$value['test']?>
                                                 </h3>
                                              </div>
                                           </div>
                                           <div class="event__right d-sm-flex align-items-center">
                                              <div class="event__more ml-30">
-                                                <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
+                                              <?php
+                                                if(count($find_already_attend) > 0) {
+                                              ?>
+
+                                                    <a href="result.php?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>
+                                              <?php
+                                                } else {
+                                              ?>
+                                                    <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
+
+                                              <?php
+                                                }
+                                              ?>
+                                                
                                              </div>
                                           </div>
                                        </div>
