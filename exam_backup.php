@@ -41,7 +41,7 @@ if (!empty($r_temp_data)) {
     // mysqli_query($conn, $query_q_h);
     // echo "<script> alert('আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন')</script>";
     $_SESSION['alert'] = "আপনি এই মডেল টেস্টে অংশগ্রহণ করে ফেলেছেন";
-    header('Location: myprofile.php');
+    header('Location: myprofile');
 }
 
 $query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";

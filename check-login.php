@@ -12,6 +12,6 @@ $user_data = mysqli_fetch_assoc($result_user_data);
 $user_id = $user_data['id'];
 
 if (empty($email)) {
-    header("Location: login.php");
+    header("Location: login");
     exit();
 }

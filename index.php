@@ -13,7 +13,7 @@
                         <h3 class="slider__title-2">যদি দাও মডেল টেস্ট, পরীক্ষা তোমার হবে বেস্ট</h3>
                         <p>এসএসসি পরীক্ষা দোড়গোড়ায়। শেষ মুহূর্তের প্রস্তুতি নিশ্চিত করতে
 মাস্টার ট্রেইনার ও দেশসেরা বিশেষজ্ঞ শিক্ষকদের সমন্বয়ে সাজানো হয়েছে ‘এসএসসি মডেল টেস্ট ২০২২’।</p>
-                        <a href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'login.php' ?>" class="tp-btn-green">মডেল টেস্ট দিতে ক্লিক করো</a>
+                        <a href="<?php echo isset($_SESSION['logged_session']) ? 'dashboard' : 'login' ?>" class="tp-btn-green">মডেল টেস্ট দিতে ক্লিক করো</a>
                      </div>
                   </div>
                   <div class="col-xxl-6 col-lg-6">

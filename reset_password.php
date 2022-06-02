@@ -32,7 +32,7 @@ if (isset($_POST['reset_password'])) {
 
         if ($result) {
             array_push($msg, "আপনার নতুন পাসওয়ার্ডটি সেট করা হয়েছে।");
-            echo "<script type='text/javascript'>window.top.location='http://localhost/campaigns/palo-campaigns/ssc-model-test/login.php';</script>";exit;
+            echo "<script type='text/javascript'>window.top.location='login';</script>";exit;
         }
 
     } //code if password match and form submit

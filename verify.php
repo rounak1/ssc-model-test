@@ -17,7 +17,7 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
 
             $_SESSION['email'] = $email;
             $_SESSION['message'] = "আপনার ই-মেইলটি সফলভাবে ভেরিফাই করা হয়েছে";
-            header('Location: login.php');
+            header('Location: login');
         }
 
     } else {

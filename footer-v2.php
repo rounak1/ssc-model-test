@@ -8,7 +8,7 @@
                            <div class="footer__widget footer__widget-2 footer-col-2-1 mb-50">
                               <div class="footer__logo">
                                  <div class="logo">
-                                    <a href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>">
+                                    <a href="<?php echo isset($_SESSION['logged_session']) ? 'dashboard' : 'landing' ?>">
                                        <img class="exam-running" style="width: 130px;" src="assets/img/porasona.svg" alt="">
                                     </a>
                                  </div>

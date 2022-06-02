@@ -411,11 +411,11 @@ if (!empty($result_quiz_data)) {
                                                   if(count($find_already_attend) > 0) {
                                                 ?>
 
-                                                      <a href="result.php?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>
+                                                      <a href="result?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>
                                                 <?php
                                                   } else {
                                                 ?>
-                                                      <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
+                                                      <a href="exam?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
 
                                                 <?php
                                                   }
@@ -477,11 +477,11 @@ if (!empty($result_quiz_data)) {
                                                 if(count($find_already_attend) > 0) {
                                               ?>
 
-                                                    <a href="result.php?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>
+                                                    <a href="result?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>
                                               <?php
                                                 } else {
                                               ?>
-                                                    <a href="exam.php?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
+                                                    <a href="exam?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
 
                                               <?php
                                                 }

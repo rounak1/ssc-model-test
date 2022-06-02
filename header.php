@@ -51,9 +51,9 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <?php
 if ((isset($_SESSION['logged_in']) === 'true')) {
-    echo '<ul class="navbar-nav ml-auto"><li class="nav-item active"><a class="nav-link" href="index.html">হোমপেজ</a></li><li class="nav-item active"><a class="nav-link" href="leaderboard.html">লিডারবোর্ড</a></li><li class="nav-item active"><a class="nav-link" href="faq.html">ব্যবহারবিধি</a></li><li class="nav-item active"><a class="nav-link" href="myprofile.html">প্রোফাইল</a></li><li class="nav-item cta"><a class="nav-link" href="logout.php"><span>লগ আউট</span></a></li></ul>';
+    echo '<ul class="navbar-nav ml-auto"><li class="nav-item active"><a class="nav-link" href="index.html">হোমপেজ</a></li><li class="nav-item active"><a class="nav-link" href="leaderboard.html">লিডারবোর্ড</a></li><li class="nav-item active"><a class="nav-link" href="faq.html">ব্যবহারবিধি</a></li><li class="nav-item active"><a class="nav-link" href="myprofile.html">প্রোফাইল</a></li><li class="nav-item cta"><a class="nav-link" href="logout"><span>লগ আউট</span></a></li></ul>';
 } else {
-    echo '<ul class="navbar-nav ml-auto"><li class="nav-item active"><a class="nav-link" href="index.html">হোমপেজ</a></li><li class="nav-item active"><a class="nav-link" href="leaderboard.html">লিডারবোর্ড</a></li><li class="nav-item active"><a class="nav-link" href="faq.html">ব্যবহারবিধি</a></li><li class="nav-item cta"><a class="nav-link" href="login.php"><span>লগইন</span></a></li></ul>';
+    echo '<ul class="navbar-nav ml-auto"><li class="nav-item active"><a class="nav-link" href="index.html">হোমপেজ</a></li><li class="nav-item active"><a class="nav-link" href="leaderboard.html">লিডারবোর্ড</a></li><li class="nav-item active"><a class="nav-link" href="faq.html">ব্যবহারবিধি</a></li><li class="nav-item cta"><a class="nav-link" href="login"><span>লগইন</span></a></li></ul>';
 }
 ?>
         </div>

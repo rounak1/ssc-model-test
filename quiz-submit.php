@@ -51,7 +51,7 @@ if (isset($_POST['question'])) {
 
     if ($result2) {
         $last_id = mysqli_insert_id($conn);
-        header("Location: result.php?id=".$last_id);
+        header("Location: result?id=".$last_id);
         exit();
         echo "<script> alert('Data Inserted')</script>";
     } else {

@@ -100,7 +100,7 @@ session_start();
                      <div class="col-xxl-8 col-xl-9 col-lg-10 col-md-6 col-6">
                         <div class="header__bottom-left d-flex align-items-center">
                            <div class="logo">
-                              <a href="<?php echo isset($_SESSION['logged_session']) ? 'myprofile.php' : 'index.php' ?>">
+                              <a href="<?php echo isset($_SESSION['logged_session']) ? 'dashboard' : 'landing' ?>">
                                  <img class="exam-running" src="assets/img/porasona.svg" alt="logo">
                               </a>
                            </div>

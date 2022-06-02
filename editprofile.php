@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['logged_session'])) {
-    header('Location: index.php');
+    header('Location: index');
 }
 error_reporting(0);
 require 'connection.php';
@@ -62,9 +62,9 @@ if (isset($_POST['edit-profile'])) {
 
             $_SESSION['success'] = "প্রোফাইল আপডেট করা হয়েছে";
 
-            header('Location: myprofile.php');
+            header('Location: dashboard');
 
-            echo "<script type='text/javascript'>window.top.location='myprofile.php';</script>";exit;
+            echo "<script type='text/javascript'>window.top.location='dashboard';</script>";exit;
 
         }
 

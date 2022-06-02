@@ -24,7 +24,7 @@ if (isset($_POST['forget_password'])) {
 
     $token = bin2hex(random_bytes(20));
 
-    $verifyEmailLink = "https://service.prothomalo.com/modeltest/reset_password.php?token=" . $token;
+    $verifyEmailLink = "https://service.prothomalo.com/modeltest/reset_password?token=" . $token;
 
     $message = '<div><div>প্রিয় শিক্ষার্থী বন্ধু,  এসএসসি মডেল টেস্ট ২০২২ - এ তোমাকে স্বাগতম।
     </div> <a href="' . $verifyEmailLink . '">এই লিংকে ক্লিক</a> করে তোমার পাসওয়ার্ডটি পুনরায় সেট করো।</div>';
@@ -50,11 +50,10 @@ if (isset($_POST['forget_password'])) {
         }
 
     } else {
-        echo "email not found";
+        $_SESSION['alert'] = "email not found";
     }
 
-    array_push($msg, "তোমার ই-মেইলে পাসওয়ার্ড পুনরায় সেট করার জন্য একটি লিংক পাঠানো হয়েছে। লিংকে ক্লিক করে পাসওয়ার্ড পুনরায় সেট করো।");
-
+    $_SESSION['success'] = "তোমার ই-মেইলে পাসওয়ার্ড পুনরায় সেট করার জন্য একটি লিংক পাঠানো হয়েছে। লিংকে ক্লিক করে পাসওয়ার্ড পুনরায় সেট করো।";
 }
 ?>
 
@@ -82,15 +81,25 @@ if (isset($_POST['forget_password'])) {
                   <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                      <div class="sign__wrapper white-bg">
                         <?php
-                        if (count($msg) > 0) {?>
-                            <div class="alert alert-warning" role="alert">
-                                <?php
-                                    foreach ($msg as $message) {
-                                        echo $message . "<br>";
-                                    }
-                                ?>
-                            </div>
-                        <?php }?>
+                          if (isset($_SESSION['success'])) {?>
+                                <div class="col-md-12 message-container">
+                                  <div class="alert alert-success" role="alert">
+                            <?php echo $_SESSION['success']; ?>
+                          </div>
+                                  </div>
+
+                          if (isset($_SESSION['alert'])) {?>
+                            <div class="col-md-12 message-container">
+                                  <div class="alert alert-warning" role="alert">
+
+                              <?php
+                          echo $_SESSION['alert'];
+
+                              unset($_SESSION['alert']); ?>
+                          </div>
+                                  </div>
+                          <?php }
+                          ?>
                         <div class="sign__form">
                            <form action= "" method= "post">
                               <div class="sign__input-wrapper mb-25">
@@ -102,7 +111,7 @@ if (isset($_POST['forget_password'])) {
                               </div>
                               <button name="login" class="tp-btn  w-100"> <span></span> পাঠাও</button>
                               <div class="sign__new text-center mt-20">
-                                 <p>অ্যাকাউন্ট নেই? <a href="<?php $base_url?>register.php">নিবন্ধন করো</a></p>
+                                 <p>অ্যাকাউন্ট নেই? <a href="<?php $base_url?>register">নিবন্ধন করো</a></p>
                               </div>
                            </form>
                         </div>

@@ -6,11 +6,11 @@
   </h3>
   <div class="profile__menu-tab">
      <div class="nav nav-tabs flex-column justify-content-start text-start" >
-        <a class="nav-link" href="myprofile.php"> <i class="fa-regular fa-square-list"></i> ড্যাশবোর্ড</a>
+        <a class="nav-link" href="dashboard"> <i class="fa-regular fa-square-list"></i> ড্যাশবোর্ড</a>
 
-        <a class="nav-link" href="editprofile.php"> <i class="fa-regular fa-user"></i> এডিট প্রোফাইল</a>
+        <a class="nav-link" href="editprofile"> <i class="fa-regular fa-user"></i> এডিট প্রোফাইল</a>
         
-        <a class="nav-link logout-link" href="logout.php"> <i class="fa-regular fa-arrow-right-from-bracket"></i> লগ আউট</a>
+        <a class="nav-link logout-link" href="logout"> <i class="fa-regular fa-arrow-right-from-bracket"></i> লগ আউট</a>
      </div>
 
    </div>

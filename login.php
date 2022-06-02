@@ -30,9 +30,9 @@ if (isset($_POST['login'])) {
         $_SESSION['logged_session'] = true;
         $_SESSION['email'] = $email;
 
-        header('Location:myprofile.php');
+        header('Location:dashboard');
 
-        echo "<script type='text/javascript'>window.top.location='myprofile.php';</script>";exit;
+        echo "<script type='text/javascript'>window.top.location='dashboard';</script>";exit;
 
     } else {
 
@@ -107,12 +107,12 @@ if (isset($_POST['login'])) {
                               </div>
                               <div class="sign__action d-sm-flex justify-content-between mb-30">
                                  <div class="sign__forgot">
-                                    <a href="forget_password.php">পাসওয়ার্ড ভুলে গিয়েছো?</a>
+                                    <a href="forget_password">পাসওয়ার্ড ভুলে গিয়েছো?</a>
                                  </div>
                               </div>
                               <button name="login" class="tp-btn  w-100"> <span></span> লগইন</button>
                               <div class="sign__new text-center mt-20">
-                                 <p>নিবন্ধন করতে <a href="register.php">ক্লিক করো</a></p>
+                                 <p>নিবন্ধন করতে <a href="register">ক্লিক করো</a></p>
                               </div>
                            </form>
                         </div>

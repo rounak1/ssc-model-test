@@ -88,9 +88,9 @@ if (isset($_POST['register'])) {
 
                 $_SESSION['success'] = "রেজিস্ট্রেশন সফলভাবে সম্পন্ন হয়েছে। মডেল টেস্ট দিতে লগইন করো";
 
-                header('Location: login.php');
+                header('Location: login');
 
-                echo "<script type='text/javascript'>window.top.location='login.php';</script>";exit;
+                echo "<script type='text/javascript'>window.top.location='login';</script>";exit;
 
             }
 
@@ -309,7 +309,7 @@ if (isset($_POST['register'])) {
                               </div>
                               <button name="register" class="tp-btn  w-100"> <span></span> সাবমিট</button>
                               <div class="sign__new text-center mt-20">
-                                 <p>আগেই নিবন্ধন করা থাকলে <br/>  <a href="login.php">লগইন করো</p>
+                                 <p>আগেই নিবন্ধন করা থাকলে <br/>  <a href="login">লগইন করো</p>
                               </div>
                            </form>
                         </div>

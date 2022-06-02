@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
 if (!isset($exam_id)) {
     $_SESSION['alert'] = "পরীক্ষার বিষয় ও মডেল টেস্ট নম্বর নির্বাচন করুন";
 
-    echo "<script>window.location.href = 'myprofile.php'; </script>";
+    echo "<script>window.location.href = 'myprofile'; </script>";
     exit();
 }
 
@@ -47,7 +47,7 @@ if (!empty($r_temp_data)) {
     // mysqli_query($conn, $query_q_h);
     // echo "<script> alert('তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ')</script>";
     $_SESSION['alert'] = "তুমি এই মডেল টেস্টে ইতিমধ্যে অংশগ্রহণ করে ফেলেছ";
-    header('Location: myprofile.php');
+    header('Location: myprofile');
 }
 
 $query2 = "SELECT `id` FROM `quiz_histories` WHERE `user_id` = '$user_id' AND `exam_id` = '$exam_id'";
