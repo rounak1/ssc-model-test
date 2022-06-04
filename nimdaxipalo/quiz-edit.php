@@ -1,13 +1,13 @@
 <?php
-session_start();
+
+error_reporting(E_ALL);
+require 'connection.php';
+require '../settings.php';
+// require 'admin-header.php';
+require 'header-v2.php';
 if (!isset($_SESSION['logged_session'])) {
     header('Location: index.php');
 }
-error_reporting(E_ALL);
-require 'connection.php';
-require 'admin-header.php';
-
-require '../settings.php';
 
 $msg = [];
 if (isset($_GET['id'])) {
@@ -88,6 +88,7 @@ if (isset($_POST['btn_update'])) {
         }
 
         header('Location: quiz.php');
+        echo "<script type='text/javascript'>window.top.location='quiz.php';</script>";exit;
     }
 
 }
@@ -288,5 +289,4 @@ if (isset($_POST['btn_update'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <!-- <script src="./assets/js/main.js"></script> -->
-  </body>
-</html>
+    <?php require 'footer-v2.php';?>

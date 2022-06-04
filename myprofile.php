@@ -36,7 +36,7 @@ if (!empty($result_quiz_data)) {
          <div class="row">
 
             <div class="col-xxl-4 col-md-4">
-               <?php require 'menu.php'; ?>
+               <?php require 'menu.php';?>
             </div>
 
             <div class="col-xxl-8 col-md-8">
@@ -55,9 +55,9 @@ if (!empty($result_quiz_data)) {
                                   </div>
                                 </div>
                               <?php
-                                unset($_SESSION['success']);
-                              }
-                              ?>
+unset($_SESSION['success']);
+}
+?>
 
                               <?php if (isset($_SESSION['alert'])) {?>
                                   <div class="col-md-12 message-container">
@@ -66,26 +66,26 @@ if (!empty($result_quiz_data)) {
                                     </div>
                                   </div>
                               <?php
-                                unset($_SESSION['alert']);
-                              }
-                              ?>
+unset($_SESSION['alert']);
+}
+?>
 
                               <h3 class="postbox__title mb-0">
                                  এসএসসি মডেল টেস্ট ২০২২
                               </h3>
                               <p>মডেল টেস্ট শুরু করতে বিভাগ, বিষয় ও মডেল টেস্টের নাম সিলেক্ট করো</p>
-                              
+
                               <form action="exam.php" method="POST" name="subject_selection">
 
                                 <div class="exam-selection-container">
-                      
+
                                   <?php
 
-                                    $science_subjects = $exam_list['ssc'][0]['science']['subjects'];
-                                    $arts_subjects = $exam_list['ssc'][1]['arts']['subjects'];
-                                    $commerce_subjects = $exam_list['ssc'][2]['commerce']['subjects'];
+$science_subjects = $exam_list['ssc'][0]['science']['subjects'];
+$arts_subjects = $exam_list['ssc'][1]['arts']['subjects'];
+$commerce_subjects = $exam_list['ssc'][2]['commerce']['subjects'];
 
-                                  ?>
+?>
                                   <div class="form-group row mb-15">
                                     <h3 class="col-sm-2 col-form-label mt-label">বিভাগ</h3>
                                     <div class="col-sm-10">
@@ -107,7 +107,7 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                          <?php
-                                          foreach ($science_subjects as $science_subject) {?>
+foreach ($science_subjects as $science_subject) {?>
                                             <option value="<?php echo ($science_subject['name']) ?>"> <?php echo ($science_subject['name']) ?> </option>
 
                                         <?php }?>
@@ -119,7 +119,7 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
                                         <?php
 
-                                          foreach ($arts_subjects as $arts_subject) {?>
+foreach ($arts_subjects as $arts_subject) {?>
                                             <option value="<?php echo ($arts_subject['name']) ?>"> <?php echo ($arts_subject['name']) ?> </option>
 
                                         <?php }?>
@@ -132,8 +132,8 @@ if (!empty($result_quiz_data)) {
                                       <select name="commerce_subject" class="subject_box form-control" id="commerce_subject">
                                         <option value=""></option>
                                         <?php
-                                          foreach ($commerce_subjects as $commerce_subject) {
-                                        ?>
+foreach ($commerce_subjects as $commerce_subject) {
+    ?>
                                           <option value="<?php echo ($commerce_subject['name']) ?>"> <?php echo ($commerce_subject['name']) ?> </option>
 
                                         <?php }?>
@@ -151,13 +151,13 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                         <?php
-                                          $bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
+$bangla_p1 = $exam_list['ssc'][0]['science']['subjects'][0]['test'];
 
-                                          for ($i = 0; $i < count($bangla_p1); $i++) {?>
+for ($i = 0; $i < count($bangla_p1); $i++) {?>
                                             <option value="<?php echo $bangla_p1[$i]['id']; ?>"><?php echo $bangla_p1[$i]['test_name']; ?></option>
                                           <?php }
 
-                                        ?>
+?>
 
                                       </select>
 
@@ -165,11 +165,11 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                         <?php
-                                          $bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
+$bangla_p2 = $exam_list['ssc'][0]['science']['subjects'][1]['test'];
 
-                                          for ($i = 0; $i < count($bangla_p2); $i++) {?>
+for ($i = 0; $i < count($bangla_p2); $i++) {?>
                                             <option value="<?php echo $bangla_p2[$i]['id']; ?>"><?php echo $bangla_p2[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
@@ -177,55 +177,55 @@ if (!empty($result_quiz_data)) {
                                       <select name="" class="model_test_no form-control" id="agri">
                                         <option value=""></option>
                                         <?php
-                                          $agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
+$agri = $exam_list['ssc'][0]['science']['subjects'][2]['test'];
 
-                                          for ($i = 0; $i < count($agri); $i++) {?>
+for ($i = 0; $i < count($agri); $i++) {?>
                                             <option value="<?php echo $agri[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
                                       <select name="" class="model_test_no form-control" id="gah">
                                         <option value=""></option>
                                         <?php
-                                          $gah = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
+$gah = $exam_list['ssc'][0]['science']['subjects'][3]['test'];
 
-                                          for ($i = 0; $i < count($gah); $i++) {?>
+for ($i = 0; $i < count($gah); $i++) {?>
                                             <option value="<?php echo $gah[$i]['id']; ?>"><?php echo $gah[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
                                       <select name="" class="model_test_no form-control" id="physics">
                                         <option value=""></option>
                                         <?php
-                                          $phy = $exam_list['ssc'][0]['science']['subjects'][4]['test'];
+$phy = $exam_list['ssc'][0]['science']['subjects'][4]['test'];
 
-                                          for ($i = 0; $i < count($phy); $i++) {?>
+for ($i = 0; $i < count($phy); $i++) {?>
                                             <option value="<?php echo $phy[$i]['id']; ?>"><?php echo $phy[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
                                       <select name="" class="model_test_no form-control" id="biology">
                                         <option value=""></option>
                                         <?php
-                                          $biology = $exam_list['ssc'][0]['science']['subjects'][5]['test'];
+$biology = $exam_list['ssc'][0]['science']['subjects'][5]['test'];
 
-                                          for ($i = 0; $i < count($biology); $i++) {?>
+for ($i = 0; $i < count($biology); $i++) {?>
                                             <option value="<?php echo $biology[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
                                       <select name="" class="model_test_no form-control" id="chemistry">
                                         <option value=""></option>
                                         <?php
-                                          $chem = $exam_list['ssc'][0]['science']['subjects'][6]['test'];
+$chem = $exam_list['ssc'][0]['science']['subjects'][6]['test'];
 
-                                          for ($i = 0; $i < count($chem); $i++) {?>
+for ($i = 0; $i < count($chem); $i++) {?>
                                             <option value="<?php echo $chem[$i]['id']; ?>"><?php echo $agri[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
@@ -233,11 +233,11 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                         <?php
-                                          $bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][4]['test'];
+$bangladesh_history = $exam_list['ssc'][1]['arts']['subjects'][4]['test'];
 
-                                          for ($i = 0; $i < count($bangladesh_history); $i++) {?>
+for ($i = 0; $i < count($bangladesh_history); $i++) {?>
                                             <option value="<?php echo $bangladesh_history[$i]['id']; ?>"><?php echo $bangladesh_history[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
@@ -245,11 +245,11 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                         <?php
-                                          $geography = $exam_list['ssc'][1]['arts']['subjects'][5]['test'];
+$geography = $exam_list['ssc'][1]['arts']['subjects'][5]['test'];
 
-                                          for ($i = 0; $i < count($geography); $i++) {?>
+for ($i = 0; $i < count($geography); $i++) {?>
                                             <option value="<?php echo $geography[$i]['id']; ?>"><?php echo $geography[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
@@ -258,11 +258,11 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                         <?php
-                                          $pouroniti = $exam_list['ssc'][1]['arts']['subjects'][6]['test'];
+$pouroniti = $exam_list['ssc'][1]['arts']['subjects'][6]['test'];
 
-                                          for ($i = 0; $i < count($pouroniti); $i++) {?>
+for ($i = 0; $i < count($pouroniti); $i++) {?>
                                             <option value="<?php echo $pouroniti[$i]['id']; ?>"><?php echo $pouroniti[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
@@ -270,11 +270,11 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                         <?php
-                                          $accounting = $exam_list['ssc'][2]['commerce']['subjects'][4]['test'];
+$accounting = $exam_list['ssc'][2]['commerce']['subjects'][4]['test'];
 
-                                          for ($i = 0; $i < count($accounting); $i++) {?>
+for ($i = 0; $i < count($accounting); $i++) {?>
                                             <option value="<?php echo $accounting[$i]['id']; ?>"><?php echo $accounting[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
@@ -282,11 +282,11 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                         <?php
-                                          $finance = $exam_list['ssc'][2]['commerce']['subjects'][5]['test'];
+$finance = $exam_list['ssc'][2]['commerce']['subjects'][5]['test'];
 
-                                          for ($i = 0; $i < count($finance); $i++) {?>
+for ($i = 0; $i < count($finance); $i++) {?>
                                             <option value="<?php echo $finance[$i]['id']; ?>"><?php echo $finance[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
@@ -294,11 +294,11 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                         <?php
-                                          $bab_uddog = $exam_list['ssc'][2]['commerce']['subjects'][6]['test'];
+$bab_uddog = $exam_list['ssc'][2]['commerce']['subjects'][6]['test'];
 
-                                          for ($i = 0; $i < count($bab_uddog); $i++) {?>
+for ($i = 0; $i < count($bab_uddog); $i++) {?>
                                             <option value="<?php echo $bab_uddog[$i]['id']; ?>"><?php echo $bab_uddog[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
@@ -306,11 +306,11 @@ if (!empty($result_quiz_data)) {
                                         <option value=""></option>
 
                                         <?php
-                                          $economics = $exam_list['ssc'][2]['commerce']['subjects'][7]['test'];
+$economics = $exam_list['ssc'][2]['commerce']['subjects'][7]['test'];
 
-                                          for ($i = 0; $i < count($economics); $i++) {?>
+for ($i = 0; $i < count($economics); $i++) {?>
                                             <option value="<?php echo $economics[$i]['id']; ?>"><?php echo $economics[$i]['test_name']; ?></option>
-                                          <?php } ?>
+                                          <?php }?>
 
                                       </select>
 
@@ -372,19 +372,18 @@ if (!empty($result_quiz_data)) {
                       <div class="tab-pane fade show active" id="nav-todays" role="tabpanel" aria-labelledby="nav-todays-tab">
                          <div class="course__tab-wrapper">
                             <div class="row">
-                               
-                              <?php 
-                                $sort_by_date = array_column($model_test_list, 'date');
-                                array_multisort($sort_by_date, SORT_ASC, $model_test_list);
 
-                                  if(!empty($model_test_list)) {
-                                    foreach($model_test_list as $value) {
-                                      $exam_date = explode("-",$value['date']);
-                                      $current_date = Date('Y-m-d');
+                              <?php
+$sort_by_date = array_column($model_test_list, 'date');
+array_multisort($sort_by_date, SORT_ASC, $model_test_list);
 
-                                      if($current_date == $value['date']) 
-                                      { 
-                                ?>
+if (!empty($model_test_list)) {
+    foreach ($model_test_list as $value) {
+        $exam_date = explode("-", $value['date']);
+        $current_date = Date('Y-m-d');
+
+        if ($current_date == $value['date']) {
+            ?>
                                       <div class="col-12">
                                         <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
                                           <div class="event__left d-sm-flex align-items-center">
@@ -408,49 +407,48 @@ if (!empty($result_quiz_data)) {
                                           <div class="event__right d-sm-flex align-items-center">
                                              <div class="event__more ml-30">
                                                 <?php
-                                                  if(count($find_already_attend) > 0) {
-                                                ?>
+if (count($find_already_attend) > 0) {
+                ?>
 
                                                       <a href="result?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>
                                                 <?php
-                                                  } else {
-                                                ?>
+} else {
+                ?>
                                                       <a href="exam?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
 
                                                 <?php
-                                                  }
-                                                ?>
+}
+            ?>
                                              </div>
                                           </div>
                                        </div>
                                      </div>
                                 <?php
-                                      }
-                                    }
-                                  }
-                                ?>
+}
+    }
+}
+?>
 
                             </div>
                          </div>
                       </div>
                       <div class="tab-pane fade" id="nav-previous" role="tabpanel" aria-labelledby="nav-previous-tab">
                          <div class="row">
-                            
-                            <?php 
-                                $sort_by_date = array_column($model_test_list, 'date');
-                                array_multisort($sort_by_date, SORT_DESC, $model_test_list);
 
-                                  if(!empty($model_test_list)) {
-                                    foreach($model_test_list as $value) {
-                                      $exam_date = explode("-",$value['date']);
-                                      $current_date = Date('Y-m-d');
+                            <?php
+$sort_by_date = array_column($model_test_list, 'date');
+array_multisort($sort_by_date, SORT_DESC, $model_test_list);
 
-                                      if($current_date > $value['date']) 
-                                      { 
+if (!empty($model_test_list)) {
+    foreach ($model_test_list as $value) {
+        $exam_date = explode("-", $value['date']);
+        $current_date = Date('Y-m-d');
 
-                                        $find_already_attend = $result[$value['id']];
+        if ($current_date > $value['date']) {
 
-                                ?>
+            $find_already_attend = $result[$value['id']];
+
+            ?>
                                       <div class="col-12">
                                         <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
                                           <div class="event__left d-sm-flex align-items-center">
@@ -474,46 +472,45 @@ if (!empty($result_quiz_data)) {
                                           <div class="event__right d-sm-flex align-items-center">
                                              <div class="event__more ml-30">
                                               <?php
-                                                if(count($find_already_attend) > 0) {
-                                              ?>
+if (count($find_already_attend) > 0) {
+                ?>
 
                                                     <a href="result?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>
                                               <?php
-                                                } else {
-                                              ?>
+} else {
+                ?>
                                                     <a href="exam?id=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">শুরু করো</a>
 
                                               <?php
-                                                }
-                                              ?>
-                                                
+}
+            ?>
+
                                              </div>
                                           </div>
                                        </div>
                                      </div>
                                 <?php
-                                      }
-                                    }
-                                  }
-                                ?>
+}
+    }
+}
+?>
 
                          </div>
                       </div>
                       <div class="tab-pane fade" id="nav-next" role="tabpanel" aria-labelledby="nav-next-tab">
                          <div class="row">
-                            
-                            <?php 
-                              $sort_by_date = array_column($model_test_list, 'date');
-                              array_multisort($sort_by_date, SORT_ASC, $model_test_list);
 
-                                if(!empty($model_test_list)) {
-                                  foreach($model_test_list as $value) {
-                                    $exam_date = explode("-",$value['date']);
-                                    $current_date = Date('Y-m-d');
+                            <?php
+$sort_by_date = array_column($model_test_list, 'date');
+array_multisort($sort_by_date, SORT_ASC, $model_test_list);
 
-                                    if($current_date < $value['date']) 
-                                    { 
-                              ?>
+if (!empty($model_test_list)) {
+    foreach ($model_test_list as $value) {
+        $exam_date = explode("-", $value['date']);
+        $current_date = Date('Y-m-d');
+
+        if ($current_date < $value['date']) {
+            ?>
                                     <div class="col-12">
                                       <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
                                         <div class="event__left d-sm-flex align-items-center">
@@ -537,10 +534,10 @@ if (!empty($result_quiz_data)) {
                                      </div>
                                    </div>
                               <?php
-                                    }
-                                  }
-                                }
-                              ?>
+}
+    }
+}
+?>
 
                          </div>
                       </div>
@@ -559,9 +556,9 @@ if (!empty($result_quiz_data)) {
                   </div>
 
                   <?php
-                    if(!empty($result)) {
-                      foreach($result as $data) {
-                  ?>
+if (!empty($result)) {
+    foreach ($result as $data) {
+        ?>
 
                         <div class="course__member-item my-result-each">
                           <a href="result.php?id=<?=$data['id']?>">
@@ -591,25 +588,25 @@ if (!empty($result_quiz_data)) {
                                  <div class="course__member-info">
                                     <h5>
                                       <?php
-                                        $init = $data['completion_time'];
-                                        $minutes = BanglaConverter::en2bn(floor(($init / 60) % 60));
-                                        $seconds = BanglaConverter::en2bn($init % 60);
-                                        echo "$minutes:$seconds মিনিট";
-                                      ?>
+$init = $data['completion_time'];
+        $minutes = BanglaConverter::en2bn(floor(($init / 60) % 60));
+        $seconds = BanglaConverter::en2bn($init % 60);
+        echo "$minutes:$seconds মিনিট";
+        ?>
                                     </h5>
                                     <span>সময়</span>
-                                    
+
                                  </div>
                               </div>
                            </div>
-                          </a>                         
+                          </a>
                         </div>
 
                   <?php
-                      }
-                    }
-                  ?>
-                  
+}
+}
+?>
+
                </div>
               </div>
             </div>

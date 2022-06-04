@@ -5,7 +5,9 @@ if (!isset($_SESSION['logged_session'])) {
 }
 error_reporting(1);
 require 'connection.php';
-require 'admin-header.php';
+require '../settings.php';
+// require 'admin-header.php';
+require 'header-v2.php';
 $date = $question = $answer = $option1 = $option2 = $option3 = $option4 = "";
 
 $msg = [];
@@ -329,5 +331,4 @@ for ($i = 0; $i < 10; $i++) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- <script src="./assets/js/main.js"></script> -->
-  </body>
-</html>
+    <?php require 'footer-v2.php';?>

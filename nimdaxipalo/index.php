@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 error_reporting(1);
@@ -22,9 +23,9 @@ if (isset($_POST['login'])) {
 
         $_SESSION['logged_session'] = true;
 
-        header('Location:home.php');
+        header('Location:participants.php');
 
-        echo "<script type='text/javascript'>window.top.location='home.php';</script>";exit;
+        echo "<script type='text/javascript'>window.top.location='participants.php';</script>";exit;
 
     } else {
 
@@ -53,6 +54,8 @@ if (isset($_POST['login'])) {
 
     <body>
 
+    <!-- <?php // require 'header-v2.php';?> -->
+
       <main>
 
          <!-- sign up area start -->
@@ -77,7 +80,7 @@ if (isset($_POST['login'])) {
                   <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                      <div class="sign__wrapper white-bg">
                         <?php
-                            if (isset($_SESSION['success'])) {?>
+if (isset($_SESSION['success'])) {?>
                                   <div class="col-md-12 message-container">
                                     <div class="alert alert-success" role="alert">
                               <?php echo $_SESSION['success']; ?>
@@ -85,18 +88,18 @@ if (isset($_POST['login'])) {
                                     </div>
                             <?php unset($_SESSION['success']);}
 
-                            if (isset($_SESSION['alert'])) {?>
+if (isset($_SESSION['alert'])) {?>
                               <div class="col-md-12 message-container">
                                     <div class="alert alert-warning" role="alert">
 
                                 <?php
-                            echo $_SESSION['alert'];
+echo $_SESSION['alert'];
 
-                                unset($_SESSION['alert']); ?>
+    unset($_SESSION['alert']); ?>
                             </div>
                                     </div>
                             <?php }
-                            ?>
+?>
                         <div class="sign__form">
                            <form id="login_form_submit" name="login" action="" method="POST">
                               <div class="sign__input-wrapper mb-25">
@@ -123,9 +126,11 @@ if (isset($_POST['login'])) {
          </section>
 
       </main>
-      
+
       <script src="assets/js/bootstrap-bundle.js"></script>
-     
+
+      <?php require 'footer-v2.php';?>
+
     </body>
   </head>
 </html>

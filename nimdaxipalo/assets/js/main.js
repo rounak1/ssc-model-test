@@ -1,14 +1,14 @@
 // server
-var firebaseConfig = {
-  apiKey: "AIzaSyD8qQCweeSGCWZYA9BrBMwACfgVuvIzxbU",
-  authDomain: "zabivaka-prod.firebaseapp.com",
-  databaseURL: "https://zabivaka-prod.firebaseio.com",
-  projectId: "zabivaka-prod",
-  storageBucket: "zabivaka-prod.appspot.com",
-  messagingSenderId: "580184843548",
-  appId: "1:580184843548:web:83d0e7ef276158a79e86d9",
-  measurementId: "G-T8BXGZSL5R",
-};
+// var firebaseConfig = {
+//   apiKey: "AIzaSyD8qQCweeSGCWZYA9BrBMwACfgVuvIzxbU",
+//   authDomain: "zabivaka-prod.firebaseapp.com",
+//   databaseURL: "https://zabivaka-prod.firebaseio.com",
+//   projectId: "zabivaka-prod",
+//   storageBucket: "zabivaka-prod.appspot.com",
+//   messagingSenderId: "580184843548",
+//   appId: "1:580184843548:web:83d0e7ef276158a79e86d9",
+//   measurementId: "G-T8BXGZSL5R",
+// };
 
 // local
 // const firebaseConfig = {

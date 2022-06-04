@@ -5,103 +5,89 @@ if (!isset($_SESSION['logged_session'])) {
     header('Location: index.php');
 }
 require 'connection.php';
-require 'admin-header.php';
+require '../settings.php';
+// require 'admin-header.php';
+require 'header-v2.php';
 $todays_date = date('Y-m-d');
 
 ?>
 
-
-    <style>
-body {font-family: Arial;}
-
-/* Style the tab */
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  /* background-color: #f1f1f1; */
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-</style>
-
 <div class="container">
     <div class="quiz-container">
 
+    <?php
+$sql = 'select count(distinct `user_id`) from quiz_histories';
+$res = mysqli_query($conn, $sql);
+
+foreach ($res as $total_prtcpnts) {
+    $total_participants = $total_prtcpnts['count(distinct `user_id`)'];
+}
+
+?>
+
+<div class="quiz-header">
+
+<div class="search-panel">
+            <form action="" method="POST">
+
+            <select name="specific_questions" id="" class="all_quiz">
+            <?php
+
+foreach ($model_test_list as $key => $value) {?>
 
 
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'todays_participants')" id="defaultOpen">Todays participants</button>
-  <button class="tablinks" onclick="openCity(event, 'all_participants')">All participants</button>
+    ?>
+  <option value="<?php echo $value['id']; ?>" <?=$value['id'] == $_POST['specific_questions'] ? 'selected' : ''?> >
+  <?php echo $value['subject'] . ' ' . $value['test']; ?>
+</option>
+<?php }
+
+?>
+
+            </select>
+            <input
+              id="submit_search"
+              type="submit"
+              name="search"
+              value="Search"
+            />
+            </form>
+          </div>
+
+          <h4>Total Participants: <?=$total_participants;?> </h4>
+
 </div>
+
+
+
+
+
+
+
 
 
 
       <section>
 
-      <div id="todays_participants" class="tabcontent">
-      <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Total Marks</th>
-                <th>Time to complete(S)</th>
-              </tr>
-            </thead>
-            <tbody class="participants-information-body-1">
-                <?php
-$query = "SELECT model_students.name, model_students.phone, quiz_histories.total_marks, quiz_histories.completion_time, quiz_histories.created_at FROM `model_students` INNER JOIN `quiz_histories` on model_students.id = quiz_histories.user_id WHERE `quiz_date` = '$todays_date' ORDER BY `total_marks` DESC, completion_time ASC LIMIT 200`;";
 
-$result = mysqli_query($conn, $query);
-$i = 1;
 
-foreach ($result as $row) {?>
+      <?php
+if (isset($_POST['search'])) {
 
-    <tr>
-        <td><?php echo $i++; ?></td>
-        <td><?php echo $row['name']; ?></td>
-        <td><?php echo $row['phone']; ?></td>
-        <td><?php echo $row['total_marks']; ?></td>
-        <td><?php echo $row['completion_time']; ?></td>
+    $exam_id = $_POST['specific_questions'];
 
-    </tr>
+    $sql = "select (count(exam_id)) from quiz_histories WHERE `exam_id` = '$exam_id'";
 
-<?php }
-?>
-            </tbody>
-          </table>
-</div>
+    $res = mysqli_query($conn, $sql);
 
-<div id="all_participants" class="tabcontent">
+    foreach ($res as $prtcpnt_each) {
+        $participants_each_exam = $prtcpnt_each['(count(exam_id))'];
+    }?>
+
+  <h2 class="participants_text">Test Given by <?=$participants_each_exam;?> Participants</h2>
+
+
+
 <table>
             <thead>
               <tr>
@@ -114,26 +100,76 @@ foreach ($result as $row) {?>
             </thead>
             <tbody class="participants-information-body-1">
                 <?php
-$query = "SELECT model_students.name, model_students.phone, quiz_histories.total_marks, quiz_histories.completion_time, quiz_histories.created_at FROM `model_students` INNER JOIN `quiz_histories` on model_students.id = quiz_histories.user_id ORDER BY `total_marks` DESC, completion_time ASC LIMIT 200";
+$query = "SELECT model_students.name, model_students.phone, quiz_histories.total_marks, quiz_histories.completion_time, quiz_histories.created_at FROM `model_students` INNER JOIN `quiz_histories` on model_students.id = quiz_histories.user_id where quiz_histories.exam_id = '$exam_id'  ORDER BY `total_marks` DESC, completion_time ASC LIMIT 200";
 
-$result = mysqli_query($conn, $query);
-$i = 1;
+    $result = mysqli_query($conn, $query);
+    $i = 1;
 
-foreach ($result as $row) {?>
+    foreach ($result as $row) {?>
 
     <tr>
         <td><?php echo $i++; ?></td>
         <td><?php echo $row['name']; ?></td>
         <td><?php echo $row['phone']; ?></td>
         <td><?php echo $row['total_marks']; ?></td>
-        <td><?php echo $row['completion_time']; ?></td>
+        <td><?php echo gmdate("H:i:s", $row['completion_time']); ?></td>
 
     </tr>
 
 <?php }
-?>
+    ?>
             </tbody>
           </table>
+
+<?php } else {
+
+    $sql = 'select (count(exam_id)) from quiz_histories WHERE `exam_id` = "ssc_ban1_t001"';
+    $res = mysqli_query($conn, $sql);
+
+    foreach ($res as $prtcpnt_each) {
+        $participants_each_exam = $prtcpnt_each['(count(exam_id))'];
+    }?>
+
+  <h2 class="participants_text">Test Given by <?=$participants_each_exam;?> Participants</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Total Marks</th>
+                <th>Time to complete(S)</th>
+              </tr>
+            </thead>
+            <tbody class="participants-information-body-1">
+                <?php
+$query = "SELECT model_students.name, model_students.phone, quiz_histories.total_marks, quiz_histories.completion_time, quiz_histories.created_at FROM `model_students` INNER JOIN `quiz_histories` on model_students.id = quiz_histories.user_id where quiz_histories.exam_id = 'ssc_ban1_t001' ORDER BY `total_marks` DESC, completion_time ASC LIMIT 200";
+
+    $result = mysqli_query($conn, $query);
+    $i = 1;
+
+    foreach ($result as $row) {?>
+
+    <tr>
+        <td><?php echo $i++; ?></td>
+        <td><?php echo $row['name']; ?></td>
+        <td><?php echo $row['phone']; ?></td>
+        <td><?php echo $row['total_marks']; ?></td>
+        <td><?php echo gmdate("H:i:s", $row['completion_time']); ?></td>
+
+    </tr>
+
+<?php }
+    ?>
+            </tbody>
+          </table>
+      <?php }
+?>
+
+
+
+<div id="all_participants" class="tabcontent">
+
 </div>
 
 
@@ -142,32 +178,7 @@ foreach ($result as $row) {?>
 
 </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script> -->
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-
-<script>
-document.getElementById("defaultOpen").click();
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
-    <!-- <script src="./assets/js/main.js"></script> -->
-  </body>
-</html>
+  <?php require 'footer-v2.php';?>

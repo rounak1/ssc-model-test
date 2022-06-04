@@ -1,12 +1,14 @@
 <?php
-session_start();
-if (!isset($_SESSION['logged_session'])) {
-    header('Location: index.php');
-}
 
 error_reporting(1);
 require 'connection.php';
-require 'admin-header.php';
+require '../settings.php';
+// require 'admin-header.php';
+require 'header-v2.php';
+
+if (!isset($_SESSION['logged_session'])) {
+    header('Location: index.php');
+}
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -16,9 +18,11 @@ if (isset($_GET['id'])) {
 
     if ($result) {
         header('Location: quiz.php');
+        echo "<script type='text/javascript'>window.top.location='quiz.php';</script>";exit;
     }
 } else {
     header('Location: quiz.php');
+    echo "<script type='text/javascript'>window.top.location='quiz.php';</script>";exit;
 }
 
 ?>
@@ -31,5 +35,4 @@ if (isset($_GET['id'])) {
 
 
     <!-- <script src="./assets/js/main.js"></script> -->
-  </body>
-</html>
+    <?php require 'footer-v2.php';?>

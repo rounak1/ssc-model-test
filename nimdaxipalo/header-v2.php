@@ -44,7 +44,8 @@ session_start();
     <link rel="stylesheet" href="assets/css/backtotop.css">
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
     <link rel="stylesheet" href="assets/css/spacing.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=1.6">
+    <link rel="stylesheet" href="assets/css/main.css?v=1.1" />
+    <link rel="stylesheet" href="assets/css/style.css?v=1.7">
 
     <!-- JS here -->
 
@@ -70,18 +71,6 @@ session_start();
   </head>
   <body>
 
-    <!-- pre loader area start -->
-      <div id="loading">
-         <div id="loading-center">
-            <div id="loading-center-absolute">
-               <svg id="loader">
-                  <path id="corners" d="m 0 12.5 l 0 -12.5 l 50 0 l 0 50 l -50 0 l 0 -37.5"></path>
-               </svg>
-               <img src="assets/img/favicon.png" alt="">
-            </div>
-         </div>
-      </div>
-      <!-- pre loader area end -->
 
       <!-- back to top start -->
       <div class="progress-wrap">
@@ -92,12 +81,12 @@ session_start();
       <!-- back to top end -->
 
       <!-- header area start -->
-      <header>
-         <div id="header-sticky" class="header__area header__transparent">
+      <header class="admin_header">
+         <div id="header-sticky" class="header__area header__transparent" style="position: relative;">
             <div class="header__bottom">
                <div class="container">
                   <div class="row align-items-center">
-                     <div class="col-xxl-8 col-xl-9 col-lg-10 col-md-6 col-6">
+                     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-6">
                         <div class="header__bottom-left d-flex align-items-center">
                            <div class="logo">
                               <a href="<?php echo isset($_SESSION['logged_session']) ? 'dashboard' : 'landing' ?>">
@@ -106,14 +95,14 @@ session_start();
                            </div>
                         </div>
                      </div>
-                     <div class="col-xxl-4 col-xl-3 col-lg-2 col-md-6 col-6">
+                     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-6">
                         <div class="header__bottom-right d-flex justify-content-end align-items-center pl-30">
 
-                            <div class="logo">
-                              <a target="_blank" href="https://www.prothomalo.com/">
-                                 <img src="assets/img/palo.svg" alt="logo">
-                              </a>
-                           </div>
+                        <div class="logout_container">
+          <a href="participants.php">Participants</a>
+          <a href="quiz.php">Questions</a>
+          <a href="logout.php">Logout</a>
+        </div>
 
                         </div>
                      </div>
