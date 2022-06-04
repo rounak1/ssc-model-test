@@ -395,7 +395,7 @@ if (!empty($model_test_list)) {
                                                 <div class="event__meta">
                                                    <ul>
                                                       <li>
-                                                        ?=$value['subject']?>
+                                                        <?=$value['subject']?>
                                                       </li>
                                                    </ul>
                                                 </div>
@@ -407,7 +407,7 @@ if (!empty($model_test_list)) {
                                           <div class="event__right d-sm-flex align-items-center">
                                              <div class="event__more ml-30">
                                                 <?php
-if (count($find_already_attend) > 0) {
+if (!empty($find_already_attend) && count($find_already_attend) > 0) {
                 ?>
 
                                                       <a href="result?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>
@@ -472,7 +472,7 @@ if (!empty($model_test_list)) {
                                           <div class="event__right d-sm-flex align-items-center">
                                              <div class="event__more ml-30">
                                               <?php
-if (count($find_already_attend) > 0) {
+if ( !empty($find_already_attend) && count($find_already_attend) > 0) {
                 ?>
 
                                                     <a href="result?id=<?=$find_already_attend['id']?>" class="tp-btn-5 tp-btn-7">ফলাফল দেখো</a>

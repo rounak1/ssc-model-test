@@ -100,7 +100,7 @@
 
   	<script src="assets/js/bootstrap-bundle.js"></script>
   	<script src="assets/js/parallax.js"></script>
-  	<script src="assets/js/backtotop.js"></script>
+  	<!-- <script src="assets/js/backtotop.js"></script> -->
   	<script src="assets/js/isotope-pkgd.js"></script>
   	<script src="assets/js/main.js"></script>
    </body>
