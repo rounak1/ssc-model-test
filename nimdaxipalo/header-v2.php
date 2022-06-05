@@ -44,8 +44,8 @@ session_start();
     <link rel="stylesheet" href="assets/css/backtotop.css">
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
     <link rel="stylesheet" href="assets/css/spacing.css">
-    <link rel="stylesheet" href="assets/css/main.css?v=1.1" />
-    <link rel="stylesheet" href="assets/css/style.css?v=1.7">
+    <link rel="stylesheet" href="assets/css/main.css?v=1.8" />
+    <link rel="stylesheet" href="assets/css/style.css?v=1.8">
 
     <!-- JS here -->
 
@@ -89,7 +89,7 @@ session_start();
                      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-6">
                         <div class="header__bottom-left d-flex align-items-center">
                            <div class="logo">
-                              <a href="<?php echo isset($_SESSION['logged_session']) ? 'dashboard' : 'landing' ?>">
+                              <a href="participants.php">
                                  <img class="exam-running" src="assets/img/porasona.svg" alt="logo">
                               </a>
                            </div>
@@ -99,6 +99,7 @@ session_start();
                         <div class="header__bottom-right d-flex justify-content-end align-items-center pl-30">
 
                         <div class="logout_container">
+                        <a href="home.php">All Students</a>
           <a href="participants.php">Participants</a>
           <a href="quiz.php">Questions</a>
           <a href="logout.php">Logout</a>

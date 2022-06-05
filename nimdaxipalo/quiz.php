@@ -44,7 +44,7 @@ foreach ($model_test_list as $key => $value) {?>
 
           <a href="quiz-add.php" class="addQuiz">Add Question</a>
         </div>
-        <div class="quiz-data">
+        <div class="quiz-data table-content table-responsive">
 
 
           <?php
@@ -53,17 +53,17 @@ if (isset($_POST['search'])) {
     $exam_id = $_POST['specific_questions'];
     ?>
 
-<table>
+<table class="table">
             <thead>
               <tr>
-                <td>ID</td>
-                <td>Exam Date</td>
-                <td>Question</td>
-                <td>Answer</td>
-                <td>Option 1</td>
-                <td>Option 2</td>
-                <td>Option 3</td>
-                <td>Option 4</td>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Option 1</th>
+                <th>Option 2</th>
+                <th>Option 3</th>
+                <th>Option 4</th>
                 <!-- <td style="width: 96px ;">Actions</td> -->
               </tr>
               </thead>
@@ -102,17 +102,17 @@ if (isset($_POST['search'])) {
 <?php } else {?>
 
 
-          <table>
+          <table class="table">
             <thead>
               <tr>
-                <td>Exam Date</td>
-                <td>Question</td>
-                <td>Answer</td>
-                <td>Option 1</td>
-                <td>Option 2</td>
-                <td>Option 3</td>
-                <td>Option 4</td>
-                <td style="width: 96px ;">Actions</td>
+                <th>Date</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Option 1</th>
+                <th>Option 2</th>
+                <th>Option 3</th>
+                <th>Option 4</th>
+                <th style="width: 96px ;">Actions</th>
               </tr>
               </thead>
 

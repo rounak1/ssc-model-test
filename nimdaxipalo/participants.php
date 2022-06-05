@@ -59,14 +59,6 @@ foreach ($model_test_list as $key => $value) {?>
 </div>
 
 
-
-
-
-
-
-
-
-
       <section>
 
 
@@ -87,15 +79,15 @@ if (isset($_POST['search'])) {
   <h2 class="participants_text">Test Given by <?=$participants_each_exam;?> Participants</h2>
 
 
-
-<table>
+<div class="table-content table-responsive">
+<table class="table">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Total Marks</th>
-                <th>Time to complete(S)</th>
+                <th>Time Taken(S)</th>
               </tr>
             </thead>
             <tbody class="participants-information-body-1">
@@ -120,6 +112,7 @@ $query = "SELECT model_students.name, model_students.phone, quiz_histories.total
     ?>
             </tbody>
           </table>
+    </div>
 
 <?php } else {
 
@@ -131,14 +124,15 @@ $query = "SELECT model_students.name, model_students.phone, quiz_histories.total
     }?>
 
   <h2 class="participants_text">Test Given by <?=$participants_each_exam;?> Participants</h2>
-          <table>
+    <div class="table-content table-responsive">
+          <table class="table">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Total Marks</th>
-                <th>Time to complete(S)</th>
+                <th>Time Taken(S)</th>
               </tr>
             </thead>
             <tbody class="participants-information-body-1">
@@ -163,6 +157,7 @@ $query = "SELECT model_students.name, model_students.phone, quiz_histories.total
     ?>
             </tbody>
           </table>
+    </div>
       <?php }
 ?>
 

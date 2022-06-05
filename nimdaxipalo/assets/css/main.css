@@ -127,9 +127,6 @@ table {
   width: 100%;
 }
 
-table tr {
-}
-
 table tr th,
 table tr td {
   padding: 8px;
@@ -169,6 +166,7 @@ h2.participants_text {
   cursor: pointer;
   border-radius: 4px;
   text-decoration: none;
+  font-size: 16px;
 }
 
 .quiz-data {
