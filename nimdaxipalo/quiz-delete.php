@@ -12,7 +12,7 @@ if (!isset($_SESSION['logged_session'])) {
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "UPDATE `model_questions` SET `status`= '0' WHERE `id` = '$id'";
+    $query = "DELETE FROM  `model_questions` WHERE `id` = '$id'";
 
     $result = mysqli_query($conn, $query);
 

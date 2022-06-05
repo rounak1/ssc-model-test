@@ -21,16 +21,16 @@ $exam_data = mysqli_fetch_assoc($exam_result);
 
       <div class="col-12">
         <div class="course__wrapper">
-          <?php 
-            if (!empty($exam_data)) {
-          ?>
+          <?php
+if (!empty($exam_data)) {
+    ?>
             <div class="row">
               <div class="col-12 col-md-4">
-                <?php require 'menu.php'; ?>
+                <?php require 'menu.php';?>
               </div>
 
               <div class="col-12 col-md-8">
-                
+
                 <div class="course__tab-content mb-30">
                   <div class="course__curriculum">
                     <div class="accordion-item mb-50">
@@ -40,7 +40,7 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                          ফলাফল: <?=!empty($model_test_list[$exam_data['exam_id']]['test']) ? $model_test_list[$exam_data['exam_id']]['test'] : ""?> (<?=$model_test_list[$exam_data['exam_id']]['subject']?>)
                        </button>
                       </h2>
-                      
+
                       <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
                         <div class="course__curriculum-info">
                            <svg viewBox="0 0 32 32">
@@ -53,7 +53,7 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                             </svg>
                            <h3> <span>মোট প্রশ্ন</span></h3>
                         </div>
-                        <div class="course__curriculum-meta">                    
+                        <div class="course__curriculum-meta">
                            <span class="question" style="background: #FFA000;"><?=BanglaConverter::en2bn($exam_data['total_marks'] + $exam_data['wrong_answers'] + $exam_data['not_given_answers'])?></span>
                         </div>
                       </div>
@@ -70,7 +70,7 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                           </svg>
                           <h3> <span>সঠিক উত্তর</span></h3>
                         </div>
-                        <div class="course__curriculum-meta">                    
+                        <div class="course__curriculum-meta">
                            <span class="question" style="background: #016E53;">
                             <?=BanglaConverter::en2bn($exam_data['total_marks'])?></span>
                         </div>
@@ -89,7 +89,7 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                           </svg>
                            <h3> <span>ভুল উত্তর</span></h3>
                         </div>
-                        <div class="course__curriculum-meta">                    
+                        <div class="course__curriculum-meta">
                            <span class="question" style="background: #D60000;"><?=BanglaConverter::en2bn($exam_data['wrong_answers'])?></span>
                         </div>
                       </div>
@@ -108,7 +108,7 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                             </svg>
                            <h3> <span>উত্তর নাই</span></h3>
                         </div>
-                        <div class="course__curriculum-meta">                    
+                        <div class="course__curriculum-meta">
                            <span class="question" style="background: #FFA000;"><?=BanglaConverter::en2bn($exam_data['not_given_answers'])?></span>
                         </div>
                       </div>
@@ -123,12 +123,12 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                             </svg>
                            <h3> <span>মোট সময়</span></h3>
                         </div>
-                        <div class="course__curriculum-meta">                    
+                        <div class="course__curriculum-meta">
                            <?=BanglaConverter::en2bn(floor(($exam_data['completion_time'] - 2) / 60))?> মিনিট <?=BanglaConverter::en2bn(($exam_data['completion_time'] - 2) % 60)?> সেকেন্ড
                         </div>
                       </div>
 
-                    </div>             
+                    </div>
                   </div>
                 </div>
 
@@ -144,34 +144,50 @@ $exam_data = mysqli_fetch_assoc($exam_result);
 
                   <?php
 
-                    $decode_exam_data = json_decode($exam_data['exam_list']);
-                    $c_exam_data = (array) $decode_exam_data->option;
+    $decode_exam_data = json_decode($exam_data['exam_list']);
+    $c_exam_data = (array) $decode_exam_data->option;
 
-                    $exam_id = $exam_data['exam_id'];
+    $exam_id = $exam_data['exam_id'];
 
-                    $query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id'";
+    $query = "SELECT * FROM `model_questions` WHERE  `exam_id` = '$exam_id'";
 
-                    $result = mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
 
-                    $rows = [];
-                    while ($row = mysqli_fetch_array($result)) {
-                      $rows[] = $row;
-                    }
-                    $i = 1;
+    $rows = [];
+    while ($row = mysqli_fetch_array($result)) {
+        $rows[] = $row;
+    }
+    $i = 1;
 
-                    foreach ($rows as $row) {
-                  ?>
+    foreach ($rows as $row) {
+        ?>
 
                       <div class="course__curriculum-content d-sm-flex justify-content-between align-items-center">
                         <div class="course__curriculum-info">
-                          <h3> 
+                          <h3>
                             <?php
-                              if (!empty($row['uddipok_statement'])) {?>
+if (!empty($row['uddipok_statement'])) {?>
                                   <div class="uddipok"><?php echo $row['uddipok_statement']; ?></div>
+
+                                  <?php }
+
+        if (!empty($row['picture'])) {?>
+  <div class="questions">
+    <img src="./nimdaxipalo/images/<?php echo $row['picture']; ?>" height="200" alt="" />
+  </div>
+<?php }
+
+        if (!empty($row['uddipok'])) {?>
+
+
+
+
 
                                   <div class="uddipok"><?php echo $row['uddipok']; ?></div>
 
-                            <?php } ?>
+                                  <?php }?>
+
+
                             <div class="questions">
                               <?php echo BanglaConverter::en2bn($i++) . '. ' . $row['questions']; ?>
                             </div>
@@ -179,88 +195,88 @@ $exam_data = mysqli_fetch_assoc($exam_result);
                           <div class="options-container">
 
                             <?php
-                              if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option1'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
-                            ?>
+if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option1'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
+            ?>
                                 <img style="width: 20px;   margin-right: 4px;" src="assets/images/right.svg">
                             <?php
-                              } elseif ($row[$c_exam_data[$row['id']]] == $row['option1']) {
-                            ?>
+} elseif ($row[$c_exam_data[$row['id']]] == $row['option1']) {
+            ?>
                                 <img style="width: 20px;   margin-right: 4px;" src="assets/images/wrong.svg">
-                            <?php } else { ?>
+                            <?php } else {?>
                                 <img style="width: 20px;   margin-right: 4px;" src="images/normal.png">
-                            <?php } ?>
+                            <?php }?>
                                 <?php echo $row['option1'] ?>
 
                             <?php
-                              if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option2'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
-                            ?>
+if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option2'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
+            ?>
                                 <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/right.svg">
                             <?php
-                              } elseif ($row[$c_exam_data[$row['id']]] == $row['option2']) {
-                            ?>
+} elseif ($row[$c_exam_data[$row['id']]] == $row['option2']) {
+            ?>
                                 <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/wrong.svg">
-                            <?php } else { ?>
+                            <?php } else {?>
                                 <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/normal.png">
-                            <?php } ?>
+                            <?php }?>
                                 <?php echo $row['option2'] ?>
 
 
                             <?php
-                              if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option3'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
-                            ?>
+if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option3'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
+            ?>
                                 <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/right.svg">
                             <?php
-                              } elseif ($row[$c_exam_data[$row['id']]] == $row['option3']) {
-                            ?>
+} elseif ($row[$c_exam_data[$row['id']]] == $row['option3']) {
+            ?>
                                 <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/wrong.svg">
-                            <?php } else { ?>
+                            <?php } else {?>
                                 <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/normal.png">
-                            <?php } ?>
+                            <?php }?>
                                <?php echo $row['option3'] ?>
 
                             <?php
-                              if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option4'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
-                            ?>
+if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option4'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
+            ?>
                                 <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/right.svg">
                             <?php
-                              } elseif ($row[$c_exam_data[$row['id']]] == $row['option4']) {
-                            ?>
+} elseif ($row[$c_exam_data[$row['id']]] == $row['option4']) {
+            ?>
                                 <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/wrong.svg">
-                            <?php } else { ?>
+                            <?php } else {?>
                                 <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/normal.png">
-                            <?php } ?>
+                            <?php }?>
                                 <?php echo $row['option4'] ?>
                           </div>
 
                           <?php
-                            if($row[$c_exam_data[$row['id']]] != $row[$row['answer']]) {
-                          ?>
+if ($row[$c_exam_data[$row['id']]] != $row[$row['answer']]) {
+            ?>
                           <div class="student-answer">
                             <b>সঠিক উত্তর: </b> <?=$row[$row['answer']]?>
                           </div>
                           <?php
-                            }
-                          ?>
+}
+        ?>
 
                         </div>
                       </div>
 
                   <?php }?>
 
-                </div>             
+                </div>
               </div>
             </div>
 
               </div>
             </div>
 
-            
 
-          <?php } else { ?>
+
+          <?php } else {?>
             <div class="alert alert-primary text-center" role="alert">
               তুমি এই মডেল টেস্টে অংশগ্রহণ করোনি।
             </div>
-          <?php } ?>
+          <?php }?>
         </div>
       </div>
 

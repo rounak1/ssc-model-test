@@ -96,15 +96,16 @@ $i = 1;
                                   <input type="hidden" name="question[]" value="<?php echo $row['id'] ?>">
                                   <input type="hidden" name="token[<?php echo $row['id'] ?>]" value="<?php echo base64_encode($row['answer']) ?>">
 
+                                  <?php if (!empty($row['uddipok_statement'])) {?>
+                                    <div class="questions"><?php echo $row['uddipok_statement']; ?></div>
+                                  <?php }?>
+
                                   <?php if (!empty($row['picture'])) {?>
                                     <div class="questions">
                                       <img src="./nimdaxipalo/images/<?php echo $row['picture']; ?>" height="200" alt="" />
                                     </div>
                                   <?php }?>
 
-                                  <?php if (!empty($row['uddipok_statement'])) {?>
-                                    <div class="questions"><?php echo $row['uddipok_statement']; ?></div>
-                                  <?php }?>
 
                                   <?php if (!empty($row['uddipok'])) {?>
                                     <div class="questions"><?php echo $row['uddipok']; ?></div>
