@@ -51,23 +51,6 @@ session_start();
 
     <script src="assets/js/vendor/jquery.js"></script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-11355905-12"></script>
-    <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
-
-     gtag('config', 'UA-11355905-12');
-    </script>
-    <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
-
-     gtag('config', 'UA-11355905-1');
-    </script>
-
   </head>
   <body>
 
@@ -86,24 +69,25 @@ session_start();
             <div class="header__bottom">
                <div class="container">
                   <div class="row align-items-center">
-                     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-6">
+                     <div class="col-md-3 col-6">
                         <div class="header__bottom-left d-flex align-items-center">
                            <div class="logo">
-                              <a href="participants.php">
+                              <a href="dashboard.php">
                                  <img class="exam-running" src="assets/img/porasona.svg" alt="logo">
                               </a>
                            </div>
                         </div>
                      </div>
-                     <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-6">
+                     <div class="col-md-9 col-8">
                         <div class="header__bottom-right d-flex justify-content-end align-items-center pl-30">
 
                         <div class="logout_container">
-                        <a href="home.php">All Students</a>
-          <a href="participants.php">Participants</a>
-          <a href="quiz.php">Questions</a>
-          <a href="logout.php">Logout</a>
-        </div>
+                          <a href="dashboard.php">ড্যাশবোর্ড</a>
+                          <a href="home.php">সকল নিবন্ধনকারী</a>
+                          <a href="participants.php">সকল অংশগ্রহণকারী</a>
+                          <a href="quiz.php">প্রশ্ন</a>
+                          <a href="logout.php">লগ আউট</a>
+                      </div>
 
                         </div>
                      </div>

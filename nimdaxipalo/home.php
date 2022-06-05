@@ -7,8 +7,9 @@ error_reporting(1);
 require 'connection.php';
 require '../settings.php';
 require 'header-v2.php';
+require '../BanglaConverter.php';
 
-$r_total = mysqli_query($conn, "select count(*) FROM `model_students`");
+$r_total = mysqli_query($conn, "select count(*) FROM `model_students` WHERE `status` = '1'");
 $total_row = mysqli_fetch_array($r_total);
 
 ?>
@@ -17,7 +18,7 @@ $total_row = mysqli_fetch_array($r_total);
         <div class="quiz-header">
 
 
-        <h4>Total Registered Students: <?=$total_row[0]?></h4>
+        <h4>সর্বমোট নিবন্ধন করেছে: <?=BanglaConverter::en2bn($total_row[0])?> জন</h4>
         </div>
 
         <section>
@@ -26,11 +27,11 @@ $total_row = mysqli_fetch_array($r_total);
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>District</th>
-                <th>Upazila</th>
+                <th>নাম</th>
+                <th>ফোন</th>
+                <th>ইমেইল</th>
+                <th>জেলা</th>
+                <th>উপজেলা</th>
 
               </tr>
             </thead>
@@ -46,7 +47,7 @@ $i = 1;
 foreach ($result as $row) {?>
 
                 <tr>
-                    <td><?php echo $i++; ?></td>
+                    <td><?php echo BanglaConverter::en2bn($i++); ?></td>
                 <td><?php echo $row['name']; ?></td>
                 <td><?php echo $row['phone']; ?></td>
                 <td><?php echo $row['email']; ?></td>

@@ -6,7 +6,7 @@ if (!isset($_SESSION['logged_session'])) {
 }
 require 'connection.php';
 require '../settings.php';
-// require 'admin-header.php';
+require '../BanglaConverter.php';
 require 'header-v2.php';
 $todays_date = date('Y-m-d');
 
@@ -15,20 +15,10 @@ $todays_date = date('Y-m-d');
 <div class="container">
     <div class="quiz-container">
 
-    <?php
-$sql = 'select count(distinct `user_id`) from quiz_histories';
-$res = mysqli_query($conn, $sql);
-
-foreach ($res as $total_prtcpnts) {
-    $total_participants = $total_prtcpnts['count(distinct `user_id`)'];
-}
-
-?>
-
 <div class="quiz-header">
 
 <div class="search-panel">
-            <form action="" method="POST">
+            <form action="" method="GET">
 
             <select name="specific_questions" id="" class="all_quiz">
             <?php
@@ -37,7 +27,7 @@ foreach ($model_test_list as $key => $value) {?>
 
 
     ?>
-  <option value="<?php echo $value['id']; ?>" <?=$value['id'] == $_POST['specific_questions'] ? 'selected' : ''?> >
+  <option value="<?php echo $value['id']; ?>" <?=$value['id'] == $_GET['specific_questions'] ? 'selected' : ''?> >
   <?php echo $value['subject'] . ' ' . $value['test']; ?>
 </option>
 <?php }
@@ -54,7 +44,6 @@ foreach ($model_test_list as $key => $value) {?>
             </form>
           </div>
 
-          <h4>Total Participants: <?=$total_participants;?> </h4>
 
 </div>
 
@@ -64,9 +53,9 @@ foreach ($model_test_list as $key => $value) {?>
 
 
       <?php
-if (isset($_POST['search'])) {
+if (isset($_GET['specific_questions'])) {
 
-    $exam_id = $_POST['specific_questions'];
+    $exam_id = $_GET['specific_questions'];
 
     $sql = "select (count(exam_id)) from quiz_histories WHERE `exam_id` = '$exam_id'";
 
@@ -76,7 +65,7 @@ if (isset($_POST['search'])) {
         $participants_each_exam = $prtcpnt_each['(count(exam_id))'];
     }?>
 
-  <h2 class="participants_text">Test Given by <?=$participants_each_exam;?> Participants</h2>
+  <h2 class="participants_text">অংশগ্রহন করেছে <?=BanglaConverter::en2bn($participants_each_exam);?> জন</h2>
 
 
 <div class="table-content table-responsive">
@@ -84,10 +73,10 @@ if (isset($_POST['search'])) {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Total Marks</th>
-                <th>Time Taken(S)</th>
+                <th>নাম</th>
+                <th>ফোন</th>
+                <th>নম্বর</th>
+                <th>সময়</th>
               </tr>
             </thead>
             <tbody class="participants-information-body-1">
@@ -100,7 +89,7 @@ $query = "SELECT model_students.name, model_students.phone, quiz_histories.total
     foreach ($result as $row) {?>
 
     <tr>
-        <td><?php echo $i++; ?></td>
+        <td><?php echo BanglaConverter::en2bn($i++); ?></td>
         <td><?php echo $row['name']; ?></td>
         <td><?php echo $row['phone']; ?></td>
         <td><?php echo $row['total_marks']; ?></td>
@@ -123,16 +112,16 @@ $query = "SELECT model_students.name, model_students.phone, quiz_histories.total
         $participants_each_exam = $prtcpnt_each['(count(exam_id))'];
     }?>
 
-  <h2 class="participants_text">Test Given by <?=$participants_each_exam;?> Participants</h2>
+  <h2 class="participants_text">অংশগ্রহন করেছে <?=BanglaConverter::en2bn($participants_each_exam);?> জন</h2>
     <div class="table-content table-responsive">
           <table class="table">
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Total Marks</th>
-                <th>Time Taken(S)</th>
+                <th>নাম</th>
+                <th>ফোন</th>
+                <th>নম্বর</th>
+                <th>সময়</th>
               </tr>
             </thead>
             <tbody class="participants-information-body-1">
@@ -145,7 +134,7 @@ $query = "SELECT model_students.name, model_students.phone, quiz_histories.total
     foreach ($result as $row) {?>
 
     <tr>
-        <td><?php echo $i++; ?></td>
+        <td><?php echo BanglaConverter::en2bn($i++); ?></td>
         <td><?php echo $row['name']; ?></td>
         <td><?php echo $row['phone']; ?></td>
         <td><?php echo $row['total_marks']; ?></td>

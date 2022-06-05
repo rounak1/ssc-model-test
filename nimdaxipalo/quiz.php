@@ -7,7 +7,7 @@ if (!isset($_SESSION['logged_session'])) {
 error_reporting(1);
 require 'connection.php';
 require '../settings.php';
-// require 'admin-header.php';
+require '../BanglaConverter.php';
 require 'header-v2.php';
 
 require '../settings.php';
@@ -16,7 +16,7 @@ require '../settings.php';
       <div class="quiz-container">
         <div class="quiz-header">
         <div class="search-panel">
-            <form action="" method="POST">
+            <form action="" method="GET">
 
             <select name="specific_questions" id="" class="all_quiz">
             <?php
@@ -25,7 +25,7 @@ foreach ($model_test_list as $key => $value) {?>
 
 
     ?>
-  <option value="<?php echo $value['id']; ?>" <?=$value['id'] == $_POST['specific_questions'] ? 'selected' : ''?> >
+  <option value="<?php echo $value['id']; ?>" <?=$value['id'] == $_GET['specific_questions'] ? 'selected' : ''?> >
   <?php echo $value['subject'] . ' ' . $value['test']; ?>
 </option>
 <?php }
@@ -48,22 +48,22 @@ foreach ($model_test_list as $key => $value) {?>
 
 
           <?php
-if (isset($_POST['search'])) {
+if (isset($_GET['search'])) {
 
-    $exam_id = $_POST['specific_questions'];
+    $exam_id = $_GET['specific_questions'];
     ?>
 
 <table class="table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Question</th>
-                <th>Answer</th>
-                <th>Option 1</th>
-                <th>Option 2</th>
-                <th>Option 3</th>
-                <th>Option 4</th>
+                <th></th>
+                <th>ডেট</th>
+                <th>প্রশ্ন</th>
+                <!-- <th>Answer</th> -->
+                <th>অপশন ১</th>
+                <th>অপশন ২</th>
+                <th>অপশন ৩</th>
+                <th>অপশন ৪</th>
                 <!-- <td style="width: 96px ;">Actions</td> -->
               </tr>
               </thead>
@@ -76,19 +76,33 @@ if (isset($_POST['search'])) {
 
     $result = mysqli_query($conn, $query);
 
-    foreach ($result as $row) {?>
+    foreach ($result as $row) {
+      $date = explode("-", $row['exam_date']);
+?>
 
 <tr>
-    <td><?php echo $row['id']; ?></td>
-    <td><?php echo $row['exam_date']; ?></td>
+    <td><?php echo BanglaConverter::en2bn($row['id']); ?></td>
+    <td>
+      <?=BanglaConverter::en2bn($date[2])?> <?=$monthsObj[$date[1]]?>
+    </td>
 
-    <td><?php echo $row['uddipok_statement'] . "<br/>" . $row['uddipok'] . "<br/>" . $row['questions']; ?></td>
-    <td><?php echo $row['answer']; ?></td>
-    <td><?php echo $row['option1']; ?></td>
-    <td><?php echo $row['option2']; ?></td>
-    <td><?php echo $row['option3']; ?></td>
-    <td><?php echo $row['option4']; ?></td>
-    <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td>
+    <td>
+      <?php
+        if(!empty($row['uddipok_statement'])) {
+          echo $row['uddipok_statement'] . '<br/><br/>';
+        }
+        if(!empty($row['uddipok'])) {
+          echo $row['uddipok'] . '<br/><br/>';
+        }
+        echo "<b>" . $row['questions'] . "</b>";
+      ?>
+    </td>
+    <!-- <td><?php echo $row['answer']; ?></td> -->
+    <td class="<?=$row['answer']=='option1'? 'option_answer':''?>"><?php echo $row['option1']; ?></td>
+    <td class="<?=$row['answer']=='option2'? 'option_answer':''?>"><?php echo $row['option2']; ?></td>
+    <td class="<?=$row['answer']=='option3'? 'option_answer':''?>"><?php echo $row['option3']; ?></td>
+    <td class="<?=$row['answer']=='option4'? 'option_answer':''?>"><?php echo $row['option4']; ?></td>
+    <!-- <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td> -->
 </tr>
 
 <?php }?>
@@ -105,14 +119,15 @@ if (isset($_POST['search'])) {
           <table class="table">
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Question</th>
-                <th>Answer</th>
-                <th>Option 1</th>
-                <th>Option 2</th>
-                <th>Option 3</th>
-                <th>Option 4</th>
-                <th style="width: 96px ;">Actions</th>
+                <th></th>
+                <th>ডেট</th>
+                <th>প্রশ্ন</th>
+                <!-- <th>Answer</th> -->
+                <th>অপশন ১</th>
+                <th>অপশন ২</th>
+                <th>অপশন ৩</th>
+                <th>অপশন ৪</th>
+                <!-- <th style="width: 96px ;">Actions</th> -->
               </tr>
               </thead>
 
@@ -124,23 +139,33 @@ if (isset($_POST['search'])) {
 
     $result = mysqli_query($conn, $query);
 
-    foreach ($result as $row) {?>
+    foreach ($result as $row) {
+      $date = explode("-", $row['exam_date']);
+  ?>
 
 <tr>
-
-    <td><?php echo $row['exam_date']; ?></td>
+    <td><?php echo BanglaConverter::en2bn($row['id']); ?></td>
+    <td>
+      <?=BanglaConverter::en2bn($date[2])?> <?=$monthsObj[$date[1]]?>
+    </td>
 
     <td>
-      <?=(!empty($row['uddipok_statement'])) ? $row['uddipok_statement'] . "<br/><br/>" : ""?>
-      <?=(!empty($row['uddipok'])) ? $row['uddipok'] . "<br/><br/>" : ''?>
-      <?=$row['questions'];?>
+      <?php
+        if(!empty($row['uddipok_statement'])) {
+          echo $row['uddipok_statement'] . '<br/><br/>';
+        }
+        if(!empty($row['uddipok'])) {
+          echo $row['uddipok'] . '<br/><br/>';
+        }
+        echo "<b>" . $row['questions'] . "</b>";
+      ?>
     </td>
-    <td><?php echo $row['answer']; ?></td>
-    <td><?=$row['option1'];?></td>
-    <td><?php echo $row['option2']; ?></td>
-    <td><?php echo $row['option3']; ?></td>
-    <td><?php echo $row['option4']; ?></td>
-    <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td>
+    <!-- <td><?php echo $row['answer']; ?></td> -->
+    <td class="<?=$row['answer']=='option1'? 'option_answer':''?>"><?=$row['option1'];?></td>
+    <td class="<?=$row['answer']=='option2'? 'option_answer':''?>"><?php echo $row['option2']; ?></td>
+    <td class="<?=$row['answer']=='option3'? 'option_answer':''?>"><?php echo $row['option3']; ?></td>
+    <td class="<?=$row['answer']=='option4'? 'option_answer':''?>"><?php echo $row['option4']; ?></td>
+    <!-- <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td> -->
 </tr>
 
 <?php }?>
@@ -155,6 +180,16 @@ if (isset($_POST['search'])) {
         </div>
       </div>
     </div>
+
+    <style type="text/css">
+      .quiz-data table tbody tr td {
+        text-align: left;
+      }
+      .quiz-data table tbody tr td.option_answer {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <!-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>

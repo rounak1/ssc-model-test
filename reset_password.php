@@ -1,37 +1,38 @@
 <?php
+session_start();
 $msg = [];
 $user_email = "";
 error_reporting(1);
 require 'connection.php';
-require 'header-home.php';
+require 'header-v2.php';
 
 if (isset($_POST['reset_password'])) {
 
-// require 'fb-init.php';
 
     $email = $_POST['email'];
 
     if (empty($_POST["pass"]) || strlen($_POST["pass"]) < 6) {
         array_push($msg, "পাসওয়ার্ড ৫ ডিজিটের বেশি হতে হবে");
     } else {
-        $pass = md5(input_field_validation($_POST["pass"]));
+        $pass = md5(test_input($_POST["pass"]));
     }
 
     if (empty($_POST["retype_password"]) || strlen($_POST["retype_password"]) < 6) {
         array_push($msg, "পাসওয়ার্ড ৫ ডিজিটের বেশি হতে হবে");
     } else {
-        $retype_password = md5(input_field_validation($_POST["retype_password"]));
+        $retype_password = md5(test_input($_POST["retype_password"]));
     }
 
     if ($pass != $retype_password) {
+
         array_push($msg, "পাসওয়ার্ড ম্যাচ করে নাই। আবার চেষ্টা করুন ");
     } else {
 
-        $query = "UPDATE `model_students` SET  `pass`='$pass', `token` = '' WHERE `email`='$email'";
+        $query = "UPDATE `model_students` SET  `password`='$pass', `token` = '' WHERE `email`='$email'";
         $result = mysqli_query($conn, $query);
-
-        if ($result) {
-            array_push($msg, "আপনার নতুন পাসওয়ার্ডটি সেট করা হয়েছে।");
+       
+        if ($result) { 
+            $_SESSION['success'] = "আপনার নতুন পাসওয়ার্ডটি সেট করা হয়েছে";
             echo "<script type='text/javascript'>window.top.location='login';</script>";exit;
         }
 
@@ -51,104 +52,79 @@ if (isset($_GET['token']) && !empty($_GET['token'])) {
         }
     }
 
-    require 'header.php';
-// require 'fb-init.php';
 
     ?>
-	<!--page title section-->
-	<section class="inner_cover parallax-window" data-parallax="scroll" data-image-src="assets/img/bg/bg-img.png">
-	    <div class="overlay_dark"></div>
-	    <div class="container">
-	        <div class="row justify-content-center align-items-center">
-	            <div class="col-12">
-	                <div class="inner_cover_content">
-	                    <h3>
-	                       রিসেট পাসওয়ার্ড
-	                    </h3>
-	                </div>
-	            </div>
-	        </div>
 
-	        <div class="breadcrumbs">
-	            <ul>
-	                <li><a href="<?=$base_url?>">মেরিল-প্রথম আলো</a>  |   </li>
-	                <li><span>রিসেট পাসওয়ার্ড</span></li>
-	            </ul>
-	        </div>
-	    </div>
-	</section>
+     <main>
+     	<section class="signup__area p-relative z-index-1 pt-150 pb-145">
+     		<div class="sign__shape">
+               <img class="man-1" src="assets/img/icon/sign/man-1.png" alt="">
+               <img class="man-2" src="assets/img/icon/sign/man-2.png" alt="">
+               <img class="circle" src="assets/img/icon/sign/circle.png" alt="">
+               <img class="zigzag" src="assets/img/icon/sign/zigzag.png" alt="">
+               <img class="dot" src="assets/img/icon/sign/dot.png" alt="">
+               <img class="bg" src="assets/img/icon/sign/sign-up.png" alt="">
+            </div>
+            <div class="container">
 
-	<section class="pb100 pt50">
-		<div class="container">
-		<?php
-if (count($msg) > 0) {?>
-                                <div class="alert alert-warning" role="alert">
-                                    <?php
-foreach ($msg as $message) {
-        echo $message . "<br>";
-    }
-        ?>
+            	<div class="row">
+                  <div class="col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2">
+                     <div class="section__title-wrapper text-center mb-55">
+                        <h2 class="section__title">রিসেট পাসওয়ার্ড</h2>
+                     </div>
+                  </div>
+                </div>
 
-					</div>
-					<?php }?>
-			<div class="row justify-content-center mt100">
+                <div class="row">
+                  	<div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                     	<div class="sign__wrapper white-bg">
+                     		<?php
+	                          if (isset($_SESSION['success'])) {?>
+	                                <div class="col-md-12 message-container">
+	                                  <div class="alert alert-success" role="alert">
+	                                    <?php echo $_SESSION['success']; ?>
+	                                  </div>
+	                                </div>
+	                          <?php 
+	                            unset($_SESSION['success']);
+	                            }
+	                          ?>
 
-			<div class="col-md-4">
-
-
-
-					<?php
-
-    if (isset($_SESSION['logged_session']) && $_SESSION['logged_session'] == true) {
-        ?>
-						<h2><?php echo $_SESSION['user_name']; ?></h2>
-
-
-				<?php
-header('Location: https://service.prothomalo.com/mpaward/awards.php');
-    } else {
-        ?>
-						<!-- <a href="<?php //$base_url?>palo-login.php" style="margin-right: 20px;">
-							<img src="<?php //$base_url?>/images/btn_palo.png">
-						</a> -->
-
-
-		<h3 class="text-center">রিসেট পাসওয়ার্ড </h3>
-
-			<!--
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
-			<form action= "" method= "post">
-
-            <input type="hidden" class="form-control" name="email"
+							<div class="sign__form">
+                           		<form action= "" method= "post">
+                           			<div class="sign__input-wrapper mb-25">
+	                               	 <input type="hidden" class="form-control" name="email"
              value="<?=$user_email?>">
 
-			<div class="form-group">
-				<label for="pwd">নতুন পাসওয়ার্ড দিন</label>
-				<input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pass">
-			</div>
+	                                 <div class="sign__input mb-25">
+	                                    <input type="password" name="pass" placeholder="নতুন পাসওয়ার্ড দিন" required>
+	                                    <i class="fal fa-envelope"></i>
+	                                 </div>
 
-            <div class="form-group">
-				<label for="pwd">পুনরায় পাসওয়ার্ড টাইপ করুন</label>
-				<input type="password" class="form-control" placeholder="Re-type password" id="pwd" name="retype_password">
-			</div>
-			<button type="submit" class="btn btn-primary" name= "reset_password">পাসওয়ার্ড সেট করুন </button>
+	                                 <div class="sign__input mb-25">
+	                                    <input type="password" name="retype_password" placeholder="পুনরায় পাসওয়ার্ড টাইপ করুন" required>
+	                                    <i class="fal fa-envelope"></i>
+	                                 </div>
 
-			</form>
+	                                 <button name="reset_password" class="tp-btn pt-20  w-100"> <span></span> পাসওয়ার্ড সেট করুন</button>
+	                                 <div class="sign__new text-center mt-20">
+		                                 <p>আগেই নিবন্ধন করা থাকলে <br/>  <a href="login">লগইন করো</p>
+		                              </div>
+	                              </div>
+                           		</form>
+                           	</div>
 
+                     	</div>
+                 	</div>
+             	</div>
 
-
-
-				<?php
-}
-    ?>
-
-			</div>
-			</div>
-		</div>
-	</section>
+            </div>
+     	</section>
+     </main>
+	
 
 <?php
-require 'footer.php';
+require 'footer-v2.php';
 } else {
     echo " Token not found";
 }

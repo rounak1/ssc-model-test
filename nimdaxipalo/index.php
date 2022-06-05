@@ -23,9 +23,9 @@ if (isset($_POST['login'])) {
 
         $_SESSION['logged_session'] = true;
 
-        header('Location:participants.php');
+        header('Location:dashboard.php');
 
-        echo "<script type='text/javascript'>window.top.location='participants.php';</script>";exit;
+        echo "<script type='text/javascript'>window.top.location='dashboard.php';</script>";exit;
 
     } else {
 

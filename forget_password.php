@@ -8,7 +8,6 @@ require 'EmailService.php';
 $email = "";
 
 $msg = [];
-
 if (isset($_POST['forget_password'])) {
 
     if (empty($_POST["email"])) {
@@ -43,7 +42,7 @@ if (isset($_POST['forget_password'])) {
                 'from' => $from,
                 'subject' => 'এসএসসি মডেল টেস্ট দেওয়ার জন্য পাসওয়ার্ড রিসেট',
                 'html' => $message,
-                'fromName' => 'porasona SSC model test',
+                'fromName' => 'SSC model test',
             ];
 
             $email_sent->send($data);
@@ -84,21 +83,12 @@ if (isset($_POST['forget_password'])) {
                           if (isset($_SESSION['success'])) {?>
                                 <div class="col-md-12 message-container">
                                   <div class="alert alert-success" role="alert">
-                            <?php echo $_SESSION['success']; ?>
-                          </div>
+                                    <?php echo $_SESSION['success']; ?>
                                   </div>
-
-                          if (isset($_SESSION['alert'])) {?>
-                            <div class="col-md-12 message-container">
-                                  <div class="alert alert-warning" role="alert">
-
-                              <?php
-                          echo $_SESSION['alert'];
-
-                              unset($_SESSION['alert']); ?>
-                          </div>
-                                  </div>
-                          <?php }
+                                </div>
+                          <?php 
+                            unset($_SESSION['success']);
+                            }
                           ?>
                         <div class="sign__form">
                            <form action= "" method= "post">
@@ -109,7 +99,7 @@ if (isset($_POST['forget_password'])) {
                                     <i class="fal fa-envelope"></i>
                                  </div>
                               </div>
-                              <button name="login" class="tp-btn  w-100"> <span></span> পাঠাও</button>
+                              <button name="forget_password" class="tp-btn  w-100"> <span></span> পাঠাও</button>
                               <div class="sign__new text-center mt-20">
                                  <p>অ্যাকাউন্ট নেই? <a href="<?php $base_url?>register">নিবন্ধন করো</a></p>
                               </div>
