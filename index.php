@@ -1,6 +1,6 @@
 <?php require 'header-v2.php';?>
 
-    
+
       <main>
 
          <!-- slider area start -->
@@ -21,10 +21,10 @@
                         <div class="slider__shape">
                            <img class="slider__shape-1" src="assets/img/slider/2/shape/slider-cap-1.png" alt="">
                            <img class="slider__shape-2" src="assets/img/slider/2/shape/slider-cap-2.png" alt="">
-                           <img class="slider__shape-3" src="assets/img/slider/2/shape/slider-cap-3.png" alt="">                           
+                           <img class="slider__shape-3" src="assets/img/slider/2/shape/slider-cap-3.png" alt="">
                         </div>
                         <span class="slider__thumb-mask">
-                           <img src="assets/img/slider/2/slider-thumb.png" alt="">
+                           <img src="assets/img/slider-thumb1.png" alt="">
                         </span>
                      </div>
                   </div>
