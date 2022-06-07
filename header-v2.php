@@ -25,7 +25,7 @@ require 'config.php';
       property="og:description"
       content='যদি দাও মডেল টেস্ট, পরীক্ষা তোমার হবে বেস্ট'
     />
-    <meta property="og:image" content="assets/img/og-image-model-test.png" />
+    <meta property="og:image" content="assets/img/og-image-model-test-2.png" />
 
     <!-- Twitter -->
     <meta
@@ -37,7 +37,7 @@ require 'config.php';
       property="twitter:description"
       content='যদি দাও মডেল টেস্ট, পরীক্ষা তোমার হবে বেস্ট'
     />
-    <meta property="twitter:image" content="assets/img/og-image-model-test.png" />
+    <meta property="twitter:image" content="assets/img/og-image-model-test-2.png" />
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -72,7 +72,7 @@ require 'config.php';
   <body>
 
     <!-- pre loader area start -->
-      <div id="loading">
+     <!--  <div id="loading">
          <div id="loading-center">
             <div id="loading-center-absolute">
                <svg id="loader">
@@ -81,15 +81,15 @@ require 'config.php';
                <img src="assets/img/favicon.png" alt="">
             </div>
          </div>
-      </div>
+      </div> -->
       <!-- pre loader area end -->
 
       <!-- back to top start -->
-      <div class="progress-wrap">
+      <!-- <div class="progress-wrap">
          <svg class="progress-circle svg-content" width="100%" height="100%" viewbox="-1 -1 102 102">
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
          </svg>
-      </div>
+      </div> -->
       <!-- back to top end -->
 
       <!-- header area start -->

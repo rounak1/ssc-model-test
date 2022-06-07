@@ -358,9 +358,9 @@ for ($i = 0; $i < count($economics); $i++) {?>
              <div class="course__filter text-center mb-30">
                 <nav>
                    <div class="nav nav-tabs justify-content-center" id="course-tab" role="tablist">
-                     <button class="nav-link active" id="nav-todays-tab" data-bs-toggle="tab" data-bs-target="#nav-todays" type="button" role="tab" aria-controls="nav-todays" aria-selected="true">আজকের</button>
-
                      <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-previous" aria-selected="false">বিগত দিনের</button>
+
+                     <button class="nav-link active" id="nav-todays-tab" data-bs-toggle="tab" data-bs-target="#nav-todays" type="button" role="tab" aria-controls="nav-todays" aria-selected="true">আজকের</button>
 
                      <button class="nav-link" id="nav-next-tab" data-bs-toggle="tab" data-bs-target="#nav-next" type="button" role="tab" aria-controls="nav-next" aria-selected="false">আগামী দিনের</button>
                    </div>
@@ -451,8 +451,8 @@ if (!empty($model_test_list)) {
 
             ?>
                                       <div class="col-12">
-                                        <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
-                                          <div class="event__left d-sm-flex align-items-center">
+                                        <div class="event__item white-bg mb-10 transition-3 p-relative d-flex align-items-center justify-content-between">
+                                          <div class="event__left d-flex align-items-center">
                                              <div class="event__date">
                                                 <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
                                                 <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
@@ -513,8 +513,8 @@ if (!empty($model_test_list)) {
         if ($current_date < $value['date']) {
             ?>
                                     <div class="col-12">
-                                      <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
-                                        <div class="event__left d-sm-flex align-items-center">
+                                      <div class="event__item white-bg mb-10 transition-3 p-relative d-flex align-items-center justify-content-between">
+                                        <div class="event__left d-flex align-items-center">
                                            <div class="event__date">
                                               <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
                                               <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
