@@ -343,5 +343,5 @@ if (isset($_POST['register'])) {
       </main>
 
 <?php
-    require 'footer-v2.php';
+    require 'footer-v3.php';
 ?>
