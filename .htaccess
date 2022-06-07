@@ -3,6 +3,7 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^dashboard myprofile.php [QSA]
 RewriteRule ^result(.*)$ result.php [QSA]
+RewriteRule ^my-result(.*)$ my-result.php [QSA]
 RewriteRule ^login(.*)$ login.php [QSA]
 RewriteRule ^landing(.*)$ index.php [QSA]
 RewriteRule ^reset_password(.*)$ reset_password.php [QSA]

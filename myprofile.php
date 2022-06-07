@@ -12,7 +12,7 @@ require 'BanglaConverter.php';
 include_once 'settings1.php';
 include_once 'settings.php';
 
-$query_quiz_result = "SELECT * FROM `quiz_histories` WHERE `user_id` = '$user_id' ORDER BY `id` DESC";
+$query_quiz_result = "SELECT * FROM `quiz_histories` WHERE `user_id` = '$user_id' ORDER BY `id` DESC limit 8";
 
 $result_quiz_data = mysqli_query($conn, $query_quiz_result);
 
@@ -30,7 +30,7 @@ if (!empty($result_quiz_data)) {
     }
 }
 ?>
-  <main>
+  <main class="dashboard">
 
     <section class="profile__menu pt-120 grey-bg-2">
       <div class="container">
@@ -355,7 +355,7 @@ for ($i = 0; $i < count($economics); $i++) {?>
             </div>
 
             <div class="row">
-             <div class="course__filter text-center mb-30">
+             <div class="course__filter text-center mb-10">
                 <nav>
                    <div class="nav nav-tabs justify-content-center" id="course-tab" role="tablist">
                      <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-previous" aria-selected="false">বিগত দিনের</button>
@@ -567,7 +567,7 @@ if (!empty($result)) {
                               <div class="col-5">
                                  <div class="course__member-thumb d-flex align-items-center">
                                     <img class="my-p-r-iccon" src="assets/img/thumb2.svg?v=1.0" alt="">
-                                    <div class="course__member-name ml-20">
+                                    <div class="course__member-name ml-20 pr-10">
                                        <h5><?=$model_test_list[$data['exam_id']]['test']?></h5>
                                        <span><?=$data['exam_name']?></span>
                                     </div>

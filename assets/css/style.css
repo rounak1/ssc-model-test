@@ -3516,26 +3516,36 @@ input[type=color] {
 .course__filter .nav-tabs {
   border: 0;
 }
+.dashboard .course__filter .nav-tabs {
+  border: 0;
+  padding: 22px 50px 18px 50px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 30px 50px rgb(3 18 32 / 8%);
+  -moz-box-shadow: 0px 30px 50px rgba(3, 18, 32, 0.08);
+  -ms-box-shadow: 0px 30px 50px rgba(3, 18, 32, 0.08);
+  -o-box-shadow: 0px 30px 50px rgba(3, 18, 32, 0.08);
+  box-shadow: 0px 30px 50px rgb(3 18 32 / 8%);
+  background: #fff;
+}
 .course__filter .nav-tabs .nav-link {
   font-size: 14px;
   font-weight: 500;
   padding: 4px 24px;
-  -webkit-box-shadow: 0px 1px 2px rgba(3, 18, 32, 0.1);
-  -moz-box-shadow: 0px 1px 2px rgba(3, 18, 32, 0.1);
-  -ms-box-shadow: 0px 1px 2px rgba(3, 18, 32, 0.1);
-  -o-box-shadow: 0px 1px 2px rgba(3, 18, 32, 0.1);
-  box-shadow: 0px 1px 2px rgba(3, 18, 32, 0.1);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -o-border-radius: 4px;
   -ms-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 6px;
   background-color: var(--tp-common-white);
   margin: 0 5px;
   margin-bottom: 10px;
   color: var(--tp-common-black);
   display: inline-block;
-  border: 0;
+  border: 2px solid rgba(12, 20, 15, 0.1);
 }
 .course__filter .nav-tabs .nav-link:hover, .course__filter .nav-tabs .nav-link.active {
   background-color: var(--tp-theme-2);
@@ -6926,7 +6936,7 @@ input[type=color] {
   }
 }
 .event__date h4 {
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 700;
   margin-bottom: 0;
   line-height: 1;
@@ -6938,6 +6948,9 @@ input[type=color] {
 }
 .event__meta ul li {
   list-style: none;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 .event__meta ul li a {
   font-size: 14px;
@@ -6954,8 +6967,8 @@ input[type=color] {
   transform: translateY(-2px);
 }
 .event__title {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
 }
 .event__title a:hover {
   color: var(--tp-theme-2);
@@ -7018,6 +7031,12 @@ input[type=color] {
 @media (max-width: 575px) {
   .event__more {
     margin-left: 0;
+  }
+  .course__filter .nav-tabs .nav-link {
+    padding: 4px 20px;
+  }
+  .dashboard .course__filter .nav-tabs {
+    padding: 22px 20px 18px 20px;
   }
 }
 .event__details h3 {
