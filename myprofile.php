@@ -4,6 +4,7 @@ if (!isset($_SESSION['logged_session'])) {
     header('Location: index.php');
 }
 error_reporting(1);
+$site_title = "ড্যাশবোর্ড :: এসএসসি মডেল টেস্ট ২০২২";
 require 'check-login.php';
 require 'header-v2.php';
 require 'BanglaConverter.php';
@@ -359,7 +360,7 @@ for ($i = 0; $i < count($economics); $i++) {?>
                    <div class="nav nav-tabs justify-content-center" id="course-tab" role="tablist">
                      <button class="nav-link active" id="nav-todays-tab" data-bs-toggle="tab" data-bs-target="#nav-todays" type="button" role="tab" aria-controls="nav-todays" aria-selected="true">আজকের</button>
 
-                     <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-previous" aria-selected="false">গত দিনের</button>
+                     <button class="nav-link" id="nav-previous-tab" data-bs-toggle="tab" data-bs-target="#nav-previous" type="button" role="tab" aria-controls="nav-previous" aria-selected="false">বিগত দিনের</button>
 
                      <button class="nav-link" id="nav-next-tab" data-bs-toggle="tab" data-bs-target="#nav-next" type="button" role="tab" aria-controls="nav-next" aria-selected="false">আগামী দিনের</button>
                    </div>
@@ -385,8 +386,8 @@ if (!empty($model_test_list)) {
         if ($current_date == $value['date']) {
             ?>
                                       <div class="col-12">
-                                        <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
-                                          <div class="event__left d-sm-flex align-items-center">
+                                        <div class="event__item white-bg mb-10 transition-3 p-relative d-flex align-items-center justify-content-between">
+                                          <div class="event__left d-flex align-items-center">
                                              <div class="event__date">
                                                 <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
                                                 <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
@@ -404,7 +405,7 @@ if (!empty($model_test_list)) {
                                                 </h3>
                                              </div>
                                           </div>
-                                          <div class="event__right d-sm-flex align-items-center">
+                                          <div class="event__right d-flex align-items-center">
                                              <div class="event__more ml-30">
                                                 <?php
 if (!empty($find_already_attend) && count($find_already_attend) > 0) {
@@ -625,9 +626,11 @@ $init = $data['completion_time'];
                   <div class="course__description-list mb-45">
                      <h4>নিয়মাবলি</h4>
                      <ul>
-                        <li> <i class="fa-solid fa-check"></i> প্রতিটি মডেল টেস্টে মোট ৩০টি অথবা ২৫টি MCQ প্রশ্ন থাকবে, প্রতিটি প্রশ্নের পূর্ণমান ১ এবং প্রতিটি প্রশ্নের জন্য সময় থাকবে ১ মিনিট।</li>
-                        <li> <i class="fa-solid fa-check"></i> একই মডেল টেস্ট শুধু একবার দেওয়ার সুযোগ থাকবে। মডেল টেস্ট শুরু করার পর ট্যাব পরিবর্তন করলে কিংবা, ট্যাব বন্ধ করে ফেললে স্বয়ংক্রিয়ভাবে সাবমিট হয়ে যাবে। সে ক্ষেত্রে টেস্টটি পুনরায় দেওয়া কিংবা পুনঃনিরীক্ষণের কোনো সুযোগ নেই।</li>
-                        <li> <i class="fa-solid fa-check"></i> মডেল টেস্ট নিয়ে কোনো জিজ্ঞাসা থাকলে পড়াশোনা - প্রথম আলোর  ফেসবুক পেজের মেসেঞ্জারে যোগাযোগ করো।</li>
+                        <li> <i class="fa-solid fa-check"></i> প্রতিটি মডেল টেস্টে মোট ৩০টি অথবা ২৫টি MCQ প্রশ্ন থাকবে এবং প্রতিটি প্রশ্নের মান ১।</li>
+                        <li> <i class="fa-solid fa-check"></i> একই মডেল টেস্ট শুধু একবার দেওয়ার সুযোগ থাকবে।</li>
+                        <li> <i class="fa-solid fa-check"></i> কোনো ভুল উত্তরের জন্য অতিরিক্ত নম্বর কাটা হবে না।</li>
+                        <li> <i class="fa-solid fa-check"></i> মডেল টেস্ট শুরু করার পর ট্যাব পরিবর্তন করলে কিংবা ট্যাব বন্ধ করে ফেললে স্বয়ংক্রিয়ভাবে সাবমিট হয়ে যাবে। সে ক্ষেত্রে টেস্টটি পুনরায় দেওয়ার কোনো সুযোগ নেই।</li>
+                        <li> <i class="fa-solid fa-check"></i> মডেল টেস্ট নিয়ে কোনো জিজ্ঞাসা থাকলে ‘পড়াশোনা-প্রথম আলো’র ফেসবুক পেজের মেসেঞ্জারে যোগাযোগ করো।</li>
                      </ul>
                   </div>
 
@@ -640,8 +643,10 @@ $init = $data['completion_time'];
                      <h4>গুরুত্বপূর্ণ কিছু তথ্য</h4>
                      <ul>
                         <li> <i class="fa-solid fa-check"></i> মোট ১৪ টি বিষয়ে মডেল টেস্ট রয়েছে এবং প্রতিটি বিষয়ে চারটি করে মডেল টেস্ট রয়েছে।</li>
-                        <li> <i class="fa-solid fa-check"></i> যেসব বিষয়ে মডেল টেস্ট থাকছেঃ বাংলা ১ম পত্র, বাংলা ২য় পত্র, পদার্থবিজ্ঞান, রসায়ন, জীববিজ্ঞান, হিসাববিজ্ঞান, ব্যবসায় উদ্যোগ, ফিন্যান্স ও ব্যাংকিং, বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা, ভূগোল ও পরিবেশ, পৌরনীতি ও নাগরিকতা, অর্থনীতি, কৃষিশিক্ষা ও গার্হস্থ্য বিজ্ঞান। গণিত, উচ্চতর গণিত ও ইংরেজি বিষয়ে কোনো মডেল টেস্ট থাকছে না।</li>
-                        <li> <i class="fa-solid fa-check"></i> তোমরা যেন সময় নিয়ে অনুশীলন করতে পারো সে জন্য ১ জুন থেকে প্রতিদিন ধাপে ধাপে মডেল টেস্টগুলো প্রকাশ করা হবে। সে ক্ষেত্রে প্রতিদিন সাতটি বিষয়ের প্রতিটিতে একটি করে মোট সাতটি মডেল টেস্ট প্রকাশিত হবে। একই মডেল টেস্ট শুধু একবার দেওয়ার সুযোগ থাকবে। পূর্বের মডেল টেস্টের প্রশ্ন ও উত্তরগুলো প্রোফাইলের ফলাফল অংশে দেখা যাবে।</li>
+                        <li> <i class="fa-solid fa-check"></i>যেসব বিষয়ে মডেল টেস্ট থাকছে: বাংলা ১ম পত্র, বাংলা ২য় পত্র, পদার্থবিজ্ঞান, রসায়ন, জীববিজ্ঞান, হিসাববিজ্ঞান, ব্যবসায় উদ্যোগ, ফিন্যান্স ও ব্যাংকিং, বাংলাদেশের ইতিহাস ও বিশ্ব সভ্যতা, ভূগোল ও পরিবেশ, পৌরনীতি ও নাগরিকতা, অর্থনীতি, কৃষিশিক্ষা ও গার্হস্থ্য বিজ্ঞান।</li>
+                        <li> <i class="fa-solid fa-check"></i> গণিত, উচ্চতর গণিত ও ইংরেজি বিষয়ে কোনো মডেল টেস্ট থাকছে না।</li>
+                        <li> <i class="fa-solid fa-check"></i> তোমরা যেন সময় নিয়ে অনুশীলন করতে পারো, সে জন্য ৯ জুন থেকে প্রতিদিন ধাপে ধাপে মডেল টেস্টগুলো প্রকাশ করা হবে। সে ক্ষেত্রে প্রতিদিন সাতটি বিষয়ের প্রতিটিতে একটি করে মোট সাতটি মডেল টেস্ট প্রকাশিত হবে। তোমাদের সুবিধামতো যেকোনো দিন মডেল টেস্ট দিতে পারবে, তবে একই মডেল টেস্ট শুধু একবার দেওয়ার সুযোগ থাকবে। </li>
+                        <li> <i class="fa-solid fa-check"></i> পূর্বের মডেল টেস্টের প্রশ্ন ও উত্তরগুলো প্রোফাইলের ফলাফল অংশে দেখা যাবে। </li>
                      </ul>
                   </div>
 

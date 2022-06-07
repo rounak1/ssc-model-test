@@ -1,14 +1,14 @@
 
 	<footer>
             <div class="footer__area">
-               <div class="footer__top grey-bg-4 pt-95 pb-45">
+               <div class="footer__top grey-bg-4 pt-60 pb-45">
                   <div class="container">
                      <div class="row">
                         <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-7">
-                           <div class="footer__widget footer__widget-2 footer-col-2-1 mb-50">
+                           <div class="footer__widget footer__widget-2 footer-col-2-1">
                               <div class="footer__logo">
                                  <div class="logo">
-                                    <a href="<?php echo isset($_SESSION['logged_session']) ? 'dashboard' : 'landing' ?>">
+                                    <a href="<?php echo isset($_SESSION['logged_session']) ? 'dashboard' : $site_link ?>">
                                        <img class="exam-running" style="width: 130px;" src="assets/img/porasona.svg" alt="">
                                     </a>
                                  </div>
@@ -22,8 +22,8 @@
                               </div>
                            </div>
                         </div>
-                        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-5">
-                           <div class="footer__widget footer__widget-2 mb-50 footer-col-2-2">
+                        <div class="col-xxl-3 col-xl-2 col-lg-2 col-md-3 col-sm-5 col-6">
+                           <div class="footer__widget footer__widget-2 footer-col-2-2">
                               <div class="footer__widget-content">
                                  <ul>
                                     <li>
@@ -43,8 +43,8 @@
                               </div>
                            </div>
                         </div>
-                        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-3 col-sm-5">
-                           <div class="footer__widget footer__widget-2 mb-50 footer-col-2-3">
+                        <div class="col-xxl-3 col-xl-2 col-lg-2 col-md-3 col-sm-5 col-6">
+                           <div class="footer__widget footer__widget-2  footer-col-2-3">
                               <div class="footer__widget-content">
                                  <ul>
                                     <li>
@@ -60,9 +60,9 @@
                               </div>
                            </div>
                         </div>
-                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-7">
-                           <div class="footer__widget footer__widget-2 footer-col-2-4 mb-50">
-                              <div class="footer__social">
+                        <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-6 col-sm-7">
+                           <div class="footer__widget footer__widget-2">
+                              <div class="footer__social text-center">
 	                               <h4>আমাদের সাথে যোগাযোগ</h4>
 
 	                               <ul>
@@ -82,7 +82,7 @@
                         <div class="row">
                            <div class="col-xxl-12">
                               <div class="footer__copyright text-center">
-                                 <span style="font-family: arial;">Developed by Prothom Alo Digital Tech Team.</span>
+                                 <span style="font-family: arial;">Developed by Prothom Alo Digital Tech Team</span>
                                  <p>স্বত্ব &copy; ২০২২ প্রথম আলো</p>
                               </div>
                            </div>

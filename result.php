@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(1);
+$site_title = "মডেল টেস্টের ফলাফল :: এসএসসি মডেল টেস্ট ২০২২";
 require 'check-login.php';
 require 'header-v2.php';
 require 'BanglaConverter.php';
@@ -15,7 +16,7 @@ $exam_result = mysqli_query($conn, $exam_query);
 $exam_data = mysqli_fetch_assoc($exam_result);
 ?>
 
-<section class="course__area pt-115 pb-90">
+<section class="course__area exam-center pt-115 pb-90">
   <div class="container">
     <div class="row">
 
@@ -193,59 +194,63 @@ if (!empty($row['uddipok_statement'])) {?>
                             </div>
                           </h3>
                           <div class="options-container">
-
+                            <div class="option-wrapper">
                             <?php
 if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option1'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
             ?>
-                                <img style="width: 20px;   margin-right: 4px;" src="assets/images/right.svg">
+                                <img src="assets/images/right.svg">
                             <?php
 } elseif ($row[$c_exam_data[$row['id']]] == $row['option1']) {
             ?>
-                                <img style="width: 20px;   margin-right: 4px;" src="assets/images/wrong.svg">
+                                <img src="assets/images/wrong.svg">
                             <?php } else {?>
-                                <img style="width: 20px;   margin-right: 4px;" src="images/normal.png">
+                                <img src="images/normal.png">
                             <?php }?>
                                 <?php echo $row['option1'] ?>
-
+                          </div>
+                          <div class="option-wrapper">
                             <?php
 if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option2'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
             ?>
-                                <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/right.svg">
+                                <img src="assets/images/right.svg">
                             <?php
 } elseif ($row[$c_exam_data[$row['id']]] == $row['option2']) {
             ?>
-                                <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/wrong.svg">
+                                <img src="assets/images/wrong.svg">
                             <?php } else {?>
-                                <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/normal.png">
+                                <img src="images/normal.png">
                             <?php }?>
                                 <?php echo $row['option2'] ?>
 
-
+                              </div>
+                              <div class="option-wrapper">
                             <?php
 if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option3'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
             ?>
-                                <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/right.svg">
+                                <img src="assets/images/right.svg">
                             <?php
 } elseif ($row[$c_exam_data[$row['id']]] == $row['option3']) {
             ?>
-                                <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/wrong.svg">
+                                <img src="assets/images/wrong.svg">
                             <?php } else {?>
-                                <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/normal.png">
+                                <img src="images/normal.png">
                             <?php }?>
                                <?php echo $row['option3'] ?>
-
+                             </div>
+                             <div class="option-wrapper">
                             <?php
 if (!empty($row[$c_exam_data[$row['id']]]) && $row[$row['answer']] == $row['option4'] && $row[$c_exam_data[$row['id']]] == $row[$row['answer']]) {
             ?>
-                                <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/right.svg">
+                                <img src="assets/images/right.svg">
                             <?php
 } elseif ($row[$c_exam_data[$row['id']]] == $row['option4']) {
             ?>
-                                <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="assets/images/wrong.svg">
+                                <img src="assets/images/wrong.svg">
                             <?php } else {?>
-                                <img style="width: 20px;   margin-right: 4px;margin-left: 12px;" src="images/normal.png">
+                                <img src="images/normal.png">
                             <?php }?>
                                 <?php echo $row['option4'] ?>
+                              </div>
                           </div>
 
                           <?php

@@ -547,6 +547,7 @@ input[type=color] {
   line-height: 50px;
   text-transform: capitalize;
   border: none;
+  border-radius: 6px;
   /* green btn */
 }
 .tp-btn:hover {
@@ -705,8 +706,8 @@ input[type=color] {
 .tp-btn-green {
   display: inline-block;
   color: var(--tp-common-white);
-  font-weight: 500;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 20px;
   height: 50px;
   line-height: 50px;
   text-align: center;
@@ -1595,14 +1596,28 @@ input[type=color] {
   margin-bottom: 5px;
 }
 
-.options-container {
-  margin-top: 10px;
+.exam-center .course__curriculum-info {
+  width: 100%;
 }
 
-.options-container label {
-  margin-right: 24px;
+.options-container {
+  margin-top: 10px;
+  display: inline-block;
+  width: 100%;
+}
+
+.options-container .option-wrapper {
+    display: inline-block;
+    margin-right: 24px;
+}
+
+.options-container .option-wrapper img {
+  width: 20px; 
+  margin-right: 4px;
+}
+
+.options-container label {  
   font-size: 15px;
-  float: left;
 }
 
 .options-container input {
@@ -1620,7 +1635,7 @@ input[type=color] {
 
 .sticky-class {
   position: fixed;
-  bottom: 110px;
+  bottom: 50px;
   right: 5px;
   border-radius: 4px;
   background: #fff;
@@ -2235,6 +2250,9 @@ input[type=color] {
     height: 290px;
     margin-top: 50px;
   }
+  .slider__thumb-2 {
+    text-align: center;
+  }
 }
 .slider__thumb-mask img {
   position: relative;
@@ -2245,7 +2263,6 @@ input[type=color] {
 @media (max-width: 575px) {
   .slider__thumb-mask img {
     width: 290px;
-    height: 290px;
   }
 }
 .slider__thumb-mask::after {
@@ -4282,6 +4299,10 @@ input[type=color] {
   padding-left: 30px;
   padding-right: 30px;
 }
+.exam-center .course__curriculum .accordion-item .accordion-button {
+  cursor: default;
+  font-size: 24px;
+}
 .course__curriculum .accordion-item .accordion-button.collapsed {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -4438,11 +4459,11 @@ input[type=color] {
   color: #b8b9bf;
 }
 .course__member-item {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -o-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
   margin-bottom: 10px;
 }
 .course__member-thumb {
@@ -6067,6 +6088,7 @@ input[type=color] {
 /*----------------------------------------*/
 .footer__logo {
   margin-bottom: 20px;
+  margin-top: -18px;
 }
 .footer__info p {
   margin-bottom: 17px;
@@ -6082,7 +6104,7 @@ input[type=color] {
   margin-bottom: 12px;
 }
 .footer__widget ul li a {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.2;
 }
 .footer__widget ul li a:hover {
@@ -6143,6 +6165,9 @@ input[type=color] {
 @media only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
   .footer__social-3 {
     margin-top: 30px;
+  }
+  .footer__logo {
+    text-align: center;
   }
 }
 .footer__social-3 ul li a:hover {
@@ -6874,7 +6899,12 @@ input[type=color] {
 @media (max-width: 575px) {
   .event__date {
     margin-bottom: 15px;
+    padding-right: 20px;
+    margin-right: 0;
   }
+}
+.footer__widget-info p{
+  font-size: 15px;
 }
 .event__date::after {
   position: absolute;
@@ -6984,15 +7014,10 @@ input[type=color] {
 .event__right {
   flex: 0 0 auto;
 }
-@media only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
-  .event__right {
-    margin-top: 25px;
-  }
-}
+
 @media (max-width: 575px) {
   .event__more {
     margin-left: 0;
-    margin-top: 15px;
   }
 }
 .event__details h3 {
@@ -10046,6 +10071,7 @@ p.checkout-coupon input[type=text]:focus {
   border: 1px solid #eceaea;
   position: sticky;
   top: 110px;
+  border-radius: 10px;
 }
 .profile__menu-title {
   font-size: 16px;
@@ -10132,6 +10158,7 @@ p.checkout-coupon input[type=text]:focus {
 }
 .profile__info-wrapper {
   padding: 0 70px;
+  border-radius: 10px;
 }
 @media (max-width: 575px) {
   .profile__info-wrapper {
@@ -10429,3 +10456,9 @@ p.checkout-coupon input[type=text]:focus {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+@media screen and (max-width: 640px) {
+  .exam-center .options-container .option-wrapper {
+    display: block;
+  }
+}

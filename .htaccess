@@ -11,3 +11,7 @@ RewriteRule ^register(.*)$ register.php [QSA]
 RewriteRule ^logout(.*)$ logout.php [QSA]
 RewriteRule ^editprofile(.*)$ editprofile.php [QSA]
 RewriteRule ^exam(.*)$ exam.php [QSA]
+ErrorDocument 404 https://service.prothomalo.com/modeltest/404.php
+ErrorDocument 401 https://service.prothomalo.com/modeltest/404.php
+ErrorDocument 403 https://service.prothomalo.com/modeltest/404.php
+ErrorDocument 500 https://service.prothomalo.com/modeltest/404.php

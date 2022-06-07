@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(1);
+$site_title = "পাসওয়ার্ড ভুলে গিয়েছ? :: এসএসসি মডেল টেস্ট ২০২২";
 require 'connection.php';
 require 'header-v2.php';
 require 'EmailService.php';

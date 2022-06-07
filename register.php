@@ -2,6 +2,7 @@
 session_start();
 // require 'EmailService.php';
 error_reporting(1);
+$site_title = "নিবন্ধন ফরম :: এসএসসি মডেল টেস্ট ২০২২";
 require 'connection.php';
 require 'header-v2.php';
 
@@ -307,9 +308,16 @@ if (isset($_POST['register'])) {
                                     <i class="fal fa-location"></i>
                                  </div>
                               </div>
+                              <div class="sign__action d-flex justify-content-between mb-30">
+                                <div class="sign__agree d-flex align-items-center">
+                                  <input class="m-check-input" type="checkbox" id="m-agree" required="required">
+                                  <label class="m-check-label" for="m-agree">আমি কুইজ পদ্ধতি মেনে নিবন্ধন করছি। নিবন্ধনের তথ্যসমূহ প্রথম আলোর নিকট সংরক্ষিত থাকবে।
+                                     </label>
+                                </div>
+                              </div>
                               <button name="register" class="tp-btn  w-100"> <span></span> সাবমিট</button>
                               <div class="sign__new text-center mt-20">
-                                 <p>আগেই নিবন্ধন করা থাকলে <br/>  <a href="login">লগইন করো</p>
+                                 <p>আগেই নিবন্ধন করা থাকলে <br/>  <a href="login">লগইন করো</a></p>
                               </div>
                            </form>
                         </div>

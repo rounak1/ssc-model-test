@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--====== Title ======-->
-    <title>এসএসসি মডেল টেস্ট ২০২২</title>
+    <title><?=$site_title?></title>
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="এসএসসি মডেল টেস্ট ২০২২" />
@@ -44,7 +45,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/backtotop.css">
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
     <link rel="stylesheet" href="assets/css/spacing.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=1.6">
+    <link rel="stylesheet" href="assets/css/style.css?v=1.7">
 
     <!-- JS here -->
 
@@ -100,7 +101,7 @@ session_start();
                      <div class="col-xxl-8 col-xl-9 col-lg-10 col-md-6 col-6">
                         <div class="header__bottom-left d-flex align-items-center">
                            <div class="logo">
-                              <a href="<?php echo isset($_SESSION['logged_session']) ? 'dashboard' : 'landing' ?>">
+                              <a href="<?php echo isset($_SESSION['logged_session']) ? 'dashboard' : $site_link ?>">
                                  <img class="exam-running" src="assets/img/porasona.svg" alt="logo">
                               </a>
                            </div>

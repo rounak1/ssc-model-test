@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(1);
+$site_title = "মডেল টেস্ট :: এসএসসি মডেল টেস্ট ২০২২";
 require 'check-login.php';
 require 'header-v2.php';
 require 'BanglaConverter.php';
@@ -23,7 +24,7 @@ if (!isset($exam_id)) {
 
 ?>
 
-<section class="course__area pt-115 pb-90">
+<section class="course__area pt-115 pb-90 exam-center">
   <div class="container">
     <div class="row">
 
@@ -117,13 +118,24 @@ $i = 1;
                                 </h3>
 
                                 <div class="options-container">
-                                  <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option1" id="option_<?php echo $row['id'] ?>_1">
-                                  <label for="option_<?php echo $row['id'] ?>_1"><?php echo $row['option1'] ?></label>
 
-                                  <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option2" id="option_<?php echo $row['id'] ?>_2">
-                                  <label for="option_<?php echo $row['id'] ?>_2"><?php echo $row['option2'] ?></label>
-                                  <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option3" id="option_<?php echo $row['id'] ?>_3"> <label for="option_<?php echo $row['id'] ?>_3"><?php echo $row['option3'] ?></label>
-                                  <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option4" id="option_<?php echo $row['id'] ?>_4"> <label for="option_<?php echo $row['id'] ?>_4"><?php echo $row['option4'] ?></label>
+                                  <div class="option-wrapper">
+                                    <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option1" id="option_<?php echo $row['id'] ?>_1">
+                                    <label for="option_<?php echo $row['id'] ?>_1"><?php echo $row['option1'] ?></label>
+                                  </div>
+
+                                  <div class="option-wrapper">
+                                    <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option2" id="option_<?php echo $row['id'] ?>_2">
+                                    <label for="option_<?php echo $row['id'] ?>_2"><?php echo $row['option2'] ?></label>
+                                  </div>
+
+                                  <div class="option-wrapper">
+                                    <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option3" id="option_<?php echo $row['id'] ?>_3"> <label for="option_<?php echo $row['id'] ?>_3"><?php echo $row['option3'] ?></label>
+                                  </div>
+
+                                  <div class="option-wrapper">
+                                    <input type="radio" name="option[<?php echo $row['id'] ?>]" value="option4" id="option_<?php echo $row['id'] ?>_4"> <label for="option_<?php echo $row['id'] ?>_4"><?php echo $row['option4'] ?></label>
+                                  </div>
                                 </div>
 
                               </div>

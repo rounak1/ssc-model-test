@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+$site_title = "লগইন :: এসএসসি মডেল টেস্ট ২০২২";
 require 'connection.php';
 require 'header-v2.php';
 $email = $pass = "";

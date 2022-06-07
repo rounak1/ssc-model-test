@@ -16,14 +16,7 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $full_link = "http";
 }
 
-// Here append the common URL characters.
-$full_link .= "://";
 
-// Append the host(domain name, ip) to the URL.
-$full_link .= $_SERVER['HTTP_HOST'];
-
-// Append the requested resource location to the URL
-$full_link .= $_SERVER['REQUEST_URI'];
 
 function url_match($full_link = '', $current = '')
 {
