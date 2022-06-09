@@ -64,9 +64,9 @@ $total_p_data = mysqli_fetch_assoc($result_participant_data);
 											        if ($current_date == $value['date']) {
 										?>
 														<div class="col-12">
-                                        					<div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
+                                        					<div class="event__item white-bg mb-10 transition-3 p-relative d-flex align-items-center justify-content-between">
 
-                                        						<div class="event__left d-sm-flex align-items-center">
+                                        						<div class="event__left d-flex align-items-center">
 					                                             <div class="event__date">
 					                                                <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
 					                                                <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
@@ -85,7 +85,7 @@ $total_p_data = mysqli_fetch_assoc($result_participant_data);
 					                                             </div>
 					                                          	</div>
 
-					                                          	<div class="event__right d-sm-flex align-items-center">
+					                                          	<div class="event__right d-flex align-items-center">
                                              						<div class="event__more ml-30">
                                              							<a href="quiz.php?specific_questions=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">বিস্তারিত</a>
                                              						</div>
@@ -121,9 +121,9 @@ $total_p_data = mysqli_fetch_assoc($result_participant_data);
 
             						?>
 												<div class="col-12">
-                                      				<div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
+                                      				<div class="event__item white-bg mb-10 transition-3 p-relative d-flex align-items-center justify-content-between">
 
-                                      					<div class="event__left d-sm-flex align-items-center">
+                                      					<div class="event__left d-flex align-items-center">
 			                                             <div class="event__date">
 			                                                <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
 			                                                <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
@@ -142,7 +142,7 @@ $total_p_data = mysqli_fetch_assoc($result_participant_data);
 			                                             </div>
 			                                          </div>
 
-			                                          <div class="event__right d-sm-flex align-items-center">
+			                                          <div class="event__right d-flex align-items-center">
                                  						<div class="event__more ml-30">
                                  							<a href="quiz.php?specific_questions=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">বিস্তারিত</a>
                                  						</div>
@@ -174,8 +174,8 @@ $total_p_data = mysqli_fetch_assoc($result_participant_data);
 										        if ($current_date < $value['date']) {
 									?>
 													<div class="col-12">
-                                      <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
-                                        <div class="event__left d-sm-flex align-items-center">
+                                      <div class="event__item white-bg mb-10 transition-3 p-relative d-flex align-items-center justify-content-between">
+                                        <div class="event__left d-flex align-items-center">
                                            <div class="event__date">
                                               <h4><?=BanglaConverter::en2bn($exam_date[2])?></h4>
                                               <p><?=$monthsObj[$exam_date[1]]?>, <?=BanglaConverter::en2bn($exam_date[0])?></p>
@@ -193,7 +193,7 @@ $total_p_data = mysqli_fetch_assoc($result_participant_data);
                                               </h3>
                                            </div>
                                         </div>
-                                        <div class="event__right d-sm-flex align-items-center">
+                                        <div class="event__right d-flex align-items-center">
                      						<div class="event__more ml-30">
                      							<a href="quiz.php?specific_questions=<?=$value['id']?>" class="tp-btn-5 tp-btn-7">বিস্তারিত</a>
                      						</div>

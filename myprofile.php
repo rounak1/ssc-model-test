@@ -29,6 +29,7 @@ if (!empty($result_quiz_data)) {
         $result[$row['exam_id']]['completion_time'] = $row['completion_time'];
     }
 }
+
 ?>
   <main class="dashboard">
 
@@ -383,7 +384,8 @@ if (!empty($model_test_list)) {
         $exam_date = explode("-", $value['date']);
         $current_date = Date('Y-m-d');
 
-        if ($current_date == $value['date']) {
+        if ($current_date == $value['date']) {          
+          $find_already_attend = $result[$value['id']];
             ?>
                                       <div class="col-12">
                                         <div class="event__item white-bg mb-10 transition-3 p-relative d-flex align-items-center justify-content-between">
@@ -408,6 +410,7 @@ if (!empty($model_test_list)) {
                                           <div class="event__right d-flex align-items-center">
                                              <div class="event__more ml-30">
                                                 <?php
+                                                
 if (!empty($find_already_attend) && count($find_already_attend) > 0) {
                 ?>
 
@@ -446,7 +449,7 @@ if (!empty($model_test_list)) {
         $current_date = Date('Y-m-d');
 
         if ($current_date > $value['date']) {
-
+          
             $find_already_attend = $result[$value['id']];
 
             ?>

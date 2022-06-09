@@ -102,7 +102,7 @@ if (isset($_GET['search'])) {
     <td class="<?=$row['answer']=='option2'? 'option_answer':''?>"><?php echo $row['option2']; ?></td>
     <td class="<?=$row['answer']=='option3'? 'option_answer':''?>"><?php echo $row['option3']; ?></td>
     <td class="<?=$row['answer']=='option4'? 'option_answer':''?>"><?php echo $row['option4']; ?></td>
-    <!-- <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td> -->
+    <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td>
 </tr>
 
 <?php }?>
@@ -165,7 +165,7 @@ if (isset($_GET['search'])) {
     <td class="<?=$row['answer']=='option2'? 'option_answer':''?>"><?php echo $row['option2']; ?></td>
     <td class="<?=$row['answer']=='option3'? 'option_answer':''?>"><?php echo $row['option3']; ?></td>
     <td class="<?=$row['answer']=='option4'? 'option_answer':''?>"><?php echo $row['option4']; ?></td>
-    <!-- <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td> -->
+    <td><a href="quiz-edit.php?id=<?php echo $row['id']; ?>">Edit</a> | <a href="quiz-delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm(`Are you sure?`)">Delete</a></td>
 </tr>
 
 <?php }?>
