@@ -2,7 +2,7 @@
 session_start();
 // require 'EmailService.php';
 error_reporting(1);
-$site_title = "নিবন্ধন ফরম :: এসএসসি মডেল টেস্ট ২০২২";
+$site_title = "নিবন্ধন ফরম :: মডেল টেস্ট - প্রথম আলো";
 require 'connection.php';
 require 'header-v2.php';
 

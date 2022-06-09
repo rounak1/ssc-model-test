@@ -1651,7 +1651,7 @@ input[type=color] {
 
 .my-result-each {
   background: var(--tp-common-white);
-  padding: 15px 10px;
+  padding: 15px 10px 5px 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -o-border-radius: 10px;
@@ -4501,6 +4501,7 @@ input[type=color] {
   -o-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
+  margin-right: 10px;
 }
 .course__member-name h5 {
   font-size: 16px;
@@ -4518,7 +4519,6 @@ input[type=color] {
 }
 @media (max-width: 575px) {
   .course__member-info {
-    margin-top: 25px;
     padding-left: 0;
   }
 }
@@ -6141,7 +6141,7 @@ input[type=color] {
 .footer__social h4 {
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .footer__social ul li {
   display: inline-block;
@@ -6178,6 +6178,20 @@ input[type=color] {
   }
   .footer__logo {
     text-align: center;
+  }
+  .footer__area {
+    padding: 0 20px;
+  }
+  .footer-text {
+    border-bottom: 1px solid rgba(3, 18, 32, 0.06);
+    margin-bottom: 20px;
+  }
+  .contact-with-us {
+    border-top: 1px solid rgba(3, 18, 32, 0.06);
+    padding-top: 20px;
+  }
+  .footer__widget-title {
+    display: none;
   }
 }
 .footer__social-3 ul li a:hover {
@@ -6940,9 +6954,10 @@ input[type=color] {
   font-weight: 700;
   margin-bottom: 0;
   line-height: 1;
+  color: var(--tp-text-body);
 }
 .event__date p {
-  color: var(--tp-text-11);
+  color: var(--tp-header-primary);
   font-size: 14px;
   margin-bottom: 0;
 }
@@ -6951,6 +6966,7 @@ input[type=color] {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 6px;
+  color: var(--tp-header-primary);
 }
 .event__meta ul li a {
   font-size: 14px;
@@ -6969,6 +6985,7 @@ input[type=color] {
 .event__title {
   font-size: 14px;
   font-weight: 400;
+  color: var(--tp-text-11);
 }
 .event__title a:hover {
   color: var(--tp-theme-2);

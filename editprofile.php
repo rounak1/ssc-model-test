@@ -4,7 +4,7 @@ if (!isset($_SESSION['logged_session'])) {
     header('Location: index');
 }
 error_reporting(0);
-$site_title = "প্রোফাইল এডিট :: এসএসসি মডেল টেস্ট ২০২২";
+$site_title = "প্রোফাইল এডিট :: মডেল টেস্ট - প্রথম আলো";
 require 'connection.php';
 require 'header-v2.php';
 $email = $_SESSION['email'];

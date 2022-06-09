@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-$site_title = "লগইন :: এসএসসি মডেল টেস্ট ২০২২";
+$site_title = "লগইন :: মডেল টেস্ট - প্রথম আলো";
 require 'connection.php';
 require 'header-v2.php';
 $email = $pass = "";

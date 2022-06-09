@@ -4,7 +4,7 @@ if (!isset($_SESSION['logged_session'])) {
     header('Location: index.php');
 }
 error_reporting(1);
-$site_title = "ড্যাশবোর্ড :: এসএসসি মডেল টেস্ট ২০২২";
+$site_title = "ড্যাশবোর্ড :: মডেল টেস্ট - প্রথম আলো";
 require 'check-login.php';
 require 'header-v2.php';
 require 'BanglaConverter.php';
@@ -564,29 +564,29 @@ if (!empty($result)) {
                         <div class="course__member-item my-result-each">
                           <a href="result.php?id=<?=$data['id']?>">
                             <div class="row align-items-center">
-                              <div class="col-5">
+                              <div class="col-4 col-md-5">
                                  <div class="course__member-thumb d-flex align-items-center">
                                     <img class="my-p-r-iccon" src="assets/img/thumb2.svg?v=1.0" alt="">
-                                    <div class="course__member-name ml-20 pr-10">
+                                    <div class="course__member-name">
                                        <h5><?=$model_test_list[$data['exam_id']]['test']?></h5>
                                        <span><?=$data['exam_name']?></span>
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-2">
-                                 <div class="course__member-info">
+                              <div class="col-2 col-md-2">
+                                 <div class="course__member-info text-center">
                                     <h5><?=BanglaConverter::en2bn($data['total_marks'] + $data['wrong_answers'] + $data['not_given_answers']);?></h5>
                                     <span>পূর্ণমান</span>
                                  </div>
                               </div>
-                              <div class="col-2">
-                                 <div class="course__member-info">
+                              <div class="col-2 col-md-2">
+                                 <div class="course__member-info text-center">
                                     <h5><?=BanglaConverter::en2bn($data['total_marks'])?></h5>
                                     <span>সঠিক</span>
                                  </div>
                               </div>
-                              <div class="col-3">
-                                 <div class="course__member-info">
+                              <div class="col-4 col-md-3">
+                                 <div class="course__member-info text-center">
                                     <h5>
                                       <?php
 $init = $data['completion_time'];

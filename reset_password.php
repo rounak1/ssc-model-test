@@ -3,7 +3,7 @@ session_start();
 $msg = [];
 $user_email = "";
 error_reporting(1);
-$site_title = "রিসেট পাসওয়ার্ড :: এসএসসি মডেল টেস্ট ২০২২";
+$site_title = "রিসেট পাসওয়ার্ড :: মডেল টেস্ট - প্রথম আলো";
 require 'connection.php';
 require 'header-v2.php';
 

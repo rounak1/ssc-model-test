@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(1);
-$site_title = "পাসওয়ার্ড ভুলে গিয়েছ? :: এসএসসি মডেল টেস্ট ২০২২";
+$site_title = "পাসওয়ার্ড ভুলে গিয়েছ? :: মডেল টেস্ট - প্রথম আলো";
 require 'connection.php';
 require 'header-v2.php';
 require 'EmailService.php';

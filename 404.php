@@ -1,5 +1,5 @@
 <?php
-$site_title = "৪০৪ :: এসএসসি মডেল টেস্ট ২০২২";
+$site_title = "৪০৪ :: মডেল টেস্ট - প্রথম আলো";
 require 'header-v2.php';
 require 'config.php';
 ?>

@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--====== Title ======-->
-    <title>এসএসসি মডেল টেস্ট ২০২২</title>
+    <title>মডেল টেস্ট - প্রথম আলো</title>
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="এসএসসি মডেল টেস্ট ২০২২" />

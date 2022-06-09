@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Dhaka');
 require 'config.php';
 ?>
 <!DOCTYPE html>
@@ -10,8 +11,10 @@ require 'config.php';
     <!--====== Title ======-->
     <title><?=$site_title?></title>
 
+    <link rel="icon" type="image/png" href="./favicon.png" />
+
     <!-- Primary Meta Tags -->
-    <meta name="title" content="এসএসসি মডেল টেস্ট ২০২২" />
+    <meta name="title" content="মডেল টেস্ট - প্রথম আলো" />
     <meta name="description" content="যদি দাও মডেল টেস্ট, পরীক্ষা তোমার হবে বেস্ট" />
 
     <!-- Open Graph / Facebook -->
@@ -20,24 +23,24 @@ require 'config.php';
       property="og:url"
       content="https://service.prothomalo.com/modeltest/"
     />
-    <meta property="og:title" content="এসএসসি মডেল টেস্ট ২০২২" />
+    <meta property="og:title" content="মডেল টেস্ট - প্রথম আলো" />
     <meta
       property="og:description"
       content='যদি দাও মডেল টেস্ট, পরীক্ষা তোমার হবে বেস্ট'
     />
-    <meta property="og:image" content="assets/img/og-image-model-test-2.png" />
+    <meta property="og:image" content="assets/img/og-image-model-test-3.png" />
 
     <!-- Twitter -->
     <meta
       property="twitter:url"
       content="https://service.prothomalo.com/modeltest"
     />
-    <meta property="twitter:title" content="এসএসসি মডেল টেস্ট ২০২২" />
+    <meta property="twitter:title" content="মডেল টেস্ট - প্রথম আলো" />
     <meta
       property="twitter:description"
       content='যদি দাও মডেল টেস্ট, পরীক্ষা তোমার হবে বেস্ট'
     />
-    <meta property="twitter:image" content="assets/img/og-image-model-test-2.png" />
+    <meta property="twitter:image" content="assets/img/og-image-model-test-3.png" />
 
     <!-- CSS here -->
     <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -45,7 +48,7 @@ require 'config.php';
     <link rel="stylesheet" href="assets/css/backtotop.css">
     <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
     <link rel="stylesheet" href="assets/css/spacing.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=1.8">
+    <link rel="stylesheet" href="assets/css/style.css?v=2.0">
 
     <!-- JS here -->
 

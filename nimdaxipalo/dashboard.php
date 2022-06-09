@@ -8,6 +8,11 @@ require 'connection.php';
 require '../settings.php';
 require 'header-v2.php';
 require '../BanglaConverter.php';
+
+$all_participant_data = "SELECT count(*) as total FROM `quiz_histories`";
+
+$result_participant_data = mysqli_query($conn, $all_participant_data);
+$total_p_data = mysqli_fetch_assoc($result_participant_data);
 ?>
 
 <main>
@@ -220,6 +225,7 @@ require '../BanglaConverter.php';
 		                </div>
 
 		                <?php
+		                	$total_today_participants = 0;
 							$sort_by_date = array_column($model_test_list, 'date');
 							array_multisort($sort_by_date, SORT_DESC, $model_test_list);
 
@@ -234,6 +240,8 @@ require '../BanglaConverter.php';
 
     									$res = mysqli_query($conn, $sql);
     									$exam_data = mysqli_fetch_assoc($res);
+
+    									$total_today_participants += $exam_data['total_count'];
 
 						?>
 									<div class="course__member-item my-result-each">
@@ -262,6 +270,12 @@ require '../BanglaConverter.php';
 							}
 						}
 						?>
+						<div class="course__member-item my-result-each">
+							<h5>আজকে মোট অংশগ্রহন করেছে <?=BanglaConverter::en2bn($total_today_participants)?> জন</h5>
+						</div>
+						<div class="course__member-item my-result-each">
+							<h5>প্রথম থেকে আজকে পর্যন্ত মোট অংশগ্রহন করেছে <?=BanglaConverter::en2bn($total_p_data['total'])?> জন</h5>
+						</div>
 	                </div>
 		          </div>
 		        </div>

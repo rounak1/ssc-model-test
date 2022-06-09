@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(1);
-$site_title = "মডেল টেস্টের ফলাফল :: এসএসসি মডেল টেস্ট ২০২২";
+$site_title = "মডেল টেস্টের ফলাফল :: মডেল টেস্ট - প্রথম আলো";
 require 'check-login.php';
 require 'header-v2.php';
 require 'BanglaConverter.php';
